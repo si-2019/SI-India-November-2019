@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Pod from './Komponente/PodaciOStudentu'
+import Profil from './profilStudenta'
 
 export default class App extends React.Component {
   render() {
     return (
-      <Pod />
+      <Profil />
     );
   }
 }
