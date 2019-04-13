@@ -26,7 +26,31 @@ return (
 }
 export default Slika
 
-const styles = StyleSheet.create({  
+const styles = StyleSheet.create({
+  container: {
+  flex: 1,
+  flexDirection: 'row',
+  justifyContent: 'space-between'
+  },
+  buttonChoose: {
+  backgroundColor: 'lightgrey', 
+  alignItems: 'center', 
+  justifyContent: 'center', 
+  borderRadius: 10,
+  padding: 10,
+  marginTop: 10,
+  marginLeft: '8%',
+  marginRight: '8%'
+  },
+  buttonAdd: {
+  backgroundColor: 'lightgrey', 
+  alignItems: 'center', 
+  justifyContent: 'center', 
+  borderRadius: 10,
+  padding: 20,
+  marginTop: 10,
+  marginRight: '8%'
+  },      
   podnaslov: {
   backgroundColor: '#B9D6DF',
   color: 'black',
@@ -34,5 +58,18 @@ const styles = StyleSheet.create({
   fontSize: 15,
   fontWeight: 'bold',
   marginTop: 10,
+  },
+  slika: { 
+  alignItems: 'center', 
+  justifyContent: 'center', 
+  height: 300,
+  width: 300,
+  marginTop: 10,
+  marginLeft: '8%',
+  marginRight: '8%'
+  },
+  imagestyle: {
+  justifyContent: 'center',
+  alignItems: 'center',
   }
  })
