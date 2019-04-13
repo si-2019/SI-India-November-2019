@@ -3,16 +3,14 @@ import {
   Image,
   Platform,
   StyleSheet,
-  Alert,
+    Alert,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
-import Pocetna from './Dashboard.js';
-import StackNavigator from 'react-navigation';
 
-class App extends React.Component {
+class App extends Component {
   state = {
     email: '',
     password: ''
@@ -26,9 +24,7 @@ class App extends React.Component {
   login = (email, pass) => {
     if (email.length !== 0 && pass.length!== 0) {
       if(email !== 'student' && pass!=='student') Alert.alert('Greška!','Netačni podaci!');
-      else {
-        Alert.alert('Greška!','OK');
-      }
+      else Alert.alert('Upozorenje!','email: ' + email + ' password: ' + pass)
     }
     else if(email.length === 0 || pass.length === 0) Alert.alert('Greška!','Molimo unesite oba podatka!')
   }
@@ -67,6 +63,9 @@ class App extends React.Component {
                 {'\u00A9'} November-India, 2019
               </Text>
             </View>
+
+
+
           </View>
         </View>
     )
