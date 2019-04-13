@@ -15,7 +15,7 @@ class Obavijesti extends Component {
         this.setState({obavijesti=response.data});
         console.log("Dodane obavijesti");
     })
-    a tako i key biti zamijenjen sa uid !
+    key  zamijenjeniti sa uid !
     */
    this.state.obavijesti=[{naziv:"Obavijest1",tekst:"Obavijest1 tekst"},
     {naziv:"Obavijest2",tekst:"Obavijest2 tekst"},
