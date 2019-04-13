@@ -21,16 +21,21 @@ state= {
     datumRod: res.datumRod,
     mjestoRod: res.mjestoRod,
     opcinaRod: res.opcinaRod,
-    drzavaRod: res.drzavaRod,
+    drzavaRod: res.drzavaRod, 
     nacionalnost: res.nacionalnost, 
     kanton: res.kanton,
     drzavljanstvo: res.drzavljanstvo,
 } 
 /*
-axios.get("url").then(response=>{
-    this.setState({ime: response.ime, prezime: response.prezime...})
+axios.get("url?id=nekiId").then(response=>{
+    this.setState(this.setState({ime: res.ime, prezime: res.prezime, spol: res.spol, brIndeksa: res.brIndeksa,
+jmbg: res.jmbg, adresaUlica: res.adresaUlica, adresaMjesto: res.adresaMjesto, kontaktTelefon: res.kontaktTelefon,
+kontaktEmail: res.kontaktEmail, imeOca: res.imeOca, prezimeOca: res.prezimeOca, imeMajke: res.imeMajke, 
+prezimeMajke: res.prezimeMajke, datumRod: res.datumRod, mjestoRod: res.mjestoRod, opcinaRod: res.opcinaRod,
+drzavaRod: res.drzavaRod, nacionalnost: res.nacionalnost, kanton: res.kanton, drzavljanstvo: res.drzavljanstvo });
 })
 */
+//Kao_student_želim_imati_mogućnost_pregleda_ličnih_podataka_kako_bih_imao_uvid_u_iste
 
 //Privremeno dodavanje dummy podataka
 dodajPodatke = (res) => {
@@ -186,8 +191,8 @@ const styles = StyleSheet.create({
     marginBottom: 20
     },      
     podnaslov: {
-    backgroundColor: '#B9D6DF',
-    color: 'black',
+    backgroundColor: '#195dc4',
+    color: 'white',
     padding: 5,
     fontSize: 15,
     fontWeight: 'bold',

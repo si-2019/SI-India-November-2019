@@ -74,8 +74,8 @@ const styles = StyleSheet.create({
     marginRight: '8%'
     },      
     podnaslov: {
-    backgroundColor: '#B9D6DF',
-    color: 'black',
+    backgroundColor: '#195dc4',
+    color: 'white',
     padding: 5,
     fontSize: 15,
     fontWeight: 'bold',
@@ -84,11 +84,11 @@ const styles = StyleSheet.create({
     slika: { 
     alignItems: 'center', 
     justifyContent: 'center', 
-    height: 300,
-    width: 300,
+    height: 200,
+    width: '50%',
     marginTop: 10,
-    marginLeft: '8%',
-    marginRight: '8%'
+    marginLeft: '25%',
+    marginRight: '25%'
     },
     imagestyle: {
     justifyContent: 'center',
