@@ -121,7 +121,12 @@ return (
         </Text>
         <TextInput style = {styles.input}
         placeholder = "Državljanstvo"/>
-    </View>
+    </View>   
+    <TouchableOpacity  style = {styles.button}>
+        <Text>
+        Pošalji zahtjev
+        </Text>
+    </TouchableOpacity>  
  </ScrollView>
 );
 }
