@@ -37,7 +37,31 @@ return (
         <TextInput style = {styles.input}
         placeholder = "JMBG"/>
     </View>
-     
+    <View>
+        <Text style = {styles.podnaslov}>
+        Kontakt podaci
+        </Text>
+        <Text style = {styles.tekst1}>
+        Adresa (ulica i broj):
+        </Text>
+        <TextInput style = {styles.input}
+        placeholder = "Adresa (ulica i broj)"/>
+        <Text style = {styles.tekst1}>
+        Adresa (mjesto):
+        </Text>
+        <TextInput style = {styles.input}
+        placeholder = "Adresa (mjesto)"/>
+        <Text style = {styles.tekst1}>
+        Kontaks telefon:
+        </Text>
+        <TextInput style = {styles.input}
+        placeholder = "Kontaks telefon"/>
+        <Text style = {styles.tekst1}>
+        Kontakt e-mail:
+        </Text>
+        <TextInput style = {styles.input}
+        placeholder = "Kontakt e-mail"/>
+    </View>
  </ScrollView>
 );
 }
