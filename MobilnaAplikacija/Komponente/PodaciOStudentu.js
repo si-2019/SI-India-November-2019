@@ -6,7 +6,7 @@ class PodaciOStudentu extends Component  {
 
 render() {  
 return (
-<ScrollView>
+<View>
     <View>
         <Text style = {styles.podnaslov}>
         Osnovni podaci
@@ -62,7 +62,67 @@ return (
         <TextInput style = {styles.input}
         placeholder = "Kontakt e-mail"/>
     </View>
- </ScrollView>
+    <View>
+        <Text style = {styles.podnaslov}>
+        Lični podaci
+        </Text>
+        <Text style = {styles.tekst1}>
+        Ime oca:
+        </Text>
+        <TextInput style = {styles.input}
+        placeholder = "Ime oca:"/>
+        <Text style = {styles.tekst1}>
+        Prezime oca:
+        </Text>
+        <TextInput style = {styles.input}
+        placeholder = "Prezime oca"/>
+        <Text style = {styles.tekst1}>
+        Ime majke:
+        </Text>
+        <TextInput style = {styles.input}
+        placeholder = "Ime majke"/>
+        <Text style = {styles.tekst1}>
+        Prezime majke:
+        </Text>
+        <TextInput style = {styles.input}
+        placeholder = "Prezime majke"/>
+        <Text style = {styles.tekst1}>
+        Datum rođenja:
+        </Text>
+        <TextInput style = {styles.input}
+        placeholder = "Datum rođenja"/>
+        <Text style = {styles.tekst1}>
+        Mjesto rođenja:
+        </Text>
+        <TextInput style = {styles.input}
+        placeholder = "Mjesto rođenja:"/>
+        <Text style = {styles.tekst1}>
+        Općina rođenja:
+        </Text>
+        <TextInput style = {styles.input}
+        placeholder = "Općina rođenja"/>
+        <Text style = {styles.tekst1}>
+        Država rođenja:
+        </Text>
+        <TextInput style = {styles.input}
+        placeholder = "Država rođenja"/>
+        <Text style = {styles.tekst1}>
+        Nacionalnost:
+        </Text>
+        <TextInput style = {styles.input}
+        placeholder = "Nacionalnost"/>
+        <Text style = {styles.tekst1}>
+        Kanton/regija:
+        </Text>
+        <TextInput style = {styles.input}
+        placeholder = "Kanton/regija"/>
+        <Text style = {styles.tekst1}>
+        Državljanstvo
+        </Text>
+        <TextInput style = {styles.input}
+        placeholder = "Državljanstvo"/>
+    </View>
+ </View>
 );
 }
 }
