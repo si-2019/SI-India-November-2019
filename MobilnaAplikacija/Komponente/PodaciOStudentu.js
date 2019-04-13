@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { ScrollView, View, Text, Button, TouchableOpacity, StyleSheet, TextInput } from 'react-native'
-
+import * as res from './pomocniPodaciOStudentu'
 
 class PodaciOStudentu extends Component  {
 
@@ -31,9 +31,18 @@ axios.get("url").then(response=>{
     this.setState({ime: response.ime, prezime: response.prezime...})
 })
 */
-render() {  
-return (
-<ScrollView>
+
+//Privremeno dodavanje dummy podataka
+dodajPodatke = () => {
+this.setState({ime: res.ime, prezime: res.prezime, spol: res.spol, brIndeksa: res.brIndeksa,
+jmbg: res.jmbg, adresaUlica: res.adresaUlica, adresaMjesto: res.adresaMjesto, kontaktTelefon: res.kontaktTelefon,
+kontaktEmail: res.kontaktEmail, imeOca: res.imeOca, prezimeOca: res.prezimeOca, imeMajke: res.imeMajke, 
+prezimeMajke: res.prezimeMajke, datumRod: res.datumRod, mjestoRod: res.mjestoRod, opcinaRod: res.opcinaRod,
+drzavaRod: res.drzavaRod, nacionalnost: res.nacionalnost, kanton: res.kanton, drzavljanstvo: res.drzavljanstvo });
+}
+render() { 
+return (   
+<ScrollView> 
     <View>
         <Text style = {styles.podnaslov}>
         Osnovni podaci
@@ -42,27 +51,27 @@ return (
         Ime:
         </Text>
         <TextInput style = {styles.input}
-        placeholder = "Ime"/>
+        value={this.state.ime}/>
         <Text style = {styles.tekst1}>
         Prezime:
         </Text>
         <TextInput style = {styles.input}
-        placeholder = "Prezme"/>
+        value = {this.state.prezime}/>
         <Text style = {styles.tekst1}>
         Spol:
         </Text>
         <TextInput style = {styles.input}
-        placeholder = "Spol"/>
+        value = {this.state.spol}/>
         <Text style = {styles.tekst1}>
         Broj indeksa:
         </Text>
         <TextInput style = {styles.input}
-        placeholder = "Broj indeksa"/>
+        value = {this.state.brIndeksa}/>
         <Text style = {styles.tekst1}>
         JMBG:
         </Text>
         <TextInput style = {styles.input}
-        placeholder = "JMBG"/>
+        value = {this.state.jmbg}/>
     </View>
     <View>
         <Text style = {styles.podnaslov}>
@@ -72,22 +81,22 @@ return (
         Adresa (ulica i broj):
         </Text>
         <TextInput style = {styles.input}
-        placeholder = "Adresa (ulica i broj)"/>
+        value = "Adresa (ulica i broj)"/>
         <Text style = {styles.tekst1}>
         Adresa (mjesto):
         </Text>
         <TextInput style = {styles.input}
-        placeholder = "Adresa (mjesto)"/>
+        value = "Adresa (mjesto)"/>
         <Text style = {styles.tekst1}>
         Kontaks telefon:
         </Text>
         <TextInput style = {styles.input}
-        placeholder = "Kontaks telefon"/>
+        value = "Kontaks telefon"/>
         <Text style = {styles.tekst1}>
         Kontakt e-mail:
         </Text>
         <TextInput style = {styles.input}
-        placeholder = "Kontakt e-mail"/>
+        value = "Kontakt e-mail"/>
     </View>
     <View>
         <Text style = {styles.podnaslov}>
@@ -97,57 +106,57 @@ return (
         Ime oca:
         </Text>
         <TextInput style = {styles.input}
-        placeholder = "Ime oca:"/>
+        value = "Ime oca:"/>
         <Text style = {styles.tekst1}>
         Prezime oca:
         </Text>
         <TextInput style = {styles.input}
-        placeholder = "Prezime oca"/>
+        value = "Prezime oca"/>
         <Text style = {styles.tekst1}>
         Ime majke:
         </Text>
         <TextInput style = {styles.input}
-        placeholder = "Ime majke"/>
+        value = "Ime majke"/>
         <Text style = {styles.tekst1}>
         Prezime majke:
         </Text>
         <TextInput style = {styles.input}
-        placeholder = "Prezime majke"/>
+        value = "Prezime majke"/>
         <Text style = {styles.tekst1}>
         Datum rođenja:
         </Text>
         <TextInput style = {styles.input}
-        placeholder = "Datum rođenja"/>
+        value = "Datum rođenja"/>
         <Text style = {styles.tekst1}>
         Mjesto rođenja:
         </Text>
         <TextInput style = {styles.input}
-        placeholder = "Mjesto rođenja:"/>
+        value = "Mjesto rođenja:"/>
         <Text style = {styles.tekst1}>
         Općina rođenja:
         </Text>
         <TextInput style = {styles.input}
-        placeholder = "Općina rođenja"/>
+        value = "Općina rođenja"/>
         <Text style = {styles.tekst1}>
         Država rođenja:
         </Text>
         <TextInput style = {styles.input}
-        placeholder = "Država rođenja"/>
+        value = "Država rođenja"/>
         <Text style = {styles.tekst1}>
         Nacionalnost:
         </Text>
         <TextInput style = {styles.input}
-        placeholder = "Nacionalnost"/>
+        value = "Nacionalnost"/>
         <Text style = {styles.tekst1}>
         Kanton/regija:
         </Text>
         <TextInput style = {styles.input}
-        placeholder = "Kanton/regija"/>
+        value = "Kanton/regija"/>
         <Text style = {styles.tekst1}>
         Državljanstvo
         </Text>
         <TextInput style = {styles.input}
-        placeholder = "Državljanstvo"/>
+        value = "Državljanstvo"/>
     </View>   
     <TouchableOpacity  style = {styles.button}>
         <Text>
