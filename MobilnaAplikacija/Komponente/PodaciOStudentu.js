@@ -4,6 +4,33 @@ import { ScrollView, View, Text, Button, TouchableOpacity, StyleSheet, TextInput
 
 class PodaciOStudentu extends Component  {
 
+state= { 
+    ime: '', 
+    prezime: '', 
+    spol: '',  
+    brIndeksa: '',  
+    jmbg: '', 
+    adresaUlica: '', 
+    adresaMjesto: '',   
+    kontaktTelefon: '', 
+    kontaktEmail: '', 
+    imeOca: '', 
+    prezimeOca: '',
+    imeMajke: '',
+    prezimeMajke: '',
+    datumRod: '',
+    mjestoRod: '',
+    opcinaRod: '',
+    drzavaRod: '',
+    nacionalnost: '', 
+    kanton: '',
+    drzavljanstvo: '',
+} 
+/*
+axios.get("url").then(response=>{
+    this.setState({ime: response.ime, prezime: response.prezime...})
+})
+*/
 render() {  
 return (
 <ScrollView>
