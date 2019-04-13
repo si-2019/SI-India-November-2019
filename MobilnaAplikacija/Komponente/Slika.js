@@ -4,23 +4,24 @@ import { View, Text, Button, Image, TouchableOpacity, StyleSheet } from 'react-n
 class Slika extends Component  {
 render() {  
 return (
-<View >
+<View>
 <Text style = {styles.podnaslov}>
-    Slika
+  Slika
 </Text>
-<View >
-<TouchableOpacity  >
- <Text>
- Choose File
- </Text>
- </TouchableOpacity>
- <TouchableOpacity  >
- <Text>
- Dodaj sliku
- </Text>
- </TouchableOpacity>
- </View>
-</View>
+<Image style={styles.slika} />
+  <TouchableOpacity
+    style={styles.buttonChoose}>
+  <Text>
+    Choose file
+  </Text>
+  </TouchableOpacity>
+  <TouchableOpacity style={styles.buttonChoose}>
+  <Text>
+    Dodaj sliku
+  </Text>
+  </TouchableOpacity>
+        
+      </View>
 );
 }
 }
