@@ -4,12 +4,19 @@ import Obavijesti from './components/NewsFeed/Obavijesti';
 export default class App extends React.Component {
   render() {
     return (
-      
-        <Obavijesti id={1}/>
+        <View style={styles.container}>
+           <Obavijesti id={1}/>
+        </View>
+       
        
       
     );
   }
 }
-
+const styles = StyleSheet.create({
+  container: {
+      marginTop:40
+    
+  },
+});
 
