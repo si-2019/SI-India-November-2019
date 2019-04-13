@@ -7,7 +7,7 @@ class Obavijesti extends Component {
   state={
     obavijesti:[]
   }
-  componentDidMount(){
+  componentWillMount(){
     /*
 
     // Nakon implementacije backenda.
@@ -15,14 +15,16 @@ class Obavijesti extends Component {
         this.setState({obavijesti=response.data});
         console.log("Dodane obavijesti");
     })
+    a tako i key biti zamijenjen sa uid !
     */
-   obavijesti=[{naziv:"Obavijest1",tekst:"Obavijest1 tekst"},
-   {naziv:"Obavijest2",tekst:"Obavijest2 tekst"},
-   {naziv:"Obavijest3",tekst:"Obavijest3 tekst"}];
+   this.state.obavijesti=[{naziv:"Obavijest1",tekst:"Obavijest1 tekst"},
+    {naziv:"Obavijest2",tekst:"Obavijest2 tekst"},
+    {naziv:"Obavijest3",tekst:"Obavijest3 tekst"}]
   }
+  
   render() {
     return this.state.obavijesti.map(obavijest=>{
-          return <Obavijest naziv={obavijest.naziv} tekst= {obavijest.tekst}/>
+          return <Obavijest key={obavijest.naziv} naziv={obavijest.naziv} tekst= {obavijest.tekst}/>
         })
     
   }
