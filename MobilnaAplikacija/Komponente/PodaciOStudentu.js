@@ -6,7 +6,7 @@ class PodaciOStudentu extends Component  {
 
 render() {  
 return (
-<View>
+<ScrollView>
     <View>
         <Text style = {styles.podnaslov}>
         Osnovni podaci
@@ -122,7 +122,7 @@ return (
         <TextInput style = {styles.input}
         placeholder = "Državljanstvo"/>
     </View>
- </View>
+ </ScrollView>
 );
 }
 }
