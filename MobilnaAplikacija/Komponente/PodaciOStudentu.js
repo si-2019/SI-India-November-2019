@@ -5,26 +5,26 @@ import * as res from './pomocniPodaciOStudentu'
 class PodaciOStudentu extends Component  {
 
 state= { 
-    ime: '', 
-    prezime: '', 
-    spol: '',  
-    brIndeksa: '',  
-    jmbg: '', 
-    adresaUlica: '', 
-    adresaMjesto: '',   
-    kontaktTelefon: '', 
-    kontaktEmail: '', 
-    imeOca: '', 
-    prezimeOca: '',
-    imeMajke: '',
-    prezimeMajke: '',
-    datumRod: '',
-    mjestoRod: '',
-    opcinaRod: '',
-    drzavaRod: '',
-    nacionalnost: '', 
-    kanton: '',
-    drzavljanstvo: '',
+    ime: res.ime, 
+    prezime: res.prezime, 
+    spol: res.spol,  
+    brIndeksa: res.brIndeksa,  
+    jmbg: res.jmbg, 
+    adresaUlica: res.adresaUlica, 
+    adresaMjesto: res.adresaMjesto,   
+    kontaktTelefon: res.kontaktTelefon, 
+    kontaktEmail: res.kontaktEmail, 
+    imeOca: res.imeOca, 
+    prezimeOca: res.prezimeOca,
+    imeMajke: res.imeMajke,
+    prezimeMajke: res.prezimeMajke,
+    datumRod: res.datumRod,
+    mjestoRod: res.mjestoRod,
+    opcinaRod: res.opcinaRod,
+    drzavaRod: res.drzavaRod,
+    nacionalnost: res.nacionalnost, 
+    kanton: res.kanton,
+    drzavljanstvo: res.drzavljanstvo,
 } 
 /*
 axios.get("url").then(response=>{
@@ -33,7 +33,7 @@ axios.get("url").then(response=>{
 */
 
 //Privremeno dodavanje dummy podataka
-dodajPodatke = () => {
+dodajPodatke = (res) => {
 this.setState({ime: res.ime, prezime: res.prezime, spol: res.spol, brIndeksa: res.brIndeksa,
 jmbg: res.jmbg, adresaUlica: res.adresaUlica, adresaMjesto: res.adresaMjesto, kontaktTelefon: res.kontaktTelefon,
 kontaktEmail: res.kontaktEmail, imeOca: res.imeOca, prezimeOca: res.prezimeOca, imeMajke: res.imeMajke, 
@@ -81,22 +81,22 @@ return (
         Adresa (ulica i broj):
         </Text>
         <TextInput style = {styles.input}
-        value = "Adresa (ulica i broj)"/>
+        value = {this.state.adresaUlica}/>
         <Text style = {styles.tekst1}>
         Adresa (mjesto):
         </Text>
         <TextInput style = {styles.input}
-        value = "Adresa (mjesto)"/>
+        value = {this.state.adresaMjesto}/>
         <Text style = {styles.tekst1}>
         Kontaks telefon:
         </Text>
         <TextInput style = {styles.input}
-        value = "Kontaks telefon"/>
+        value = {this.state.kontaktTelefon}/>
         <Text style = {styles.tekst1}>
         Kontakt e-mail:
         </Text>
         <TextInput style = {styles.input}
-        value = "Kontakt e-mail"/>
+        value = {this.state.kontaktEmail}/>
     </View>
     <View>
         <Text style = {styles.podnaslov}>
@@ -106,57 +106,57 @@ return (
         Ime oca:
         </Text>
         <TextInput style = {styles.input}
-        value = "Ime oca:"/>
+        value = {this.state.imeOca}/>
         <Text style = {styles.tekst1}>
         Prezime oca:
         </Text>
         <TextInput style = {styles.input}
-        value = "Prezime oca"/>
+        value = {this.state.prezimeOca}/>
         <Text style = {styles.tekst1}>
         Ime majke:
         </Text>
         <TextInput style = {styles.input}
-        value = "Ime majke"/>
+        value = {this.state.imeMajke}/>
         <Text style = {styles.tekst1}>
         Prezime majke:
         </Text>
         <TextInput style = {styles.input}
-        value = "Prezime majke"/>
+        value = {this.state.prezimeMajke}/>
         <Text style = {styles.tekst1}>
         Datum rođenja:
         </Text>
         <TextInput style = {styles.input}
-        value = "Datum rođenja"/>
+        value = {this.state.datumRod}/>
         <Text style = {styles.tekst1}>
         Mjesto rođenja:
         </Text>
         <TextInput style = {styles.input}
-        value = "Mjesto rođenja:"/>
+        value = {this.state.mjestoRod}/>
         <Text style = {styles.tekst1}>
         Općina rođenja:
         </Text>
         <TextInput style = {styles.input}
-        value = "Općina rođenja"/>
+        value = {this.state.opcinaRod}/>
         <Text style = {styles.tekst1}>
         Država rođenja:
         </Text>
         <TextInput style = {styles.input}
-        value = "Država rođenja"/>
+        value = {this.state.drzavaRod}/>
         <Text style = {styles.tekst1}>
         Nacionalnost:
         </Text>
         <TextInput style = {styles.input}
-        value = "Nacionalnost"/>
+        value = {this.state.nacionalnost}/>
         <Text style = {styles.tekst1}>
         Kanton/regija:
         </Text>
         <TextInput style = {styles.input}
-        value = "Kanton/regija"/>
+        value = {this.state.kanton}/>
         <Text style = {styles.tekst1}>
         Državljanstvo
         </Text>
         <TextInput style = {styles.input}
-        value = "Državljanstvo"/>
+        value = {this.state.drzavljanstvo}/>
     </View>   
     <TouchableOpacity  style = {styles.button}>
         <Text>

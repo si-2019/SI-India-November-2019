@@ -7,7 +7,7 @@ const ProfilStudenta = (props) => {
     return (
     <ScrollView>
         <Slika />
-        <PodaciOStudentu />
+        <PodaciOStudentu/>
     </ScrollView>
  )
 }
