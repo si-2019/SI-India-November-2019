@@ -36,6 +36,13 @@ const App = () => {
                      placeholderTextColor = "#000000"
                      autoCapitalize = "none"
                      onChangeText = {this.handlePassword}/>
+          <TouchableOpacity
+              style = {styles.submitButton}
+              onPress = {
+                () => this.login(this.state.email, this.state.password)
+              }>
+            <Text style = {styles.submitButtonText}> Prijavi se </Text>
+          </TouchableOpacity>
         </ScrollView>
       </View>
   )
@@ -95,6 +102,16 @@ const styles = StyleSheet.create({
     color: 'rgba(96,100,109, 1)',
     lineHeight: 24,
     textAlign: 'center',
+  },
+  submitButton: {
+    backgroundColor: '#195dc4',
+    padding: 10,
+    margin: 15,
+    height: 40,
+  },
+  submitButtonText:{
+    color: 'white',
+    textAlign:'center'
   },
   tabBarInfoContainer: {
     position: 'absolute',
