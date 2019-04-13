@@ -1,55 +1,82 @@
-import React from 'react';
-
-import logo from './assets/logo.jpg';
-import Inputs from './inputs.js';
+import React, { Component } from 'react';
 import {
   Image,
   Platform,
-  ScrollView,
   StyleSheet,
-  Text, TextInput,
+    Alert,
+  Text,
+  TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
 
+class App extends Component {
+  state = {
+    email: '',
+    password: ''
+  }
+  handleUserName = (text) => {
+    this.setState({email: text})
+  }
+  handlePassword = (text) => {
+    this.setState({password: text})
+  }
+  login = (email, pass) => {
+    if(email.length === 0 || pass.length === 0) Alert.alert('Greška!','Molimo unesite oba podatka!');
+    else Alert.alert('Upozorenje!','email: ' + email + ' password: ' + pass)
+  }
+  render() {
+    return (
+        <View style={styles.container}>
+          <View style={styles.container} contentContainerStyle={styles.contentContainer}>
+            <View style={styles.welcomeContainer}>
+              <Image source={require('./assets/logo.jpg')}
+                     style={styles.welcomeImage}/>
+            </View>
+            <Text style={styles.developmentModeText}>
+              Dobrodošli na oficijelnu stranicu Elektrotehničkog fakulteta, Sarajevo
+            </Text>
+            <TextInput style={styles.input}
+                       underlineColorAndroid="transparent"
+                       placeholder=" Korisničko ime"
+                       placeholderTextColor="#000000"
+                       autoCapitalize="none"
+                       onChangeText={this.handleUserName}/>
+            <TextInput style={styles.input}
+                       underlineColorAndroid="transparent"
+                       placeholder=" Lozinka"
+                       placeholderTextColor="#000000"
+                       autoCapitalize="none"
+                       onChangeText={this.handlePassword}/>
+            <TouchableOpacity
+                style={styles.submitButton}
+                onPress={
+                  () => this.login(this.state.email, this.state.password)
+                }>
+              <Text style={styles.submitButtonText}> Prijavi se </Text>
+            </TouchableOpacity>
+            <View style={styles.down}>
+              <Text style = {styles.footer}>
+                {'\u00A9'} November-India, 2019
+              </Text>
+            </View>
 
-const App = () => {
-  return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-        <View style={styles.welcomeContainer}>
-        <Image source={require('./assets/logo.jpg')}
-               style={styles.welcomeImage}/>
+
+
+          </View>
         </View>
-          <Text style={styles.developmentModeText}>
-            Dobrodošli na oficijelnu stranicu Elektrotehničkog fakulteta, Sarajevo
-          </Text>
-          <TextInput style = {styles.input}
-                     underlineColorAndroid = "transparent"
-                     placeholder = " Korisničko ime"
-                     placeholderTextColor = "#000000"
-                     autoCapitalize = "none"
-                     onChangeText = {this.handleEmail}/>
-          <TextInput style = {styles.input}
-                     underlineColorAndroid = "transparent"
-                     placeholder = " Lozinka"
-                     placeholderTextColor = "#000000"
-                     autoCapitalize = "none"
-                     onChangeText = {this.handlePassword}/>
-          <TouchableOpacity
-              style = {styles.submitButton}
-              onPress = {
-                () => this.login(this.state.email, this.state.password)
-              }>
-            <Text style = {styles.submitButtonText}> Prijavi se </Text>
-          </TouchableOpacity>
-        </ScrollView>
-      </View>
-  )
+    )
+  }
 }
 export default  App
 
 const styles = StyleSheet.create({
+  footer: {
+    color: '#fff',
+    paddingTop:7.5,
+    textAlign:'center',
+    alignItems: 'center'
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -79,7 +106,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 80,
     resizeMode: 'contain',
-    marginTop: 3,
+    marginTop: 25,
     marginLeft: -10,
   },
   getStartedContainer: {
@@ -88,6 +115,15 @@ const styles = StyleSheet.create({
   },
   homeScreenFilename: {
     marginVertical: 7,
+  },
+  down: {
+    width: '100%',
+    height: 40,
+    backgroundColor: '#195dc4',
+    textAlign:'center',
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: 0
   },
   codeHighlightText: {
     color: 'rgba(96,100,109, 0.8)',
@@ -144,6 +180,11 @@ const styles = StyleSheet.create({
   helpContainer: {
     marginTop: 15,
     alignItems: 'center',
+  },
+  bottom: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    marginBottom: 36
   },
   helpLink: {
     paddingVertical: 15,
