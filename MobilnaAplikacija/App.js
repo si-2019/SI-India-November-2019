@@ -8,7 +8,7 @@ export default class HelloWorldApp extends Component {
 	constructor(){
      super();
      this.state={
-       PickerSelectedVal : ''
+       svrha : 0
      }
    }
 	getSelectedPickerValue=()=>{
@@ -16,20 +16,27 @@ export default class HelloWorldApp extends Component {
 }
 	
   render() {
+	      const svrhe = [{label: "Regulisanje zdravstvenog osiguranja", value: "zdravstveno"},    
+                 {label: "Ostvarivanje prava na stipendiju", value: "stipendija"},
+                 {label: "Upis na drugi fakultet", value: "upis"}];
     return (
       <View>
 	    <Text style={{fontSize: RF(3.5), margin: 70, alignSelf: 'center'}}>Zahtjev za izdavanje ovjerenog uvjerenja</Text>
 		<Text style={{fontSize: RF(2.5), alignSelf: 'center'}}>Odaberite svrhu uvjerenja: </Text>
-		<Picker
-			selectedValue={this.state.svrha}
-			mode='dropdown'
-			style={{height: 80, width: 320, alignSelf: 'center'}}
-			onValueChange={(itemValue, itemIndex) => this.setState({svrha: PickerSelectedVal})}>
-			
-		<Picker.Item label="Regulisanje zdravstvenog osiguranja" value="zdravstveno" />
-		<Picker.Item label="Ostvarivanje prava na stipendiju" value="stipendija" />
-		<Picker.Item label="Upis na drugi fakultet" value="upis" />
-		</Picker>
+        
+
+        <Picker
+          selectedValue={svrhe[this.state.svrha].value}
+          mode='dropdown'
+          style={{height: 80, width: 320, alignSelf: 'center'}}
+          onValueChange={(itemValue, itemIndex) => this.setState({svrha: itemIndex})}>
+          
+          {svrhe.map(svrha =>{
+            return (
+                <Picker.Item key={svrha.value} label={svrha.label} value={svrha.value}/>
+            );
+          })}
+        </Picker>
       </View>
     );
   }
