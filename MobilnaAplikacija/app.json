@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "MobilnaAplikacija",
-    "slug": "MobilnaAplikacija",
+    "name": "Zahtjevi",
+    "slug": "Project",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
