@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 
 class OdslusaniPredmeti extends React.Component {
 
@@ -31,6 +31,11 @@ class OdslusaniPredmeti extends React.Component {
         ]
     }
 
+    componentWillMount()
+    {
+        this.dohvatiPredmete();
+    }
+
 
     render() {
         return (
@@ -38,10 +43,11 @@ class OdslusaniPredmeti extends React.Component {
             <Text style={{fontWeight: "bold"}}>Odslušani predmeti</Text>
             <FlatList 
                 data = {this.state.predmeti}
-                renderItem = {({item}) => <Text>{item.naziv}</Text>}            
+                keyExtractor={item => item.naziv}
+                renderItem = {({item}) => <Text style={styles.item}>{item.naziv}</Text>}            
             
             />
-        </View>
+          </View>
         );
   }
 }
@@ -52,6 +58,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  item : {
+      padding:5,
+      fontSize: 14,
+      height: 24,
   },
 });
 

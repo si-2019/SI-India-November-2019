@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import OdslusaniPredmeti from './components'
+import { StyleSheet, Text, View} from 'react-native';
+import OdslusaniPredmeti from './components/OdslusaniPredmeti'
 
 export default class App extends React.Component {
   render() {
