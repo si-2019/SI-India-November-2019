@@ -10,6 +10,24 @@ export class SubjectsList extends React.Component {
       }
     }
 
+    // dobavljanje podataka sa API
+    componentDidMount() {
+        /* axios.get("http://localhost:3000/subjects")
+            .then(res => {
+                this.setState({ 
+                    subjects: res.data 
+                });
+            })
+            .then(error => {
+                console.error(error);
+            }
+        ) */
+        /* const subjectsList = this._getSubjectsApiAsync();
+        this.setState({
+            subjects: subjectsList
+        }); */
+    }
+
     render() {
         return (
             <View style={styles.subjectsContainer}>
@@ -24,6 +42,28 @@ export class SubjectsList extends React.Component {
                 />
             </View>
         );
+    }
+
+    _getSubjectsFromApi = async (endpoint) => {
+        try {
+          const response = await fetch(endpoint);
+          const data = await response.json();
+          return data;
+        }
+        catch(error) {
+          console.error(error);
+        }
+    }
+
+    _getSubjectsApiAsync() {
+        return fetch('http://localhost:3000/subjects')
+          .then((response) => response.json())
+          .then((responseJson) => {
+            return responseJson;
+          })
+          .catch((error) => {
+            console.error(error);
+          });
     }
 }
 
