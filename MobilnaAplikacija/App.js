@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import Pocetna from './Dashboard.js';
 import StackNavigator from 'react-navigation';
-
+import axios from 'axios';
 class App extends React.Component {
   state = {
     email: '',
