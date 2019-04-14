@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import Slika from './Komponente/Slika';
-import PodaciOStudentu from './Komponente/PodaciOStudentu';
+import Slika from './Slika';
+import PodaciOStudentu from './PodaciOStudentu';
 
 const ProfilStudenta = (props) => {
     return (
