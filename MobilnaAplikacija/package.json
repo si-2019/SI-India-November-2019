@@ -16,8 +16,6 @@
     "jest": "^24.7.1",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
-    "react-native-renderer": "^15.5.3",
-    "react-test-renderer": "^16.8.6"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"
