@@ -6,18 +6,31 @@ export default class AktivniIspiti extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.predmet}>
-        <Text style = {styles.naslov}>Predmet</Text>
-        <Text style = {styles.prvi}>Vjestacka inteligencija</Text>
-        <Text style = {styles.drugi}>Organizacija softverskog projekta</Text>
-        <Text style = {styles.treci}>Softverski inzenjering</Text>
-        <Text style = {styles.cetvrti}>Projektovanje informacionih sistema</Text> 
+        <Text style = {styles.naslov} id = "t1">Predmet</Text>
+        <Text style = {styles.prvi} id = "t2">Vjestacka inteligencija</Text>
+        <Text style = {styles.drugi} id = "t3">Organizacija softverskog projekta</Text>
+        <Text style = {styles.treci} id = "t4">Softverski inzenjering</Text>
+        <Text style = {styles.cetvrti} id = "t5">Projektovanje informacionih sistema</Text> 
+        <Text style = {styles.peti}></Text> 
+        <Text style = {styles.sesti}></Text> 
+        <Text style = {styles.sedmi}></Text> 
+        <Text style = {styles.osmi}></Text> 
+        <Text style = {styles.deveti}></Text> 
+        <Text style = {styles.deseti}></Text> 
+
         </View>
         <View style={styles.tip}>
-        <Text style = {styles.naslov}>Tip ispita</Text>
-        <Text style = {styles.prvi}>Prvi parcijalni</Text>
-        <Text style = {styles.drugi}>Drugi parcijalni</Text>
-        <Text style = {styles.treci}>Prvi parcijalni</Text>
-        <Text style = {styles.cetvrti}>Usmeni</Text>
+        <Text style = {styles.naslov} id = "t6">Tip ispita</Text>
+        <Text style = {styles.prvi} id = "t7">Prvi parcijalni</Text>
+        <Text style = {styles.drugi} id = "t8">Drugi parcijalni</Text>
+        <Text style = {styles.treci} id = "t9">Prvi parcijalni</Text>
+        <Text style = {styles.cetvrti} id = "t10">Usmeni</Text>
+        <Text style = {styles.peti}></Text> 
+        <Text style = {styles.sesti}></Text> 
+        <Text style = {styles.sedmi}></Text> 
+        <Text style = {styles.osmi}></Text> 
+        <Text style = {styles.deveti}></Text> 
+        <Text style = {styles.deseti}></Text> 
         </View>
       </View> 
  
@@ -75,6 +88,48 @@ const styles = StyleSheet.create({
    cetvrti: {
     position: 'absolute',
     top: '50%',
+    fontSize: 12,
+    paddingRight: '5%',
+    paddingLeft: '5%',
+   },
+   peti: {
+    position: 'absolute',
+    top: '60%',
+    fontSize: 12,
+    paddingRight: '5%',
+    paddingLeft: '5%',
+   },
+   sesti: {
+    position: 'absolute',
+    top: '70%',
+    fontSize: 12,
+    paddingRight: '5%',
+    paddingLeft: '5%',
+   },
+   sedmi: {
+    position: 'absolute',
+    top: '80%',
+    fontSize: 12,
+    paddingRight: '5%',
+    paddingLeft: '5%',
+   },
+   osmi: {
+    position: 'absolute',
+    top: '90%',
+    fontSize: 12,
+    paddingRight: '5%',
+    paddingLeft: '5%',
+   },
+   deveti: {
+    position: 'absolute',
+    top: '100%',
+    fontSize: 12,
+    paddingRight: '5%',
+    paddingLeft: '5%',
+   },
+   deseti: {
+    position: 'absolute',
+    top: '110%',
     fontSize: 12,
     paddingRight: '5%',
     paddingLeft: '5%',
