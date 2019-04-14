@@ -3,6 +3,14 @@ import { StyleSheet, Text, View } from 'react-native';
 
 class OdslusaniPredmeti extends React.Component {
 
+    constructor(props)
+    {
+        super(props)
+        this.state = 
+        {
+            predmeti : []
+        }
+    }
 
 
   render() {
