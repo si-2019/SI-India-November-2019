@@ -33,6 +33,21 @@ export default class AktivniIspiti extends React.Component {
         <Text style = {styles.deveti}></Text> 
         <Text style = {styles.deseti}></Text> 
         </View>
+
+        <View style={styles.datum}>
+        <Text style = {styles.naslov} id = "t6">Datum</Text>
+        <Text style = {styles.prvi} id = "t7">10.6.2019. 13:00</Text>
+        <Text style = {styles.drugi} id = "t8">13.6.2019. 18:00</Text>
+        <Text style = {styles.treci} id = "t9">15.6.2019. 10:30</Text>
+        <Text style = {styles.cetvrti} id = "t10">16.6.2019. 11:00</Text>
+        <Text style = {styles.peti}></Text> 
+        <Text style = {styles.sesti}></Text> 
+        <Text style = {styles.sedmi}></Text> 
+        <Text style = {styles.osmi}></Text> 
+        <Text style = {styles.deveti}></Text> 
+        <Text style = {styles.deseti}></Text> 
+        </View>
+
       </View> 
  
     );
@@ -47,11 +62,16 @@ const styles = StyleSheet.create({
   },
   predmet: {
     marginTop: '25%',
-    flex:1/2,
+    flex:1/3,
   },
  
   tip: { 
-    flex:1/2, 
+    flex:1/3, 
+    marginTop: '25%',
+  },
+
+  datum: { 
+    flex:1/3, 
     marginTop: '25%',
   },
 
@@ -69,7 +89,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: '0%',
     fontSize: 20,
-    left: '50%',
+    left: '60%',
 
   },
 
