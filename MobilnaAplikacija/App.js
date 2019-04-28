@@ -17,6 +17,9 @@ import Screen6 from './India/Raspored';
 export default class App extends React.Component {
   render() {
     return (
+      <View style={styles.container}>
+        <AktivniIspiti></AktivniIspiti>
+   </View>
       <View>
         <Screen1/>
       </View>
