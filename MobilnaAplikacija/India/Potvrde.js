@@ -9,13 +9,17 @@ class Potvrde extends React.Component {
     super(props);
 
     this.state = {
-      pickerSelection: 0
+      pickerSelection: 0,
+      svrha : 0
     }
   }
 
   render() {
     const lista = [{label: "Potvrda o redovnom studiju", value: "potvrda"},   
                   {label: "Uvjerenje o položenim ispitima", value: "uvjerenje"}];
+    const svrhe = [{label: "Regulisanje zdravstvenog osiguranja", value: "zdravstveno"},    
+                  {label: "Ostvarivanje prava na stipendiju", value: "stipendija"},
+                  {label: "Upis na drugi fakultet", value: "upis"}];
     return (
       <View>
         <Text style={{fontSize: RF(3.5), margin: 70, alignSelf: 'center'}}>Zahtjev za izdavanje ovjerenog uvjerenja</Text>
@@ -30,6 +34,20 @@ class Potvrde extends React.Component {
           {lista.map(element =>{
             return (
                 <Picker.Item key={element.value} label={element.label} value={element.value}/>
+            );
+          })}
+        </Picker>
+
+        <Text style={{fontSize: RF(2.5), alignSelf: 'center'}}>Odaberite svrhu uvjerenja: </Text>
+        <Picker
+          selectedValue={svrhe[this.state.svrha].value}
+          mode='dropdown'
+          style={{height: 80, width: 320, alignSelf: 'center'}}
+          onValueChange={(itemValue, itemIndex) => this.setState({svrha: itemIndex})}>
+          
+          {svrhe.map(svrha =>{
+            return (
+                <Picker.Item key={svrha.value} label={svrha.label} value={svrha.value}/>
             );
           })}
         </Picker>
