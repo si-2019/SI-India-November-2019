@@ -1,18 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Alert } from 'react-native';
 
 class Ispiti extends React.Component {
-	
   detalji()
 	{
-		Alert.alert(
-  'Detalji o ispitu',
-  'Profesor: Richard Feynmann \nSala: MA',
-  [
-    {text: 'OK'},
-  ],
-  {cancelable: false},
-);
+    Alert.alert(
+      'Detalji o ispitu',
+      'Profesor: Richard Feynman \nSala: MA',
+      [
+        {text: 'Nazad'},
+      ],
+        {cancelable: true}
+    );
+  }
 	
 	
   render() {
