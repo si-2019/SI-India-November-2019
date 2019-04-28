@@ -1,79 +1,188 @@
-import React from 'react';
-import {Button, Alert, StyleSheet, Text, View, Picker } from 'react-native';
-import RF from "react-native-responsive-fontsize"
- 
+import React, { Component } from 'react';
+import { View, Image, TouchableOpacity, Text } from 'react-native';
 
+import {
+  createDrawerNavigator,
+  createStackNavigator,
+  createAppContainer,
+} from 'react-navigation';
+
+import Screen1 from './November/Dashboard';
+import Screen2 from './November/Student';
+import Screen3 from './November/Izvjestaji';
+import Screen4 from './India/Ispiti';
+import Screen5 from './India/Potvrde';
+import Screen6 from './India/Raspored';
+/*
 export default class App extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-    this.state = {
-      pickerSelection: 0,
-      svrha : 0
-    };
-  }
-  handleClick(tip,svrha) {
-    Alert.alert(
-      'Odabrani zahtjev',
-      'Potvrda: '+ tip.label +'\nSvrha: '+ svrha.label,
-      [
-        {text: 'Predaj', onPress: () => console.log('Predao')},
-          {
-          text: 'Poništi',
-          onPress: () => console.log('Poništio'),
-          style: 'cancel',
-        },
-      ],
-      {cancelable: false},
-    );
-  }
   render() {
-    const svrhe = [{label: "Regulisanje zdravstvenog osiguranja", value: "zdravstveno"},    
-                 {label: "Ostvarivanje prava na stipendiju", value: "stipendija"},
-                 {label: "Upis na drugi fakultet", value: "upis"}];
-    
-    const tipovi = [{label: "Potvrda o redovnom studiju", value: "potvrda"},   
-                  {label: "Uvjerenje o položenim ispitima", value: "uvjerenje"}];
     return (
       <View>
-        <Text style={{fontSize: RF(3.5), margin: 70, alignSelf: 'center'}}>Zahtjev za izdavanje ovjerenog uvjerenja</Text>
-        <Text style={{fontSize: RF(2.5), alignSelf: 'center'}}>Izaberite tip potvrde: </Text>
-        <Picker
-          selectedValue={tipovi[this.state.pickerSelection].value}
-          mode='dropdown'
-          style={{height: 80, width: 320, alignSelf: 'center'}}
-          onValueChange={(itemValue, itemIndex) =>
-            {this.setState({pickerSelection: itemIndex})}}
-        >
-          {tipovi.map(tip =>{
-            return (
-                <Picker.Item key={tip.value} label={tip.label} value={tip.value}/>
-            );
-          })}
-        </Picker>
-        
-        <Text style={{fontSize: RF(2.5), alignSelf: 'center'}}>Odaberite svrhu uvjerenja: </Text>
-        <Picker
-          selectedValue={svrhe[this.state.svrha].value}
-          mode='dropdown'
-          style={{height: 80, width: 320, alignSelf: 'center'}}
-          onValueChange={(itemValue, itemIndex) => this.setState({svrha: itemIndex})}>
-          
-          {svrhe.map(svrha =>{
-            return (
-                <Picker.Item key={svrha.value} label={svrha.label} value={svrha.value}/>
-            );
-          })}
-        </Picker>
-
-        <Button
-       
-          onPress= {() => this.handleClick(tipovi[this.state.pickerSelection],svrhe[this.state.svrha] )}
-          title="Pošalji zahtjev"
-          accessibilityLabel="Pošalji zahtjev studentskoj službi"
-        />
+        <Screen1/>
       </View>
     );
   }
 }
+*/
+
+class NavigationDrawerStructure extends Component {
+  toggleDrawer = () => {
+    this.props.navigationProps.toggleDrawer();
+  };
+  render() {
+    
+    return (
+	<>
+      <View style={{ flexDirection: 'row' }}>
+        <TouchableOpacity onPress={this.toggleDrawer.bind(this)}>
+          {}
+          <Image
+            source={require('./image/drawer.png')}
+            style={{ width: 25, height: 25, marginLeft: 5 }}
+          />
+        </TouchableOpacity>
+      </View>
+	</>  
+    );
+  }
+}
+
+
+const FirstActivity_StackNavigator = createStackNavigator({
+  
+  First: {
+    screen: Screen1,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Dashboard',
+      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
+      headerStyle: {
+        backgroundColor: '#376ff2',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
+
+
+const Screen2_StackNavigator = createStackNavigator({
+  Second: {
+    screen: Screen2,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Student',
+      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
+
+      headerStyle: {
+        backgroundColor: '#376ff2',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
+
+
+const Screen3_StackNavigator = createStackNavigator({
+  Third: {
+    screen: Screen3,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Izvještaji',
+      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
+      headerStyle: {
+        backgroundColor: '#376ff2',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
+
+
+const Screen4_StackNavigator = createStackNavigator({
+  Third: {
+    screen: Screen4,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Ispiti',
+      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
+      headerStyle: {
+        backgroundColor: '#376ff2',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
+
+
+const Screen5_StackNavigator = createStackNavigator({
+  Third: {
+    screen: Screen5,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Potvrde',
+      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
+      headerStyle: {
+        backgroundColor: '#376ff2',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
+
+
+const Screen6_StackNavigator = createStackNavigator({
+  Third: {
+    screen: Screen6,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Raspored',
+      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
+      headerStyle: {
+        backgroundColor: '#376ff2',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
+
+
+const DrawerNavigatorExample = createDrawerNavigator({
+  //Drawer Optons and indexing
+  Screen1: {
+    screen: FirstActivity_StackNavigator,
+    navigationOptions: {
+      drawerLabel: 'Dashboard',
+    },
+  },
+
+  Screen2: {
+    screen: Screen2_StackNavigator,
+    navigationOptions: {
+      drawerLabel: 'Student',
+    },
+  },
+
+  Screen3: {
+    screen: Screen3_StackNavigator,
+    navigationOptions: {
+      drawerLabel: 'Izvještaji',
+    },
+  },
+
+  Screen4: {
+    screen: Screen4_StackNavigator,
+    navigationOptions: {
+      drawerLabel: 'Ispiti',
+    },
+  },
+
+  Screen5: {
+    screen: Screen5_StackNavigator,
+    navigationOptions: {
+      drawerLabel: 'Potvrde',
+    },
+  },
+
+  Screen6: { 
+    screen: Screen6_StackNavigator,
+    navigationOptions: {
+      drawerLabel: 'Raspored',
+    },
+  },
+});
+
+export default createAppContainer(DrawerNavigatorExample);
