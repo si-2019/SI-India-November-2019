@@ -2,16 +2,29 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 class Ispiti extends React.Component {
+	
+  detalji()
+	{
+		Alert.alert(
+  'Detalji o ispitu',
+  'Profesor: Richard Feynmann \nSala: MA',
+  [
+    {text: 'OK'},
+  ],
+  {cancelable: false},
+);
+	
+	
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.predmet}>
         <Text style = {styles.naslov1}>Aktivni ispiti</Text>
         <Text style = {styles.naslov} id = "t1">Predmet</Text>
-        <Text style = {styles.prvi} id = "t2">Vjestacka inteligencija</Text>
-        <Text style = {styles.drugi} id = "t3">Organizacija softverskog projekta</Text>
-        <Text style = {styles.treci} id = "t4">Softverski inzenjering</Text>
-        <Text style = {styles.cetvrti} id = "t5">Projektovanje informacionih sistema</Text> 
+        <Text onPress={this.detalji.bind(this)} style = {styles.prvi} id = "t2">Vjestacka inteligencija</Text>
+        <Text onPress={this.detalji.bind(this)} style = {styles.drugi} id = "t3">Organizacija softverskog projekta</Text>
+        <Text onPress={this.detalji.bind(this)} style = {styles.treci} id = "t4">Softverski inzenjering</Text>
+        <Text onPress={this.detalji.bind(this)} style = {styles.cetvrti} id = "t5">Projektovanje informacionih sistema</Text> 
         <Text style = {styles.peti}></Text> 
         <Text style = {styles.sesti}></Text> 
         <Text style = {styles.sedmi}></Text> 
