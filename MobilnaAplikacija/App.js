@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import AktivniIspiti from './src/components/AktivniIspiti'
+import AktivniIspiti from './India/AktivniIspiti'
 
 
 export default class App extends React.Component {
