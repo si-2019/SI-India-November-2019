@@ -6,6 +6,7 @@ export default class AktivniIspiti extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.predmet}>
+        <Text style = {styles.naslov1}>Aktivni ispiti</Text>
         <Text style = {styles.naslov} id = "t1">Predmet</Text>
         <Text style = {styles.prvi} id = "t2">Vjestacka inteligencija</Text>
         <Text style = {styles.drugi} id = "t3">Organizacija softverskog projekta</Text>
@@ -62,6 +63,14 @@ const styles = StyleSheet.create({
     top: '10%',
     paddingRight: '5%',
     paddingLeft: '5%',
+  },
+
+  naslov1: {
+    position: 'absolute',
+    top: '0%',
+    fontSize: 20,
+    left: '50%',
+
   },
 
   prvi: {
