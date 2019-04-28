@@ -1,25 +1,49 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { StyleSheet, Text, View, Picker } from 'react-native';
+import RF from "react-native-responsive-fontsize"
+ 
 
-import { StyleSheet, View, Text } from 'react-native';
+class Potvrde extends React.Component {
 
+  constructor(props) {
+    super(props);
 
-export default class Potvrde extends Component {
-  //Komponenta za potvrde
+    this.state = {
+      pickerSelection: 0
+    }
+  }
+
   render() {
+    const lista = [{label: "Potvrda o redovnom studiju", value: "potvrda"},   
+                  {label: "Uvjerenje o položenim ispitima", value: "uvjerenje"}];
     return (
-      <View style={styles.MainContainer}>
-        <Text style={{ fontSize: 23 }}> Potvrde </Text>
+      <View>
+        <Text style={{fontSize: RF(3.5), margin: 70, alignSelf: 'center'}}>Zahtjev za izdavanje ovjerenog uvjerenja</Text>
+        <Text style={{fontSize: RF(2.5), alignSelf: 'center'}}>Izaberite tip potvrde: </Text>
+        <Picker
+          selectedValue={lista[this.state.pickerSelection].value}
+          mode='dropdown'
+          style={{height: 80, width: 320, alignSelf: 'center'}}
+          onValueChange={(itemValue, itemIndex) =>
+            {this.setState({pickerSelection: itemIndex})}}
+        >
+          {lista.map(element =>{
+            return (
+                <Picker.Item key={element.value} label={element.label} value={element.value}/>
+            );
+          })}
+        </Picker>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  MainContainer: {
+export default Potvrde;
+/* const styles = StyleSheet.create({
+  container: {
     flex: 1,
-    paddingTop: 20,
+    backgroundColor: '#fff',
     alignItems: 'center',
-    marginTop: 50,
     justifyContent: 'center',
   },
 });
+*/

@@ -1,13 +1,6 @@
-//This is an example code for NavigationDrawer//
 import React, { Component } from 'react';
-//import react in our code.
 import { View, Image, TouchableOpacity, Text } from 'react-native';
-// import all basic components
 
-//For React Navigation 2.+ import following
-//import {DrawerNavigator, StackNavigator} from 'react-navigation';
-
-//For React Navigation 3.+ import following
 import {
   createDrawerNavigator,
   createStackNavigator,
@@ -20,12 +13,24 @@ import Screen3 from './November/Izvjestaji';
 import Screen4 from './India/Ispiti';
 import Screen5 from './India/Potvrde';
 import Screen6 from './India/Raspored';
+/*
+export default class App extends React.Component {
+  render() {
+    return (
+      <View>
+        <Screen1/>
+      </View>
+    );
+  }
+}
+*/
 
 class NavigationDrawerStructure extends Component {
   toggleDrawer = () => {
     this.props.navigationProps.toggleDrawer();
   };
   render() {
+    
     return (
 	<>
       <View style={{ flexDirection: 'row' }}>
