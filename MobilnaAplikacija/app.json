@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "MobilnaAplikacija",
+    "name":"MobilnaAplikacija",
     "slug": "MobilnaAplikacija",
     "privacy": "public",
     "sdkVersion": "32.0.0",
