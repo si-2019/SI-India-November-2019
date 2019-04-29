@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, TouchableOpacity, Text } from 'react-native';
+import { View, Image, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 import {
   createDrawerNavigator,
@@ -17,6 +17,9 @@ import Screen6 from './India/Raspored';
 export default class App extends React.Component {
   render() {
     return (
+      <View style={styles.container}>
+        <AktivniIspiti></AktivniIspiti>
+   </View>
       <View>
         <Screen1/>
       </View>
@@ -30,26 +33,26 @@ class NavigationDrawerStructure extends Component {
     this.props.navigationProps.toggleDrawer();
   };
   render() {
-    
+
     return (
-	<>
-      <View style={{ flexDirection: 'row' }}>
-        <TouchableOpacity onPress={this.toggleDrawer.bind(this)}>
-          {}
-          <Image
-            source={require('./image/drawer.png')}
-            style={{ width: 25, height: 25, marginLeft: 5 }}
-          />
-        </TouchableOpacity>
-      </View>
-	</>  
+      <>
+        <View style={{ flexDirection: 'row' }}>
+          <TouchableOpacity onPress={this.toggleDrawer.bind(this)}>
+            {}
+            <Image
+              source={require('./image/drawer.png')}
+              style={{ width: 25, height: 25, marginLeft: 5 }}
+            />
+          </TouchableOpacity>
+        </View>
+      </>
     );
   }
 }
 
 
 const FirstActivity_StackNavigator = createStackNavigator({
-  
+
   First: {
     screen: Screen1,
     navigationOptions: ({ navigation }) => ({
@@ -177,7 +180,7 @@ const DrawerNavigatorExample = createDrawerNavigator({
     },
   },
 
-  Screen6: { 
+  Screen6: {
     screen: Screen6_StackNavigator,
     navigationOptions: {
       drawerLabel: 'Raspored',
