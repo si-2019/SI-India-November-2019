@@ -91,7 +91,7 @@ class Potvrde extends React.Component {
         <Text></Text>
         <Button
        
-          onPress= {() => this.handleClick(tipovi[this.state.pickerSelection],svrhe[this.state.svrha] )}
+          onPress= {() => this.handleClick(lista[this.state.pickerSelection],svrhe[this.state.svrha] )}
           title="Pošalji zahtjev"
           accessibilityLabel="Pošalji zahtjev studentskoj službi"
         />
