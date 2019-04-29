@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
 
-
-export default class Raspored extends Component {
-  //Komponenta za raspored
+export default class Student extends Component {
+  //Komponenta za podatke o studentu
   render() {
     return (
       <View style={styles.MainContainer}>
-        <Text style={{ fontSize: 23 }}> Raspored </Text>
+        <Text style={{ fontSize: 23 }}> Podaci o studentu </Text>
       </View>
     );
   }

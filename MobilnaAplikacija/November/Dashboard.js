@@ -3,12 +3,11 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
 
-export default class Raspored extends Component {
-  //Komponenta za raspored
+export default class Dashboard extends Component {
   render() {
     return (
       <View style={styles.MainContainer}>
-        <Text style={{ fontSize: 23 }}> Raspored </Text>
+        <Text style={{ fontSize: 23 }}> Dashboard </Text>
       </View>
     );
   }
