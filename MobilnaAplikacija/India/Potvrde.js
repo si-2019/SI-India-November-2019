@@ -13,7 +13,21 @@ class Potvrde extends React.Component {
       svrha: 0
     }
   }
-
+  handleClick(tip,svrha) {
+    Alert.alert(
+      'Odabrani zahtjev',
+      'Potvrda: '+ tip.label +'\nSvrha: '+ svrha.label,
+      [
+        {text: 'Predaj', onPress: () => console.log('Predao')},
+          {
+          text: 'Poništi',
+          onPress: () => console.log('Poništio'),
+          style: 'cancel',
+        },
+      ],
+      {cancelable: false},
+    );
+  }
   render() {
     const lista = [{ label: "Potvrda o redovnom studiju", value: "potvrda" },
     { label: "Uvjerenje o položenim ispitima", value: "uvjerenje" }];
@@ -75,6 +89,12 @@ class Potvrde extends React.Component {
           <Text>{kraj_rec}</Text>
         </Text>
         <Text></Text>
+        <Button
+       
+          onPress= {() => this.handleClick(lista[this.state.pickerSelection],svrhe[this.state.svrha] )}
+          title="Pošalji zahtjev"
+          accessibilityLabel="Pošalji zahtjev studentskoj službi"
+        />
       </View>
     );
   }
