@@ -34,9 +34,11 @@ export class SubjectsList extends React.Component {
                     data={this.state.subjects}
                     keyExtractor={item => item.id.toString()}
                     renderItem={({item}) => (
-                        <Text style={styles.item}>
-                            {item.title}
-                        </Text>
+                        <TouchableOpacity>
+                            <Text style={styles.item}>
+                                {item.title}
+                            </Text>
+                        </TouchableOpacity>
                     )}
                 />
             </View>
