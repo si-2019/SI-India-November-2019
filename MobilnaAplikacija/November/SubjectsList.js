@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
+// import axios from 'axios';
 
 export class SubjectsList extends React.Component {
     
@@ -12,6 +13,15 @@ export class SubjectsList extends React.Component {
     }
 
     componentDidMount() {
+        /* axios.get("http://localhost:3000/subjects")
+            .then(res => {
+                const newSubjects = res.data;
+                this.setState({ subjects: newSubjects });
+            })
+            .then(error => {
+                console.error(error);
+            }
+        ) */
         this.setState({
             subjects: getSubjects
         });
@@ -31,6 +41,17 @@ export class SubjectsList extends React.Component {
                 />
             </View>
         );
+    }
+
+    _getSubjectsFromApi = async (endpoint) => {
+        try {
+          const response = await fetch(endpoint);
+          const data = await response.json();
+          return data;
+        }
+        catch(error) {
+          console.error(error);
+        }
     }
 }
 
