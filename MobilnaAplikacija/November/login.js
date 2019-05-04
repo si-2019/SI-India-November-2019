@@ -63,6 +63,7 @@ class App extends React.Component {
                                autoCapitalize="none"
                                onChangeText={this.handleUserName}/>
                     <TextInput style={styles.input}
+                               secureTextEntry={true}
                                underlineColorAndroid="transparent"
                                placeholder=" Lozinka"
                                placeholderTextColor="#000000"
