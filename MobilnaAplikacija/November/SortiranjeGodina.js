@@ -112,7 +112,12 @@ export default class SortiranjeGodina extends Component {
                         renderItem={({item}) => <Text style={styles.item}>{item.key} : {item.value}</Text>}
                     />
                 </View>
-                
+                <View>
+                    <Text style={{ fontSize: 18,  fontWeight: 'bold', marginTop: 10 }}> Prosjeci po semestrima{"\n"}</Text>
+                    <FlatList>
+                    
+                    </FlatList>
+                </View>
             </View>
         );
     }
