@@ -7,11 +7,19 @@ import {
     Text,
     TextInput,
     TouchableOpacity,
-    View,
+    View, FlatList,
 } from 'react-native';
 // import axios from 'axios';
 
 export default class SortiranjeGodina extends Component {
+    racunanjeProsjeka(nizOcjena) {
+        var prosjek= 0;
+        for (var i = 0; i < nizOcjena.length; i++) {
+            prosjek += nizOcjena[i];
+        }
+        prosjek = parseFloat(prosjek / nizOcjena.length).toFixed(2);
+        return prosjek;
+    }
     constructor(props) {
         super(props)
         this.state = {
@@ -22,6 +30,10 @@ export default class SortiranjeGodina extends Component {
     }
 
     render() {
+        var prosjekPrve = this.racunanjeProsjeka(this.state.prva);
+        var prosjekDruge = this.racunanjeProsjeka(this.state.druga);
+        var prosjekTrece = this.racunanjeProsjeka(this.state.treca);
+        var prosjeci    
         return (
             <View style={styles.MainContainer}>
                 <Text style={{ fontSize: 18,  fontWeight: 'bold' }}> Prosjeci po godinama sortirani</Text>
@@ -33,7 +45,7 @@ export default class SortiranjeGodina extends Component {
 const getMarks = [
     {
         id: 1,
-        title: "Prva godina"
+        title: "Prva godina",
     },
     {
         id: 2,
