@@ -22,7 +22,8 @@ export default class SortiranjeGodina extends Component {
             prva: [6, 6, 6, 7, 6, 9, 8, 8, 8, 6],
             druga: [6, 7, 8, 8, 7, 9, 7, 8, 8, 7, 7, 9],
             treca: [10, 9, 9, 8, 7, 7, 9, 8, 7, 6],
-            godine:[]
+            godine:[],
+            semestri: []
         }
     }
 
@@ -37,7 +38,8 @@ export default class SortiranjeGodina extends Component {
             }
         ) */
         this.setState({
-            godine: getMarks
+            godine: getMarks,
+            semestri: getSemester
         });
     }
 
@@ -59,23 +61,27 @@ export default class SortiranjeGodina extends Component {
                 prosjek : prosjekTrece
             },
         ];
+        
+
         godineProsjek.sort(function(a,b){
             return parseInt(b.prosjek)  - parseInt(a.prosjek);
         })
         return (
             <View style={styles.MainContainer}>
-                <Text style={{ fontSize: 18,  fontWeight: 'bold' }}> Projeci po godinama sortirani{"\n"} </Text>
-                <FlatList
-                    data = {[
-                        {key:godineProsjek[0].godina, value:godineProsjek[0].prosjek},
-                        {key:godineProsjek[1].godina, value:godineProsjek[1].prosjek},
-                        {key:godineProsjek[2].godina, value:godineProsjek[2].prosjek}
-                    ]}
-                    renderItem={({item}) => <Text style={styles.item}>{item.key} : {item.value}</Text>}
-                    renderItem={({item}) => <Text style={styles.item}>{item.key} : {item.value}</Text>}
-                    renderItem={({item}) => <Text style={styles.item}>{item.key} : {item.value}</Text>}
-                />
-
+                <View>
+                    <Text style={{ fontSize: 18,  fontWeight: 'bold' }}> Prosjeci po godinama sortirani{"\n"} </Text>
+                    <FlatList
+                        data = {[
+                            {key:godineProsjek[0].godina, value:godineProsjek[0].prosjek},
+                            {key:godineProsjek[1].godina, value:godineProsjek[1].prosjek},
+                            {key:godineProsjek[2].godina, value:godineProsjek[2].prosjek}
+                        ]}
+                        renderItem={({item}) => <Text style={styles.item}>{item.key} : {item.value}</Text>}
+                        renderItem={({item}) => <Text style={styles.item}>{item.key} : {item.value}</Text>}
+                        renderItem={({item}) => <Text style={styles.item}>{item.key} : {item.value}</Text>}
+                    />
+                </View>
+                
             </View>
         );
     }
@@ -94,6 +100,7 @@ const getMarks = [
         title: 'Treća'
     }
 ]
+
 const styles = StyleSheet.create({
     MainContainer: {
         flex: 1,

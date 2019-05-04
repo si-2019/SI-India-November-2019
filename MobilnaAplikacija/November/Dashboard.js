@@ -8,7 +8,6 @@ export default class Dashboard extends Component {
   render() {
     return (
       <View style={styles.MainContainer}>
-         {/* <Text style={{ fontSize: 23 }}> Dashboard </Text> */} 
          <View style={styles.subjectsContainer}>
            <SubjectsList />
          </View>

@@ -147,7 +147,7 @@ const Screen8_StackNavigator = createStackNavigator({
   Third: {
     screen: Screen8,
     navigationOptions: ({ navigation }) => ({
-      title: 'Godine',
+      title: 'Prosjeci',
       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
       headerStyle: {
         backgroundColor: '#376ff2',
@@ -204,7 +204,7 @@ const DrawerNavigatorExample = createDrawerNavigator({
   Screen8: {
     screen: Screen8_StackNavigator,
     navigationOptions: {
-      drawerLabel: 'Godine',
+      drawerLabel: 'Prosjeci',
     },
   },
 });
