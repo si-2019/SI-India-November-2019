@@ -51,10 +51,6 @@ export default class SortiranjeGodina extends Component {
         var prosjekPrve = this.racunanjeProsjeka(this.state.prva);
         var prosjekDruge = this.racunanjeProsjeka(this.state.druga);
         var prosjekTrece = this.racunanjeProsjeka(this.state.treca);
-       // var Array_2 = ["Prva godina": prosjekPrve, "Druga godina": prosjekDruge, "Treca godina": prosjekTrece];
-
-        // Sorting array in Descending order.
-
         var godineProsjek = [
             {
                 godina : 'Prva godina',
@@ -72,7 +68,6 @@ export default class SortiranjeGodina extends Component {
         godineProsjek.sort(function(a,b){
             return parseInt(b.prosjek)  - parseInt(a.prosjek);
         })
-       // Array_2.sort(function(a, b){return b-a});
         console.log(godineProsjek[0].godina);
         return (
             <View style={styles.MainContainer}>
@@ -95,15 +90,15 @@ export default class SortiranjeGodina extends Component {
 const getMarks = [
     {
         id: 1,
-        title: 'alma'
+        title: 'Prva'
     },
     {
         id: 2,
-        title: 'alma'
+        title: 'Druga'
     },
     {
         id: 3,
-        title: 'alma'
+        title: 'Treća'
     }
 ]
 const styles = StyleSheet.create({
