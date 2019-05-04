@@ -53,27 +53,32 @@ drzavaRod: res.drzavaRod, nacionalnost: res.nacionalnost, kanton: res.kanton, dr
           Ime:
           </Text>
           <TextInput style = {styles.input}
-           value={this.state.ime}/>
+           value={this.state.ime}
+           onChangeText={(text) => this.setState({ime: text})}/>
           <Text style = {styles.tekst1}>
           Prezime:
           </Text>
           <TextInput style = {styles.input}
-           value={this.state.prezime}/>
+           value={this.state.prezime}
+           onChangeText={(text) => this.setState({prezime: text})}/>
           <Text style = {styles.tekst1}>
           Spol:
           </Text>
           <TextInput style = {styles.input}
-           value={this.state.spol}/>
+           value={this.state.spol}
+           onChangeText={(text) => this.setState({spol: text})}/>
           <Text style = {styles.tekst1}>
           Broj indeksa:
           </Text>
           <TextInput style = {styles.input}
-           value={this.state.brIndeksa}/>
+           value={this.state.brIndeksa}
+           onChangeText={(text) => this.setState({brIndeksa: text})}/>
           <Text style = {styles.tekst1}>
           JMBG:
           </Text>
           <TextInput style = {styles.input}
-           value={this.state.jmbg}/>
+           value={this.state.jmbg}
+           onChangeText={(text) => this.setState({jmbg: text})}/>
       </View> 
       <View>
         <Text style = {styles.podnaslov}>
@@ -83,22 +88,26 @@ drzavaRod: res.drzavaRod, nacionalnost: res.nacionalnost, kanton: res.kanton, dr
         Adresa (ulica i broj):
         </Text>
         <TextInput style = {styles.input}
-       value={this.state.adresaUlica}/>
+       value={this.state.adresaUlica}
+       onChangeText={(text) => this.setState({adresaUlica: text})}/>
         <Text style = {styles.tekst1}>
         Adresa (mjesto):
         </Text>
         <TextInput style = {styles.input}
-        value={this.state.adresaMjesto}/>
+        value={this.state.adresaMjesto}
+        onChangeText={(text) => this.setState({adresaMjesto: text})}/>
         <Text style = {styles.tekst1}>
         Kontaks telefon:
         </Text>
         <TextInput style = {styles.input}
-        value={this.state.kontaktTelefon}/>
+        value={this.state.kontaktTelefon}
+        onChangeText={(text) => this.setState({kontaktTelefon: text})}/>
         <Text style = {styles.tekst1}>
         Kontakt e-mail:
         </Text>
         <TextInput style = {styles.input}
-        value={this.state.kontaktEmail}/>
+        value={this.state.kontaktEmail}
+        onChangeText={(text) => this.setState({kontaktEmail: text})}/>
     </View>
     <View>
         <Text style = {styles.podnaslov}>
@@ -108,57 +117,68 @@ drzavaRod: res.drzavaRod, nacionalnost: res.nacionalnost, kanton: res.kanton, dr
         Ime oca:
         </Text>
         <TextInput style = {styles.input}
-       value={this.state.imeOca}/>
+       value={this.state.imeOca}
+       onChangeText={(text) => this.setState({imeOca: text})}/>
         <Text style = {styles.tekst1}>
         Prezime oca:
         </Text>
         <TextInput style = {styles.input}
-        value = {this.state.prezimeOca}/>
+        value = {this.state.prezimeOca}
+        onChangeText={(text) => this.setState({prezimeOca: text})}/>
         <Text style = {styles.tekst1}>
         Ime majke:
         </Text>
         <TextInput style = {styles.input}
-        value={this.state.imeMajke}/>
+        value={this.state.imeMajke}
+        onChangeText={(text) => this.setState({imeMajke: text})}/>
         <Text style = {styles.tekst1}>
         Prezime majke:
         </Text>
         <TextInput style = {styles.input}
-        value={this.state.prezimeMajke}/>
+        value={this.state.prezimeMajke}
+        onChangeText={(text) => this.setState({prezimeMajke: text})}/>
         <Text style = {styles.tekst1}>
         Datum rođenja:
         </Text>
         <TextInput style = {styles.input}
-        value = {this.state.datumRod}/>
+        value = {this.state.datumRod}
+        onChangeText={(text) => this.setState({datumRod: text})}/>
         <Text style = {styles.tekst1}>
         Mjesto rođenja:
         </Text>
         <TextInput style = {styles.input}
-        value = {this.state.mjestoRod}/>
+        value = {this.state.mjestoRod}
+        onChangeText={(text) => this.setState({mjestoRod: text})}/>
         <Text style = {styles.tekst1}>
         Općina rođenja:
         </Text>
         <TextInput style = {styles.input}
-        value={this.state.opcinaRod}/>
+        value={this.state.opcinaRod}
+        onChangeText={(text) => this.setState({opcinaRod: text})}/>
         <Text style = {styles.tekst1}>
         Država rođenja:
         </Text>
         <TextInput style = {styles.input}
-        value = {this.state.drzavaRod}/>
+        value = {this.state.drzavaRod}
+        onChangeText={(text) => this.setState({drzavaRod: text})}/>
         <Text style = {styles.tekst1}>
         Nacionalnost:
         </Text>
         <TextInput style = {styles.input}
-        value={this.state.nacionalnost}/>
+        value={this.state.nacionalnost}
+        onChangeText={(text) => this.setState({nacionalnost: text})}/>
         <Text style = {styles.tekst1}>
         Kanton/regija:
         </Text>
         <TextInput style = {styles.input}
-        value={this.state.kanton}/>
+        value={this.state.kanton}
+        onChangeText={(text) => this.setState({kanton: text})}/>
         <Text style = {styles.tekst1}>
         Državljanstvo
         </Text>
         <TextInput style = {styles.input}
-        value={this.state.drzavljanstvo}/>
+        value={this.state.drzavljanstvo}
+        onChangeText={(text) => this.setState({drzavljanstvo: text})}/>
     </View>   
       <TouchableOpacity  style = {styles.button} >
           <Text>
@@ -202,7 +222,7 @@ drzavaRod: res.drzavaRod, nacionalnost: res.nacionalnost, kanton: res.kanton, dr
     borderColor: 'lightgrey'
     },
     tekst1: {
-    color: 'black',
+    color: '#737373',
     fontSize: 13,
     marginTop: 7,
     marginLeft: 10
