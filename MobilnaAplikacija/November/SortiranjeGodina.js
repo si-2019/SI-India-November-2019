@@ -61,7 +61,38 @@ export default class SortiranjeGodina extends Component {
                 prosjek : prosjekTrece
             },
         ];
-        
+        var prviSemestar = this.racunanjeProsjeka(this.state.prva.slice(0, this.state.prva.length/2));
+        var drugiSemestar = this.racunanjeProsjeka(this.state.prva.slice(this.state.prva.length/2, this.state.prva.length));
+        var treciSemestar = this.racunanjeProsjeka(this.state.druga.slice(0, this.state.druga.length/2));
+        var cetvrtiSemestar = this.racunanjeProsjeka(this.state.druga.slice(this.state.druga.length/2, this.state.druga.length));
+        var petiSemestar = this.racunanjeProsjeka(this.state.treca.slice(0, this.state.treca.length/2));
+        var semestriProsjek = [
+            {
+                id: 1,
+                title: ' 1. semestar: ',
+                prosjek: prviSemestar
+            },
+            {
+                id: 2,
+                title: ' 2. semestar: ',
+                prosjek: drugiSemestar
+            },
+            {
+                id: 3,
+                title: ' 3. semestar: ',
+                prosjek: treciSemestar
+            },
+            {
+                id: 4,
+                title: ' 4. semestar: ',
+                prosjek: cetvrtiSemestar
+            },
+            {
+                id: 5,
+                title: ' 5. semestar: ',
+                prosjek: petiSemestar
+            }
+        ];
 
         godineProsjek.sort(function(a,b){
             return parseInt(b.prosjek)  - parseInt(a.prosjek);
@@ -100,6 +131,29 @@ const getMarks = [
         title: 'Treća'
     }
 ]
+
+const getSemester = [
+    {
+        id: 1,
+        title: '1.'
+    },
+    {
+        id: 2,
+        title: '2.'
+    },
+    {
+        id: 3,
+        title: '3.'
+    },
+    {
+        id: 4,
+        title: '4.'
+    },
+    {
+        id: 5,
+        title: '5.'
+    }
+] 
 
 const styles = StyleSheet.create({
     MainContainer: {
