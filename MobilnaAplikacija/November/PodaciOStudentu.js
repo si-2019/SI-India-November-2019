@@ -5,21 +5,23 @@ import axios from 'axios'
 export default class PodaciOStudentu extends Component {
   state= { 
   } 
-  
-  APIpoziv = () =>
-  {
-  axios.get("https://...").then(res =>{
-     this.dodajPodatke(res);
-  })
-  }
-  //Privremeno dodavanje dummy podataka
-  dodajPodatke = (res) => {
-  this.setState({ime: res.ime, prezime: res.prezime, spol: res.spol, brIndeksa: res.brIndeksa,
-  jmbg: res.jmbg, adresaUlica: res.adresaUlica, adresaMjesto: res.adresaMjesto, kontaktTelefon: res.kontaktTelefon,
-  kontaktEmail: res.kontaktEmail, imeOca: res.imeOca, prezimeOca: res.prezimeOca, imeMajke: res.imeMajke, 
-  prezimeMajke: res.prezimeMajke, datumRod: res.datumRod, mjestoRod: res.mjestoRod, opcinaRod: res.opcinaRod,
-  drzavaRod: res.drzavaRod, nacionalnost: res.nacionalnost, kanton: res.kanton, drzavljanstvo: res.drzavljanstvo });
-  }
+
+APIpoziv = () =>
+{
+axios.get("https://httpbin.org/get").then(res =>{
+   this.dodajPodatke(res);
+})
+}
+//Kao_student_želim_imati_mogućnost_pregleda_ličnih_podataka_kako_bih_imao_uvid_u_iste
+
+//Privremeno dodavanje dummy podataka
+dodajPodatke = (res) => {
+this.setState({ime: res.ime, prezime: res.prezime, spol: res.spol, brIndeksa: res.brIndeksa,
+jmbg: res.jmbg, adresaUlica: res.adresaUlica, adresaMjesto: res.adresaMjesto, kontaktTelefon: res.kontaktTelefon,
+kontaktEmail: res.kontaktEmail, imeOca: res.imeOca, prezimeOca: res.prezimeOca, imeMajke: res.imeMajke, 
+prezimeMajke: res.prezimeMajke, datumRod: res.datumRod, mjestoRod: res.mjestoRod, opcinaRod: res.opcinaRod,
+drzavaRod: res.drzavaRod, nacionalnost: res.nacionalnost, kanton: res.kanton, drzavljanstvo: res.drzavljanstvo });
+}
   render() { 
   return (   
   <ScrollView> 
