@@ -101,7 +101,7 @@ export default class SortiranjeGodina extends Component {
         return (
             <View style={styles.MainContainer}>  
                 <View>
-                    <Text style={{ fontSize: 18,  fontWeight: 'bold', marginTop: 10 }}> Prosjeci po semestrima{"\n"}</Text>
+                    <Text style={{ fontSize: 18,  fontWeight: 'bold'}}> Prosjeci po semestrima{"\n"}</Text>
                     <FlatList
                         data = {[
                             {key:godineProsjekNesortirano[0].godina, value:godineProsjek[0].prosjek},
