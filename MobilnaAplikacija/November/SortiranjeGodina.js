@@ -114,9 +114,15 @@ export default class SortiranjeGodina extends Component {
                 </View>
                 <View>
                     <Text style={{ fontSize: 18,  fontWeight: 'bold', marginTop: 10 }}> Prosjeci po semestrima{"\n"}</Text>
-                    <FlatList>
-                    
-                    </FlatList>
+                    <FlatList
+                        data={semestriProsjek}
+                        keyExtractor={item => item.id.toString()}
+                        renderItem={({item}) => (
+                            <Text style={styles.item}>
+                                {item.title} {item.prosjek}
+                            </Text>
+                        )}                     
+                    />
                 </View>
             </View>
         );
