@@ -61,6 +61,7 @@ export default class SortiranjeGodina extends Component {
                 prosjek : prosjekTrece
             },
         ];
+        var godineProsjekNesortirano=Object.assign({}, godineProsjek);;
         var prviSemestar = this.racunanjeProsjeka(this.state.prva.slice(0, this.state.prva.length/2));
         var drugiSemestar = this.racunanjeProsjeka(this.state.prva.slice(this.state.prva.length/2, this.state.prva.length));
         var treciSemestar = this.racunanjeProsjeka(this.state.druga.slice(0, this.state.druga.length/2));
@@ -98,7 +99,22 @@ export default class SortiranjeGodina extends Component {
             return parseInt(b.prosjek)  - parseInt(a.prosjek);
         })
         return (
-            <View style={styles.MainContainer}>
+            <View style={styles.MainContainer}>  
+                <View>
+                    <Text style={{ fontSize: 18,  fontWeight: 'bold', marginTop: 10 }}> Prosjeci po semestrima{"\n"}</Text>
+                    <FlatList
+                        data = {[
+                            {key:godineProsjekNesortirano[0].godina, value:godineProsjek[0].prosjek},
+                            {key:godineProsjekNesortirano[1].godina, value:godineProsjek[1].prosjek},
+                            {key:godineProsjekNesortirano[2].godina, value:godineProsjek[2].prosjek}
+                        ]}
+                        renderItem={({item}) => (
+                            <Text style={styles.item}>
+                                {item.key} {item.value}
+                            </Text>
+                        )}                     
+                    />
+                </View>
                 <View>
                     <Text style={{ fontSize: 18,  fontWeight: 'bold' }}> Prosjeci po godinama sortirani{"\n"} </Text>
                     <FlatList
@@ -124,6 +140,7 @@ export default class SortiranjeGodina extends Component {
                         )}                     
                     />
                 </View>
+                
             </View>
         );
     }
