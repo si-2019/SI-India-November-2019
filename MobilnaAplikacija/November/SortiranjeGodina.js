@@ -116,7 +116,7 @@ export default class SortiranjeGodina extends Component {
                     />
                 </View>
                 <View>
-                    <Text style={{ fontSize: 18,  fontWeight: 'bold' }}> Prosjeci po godinama sortirani{"\n"} </Text>
+                    <Text style={{ fontSize: 18,  fontWeight: 'bold', marginTop: 10}}> Prosjeci po godinama sortirani{"\n"} </Text>
                     <FlatList
                         data = {[
                             {key:godineProsjek[0].godina, value:godineProsjek[0].prosjek},
