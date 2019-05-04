@@ -156,3 +156,58 @@ const styles = StyleSheet.create({
         lineHeight: 24,
         textAlign: 'center',
     },
+    submitButton: {
+        backgroundColor: '#195dc4',
+        padding: 10,
+        margin: 15,
+        height: 40,
+    },
+    submitButtonText:{
+        color: 'white',
+        textAlign:'center'
+    },
+    tabBarInfoContainer: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        ...Platform.select({
+            ios: {
+                shadowColor: 'black',
+                shadowOffset: { height: -3 },
+                shadowOpacity: 0.1,
+                shadowRadius: 3,
+            },
+            android: {
+                elevation: 20,
+            },
+        }),
+        alignItems: 'center',
+        backgroundColor: '#fbfbfb',
+        paddingVertical: 20,
+    },
+    tabBarInfoText: {
+        fontSize: 17,
+        color: 'rgba(96,100,109, 1)',
+        textAlign: 'center',
+    },
+    navigationFilename: {
+        marginTop: 5,
+    },
+    helpContainer: {
+        marginTop: 15,
+        alignItems: 'center',
+    },
+    bottom: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        marginBottom: 36
+    },
+    helpLink: {
+        paddingVertical: 15,
+    },
+    helpLinkText: {
+        fontSize: 14,
+        color: '#2e78b7',
+    },
+});
