@@ -126,3 +126,33 @@ const styles = StyleSheet.create({
         marginTop: 25,
         marginLeft: -10,
     },
+    getStartedContainer: {
+        alignItems: 'center',
+        marginHorizontal: 50,
+    },
+    homeScreenFilename: {
+        marginVertical: 7,
+    },
+    down: {
+        width: '100%',
+        height: 40,
+        backgroundColor: '#195dc4',
+        textAlign:'center',
+        alignItems: 'center',
+        position: 'absolute',
+        bottom: 0
+    },
+    codeHighlightText: {
+        color: 'rgba(96,100,109, 0.8)',
+    },
+    codeHighlightContainer: {
+        backgroundColor: 'rgba(0,0,0,0.05)',
+        borderRadius: 3,
+        paddingHorizontal: 4,
+    },
+    getStartedText: {
+        fontSize: 17,
+        color: 'rgba(96,100,109, 1)',
+        lineHeight: 24,
+        textAlign: 'center',
+    },
