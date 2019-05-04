@@ -10,8 +10,14 @@ import {
     View,
 } from 'react-native';
 
-import StackNavigator from 'react-navigation';
-import axios from 'axios'; /*Nakon implementacije backenda*/
+import {
+    createDrawerNavigator,
+    createStackNavigator,
+    createAppContainer,
+} from 'react-navigation';
+
+import axios from 'axios';
+import Screen1 from './Dashboard.js';
 class App extends React.Component {
     /*var token = 'temp';*/ /*Za validaciju*/
     state = {
@@ -40,7 +46,7 @@ class App extends React.Component {
                 })
                 key  zamijenjeniti sa uid !
                 */
-                Alert.alert('OK','Treba se prebaciti na Home Page ali nezz xd');
+                Alert.alert('OK','Treba se prebaciti na Home Page');
             }
         }
         else if(email.length === 0 || pass.length === 0) Alert.alert('Greška!','Molimo unesite oba podatka!')
@@ -88,6 +94,8 @@ class App extends React.Component {
 }
 
 export default  App
+
+
 const styles = StyleSheet.create({
     footer: {
         color: '#fff',
