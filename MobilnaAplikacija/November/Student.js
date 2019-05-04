@@ -78,6 +78,66 @@ export default class Student extends Component {
         <TextInput style = {styles.input}
         />
     </View>
+    <View>
+        <Text style = {styles.podnaslov}>
+        Lični podaci
+        </Text>
+        <Text style = {styles.tekst1}>
+        Ime oca:
+        </Text>
+        <TextInput style = {styles.input}
+       />
+        <Text style = {styles.tekst1}>
+        Prezime oca:
+        </Text>
+        <TextInput style = {styles.input}
+        value = {this.state.prezimeOca}/>
+        <Text style = {styles.tekst1}>
+        Ime majke:
+        </Text>
+        <TextInput style = {styles.input}
+        />
+        <Text style = {styles.tekst1}>
+        Prezime majke:
+        </Text>
+        <TextInput style = {styles.input}
+        />
+        <Text style = {styles.tekst1}>
+        Datum rođenja:
+        </Text>
+        <TextInput style = {styles.input}
+        value = {this.state.datumRod}/>
+        <Text style = {styles.tekst1}>
+        Mjesto rođenja:
+        </Text>
+        <TextInput style = {styles.input}
+        value = {this.state.mjestoRod}/>
+        <Text style = {styles.tekst1}>
+        Općina rođenja:
+        </Text>
+        <TextInput style = {styles.input}
+        />
+        <Text style = {styles.tekst1}>
+        Država rođenja:
+        </Text>
+        <TextInput style = {styles.input}
+        value = {this.state.drzavaRod}/>
+        <Text style = {styles.tekst1}>
+        Nacionalnost:
+        </Text>
+        <TextInput style = {styles.input}
+        />
+        <Text style = {styles.tekst1}>
+        Kanton/regija:
+        </Text>
+        <TextInput style = {styles.input}
+        />
+        <Text style = {styles.tekst1}>
+        Državljanstvo
+        </Text>
+        <TextInput style = {styles.input}
+        />
+    </View>   
       <TouchableOpacity  style = {styles.button} >
           <Text>
           Pošalji zahtjev
