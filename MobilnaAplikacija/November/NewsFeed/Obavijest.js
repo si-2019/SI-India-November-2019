@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
   render() {
     return (
       <View style={styles.container}>
-          <Text>Obavijest: {this.props.naziv}</Text>
-          <Text>{this.props.tekst}</Text>
+          <Text style={styles.text}>Obavijest: {this.props.naziv}</Text>
+          <Text style={styles.text}>{this.props.tekst}</Text>
       </View>
     )
   }
@@ -17,12 +17,14 @@ Obavijest.propTypes={
 }
 const styles = StyleSheet.create({
     container: {
-    
-        borderRadius: 4,
-        borderWidth: 0.5,
-        borderColor: '#d6d7da',
-        backgroundColor: 'lightblue'
-      
+        marginTop:5,
+        width: "100%",
+        textAlign:"left"
     },
+    text:{
+        width:"100%",
+        fontSize:16
+    }
+    ,
   });
 export default Obavijest;

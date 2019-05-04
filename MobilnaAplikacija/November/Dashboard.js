@@ -39,9 +39,9 @@ const styles = StyleSheet.create({
     borderBottomColor: 'black'
   },
   notificationsContainer: {
-    height: '60%',
+  //  height: '60%',
     marginTop: 30,
     // backgroundColor: 'powderblue',
-    justifyContent: 'center'
+    //justifyContent: 'center'
   }
 });
