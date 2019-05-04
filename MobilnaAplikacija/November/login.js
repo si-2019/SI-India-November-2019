@@ -45,3 +45,43 @@ class App extends React.Component {
         }
         else if(email.length === 0 || pass.length === 0) Alert.alert('Greška!','Molimo unesite oba podatka!')
     }
+    render() {
+        return (
+            <View style={styles.container}>
+                <View style={styles.container} contentContainerStyle={styles.contentContainer}>
+                    <View style={styles.welcomeContainer}>
+                        <Image source={require('../assets/logo.jpg')}
+                               style={styles.welcomeImage}/>
+                    </View>
+                    <Text style={styles.developmentModeText}>
+                        Dobrodošli na oficijelnu stranicu Elektrotehničkog fakulteta, Sarajevo
+                    </Text>
+                    <TextInput style={styles.input}
+                               underlineColorAndroid="transparent"
+                               placeholder=" Korisničko ime"
+                               placeholderTextColor="#000000"
+                               autoCapitalize="none"
+                               onChangeText={this.handleUserName}/>
+                    <TextInput style={styles.input}
+                               underlineColorAndroid="transparent"
+                               placeholder=" Lozinka"
+                               placeholderTextColor="#000000"
+                               autoCapitalize="none"
+                               onChangeText={this.handlePassword}/>
+                    <TouchableOpacity
+                        style={styles.submitButton}
+                        onPress={
+                            () => this.login(this.state.email, this.state.password)
+                        }>
+                        <Text style={styles.submitButtonText}> Prijavi se </Text>
+                    </TouchableOpacity>
+                    <View style={styles.down}>
+                        <Text style = {styles.footer}>
+                            {'\u00A9'} November-India, 2019
+                        </Text>
+                    </View>
+                </View>
+            </View>
+        )
+    }
+}
