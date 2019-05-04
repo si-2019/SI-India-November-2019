@@ -61,7 +61,8 @@ export default class SortiranjeGodina extends Component {
                 prosjek : prosjekTrece
             },
         ];
-        var godineProsjekNesortirano=Object.assign({}, godineProsjek);;
+        var godineProsjekNesortirano=Object.assign({}, godineProsjek); //Dodajemo vrijednost objekta, ne referncu
+        
         var prviSemestar = this.racunanjeProsjeka(this.state.prva.slice(0, this.state.prva.length/2));
         var drugiSemestar = this.racunanjeProsjeka(this.state.prva.slice(this.state.prva.length/2, this.state.prva.length));
         var treciSemestar = this.racunanjeProsjeka(this.state.druga.slice(0, this.state.druga.length/2));
@@ -101,7 +102,7 @@ export default class SortiranjeGodina extends Component {
         return (
             <View style={styles.MainContainer}>  
                 <View>
-                    <Text style={{ fontSize: 18,  fontWeight: 'bold'}}> Prosjeci po semestrima{"\n"}</Text>
+                    <Text style={{ fontSize: 18,  fontWeight: 'bold'}}> Prosjeci po godinama{"\n"}</Text>
                     <FlatList
                         data = {[
                             {key:godineProsjekNesortirano[0].godina, value:godineProsjek[0].prosjek},
