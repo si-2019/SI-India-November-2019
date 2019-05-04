@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Text, Button, TouchableOpacity, StyleSheet, TextInput } from 'react-native'
 import axios from 'axios'
+import * as res from './pomocniPodaciOStudentu'
 
 export default class PodaciOStudentu extends Component {
 
