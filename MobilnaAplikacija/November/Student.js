@@ -12,8 +12,6 @@ export default class Student extends Component {
      this.dodajPodatke(res);
   })
   }
-  //Kao_student_želim_imati_mogućnost_pregleda_ličnih_podataka_kako_bih_imao_uvid_u_iste
-  
   //Privremeno dodavanje dummy podataka
   dodajPodatke = (res) => {
   this.setState({ime: res.ime, prezime: res.prezime, spol: res.spol, brIndeksa: res.brIndeksa,
@@ -55,6 +53,31 @@ export default class Student extends Component {
           <TextInput style = {styles.input}
           />
       </View> 
+      <View>
+        <Text style = {styles.podnaslov}>
+        Kontakt podaci
+        </Text>
+        <Text style = {styles.tekst1}>
+        Adresa (ulica i broj):
+        </Text>
+        <TextInput style = {styles.input}
+       />
+        <Text style = {styles.tekst1}>
+        Adresa (mjesto):
+        </Text>
+        <TextInput style = {styles.input}
+        />
+        <Text style = {styles.tekst1}>
+        Kontaks telefon:
+        </Text>
+        <TextInput style = {styles.input}
+        />
+        <Text style = {styles.tekst1}>
+        Kontakt e-mail:
+        </Text>
+        <TextInput style = {styles.input}
+        />
+    </View>
       <TouchableOpacity  style = {styles.button} >
           <Text>
           Pošalji zahtjev
