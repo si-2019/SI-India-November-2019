@@ -13,6 +13,7 @@ import Screen3 from './November/Izvjestaji';
 import Screen4 from './India/Ispiti';
 import Screen5 from './India/Potvrde';
 import Screen6 from './India/Raspored';
+import Screen7 from  './November/login';
 /*
 export default class App extends React.Component {
   render() {
@@ -52,7 +53,6 @@ class NavigationDrawerStructure extends Component {
 
 
 const FirstActivity_StackNavigator = createStackNavigator({
-
   First: {
     screen: Screen1,
     navigationOptions: ({ navigation }) => ({
