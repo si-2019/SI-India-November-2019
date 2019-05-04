@@ -53,27 +53,27 @@ drzavaRod: res.drzavaRod, nacionalnost: res.nacionalnost, kanton: res.kanton, dr
           Ime:
           </Text>
           <TextInput style = {styles.input}
-          />
+           value={this.state.ime}/>
           <Text style = {styles.tekst1}>
           Prezime:
           </Text>
           <TextInput style = {styles.input}
-          />
+           value={this.state.prezime}/>
           <Text style = {styles.tekst1}>
           Spol:
           </Text>
           <TextInput style = {styles.input}
-          />
+           value={this.state.spol}/>
           <Text style = {styles.tekst1}>
           Broj indeksa:
           </Text>
           <TextInput style = {styles.input}
-          />
+           value={this.state.brIndeksa}/>
           <Text style = {styles.tekst1}>
           JMBG:
           </Text>
           <TextInput style = {styles.input}
-          />
+           value={this.state.jmbg}/>
       </View> 
       <View>
         <Text style = {styles.podnaslov}>
@@ -83,22 +83,22 @@ drzavaRod: res.drzavaRod, nacionalnost: res.nacionalnost, kanton: res.kanton, dr
         Adresa (ulica i broj):
         </Text>
         <TextInput style = {styles.input}
-       />
+       value={this.state.adresaUlica}/>
         <Text style = {styles.tekst1}>
         Adresa (mjesto):
         </Text>
         <TextInput style = {styles.input}
-        />
+        value={this.state.adresaMjesto}/>
         <Text style = {styles.tekst1}>
         Kontaks telefon:
         </Text>
         <TextInput style = {styles.input}
-        />
+        value={this.state.kontaktTelefon}/>
         <Text style = {styles.tekst1}>
         Kontakt e-mail:
         </Text>
         <TextInput style = {styles.input}
-        />
+        value={this.state.kontaktEmail}/>
     </View>
     <View>
         <Text style = {styles.podnaslov}>
@@ -108,7 +108,7 @@ drzavaRod: res.drzavaRod, nacionalnost: res.nacionalnost, kanton: res.kanton, dr
         Ime oca:
         </Text>
         <TextInput style = {styles.input}
-       />
+       value={this.state.imeOca}/>
         <Text style = {styles.tekst1}>
         Prezime oca:
         </Text>
@@ -118,12 +118,12 @@ drzavaRod: res.drzavaRod, nacionalnost: res.nacionalnost, kanton: res.kanton, dr
         Ime majke:
         </Text>
         <TextInput style = {styles.input}
-        />
+        value={this.state.imeMajke}/>
         <Text style = {styles.tekst1}>
         Prezime majke:
         </Text>
         <TextInput style = {styles.input}
-        />
+        value={this.state.prezimeMajke}/>
         <Text style = {styles.tekst1}>
         Datum rođenja:
         </Text>
@@ -138,7 +138,7 @@ drzavaRod: res.drzavaRod, nacionalnost: res.nacionalnost, kanton: res.kanton, dr
         Općina rođenja:
         </Text>
         <TextInput style = {styles.input}
-        />
+        value={this.state.opcinaRod}/>
         <Text style = {styles.tekst1}>
         Država rođenja:
         </Text>
@@ -148,17 +148,17 @@ drzavaRod: res.drzavaRod, nacionalnost: res.nacionalnost, kanton: res.kanton, dr
         Nacionalnost:
         </Text>
         <TextInput style = {styles.input}
-        />
+        value={this.state.nacionalnost}/>
         <Text style = {styles.tekst1}>
         Kanton/regija:
         </Text>
         <TextInput style = {styles.input}
-        />
+        value={this.state.kanton}/>
         <Text style = {styles.tekst1}>
         Državljanstvo
         </Text>
         <TextInput style = {styles.input}
-        />
+        value={this.state.drzavljanstvo}/>
     </View>   
       <TouchableOpacity  style = {styles.button} >
           <Text>
