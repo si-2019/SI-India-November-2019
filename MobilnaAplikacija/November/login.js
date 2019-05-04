@@ -85,3 +85,44 @@ class App extends React.Component {
         )
     }
 }
+
+export default  App
+const styles = StyleSheet.create({
+    footer: {
+        color: '#fff',
+        paddingTop:7.5,
+        textAlign:'center',
+        alignItems: 'center'
+    },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+    },
+    input: {
+        margin: 15,
+        height: 40,
+        borderColor: '#000000',
+        borderWidth: 1
+    },
+    developmentModeText: {
+        marginBottom: 20,
+        color: '#000000',
+        fontSize: 14,
+        lineHeight: 19,
+        textAlign: 'center',
+    },
+    contentContainer: {
+        paddingTop: 30,
+    },
+    welcomeContainer: {
+        alignItems: 'center',
+        marginTop: 10,
+        marginBottom: 20,
+    },
+    welcomeImage: {
+        width: 100,
+        height: 80,
+        resizeMode: 'contain',
+        marginTop: 25,
+        marginLeft: -10,
+    },
