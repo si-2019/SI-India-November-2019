@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { SubjectsList } from './SubjectsList';
 import { Divider } from 'react-native-elements';
-
+import Obavijesti from './NewsFeed/Obavijesti';
 export default class Dashboard extends Component {
   render() {
     return (
@@ -14,7 +14,7 @@ export default class Dashboard extends Component {
          </View>
          <Divider style={styles.divider} />
          <View style={styles.notificationsContainer}>
-           <Text>Notifications component!</Text>
+             <Obavijesti id={1}/>
          </View>
       </View>
     );
