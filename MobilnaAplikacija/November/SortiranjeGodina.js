@@ -77,7 +77,7 @@ export default class SortiranjeGodina extends Component {
         return (
             <View style={styles.MainContainer}>
                 <Text style={{ fontSize: 18,  fontWeight: 'bold' }}> Projeci po godinama sortirani</Text>
-              /*  <FlatList
+                <FlatList
                     data = {[
                         {key:godineProsjek[0].godina, value:godineProsjek[0].prosjek},
                         {key:godineProsjek[1].godina, value:godineProsjek[1].prosjek},
@@ -86,7 +86,7 @@ export default class SortiranjeGodina extends Component {
                     renderItem={({item}) => <Text style={styles.item}>{item.key} : {item.value}</Text>}
                     renderItem={({item}) => <Text style={styles.item}>{item.key} : {item.value}</Text>}
                     renderItem={({item}) => <Text style={styles.item}>{item.key} : {item.value}</Text>}
-                />*/
+                />
 
             </View>
         );
