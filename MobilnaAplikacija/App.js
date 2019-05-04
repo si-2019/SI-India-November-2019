@@ -14,6 +14,7 @@ import Screen4 from './India/Ispiti';
 import Screen5 from './India/Potvrde';
 import Screen6 from './India/Raspored';
 import Screen7 from  './November/login';
+import Screen8 from  './November/SortiranjeGodina'
 /*
 export default class App extends React.Component {
   render() {
@@ -142,6 +143,20 @@ const Screen6_StackNavigator = createStackNavigator({
   },
 });
 
+const Screen8_StackNavigator = createStackNavigator({
+  Third: {
+    screen: Screen8,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Godine',
+      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
+      headerStyle: {
+        backgroundColor: '#376ff2',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
+
 
 const DrawerNavigatorExample = createDrawerNavigator({
   //Drawer Optons and indexing
@@ -184,6 +199,12 @@ const DrawerNavigatorExample = createDrawerNavigator({
     screen: Screen6_StackNavigator,
     navigationOptions: {
       drawerLabel: 'Raspored',
+    },
+  },
+  Screen8: {
+    screen: Screen8_StackNavigator,
+    navigationOptions: {
+      drawerLabel: 'Godine',
     },
   },
 });
