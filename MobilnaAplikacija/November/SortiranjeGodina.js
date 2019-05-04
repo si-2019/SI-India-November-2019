@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
 import {
-    Image,
-    Platform,
     StyleSheet,
-    Alert,
     Text,
-    TextInput,
-    TouchableOpacity,
     View,
     FlatList,
 } from 'react-native';
-import { List, ListItem } from 'react-native-elements'
 // import axios from 'axios';
 
 export default class SortiranjeGodina extends Component {
@@ -68,10 +62,9 @@ export default class SortiranjeGodina extends Component {
         godineProsjek.sort(function(a,b){
             return parseInt(b.prosjek)  - parseInt(a.prosjek);
         })
-        console.log(godineProsjek[0].godina);
         return (
             <View style={styles.MainContainer}>
-                <Text style={{ fontSize: 18,  fontWeight: 'bold' }}> Projeci po godinama sortirani</Text>
+                <Text style={{ fontSize: 18,  fontWeight: 'bold' }}> Projeci po godinama sortirani{"\n"} </Text>
                 <FlatList
                     data = {[
                         {key:godineProsjek[0].godina, value:godineProsjek[0].prosjek},
