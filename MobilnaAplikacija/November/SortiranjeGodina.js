@@ -113,7 +113,7 @@ export default class SortiranjeGodina extends Component {
                         ]}
                         renderItem={({item}) => (
                             <Text style={styles.item}>
-                                {item.key} {item.value}
+                                {item.key}: {item.value}
                             </Text>
                         )}                     
                     />
@@ -189,7 +189,8 @@ const getSemester = [
 const styles = StyleSheet.create({
     MainContainer: {
         flex: 1,
-        paddingTop: 15
+        paddingTop: 15,
+        padding: 20
     },
     item: {
         padding: 5,
