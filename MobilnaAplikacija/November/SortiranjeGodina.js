@@ -113,8 +113,12 @@ export default class SortiranjeGodina extends Component {
             }
             
         ];
+        var semestriProsjekNesortirano=Object.assign({}, godineProsjek);
 
         godineProsjek.sort(function(a,b){
+            return parseFloat(b.prosjek)  - parseFloat(a.prosjek);
+        })
+        semestriProsjek.sort(function(a,b){
             return parseFloat(b.prosjek)  - parseFloat(a.prosjek);
         })
         
