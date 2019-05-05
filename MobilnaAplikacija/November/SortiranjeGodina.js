@@ -99,7 +99,7 @@ export default class SortiranjeGodina extends Component {
         ];
 
         godineProsjek.sort(function(a,b){
-            return parseInt(b.prosjek)  - parseInt(a.prosjek);
+            return parseFloat(b.prosjek)  - parseFloat(a.prosjek);
         })
         return (
             <ScrollView style={styles.MainContainer}>  
