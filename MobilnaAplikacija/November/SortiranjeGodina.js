@@ -183,7 +183,13 @@ export default class SortiranjeGodina extends Component {
                 {this.state.nesortiraniSemestri == '1' ? prosjeciPoSemestruNesort : prosjeciPoSemestruSort}
                 </View>
                 <View>
-                     <TouchableOpacity onPress={()=>this.promjenaSemestara('2')} style = {styles.button} >
+                     <TouchableOpacity 
+                     onPress={()=>{
+                        if(this.state.nesortiraniSemestri=='1')
+                        this.promjenaSemestara('2')
+                        else
+                        this.promjenaSemestara('1')}} 
+                     style = {styles.button} >
                         <Text>
                         {this.state.tekstButtonaSortSemestre}
                         </Text>
