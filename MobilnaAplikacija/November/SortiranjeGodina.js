@@ -85,6 +85,7 @@ export default class SortiranjeGodina extends Component {
         var treciSemestar = this.racunanjeProsjeka(this.state.druga.slice(0, this.state.druga.length/2));
         var cetvrtiSemestar = this.racunanjeProsjeka(this.state.druga.slice(this.state.druga.length/2, this.state.druga.length));
         var petiSemestar = this.racunanjeProsjeka(this.state.treca.slice(0, this.state.treca.length/2));
+       
         var semestriProsjek = [
             {
                 id: 1,
@@ -113,7 +114,34 @@ export default class SortiranjeGodina extends Component {
             }
             
         ];
-        var semestriProsjekNesortirano=Object.assign({}, godineProsjek);
+        var semestriProsjekNesortirano = [
+            {
+                id: 1,
+                title: ' 1. semestar: ',
+                prosjek: prviSemestar
+            },
+            {
+                id: 2,
+                title: ' 2. semestar: ',
+                prosjek: drugiSemestar
+            },
+            {
+                id: 3,
+                title: ' 3. semestar: ',
+                prosjek: treciSemestar
+            },
+            {
+                id: 4,
+                title: ' 4. semestar: ',
+                prosjek: cetvrtiSemestar
+            },
+            {
+                id: 5,
+                title: ' 5. semestar: ',
+                prosjek: petiSemestar
+            }
+            
+        ];
 
         godineProsjek.sort(function(a,b){
             return parseFloat(b.prosjek)  - parseFloat(a.prosjek);
@@ -121,7 +149,6 @@ export default class SortiranjeGodina extends Component {
         semestriProsjek.sort(function(a,b){
             return parseFloat(b.prosjek)  - parseFloat(a.prosjek);
         })
-        
         prosjeciPoSemestruSort = (
             <View>
             <Text style={{ fontSize: 18,  fontWeight: 'bold', marginTop: 10 }}> Prosjeci po semestrima sortirani{"\n"}</Text>
@@ -135,14 +162,14 @@ export default class SortiranjeGodina extends Component {
                 )}                     
             />
             </View>
-            
         )
         
         prosjeciPoSemestruNesort = (
+            
             <View>
             <Text style={{ fontSize: 18,  fontWeight: 'bold', marginTop: 10 }}> Prosjeci po semestrima{"\n"}</Text>
             <FlatList
-                data={semestriProsjek}
+            data={semestriProsjekNesortirano}
                 keyExtractor={item => item.id.toString()}
                 renderItem={({item}) => (
                     <Text style={styles.item}>
