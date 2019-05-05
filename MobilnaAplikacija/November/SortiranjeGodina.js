@@ -25,7 +25,8 @@ export default class SortiranjeGodina extends Component {
             druga: [6, 7, 8, 8, 7, 9, 7, 8, 8, 7, 7, 9],
             treca: [10, 9, 9, 8, 7, 7, 9, 8, 7, 6],
             godine:[],
-            semestri: []
+            semestri: [],
+            nesortiraniSemestri: 1
         }
     }
 
@@ -44,7 +45,9 @@ export default class SortiranjeGodina extends Component {
             semestri: getSemester
         });
     }
-
+    promjenaSemestara = (data) => {
+        this.setState({ nesortiraniSemestri: data });
+    }
     render() {
         var prosjekPrve = this.racunanjeProsjeka(this.state.prva);
         var prosjekDruge = this.racunanjeProsjeka(this.state.druga);
@@ -102,6 +105,38 @@ export default class SortiranjeGodina extends Component {
         godineProsjek.sort(function(a,b){
             return parseFloat(b.prosjek)  - parseFloat(a.prosjek);
         })
+        
+        prosjeciPoSemestruSort = (
+            <View>
+            <Text style={{ fontSize: 18,  fontWeight: 'bold', marginTop: 10 }}> Prosjeci po semestrima sortirani{"\n"}</Text>
+            <FlatList
+                data={semestriProsjek}
+                keyExtractor={item => item.id.toString()}
+                renderItem={({item}) => (
+                    <Text style={styles.item}>
+                        {item.title} {item.prosjek}
+                    </Text>
+                )}                     
+            />
+            </View>
+            
+        )
+        
+        prosjeciPoSemestruNesort = (
+            <View>
+            <Text style={{ fontSize: 18,  fontWeight: 'bold', marginTop: 10 }}> Prosjeci po semestrima{"\n"}</Text>
+            <FlatList
+                data={semestriProsjek}
+                keyExtractor={item => item.id.toString()}
+                renderItem={({item}) => (
+                    <Text style={styles.item}>
+                        {item.title} {item.prosjek}
+                    </Text>
+                )}                    
+            />
+            </View>
+            
+        )
         return (
             <ScrollView style={styles.MainContainer}>  
                 <View>
@@ -133,17 +168,10 @@ export default class SortiranjeGodina extends Component {
                     />
                 </View>
                 <View>
-                    <Text style={{ fontSize: 18,  fontWeight: 'bold', marginTop: 10 }}> Prosjeci po semestrima{"\n"}</Text>
-                    <FlatList
-                        data={semestriProsjek}
-                        keyExtractor={item => item.id.toString()}
-                        renderItem={({item}) => (
-                            <Text style={styles.item}>
-                                {item.title} {item.prosjek}
-                            </Text>
-                        )}                     
-                    />
-                    <TouchableOpacity style = {styles.button} >
+                {this.state.nesortiraniSemestri == '1' ? prosjeciPoSemestruNesort : prosjeciPoSemestruSort}
+                </View>
+                <View>
+                     <TouchableOpacity onPress={()=>this.promjenaSemestara('2')} style = {styles.button} >
                         <Text>
                         Sortiraj semestre po prosjeku
                         </Text>
