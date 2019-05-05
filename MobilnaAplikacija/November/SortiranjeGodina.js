@@ -26,7 +26,8 @@ export default class SortiranjeGodina extends Component {
             treca: [10, 9, 9, 8, 7, 7, 9, 8, 7, 6],
             godine:[],
             semestri: [],
-            nesortiraniSemestri: 1
+            nesortiraniSemestri: 1,
+            tekstButtonaSortSemestre: "Prikaži semestre sortirano po prosjeku"
         }
     }
 
@@ -173,7 +174,7 @@ export default class SortiranjeGodina extends Component {
                 <View>
                      <TouchableOpacity onPress={()=>this.promjenaSemestara('2')} style = {styles.button} >
                         <Text>
-                        Sortiraj semestre po prosjeku
+                        {this.state.tekstButtonaSortSemestre}
                         </Text>
                     </TouchableOpacity> 
                 </View>
