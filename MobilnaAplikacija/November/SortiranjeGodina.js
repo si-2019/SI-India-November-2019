@@ -4,7 +4,8 @@ import {
     Text,
     View,
     FlatList,
-    ScrollView
+    ScrollView,
+    TouchableOpacity
 } from 'react-native';
 // import axios from 'axios';
 
@@ -142,6 +143,11 @@ export default class SortiranjeGodina extends Component {
                             </Text>
                         )}                     
                     />
+                    <TouchableOpacity >
+                        <Text>
+                        Sortiraj semestre po prosjeku
+                        </Text>
+                    </TouchableOpacity> 
                 </View>
                 
             </ScrollView>
@@ -196,5 +202,16 @@ const styles = StyleSheet.create({
         padding: 5,
         fontSize: 16,
         height: 32,
+    },
+    button: {
+        backgroundColor: 'lightgrey', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        borderRadius: 10,
+        padding: 12,
+        marginTop: 10,
+        marginLeft: '5%',
+        marginRight: '5%',
+        marginBottom: 20
     }
 });
