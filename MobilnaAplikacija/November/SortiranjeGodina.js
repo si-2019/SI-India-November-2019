@@ -4,6 +4,7 @@ import {
     Text,
     View,
     FlatList,
+    ScrollView
 } from 'react-native';
 // import axios from 'axios';
 
@@ -61,6 +62,8 @@ export default class SortiranjeGodina extends Component {
                 prosjek : prosjekTrece
             },
         ];
+        var godineProsjekNesortirano=Object.assign({}, godineProsjek); //Dodajemo vrijednost objekta, ne referencu
+
         var prviSemestar = this.racunanjeProsjeka(this.state.prva.slice(0, this.state.prva.length/2));
         var drugiSemestar = this.racunanjeProsjeka(this.state.prva.slice(this.state.prva.length/2, this.state.prva.length));
         var treciSemestar = this.racunanjeProsjeka(this.state.druga.slice(0, this.state.druga.length/2));
@@ -92,15 +95,31 @@ export default class SortiranjeGodina extends Component {
                 title: ' 5. semestar: ',
                 prosjek: petiSemestar
             }
+            
         ];
 
         godineProsjek.sort(function(a,b){
-            return parseInt(b.prosjek)  - parseInt(a.prosjek);
+            return parseFloat(b.prosjek)  - parseFloat(a.prosjek);
         })
         return (
-            <View style={styles.MainContainer}>
+            <ScrollView style={styles.MainContainer}>  
                 <View>
-                    <Text style={{ fontSize: 18,  fontWeight: 'bold' }}> Prosjeci po godinama sortirani{"\n"} </Text>
+                    <Text style={{ fontSize: 18,  fontWeight: 'bold'}}> Prosjeci po godinama{"\n"}</Text>
+                    <FlatList
+                        data = {[
+                            {key:godineProsjekNesortirano[0].godina, value:godineProsjekNesortirano[0].prosjek},
+                            {key:godineProsjekNesortirano[1].godina, value:godineProsjekNesortirano[1].prosjek},
+                            {key:godineProsjekNesortirano[2].godina, value:godineProsjekNesortirano[2].prosjek}
+                        ]}
+                        renderItem={({item}) => (
+                            <Text style={styles.item}>
+                                {item.key}: {item.value}
+                            </Text>
+                        )}                     
+                    />
+                </View>
+                <View>
+                    <Text style={{ fontSize: 18,  fontWeight: 'bold', marginTop: 10}}> Prosjeci po godinama sortirani{"\n"} </Text>
                     <FlatList
                         data = {[
                             {key:godineProsjek[0].godina, value:godineProsjek[0].prosjek},
@@ -124,7 +143,8 @@ export default class SortiranjeGodina extends Component {
                         )}                     
                     />
                 </View>
-            </View>
+                
+            </ScrollView>
         );
     }
 }
@@ -169,7 +189,8 @@ const getSemester = [
 const styles = StyleSheet.create({
     MainContainer: {
         flex: 1,
-        paddingTop: 15
+        paddingTop: 15,
+        padding: 20
     },
     item: {
         padding: 5,
