@@ -143,7 +143,7 @@ export default class SortiranjeGodina extends Component {
                             </Text>
                         )}                     
                     />
-                    <TouchableOpacity >
+                    <TouchableOpacity style = {styles.button} >
                         <Text>
                         Sortiraj semestre po prosjeku
                         </Text>
