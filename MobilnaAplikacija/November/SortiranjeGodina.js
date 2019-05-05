@@ -47,7 +47,18 @@ export default class SortiranjeGodina extends Component {
         });
     }
     promjenaSemestara = (data) => {
-        this.setState({ nesortiraniSemestri: data });
+        if(data=='1') {
+        this.setState({ 
+            nesortiraniSemestri: data,
+            tekstButtonaSortSemestre: "Prikaži semestre sortirano po prosjeku"
+         });
+        }
+        else  {
+        this.setState({ 
+            nesortiraniSemestri: data,
+            tekstButtonaSortSemestre: "Prikaži semestre redom"
+            });
+        }
     }
     render() {
         var prosjekPrve = this.racunanjeProsjeka(this.state.prva);
