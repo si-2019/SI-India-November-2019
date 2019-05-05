@@ -14,7 +14,8 @@ import Screen4 from './India/Ispiti';
 import Screen5 from './India/Potvrde';
 import Screen6 from './India/Raspored';
 import Screen7 from  './November/login';
-import Screen8 from  './November/SortiranjeGodina'
+import Screen8 from  './November/SortiranjeGodina';
+import Predmet from './November/Predmet';
 /*
 export default class App extends React.Component {
   render() {
@@ -65,6 +66,9 @@ const FirstActivity_StackNavigator = createStackNavigator({
       headerTintColor: '#fff',
     }),
   },
+  Predmet: {
+    screen: Predmet
+  }
 });
 
 
@@ -156,7 +160,6 @@ const Screen8_StackNavigator = createStackNavigator({
     }),
   },
 });
-
 
 const DrawerNavigatorExample = createDrawerNavigator({
   //Drawer Optons and indexing

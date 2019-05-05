@@ -26,7 +26,6 @@ export class SubjectsList extends React.Component {
             subjects: getSubjects
         });
     }
-    
     render() {
         return (
             <View>
@@ -34,8 +33,8 @@ export class SubjectsList extends React.Component {
                     data={this.state.subjects}
                     keyExtractor={item => item.id.toString()}
                     renderItem={({item}) => (
-                        <TouchableOpacity>
-                            <Text style={styles.item}>
+                        <TouchableOpacity >
+                            <Text style={styles.item} onPress={()=>this.props.navigation.navigate("Predmet",item)}>
                                 {item.title}
                             </Text>
                         </TouchableOpacity>
@@ -60,23 +59,38 @@ export class SubjectsList extends React.Component {
 const getSubjects = [
     {
         id: 1,
-        title: "Organizacija softverskog projekta"
+        title: "Organizacija softverskog projekta",
+        profesor:"Profesor OSP",
+        ECTS:"4",
+        asistenti:"Asistent"
     },
     {
         id: 2,
-        title: "Projektovanje informacionih sistema"
+        title: "Projektovanje informacionih sistema",
+        profesor:"Profesor PIS",
+        ECTS:"4",
+        asistenti:"Asistent"
     },
     {
         id: 3,
-        title: "Softver inženjering"
+        title: "Softver inženjering",
+        profesor:"Profesor SI",
+        ECTS:"4",
+        asistenti:"Asistent"
     },
     {
         id: 4,
-        title: "Vještačka inteligencija"
+        title: "Vještačka inteligencija",
+        profesor:"Profesor VI",
+        ECTS:"4",
+        asistenti:"Asistent"
     },
     {
         id:5,
-        title: "Završni rad"
+        title: "Završni rad",
+        profesor:"Profesor ZR",
+        ECTS:"4",
+        asistenti:"Asistent"
     }
 ]
 

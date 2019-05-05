@@ -9,7 +9,7 @@ export default class Dashboard extends Component {
     return (
       <View style={styles.MainContainer}>
          <View style={styles.subjectsContainer}>
-           <SubjectsList />
+           <SubjectsList navigation={this.props.navigation}/>
          </View>
          <Divider style={styles.divider} />
          <View style={styles.notificationsContainer}>
