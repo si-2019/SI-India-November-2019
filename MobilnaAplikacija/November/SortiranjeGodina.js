@@ -60,6 +60,8 @@ export default class SortiranjeGodina extends Component {
             });
         }
     }
+
+
     render() {
         var prosjekPrve = this.racunanjeProsjeka(this.state.prva);
         var prosjekDruge = this.racunanjeProsjeka(this.state.druga);
@@ -150,8 +152,8 @@ export default class SortiranjeGodina extends Component {
             return parseFloat(b.prosjek)  - parseFloat(a.prosjek);
         })
         prosjeciPoSemestruSort = (
-            <View>
-            <Text style={{ fontSize: 18,  fontWeight: 'bold', marginTop: 10 }}> Prosjeci po semestrima sortirani{"\n"}</Text>
+            <View testID="semestri">
+            <Text style={{ fontSize: 18,  fontWeight: 'bold'}}> Prosjeci po semestrima sortirani{"\n"}</Text>
             <FlatList
                 data={semestriProsjek}
                 keyExtractor={item => item.id.toString()}
@@ -167,7 +169,7 @@ export default class SortiranjeGodina extends Component {
         prosjeciPoSemestruNesort = (
             
             <View>
-            <Text style={{ fontSize: 18,  fontWeight: 'bold', marginTop: 10 }}> Prosjeci po semestrima{"\n"}</Text>
+            <Text style={{ fontSize: 18,  fontWeight: 'bold'}}> Prosjeci po semestrima{"\n"}</Text>
             <FlatList
             data={semestriProsjekNesortirano}
                 keyExtractor={item => item.id.toString()}
@@ -181,8 +183,8 @@ export default class SortiranjeGodina extends Component {
             
         )
         return (
-            <ScrollView style={styles.MainContainer}>  
-                <View>
+            <View style={styles.MainContainer}>  
+                <View testID="godine">
                     <Text style={{ fontSize: 18,  fontWeight: 'bold'}}> Prosjeci po godinama{"\n"}</Text>
                     <FlatList
                         data = {[
@@ -197,20 +199,32 @@ export default class SortiranjeGodina extends Component {
                         )}                     
                     />
                 </View>
+                <View
+                    style={{
+                        borderBottomColor: 'black',
+                        borderBottomWidth: 1,
+                    }}
+                    />
                 <View>
-                    <Text style={{ fontSize: 18,  fontWeight: 'bold', marginTop: 10}}> Prosjeci po godinama sortirani{"\n"} </Text>
+                    <Text style={{ fontSize: 18,  fontWeight: 'bold'}}> Prosjeci po godinama sortirani{"\n"} </Text>
                     <FlatList
                         data = {[
                             {key:godineProsjek[0].godina, value:godineProsjek[0].prosjek},
                             {key:godineProsjek[1].godina, value:godineProsjek[1].prosjek},
                             {key:godineProsjek[2].godina, value:godineProsjek[2].prosjek}
                         ]}
-                        renderItem={({item}) => <Text style={styles.item}>{item.key} : {item.value}</Text>}
-                        renderItem={({item}) => <Text style={styles.item}>{item.key} : {item.value}</Text>}
-                        renderItem={({item}) => <Text style={styles.item}>{item.key} : {item.value}</Text>}
+                        renderItem={({item}) => <Text style={styles.item}>{item.key}: {item.value}</Text>}
+                        renderItem={({item}) => <Text style={styles.item}>{item.key}: {item.value}</Text>}
+                        renderItem={({item}) => <Text style={styles.item}>{item.key}: {item.value}</Text>}
                     />
                 </View>
-                <View>
+                <View testID="semestri">
+                <View
+                    style={{
+                        borderBottomColor: 'black',
+                        borderBottomWidth: 1,
+                    }}
+                    />
                 {this.state.nesortiraniSemestri == '1' ? prosjeciPoSemestruNesort : prosjeciPoSemestruSort}
                 </View>
                 <View>
@@ -226,8 +240,7 @@ export default class SortiranjeGodina extends Component {
                         </Text>
                     </TouchableOpacity> 
                 </View>
-                
-            </ScrollView>
+            </View>
         );
     }
 }
@@ -276,19 +289,17 @@ const styles = StyleSheet.create({
         padding: 20
     },
     item: {
-        padding: 5,
-        fontSize: 16,
-        height: 32,
+        padding: 3,
+        fontSize: 14,
+        height: 25,
     },
     button: {
         backgroundColor: 'lightgrey', 
         alignItems: 'center', 
         justifyContent: 'center', 
         borderRadius: 10,
-        padding: 12,
-        marginTop: 10,
-        marginLeft: '5%',
-        marginRight: '5%',
-        marginBottom: 20
+        padding: 8,
+        marginTop: 6,
+        marginBottom: 10
     }
 });
