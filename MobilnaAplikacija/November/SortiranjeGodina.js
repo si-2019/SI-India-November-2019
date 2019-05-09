@@ -4,7 +4,8 @@ import {
     Text,
     View,
     FlatList,
-    ScrollView
+    ScrollView,
+    TouchableOpacity
 } from 'react-native';
 // import axios from 'axios';
 
@@ -24,7 +25,9 @@ export default class SortiranjeGodina extends Component {
             druga: [6, 7, 8, 8, 7, 9, 7, 8, 8, 7, 7, 9],
             treca: [10, 9, 9, 8, 7, 7, 9, 8, 7, 6],
             godine:[],
-            semestri: []
+            semestri: [],
+            nesortiraniSemestri: 1,
+            tekstButtonaSortSemestre: "Prikaži semestre sortirano po prosjeku"
         }
     }
 
@@ -43,6 +46,21 @@ export default class SortiranjeGodina extends Component {
             semestri: getSemester
         });
     }
+    promjenaSemestara = (data) => {
+        if(data=='1') {
+        this.setState({ 
+            nesortiraniSemestri: data,
+            tekstButtonaSortSemestre: "Prikaži semestre sortirano po prosjeku"
+         });
+        }
+        else  {
+        this.setState({ 
+            nesortiraniSemestri: data,
+            tekstButtonaSortSemestre: "Prikaži semestre redom"
+            });
+        }
+    }
+
 
     render() {
         var prosjekPrve = this.racunanjeProsjeka(this.state.prva);
@@ -69,7 +87,36 @@ export default class SortiranjeGodina extends Component {
         var treciSemestar = this.racunanjeProsjeka(this.state.druga.slice(0, this.state.druga.length/2));
         var cetvrtiSemestar = this.racunanjeProsjeka(this.state.druga.slice(this.state.druga.length/2, this.state.druga.length));
         var petiSemestar = this.racunanjeProsjeka(this.state.treca.slice(0, this.state.treca.length/2));
+       
         var semestriProsjek = [
+            {
+                id: 1,
+                title: ' 1. semestar: ',
+                prosjek: prviSemestar
+            },
+            {
+                id: 2,
+                title: ' 2. semestar: ',
+                prosjek: drugiSemestar
+            },
+            {
+                id: 3,
+                title: ' 3. semestar: ',
+                prosjek: treciSemestar
+            },
+            {
+                id: 4,
+                title: ' 4. semestar: ',
+                prosjek: cetvrtiSemestar
+            },
+            {
+                id: 5,
+                title: ' 5. semestar: ',
+                prosjek: petiSemestar
+            }
+            
+        ];
+        var semestriProsjekNesortirano = [
             {
                 id: 1,
                 title: ' 1. semestar: ',
@@ -101,9 +148,43 @@ export default class SortiranjeGodina extends Component {
         godineProsjek.sort(function(a,b){
             return parseFloat(b.prosjek)  - parseFloat(a.prosjek);
         })
+        semestriProsjek.sort(function(a,b){
+            return parseFloat(b.prosjek)  - parseFloat(a.prosjek);
+        })
+        prosjeciPoSemestruSort = (
+            <View testID="semestri">
+            <Text style={{ fontSize: 18,  fontWeight: 'bold'}}> Prosjeci po semestrima sortirani{"\n"}</Text>
+            <FlatList
+                data={semestriProsjek}
+                keyExtractor={item => item.id.toString()}
+                renderItem={({item}) => (
+                    <Text style={styles.item}>
+                        {item.title} {item.prosjek}
+                    </Text>
+                )}                     
+            />
+            </View>
+        )
+        
+        prosjeciPoSemestruNesort = (
+            
+            <View>
+            <Text style={{ fontSize: 18,  fontWeight: 'bold'}}> Prosjeci po semestrima{"\n"}</Text>
+            <FlatList
+            data={semestriProsjekNesortirano}
+                keyExtractor={item => item.id.toString()}
+                renderItem={({item}) => (
+                    <Text style={styles.item}>
+                        {item.title} {item.prosjek}
+                    </Text>
+                )}                    
+            />
+            </View>
+            
+        )
         return (
-            <ScrollView style={styles.MainContainer}>  
-                <View>
+            <View style={styles.MainContainer}>  
+                <View testID="godine">
                     <Text style={{ fontSize: 18,  fontWeight: 'bold'}}> Prosjeci po godinama{"\n"}</Text>
                     <FlatList
                         data = {[
@@ -118,33 +199,48 @@ export default class SortiranjeGodina extends Component {
                         )}                     
                     />
                 </View>
+                <View
+                    style={{
+                        borderBottomColor: 'black',
+                        borderBottomWidth: 1,
+                    }}
+                    />
                 <View>
-                    <Text style={{ fontSize: 18,  fontWeight: 'bold', marginTop: 10}}> Prosjeci po godinama sortirani{"\n"} </Text>
+                    <Text style={{ fontSize: 18,  fontWeight: 'bold'}}> Prosjeci po godinama sortirani{"\n"} </Text>
                     <FlatList
                         data = {[
                             {key:godineProsjek[0].godina, value:godineProsjek[0].prosjek},
                             {key:godineProsjek[1].godina, value:godineProsjek[1].prosjek},
                             {key:godineProsjek[2].godina, value:godineProsjek[2].prosjek}
                         ]}
-                        renderItem={({item}) => <Text style={styles.item}>{item.key} : {item.value}</Text>}
-                        renderItem={({item}) => <Text style={styles.item}>{item.key} : {item.value}</Text>}
-                        renderItem={({item}) => <Text style={styles.item}>{item.key} : {item.value}</Text>}
+                        renderItem={({item}) => <Text style={styles.item}>{item.key}: {item.value}</Text>}
+                        renderItem={({item}) => <Text style={styles.item}>{item.key}: {item.value}</Text>}
+                        renderItem={({item}) => <Text style={styles.item}>{item.key}: {item.value}</Text>}
                     />
+                </View>
+                <View testID="semestri">
+                <View
+                    style={{
+                        borderBottomColor: 'black',
+                        borderBottomWidth: 1,
+                    }}
+                    />
+                {this.state.nesortiraniSemestri == '1' ? prosjeciPoSemestruNesort : prosjeciPoSemestruSort}
                 </View>
                 <View>
-                    <Text style={{ fontSize: 18,  fontWeight: 'bold', marginTop: 10 }}> Prosjeci po semestrima{"\n"}</Text>
-                    <FlatList
-                        data={semestriProsjek}
-                        keyExtractor={item => item.id.toString()}
-                        renderItem={({item}) => (
-                            <Text style={styles.item}>
-                                {item.title} {item.prosjek}
-                            </Text>
-                        )}                     
-                    />
+                     <TouchableOpacity 
+                     onPress={()=>{
+                        if(this.state.nesortiraniSemestri=='1')
+                        this.promjenaSemestara('2')
+                        else
+                        this.promjenaSemestara('1')}} 
+                     style = {styles.button} >
+                        <Text>
+                        {this.state.tekstButtonaSortSemestre}
+                        </Text>
+                    </TouchableOpacity> 
                 </View>
-                
-            </ScrollView>
+            </View>
         );
     }
 }
@@ -193,8 +289,17 @@ const styles = StyleSheet.create({
         padding: 20
     },
     item: {
-        padding: 5,
-        fontSize: 16,
-        height: 32,
+        padding: 3,
+        fontSize: 14,
+        height: 25,
+    },
+    button: {
+        backgroundColor: 'lightgrey', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        borderRadius: 10,
+        padding: 8,
+        marginTop: 6,
+        marginBottom: 10
     }
 });
