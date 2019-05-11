@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, Alert, StyleSheet, Text, View, Picker } from 'react-native';
+import { Button, Alert, StyleSheet, Text, View, ScrollView, Picker } from 'react-native';
 import RF from "react-native-responsive-fontsize"
-
+import Naslov from './naslov'
+import Zahtjev from './prikazPotvrda'
 
 class Potvrde extends React.Component {
 
@@ -12,7 +13,8 @@ class Potvrde extends React.Component {
       pickerSelection: 0,
       svrha: 0
     }
-  }
+  } 
+
   handleClick(tip,svrha) {
     Alert.alert(
       'Odabrani zahtjev',
@@ -28,6 +30,7 @@ class Potvrde extends React.Component {
       {cancelable: false},
     );
   }
+
   render() {
     const lista = [{ label: "Potvrda o redovnom studiju", value: "potvrda" },
     { label: "Uvjerenje o položenim ispitima", value: "uvjerenje" }];
@@ -55,8 +58,10 @@ class Potvrde extends React.Component {
       kraj_rec = <Text>Nemate više besplatnih potvrda!</Text>
     }
     return (
-      <View>
+      <ScrollView> 
         <Text style={{ fontSize: RF(3.5), margin: 70, alignSelf: 'center' }}>Zahtjev za izdavanje ovjerenog uvjerenja</Text>
+        <Naslov/>
+        <Zahtjev/>
         <Text style={{ fontSize: RF(2.5), alignSelf: 'center' }}>Izaberite tip potvrde: </Text>
         <Picker
           selectedValue={lista[this.state.pickerSelection].value}
@@ -95,17 +100,9 @@ class Potvrde extends React.Component {
           title="Pošalji zahtjev"
           accessibilityLabel="Pošalji zahtjev studentskoj službi"
         />
-      </View>
+      </ScrollView>
     );
   }
 }
 export default Potvrde;
-/* const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-*/
+
