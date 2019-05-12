@@ -75,6 +75,12 @@ const getSubjects = [
       { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 13 },
       { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 15 },
       { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 13 }
+    ],
+    zadace: [
+      { naziv: "Zadaća 1", bodovi: 3 },
+      { naziv: "Zadaća 2", bodovi: 4 },
+      { naziv: "Zadaća 3",bodovi: 2 },
+      { naziv : "Zadaća 4", bodovi : 5}
     ]
   },
   {
@@ -87,6 +93,11 @@ const getSubjects = [
       { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 13 },
       { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 15 },
       { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 13 }
+    ],
+    zadace: [
+      { naziv: "Zadaća 1", bodovi: 5 },
+      { naziv: "Zadaća 2", bodovi: 4 },
+      { naziv: "Zadaća 3",bodovi: 3 }
     ]
   },
   {
@@ -99,6 +110,12 @@ const getSubjects = [
       { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 13 },
       { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 15 },
       { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 13 }
+    ],
+    zadace: [
+      { naziv: "Zadaća 1", bodovi: 5 },
+      { naziv: "Zadaća 2", bodovi: 8 },
+      { naziv: "Zadaća 3",bodovi: 10 },
+      { naziv : "Zadaća 4", bodovi : 10}
     ]
   },
   {
@@ -111,6 +128,14 @@ const getSubjects = [
       { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 13 },
       { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 15 },
       { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 13 }
+    ],
+    zadace: [
+      { naziv: "Zadaća 1", bodovi: 1 },
+      { naziv: "Zadaća 2", bodovi: 2 },
+      { naziv: "Zadaća 3",bodovi: 2 },
+      { naziv : "Zadaća 4", bodovi : 1},
+      { naziv: "Zadaća 5",bodovi: 2 },
+      { naziv : "Zadaća 6", bodovi : 2}
     ]
   },
   {
@@ -123,6 +148,9 @@ const getSubjects = [
       { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 13 },
       { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 15 },
       { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 13 }
+    ],
+    zadace: [
+      { naziv: "Zadaća 1", bodovi: 40 }
     ]
   }
 ];
