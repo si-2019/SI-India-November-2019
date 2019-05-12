@@ -16,7 +16,7 @@ export default class Dashboard extends Component {
              <Obavijesti id={1}/>
          </View>
           <View>
-              <TouchableOpacity activeOpacity = { .5 } onPress={ ()=>{ Linking.openURL('')}}>
+              <TouchableOpacity activeOpacity = { .5 } onPress={ ()=>{ Linking.openURL('https://e5.onthehub.com/WebStore/Security/Signin.aspx?ws=f7e15a22-e060-e211-a88c-f04da23e67f4')}}>
                   <Image source={require('../assets/DreamSpark.png')} style = {styles.DreamSpark} />
               </TouchableOpacity>
           </View>
