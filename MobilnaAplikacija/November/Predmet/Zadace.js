@@ -4,7 +4,7 @@ import Zadaca from "./Zadaca";
 const Zadace = (props) => {
     return (
         <View>
-            <Text>Zadaće: </Text>
+            <Text style={{fontWeight: 'bold'}}>Zadaće: </Text>
             {props.zadace.map((zadaca, index) => {
                 return <Zadaca key={index} zadaca={zadaca} />;
             })}
