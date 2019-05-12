@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity, Linking } from 'react-native';
 import { SubjectsList } from './SubjectsList';
 import { Divider } from 'react-native-elements';
 import Obavijesti from './NewsFeed/Obavijesti';
