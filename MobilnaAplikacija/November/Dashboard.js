@@ -42,5 +42,9 @@ const styles = StyleSheet.create({
     marginTop: 30,
     // backgroundColor: 'powderblue',
     //justifyContent: 'center'
-  }
+  },
+    DreamSpark: {
+        marginTop:189, marginRight:350,
+        width: 55, height: 55
+    }
 });
