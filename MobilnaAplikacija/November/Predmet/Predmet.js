@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import {View,Text,StyleSheet} from 'react-native';
-
+import Ispit from "./Ispit";
 export default class Predmet extends Component {
   render() {
       console.log(this.props);
-    const {title, profesor, ECTS, asistenti}=this.props.navigation.state.params;
+    const {title, profesor, ECTS, asistenti,ispiti}=this.props.navigation.state.params;
 
     return (
     <View>
