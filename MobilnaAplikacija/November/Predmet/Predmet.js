@@ -6,7 +6,7 @@ export default class Predmet extends Component {
   render() {
  //     console.log(this.props);
     const {title, profesor, ECTS, asistenti,ispiti, zadace}=this.props.navigation.state.params;
-    console.log(ispiti);
+   // console.log(ispiti);
     return (
     <View>
       <Text style={style.text}>Naziv predmeta: {title}</Text>
