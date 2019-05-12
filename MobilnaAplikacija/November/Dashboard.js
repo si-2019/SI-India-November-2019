@@ -15,6 +15,11 @@ export default class Dashboard extends Component {
          <View style={styles.notificationsContainer}>
              <Obavijesti id={1}/>
          </View>
+          <View>
+              <TouchableOpacity activeOpacity = { .5 } onPress={ ()=>{ Linking.openURL('')}}>
+                  <Image source={require('../assets/DreamSpark.png')} style = {styles.DreamSpark} />
+              </TouchableOpacity>
+          </View>
       </View>
     );
   }
