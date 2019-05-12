@@ -15,7 +15,7 @@ import Screen5 from './India/Potvrde';
 import Screen6 from './India/Raspored';
 import Screen7 from  './November/login';
 import Screen8 from  './November/SortiranjeGodina';
-import Predmet from './November/Predmet';
+import Predmet from './November/Predmet/Predmet';
 /*
 export default class App extends React.Component {
   render() {

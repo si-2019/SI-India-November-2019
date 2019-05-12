@@ -1,26 +1,32 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, Button, Alert} from 'react-native';
 
-const data=[
-    {key: 'Potvrda o regulisanju stipendije', value: '25.01.2019'}, {key: 'Potvrda o regulisanju zdravstvenog osiguranja', value:'02.02.2019.'}
-];
 //const data =  [ { key: 'Probni', value: 'Vrijednost'}];
 const extractKey = ({key}) => key
 
 class Zahtjev extends React.Component {
-    
+    state = {
+        data: [
+            {key: 'Potvrda o regulisanju stipendije', value: '25.01.2019'}, {key: 'Potvrda o regulisanju zdravstvenog osiguranja', value:'02.02.2019.'}
+        ],
+    }
     ponistiZahtjev(zahtjev) {
         Alert.alert(
             'Da li ste sigurni da želite poništiti zahtjev za potvrdu',
             zahtjev,
             [
-                {text: 'Poništi', onPress: () => console.log('Poništio')},
+                {text: 'Poništi', onPress: () => this.deleteItemByKey(zahtjev)},
                 {text: 'Odustani', onPress: () => console.log('Odustao'), style: 'cancel'},
             ],
               {cancelable: false}
-          );
+        );
     }
-
+    deleteItemByKey = key => {
+        const filteredData = this.state.data.filter(item => item.key !== key);
+        this.setState({ data: filteredData });
+        console.log(this.state.data);
+    }
+    
     renderItem=({item}) => {
         //console.log("TU SAM");
         return(
@@ -41,7 +47,7 @@ class Zahtjev extends React.Component {
         
         return (
             <View>
-                <FlatList data={data}  renderItem={this.renderItem} keyExtractor={extractKey} /> 
+                <FlatList data={this.state.data} extraData={this.state} renderItem={this.renderItem} keyExtractor={extractKey} /> 
             </View>
         );
     }
