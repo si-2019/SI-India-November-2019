@@ -5,7 +5,7 @@ const Zadaca = (props) => {
     console.log(props.zadaca);
     const {naziv,bodovi}=props.zadaca;
     return (
-        <Text>{naziv}:{bodovi} bodova</Text>
+        <Text>{naziv} : {bodovi} bodova</Text>
     )
 }
 
