@@ -12,6 +12,12 @@ export default class Predmet extends Component {
       <Text style={style.text}>Ime profesora: {profesor}</Text>
       <Text style={style.text}>Broj ECTS bodova: {ECTS}</Text>
       <Text style={style.text}>Asistenti: {asistenti} </Text>
+      <View>
+        <Text>Ispiti: </Text>
+        {ispiti.map((ispit,index)=>{
+          return <Ispit key={index} ispit={ispit}/>
+        })}
+      </View>
     </View>
     )
   }
