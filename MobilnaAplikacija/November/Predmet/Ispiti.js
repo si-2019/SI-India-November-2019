@@ -4,7 +4,7 @@ import Ispit from "./Ispit";
 const Ispiti = (props) => {
   return (
     <View>
-      <Text>Ispiti: </Text>
+      <Text style={{fontWeight: 'bold'}}>Ispiti: </Text>
       {props.ispiti.map((ispit, index) => {
         return <Ispit key={index} ispit={ispit} />;
       })}
