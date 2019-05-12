@@ -15,7 +15,7 @@ export default class Dashboard extends Component {
          <View style={styles.notificationsContainer}>
              <Obavijesti id={1}/>
          </View>
-          <View>
+          <View style={styles.Down}>
               <TouchableOpacity activeOpacity = { .5 } onPress={ ()=>{ Linking.openURL('https://e5.onthehub.com/WebStore/Security/Signin.aspx?ws=f7e15a22-e060-e211-a88c-f04da23e67f4')}}>
                   <Image source={require('../assets/DreamSpark.png')} style = {styles.DreamSpark} />
               </TouchableOpacity>
@@ -49,7 +49,15 @@ const styles = StyleSheet.create({
     //justifyContent: 'center'
   },
     DreamSpark: {
-        marginTop:189, marginRight:350,
-        width: 55, height: 55
+        bottom:0,
+        paddingLeft:0,
+        position:'absolute',
+        width:55,
+        height:55
+    },
+    Down:{
+        width: '100%',
+        position: 'absolute',
+        bottom: 0
     }
 });
