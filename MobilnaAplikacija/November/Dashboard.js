@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
     DreamSpark: {
         bottom:0,
         paddingLeft:0,
-        position:'absolute',
         width:55,
         height:55
     },
