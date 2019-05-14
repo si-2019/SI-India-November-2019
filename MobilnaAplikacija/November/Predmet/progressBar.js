@@ -1,17 +1,24 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 const ProgressBar = (props) => {
     state = {
-        ukupnoBodova: 0
+        bodoviZadace: 0
       };
     return (
         <View>
             {props.zadace.map((zadaca, index) => {
-                    this.state.ukupnoBodova = this.state.ukupnoBodova + zadaca.bodovi
+                    this.state.bodoviZadace = this.state.bodoviZadace + zadaca.bodovi
             })}
-            <Text>Osvojili ste: {this.state.ukupnoBodova} </Text>
+            <Text style= {styles.text1}>Osvojili ste: {this.state.bodoviZadace} </Text>
         </View>
     );
 };
 
 export default ProgressBar;
+
+const styles = StyleSheet.create({
+   text1: {
+    textAlign: 'center', 
+    fontWeight: 'bold',
+   }
+  });
