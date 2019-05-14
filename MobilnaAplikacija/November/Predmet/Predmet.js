@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {View,Text,StyleSheet} from 'react-native';
 import Ispiti from "./Ispiti";
 import Zadace from "./Zadace";
+import ProgressBar from "./ProgressBar"
 export default class Predmet extends Component {
   render() {
  //     console.log(this.props);
@@ -15,8 +16,8 @@ export default class Predmet extends Component {
       <Text style={style.text}>Asistenti: {asistenti}{"\n"}{"\n"}</Text>
       <Ispiti ispiti={ispiti} />
       <Text>{"\n"}</Text>
-      <Zadace zadace={zadace}/>
-       
+      <Zadace zadace={zadace}/>     
+      <ProgressBar zadace={zadace}/>
      
     </View>
     )
