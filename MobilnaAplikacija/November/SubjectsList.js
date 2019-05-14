@@ -81,7 +81,8 @@ const getSubjects = [
       { naziv: "Zadaća 2", bodovi: 4 },
       { naziv: "Zadaća 3",bodovi: 2 },
       { naziv : "Zadaća 4", bodovi : 5}
-    ]
+    ],
+    prisustvo: "10"
   },
   {
     id: 2,
@@ -98,7 +99,8 @@ const getSubjects = [
       { naziv: "Zadaća 1", bodovi: 5 },
       { naziv: "Zadaća 2", bodovi: 4 },
       { naziv: "Zadaća 3",bodovi: 3 }
-    ]
+    ], 
+    prisustvo: "10"
   },
   {
     id: 3,
@@ -116,7 +118,8 @@ const getSubjects = [
       { naziv: "Zadaća 2", bodovi: 8 },
       { naziv: "Zadaća 3",bodovi: 10 },
       { naziv : "Zadaća 4", bodovi : 10}
-    ]
+    ],    
+    prisustvo: "10"
   },
   {
     id: 4,
@@ -136,7 +139,8 @@ const getSubjects = [
       { naziv : "Zadaća 4", bodovi : 1},
       { naziv: "Zadaća 5",bodovi: 2 },
       { naziv : "Zadaća 6", bodovi : 2}
-    ]
+    ],  
+    prisustvo: "10"
   },
   {
     id: 5,
@@ -151,7 +155,8 @@ const getSubjects = [
     ],
     zadace: [
       { naziv: "Zadaća 1", bodovi: 40 }
-    ]
+    ], 
+    prisustvo: "10"
   }
 ];
 
