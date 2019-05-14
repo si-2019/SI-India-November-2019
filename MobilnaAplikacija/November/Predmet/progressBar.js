@@ -10,7 +10,10 @@ const ProgressBar = (props) => {
             {props.zadace.map((zadaca, index) => {
                     this.state.bodoviZadace = this.state.bodoviZadace + zadaca.bodovi
             })}
-            <Text style= {styles.text1}>Osvojili ste: {this.state.bodoviZadace}  </Text>
+            {props.ispiti.map((ispit, index) => {
+                    this.state.bodoviIspiti = this.state.bodoviIspiti + ispit.bodovi
+            })}
+            <Text style= {styles.text1}>Osvojili ste: {this.state.bodoviZadace} i {this.state.bodoviIspiti} </Text>
         </View>
     );
 };
