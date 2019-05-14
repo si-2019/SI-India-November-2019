@@ -17,7 +17,7 @@ export default class Predmet extends Component {
       <Ispiti ispiti={ispiti} />
       <Text>{"\n"}</Text>
       <Zadace zadace={zadace}/>     
-      <ProgressBar zadace={zadace}/>
+      <ProgressBar zadace={zadace} ispiti={ispiti}/>
      
     </View>
     )
