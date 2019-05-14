@@ -145,12 +145,11 @@ const getSubjects = [
     ECTS: "4",
     asistenti: "Asistent",
     ispiti: [
-      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 13 },
-      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 15 },
-      { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 13 }
+      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 0 },
+      { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 0 }
     ],
     zadace: [
-      { naziv: "Zadaća 1", bodovi: 40 }
+      { naziv: "Zadaća 1", bodovi: 25 }
     ]
   }
 ];

@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Dimensions } from "react-native";
 import ProgressBarAnimated from "react-native-progress-bar-animated";
 import AnimatedBar from "react-native-progress-bar-animated";
 
+
 const ProgressBar = (props) => {
     state = {
         bodoviZadace: 0,
@@ -39,19 +40,45 @@ const ProgressBar = (props) => {
       }
     } 
    
+    promjenaBojeProgressBara = (bodovi) => 
+    {
+        if(bodovi<33) 
+        {
+            progressCustomStyles.backgroundColor='red';
+        }
+        else if (bodovi<66)
+        {
+            progressCustomStyles.backgroundColor= 'yellow'
+        }
+        else 
+        {
+            progressCustomStyles.backgroundColor= 'green';
+        }
+    }
+    const progressCustomStyles= {
+        backgroundColor: 'green', 
+        borderRadius: 1,
+        height: 30,
+        borderColor: 'black',
+        borderRadius: 50
+      }
     return (
         <View style={styles.text1}>
             {props.zadace.map((zadaca, index) => {
                     this.state.bodoviZadace = this.state.bodoviZadace + zadaca.bodovi
             })}
             {this.zbirBodovaPoNajboljemRezultatu(props.ispiti)}
-            <Text style= {styles.text1}>Osvojili ste: {this.state.bodoviZadace+this.state.bodoviIspiti} </Text>
+            
+            <Text style= {styles.text1}>Osvojili ste: {this.state.bodoviZadace+this.state.bodoviIspiti} bodova</Text> 
+            {this.promjenaBojeProgressBara(this.state.bodoviZadace+this.state.bodoviIspiti)}
+           
             <ProgressBarAnimated
-            {...styles.progressCustomStyles}
+            {...progressCustomStyles}
             width= {Dimensions.get('screen').width - 30}
             value={this.state.bodoviZadace+this.state.bodoviIspiti}            
             backgroundColorOnComplete="green"
           >
+          <Text>test</Text>
           </ProgressBarAnimated>
           
         </View>
@@ -68,13 +95,5 @@ const styles = StyleSheet.create({
    },
    progressbar: {
     textAlign: 'center'
-   },
-   progressCustomStyles: {
-    backgroundColor: 'green', 
-    borderRadius: 1,
-    height: 30,
-    borderColor: 'black',
-    marginLeft: '10%',
-    marginRight: '10%'
-  }
+   }
   });

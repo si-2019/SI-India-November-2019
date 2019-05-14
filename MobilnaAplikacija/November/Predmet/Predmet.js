@@ -14,10 +14,11 @@ export default class Predmet extends Component {
       <Text style={style.text}>Ime profesora: {profesor}</Text>
       <Text style={style.text}>Broj ECTS bodova: {ECTS}</Text>
       <Text style={style.text}>Asistenti: {asistenti}{"\n"}{"\n"}</Text>
-      <Ispiti ispiti={ispiti} />
-      <Text>{"\n"}</Text>
-      <Zadace zadace={zadace}/>     
+      
       <ProgressBar zadace={zadace} ispiti={ispiti}/>
+      <Zadace zadace={zadace}/>
+      <Text>{"\n"}</Text>
+      <Ispiti ispiti={ispiti} />     
      
     </View>
     )
