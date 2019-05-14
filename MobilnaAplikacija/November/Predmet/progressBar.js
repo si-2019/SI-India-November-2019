@@ -1,5 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import ProgressBarAnimated from "react-native-progress-bar-animated";
+
 const ProgressBar = (props) => {
     state = {
         bodoviZadace: 0,
@@ -42,6 +44,14 @@ const ProgressBar = (props) => {
             })}
             {this.zbirBodovaPoNajboljemRezultatu(props.ispiti)}
             <Text style= {styles.text1}>Osvojili ste: {this.state.bodoviZadace+this.state.bodoviIspiti} </Text>
+            <ProgressBarAnimated
+            width= {250}
+            value={100}//{this.state.bodoviZadace+this.state.bodoviIspiti}
+            
+            backgroundColorOnComplete="#6CC644"
+          >
+          bododoo
+          </ProgressBarAnimated>
         </View>
     );
 };
@@ -53,5 +63,8 @@ const styles = StyleSheet.create({
     textAlign: 'center', 
     fontWeight: 'bold',
     margin: 10
+   },
+   progressbar: {
+    textAlign: 'center'
    }
   });
