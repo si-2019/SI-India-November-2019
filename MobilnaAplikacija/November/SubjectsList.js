@@ -74,7 +74,11 @@ const getSubjects = [
     ispiti: [
       { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 13 },
       { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 15 },
-      { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 13 }
+      { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 13 },
+      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 10 },
+      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 0 },
+      { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 17 },
+      {naziv: "Integralni", datum: "24/11/2019", bodovi: 11 }
     ],
     zadace: [
       { naziv: "Zadaća 1", bodovi: 3 },
