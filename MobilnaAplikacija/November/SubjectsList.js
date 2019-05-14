@@ -149,7 +149,7 @@ const getSubjects = [
       { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 0 }
     ],
     zadace: [
-      { naziv: "Zadaća 1", bodovi: 25 }
+      { naziv: "Zadaća 1", bodovi: 25.9 }
     ]
   }
 ];

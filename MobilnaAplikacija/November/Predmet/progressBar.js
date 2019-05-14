@@ -78,9 +78,10 @@ const ProgressBar = (props) => {
             value={this.state.bodoviZadace+this.state.bodoviIspiti}            
             backgroundColorOnComplete="green"
           >
-          <Text>test</Text>
           </ProgressBarAnimated>
-          
+          <Text style={styles.text2}>
+          što je {(this.state.bodoviZadace+this.state.bodoviIspiti)}% od ukupno mogućih 100 bodova.
+          </Text>
         </View>
     );
 };
@@ -93,7 +94,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     margin: 10
    },
-   progressbar: {
-    textAlign: 'center'
+   text2: {
+    textAlign: 'center',
+    margin: 7
    }
   });
