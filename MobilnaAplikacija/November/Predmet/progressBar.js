@@ -74,7 +74,7 @@ const ProgressBar = (props) => {
            
             <ProgressBarAnimated
             {...progressCustomStyles}
-            width= {Dimensions.get('screen').width - 30}
+            width= {Dimensions.get('screen').width - 45}
             value={this.state.bodoviZadace+this.state.bodoviIspiti}            
             backgroundColorOnComplete="green"
           >
