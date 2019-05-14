@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
 import ProgressBarAnimated from "react-native-progress-bar-animated";
+import AnimatedBar from "react-native-progress-bar-animated";
 
 const ProgressBar = (props) => {
     state = {
@@ -37,21 +38,22 @@ const ProgressBar = (props) => {
           this.state.bodoviIspiti = prviParc + drugiParc
       }
     } 
+   
     return (
-        <View>
+        <View style={styles.text1}>
             {props.zadace.map((zadaca, index) => {
                     this.state.bodoviZadace = this.state.bodoviZadace + zadaca.bodovi
             })}
             {this.zbirBodovaPoNajboljemRezultatu(props.ispiti)}
             <Text style= {styles.text1}>Osvojili ste: {this.state.bodoviZadace+this.state.bodoviIspiti} </Text>
             <ProgressBarAnimated
-            width= {250}
-            value={100}//{this.state.bodoviZadace+this.state.bodoviIspiti}
-            
-            backgroundColorOnComplete="#6CC644"
+            {...styles.progressCustomStyles}
+            width= {Dimensions.get('screen').width - 30}
+            value={this.state.bodoviZadace+this.state.bodoviIspiti}            
+            backgroundColorOnComplete="green"
           >
-          bododoo
           </ProgressBarAnimated>
+          
         </View>
     );
 };
@@ -66,5 +68,13 @@ const styles = StyleSheet.create({
    },
    progressbar: {
     textAlign: 'center'
-   }
+   },
+   progressCustomStyles: {
+    backgroundColor: 'green', 
+    borderRadius: 1,
+    height: 30,
+    borderColor: 'black',
+    marginLeft: '10%',
+    marginRight: '10%'
+  }
   });
