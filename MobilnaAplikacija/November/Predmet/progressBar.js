@@ -41,7 +41,7 @@ const ProgressBar = (props) => {
                     this.state.bodoviZadace = this.state.bodoviZadace + zadaca.bodovi
             })}
             {this.zbirBodovaPoNajboljemRezultatu(props.ispiti)}
-            <Text style= {styles.text1}>Osvojili ste: {this.state.bodoviZadace} i {this.state.bodoviIspiti} </Text>
+            <Text style= {styles.text1}>Osvojili ste: {this.state.bodoviZadace+this.state.bodoviIspiti} </Text>
         </View>
     );
 };
@@ -52,5 +52,6 @@ const styles = StyleSheet.create({
    text1: {
     textAlign: 'center', 
     fontWeight: 'bold',
+    margin: 10
    }
   });
