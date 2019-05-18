@@ -17,10 +17,10 @@ export default class Dashboard extends Component {
          </View>
           <View style={styles.Down}>
               <TouchableOpacity activeOpacity = { .5 } onPress={ ()=>{ Linking.openURL('https://e5.onthehub.com/WebStore/Security/Signin.aspx?ws=f7e15a22-e060-e211-a88c-f04da23e67f4')}}>
-                  <Image source={require('../assets/DreamSpark.png')} style = {styles.DreamSpark} />
+                  <Image source={require('../assets/DreamSpark.png')} style = {styles.Icon} />
               </TouchableOpacity>
               <TouchableOpacity activeOpacity = { .5 } onPress={ ()=>{ Linking.openURL('https://mail.etf.unsa.ba')}}>
-                <Image source={require('../assets/icons/Zimbra.png')} style = {styles.Webmail} />
+                <Image source={require('../assets/icons/Zimbra.png')} style = {styles.Icon} />
               </TouchableOpacity>
           </View>
       </View>
@@ -47,20 +47,15 @@ const styles = StyleSheet.create({
   notificationsContainer: {
     marginTop: 30,
   },
-  DreamSpark: {
-    bottom: 0,
-    paddingLeft: 0,
-    width: 55,
-    height: 55
-  },
-  Webmail: {
-    bottom: 0,
+  Icon: {
     width: 55,
     height: 55
   },
   Down: {
-    width: '100%',
+    flex: 1,
+    flexDirection: 'row',
     position: 'absolute',
+    left: 0,
     bottom: 0
   }
 });
