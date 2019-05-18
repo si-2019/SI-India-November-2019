@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
   },
   subjectsContainer: {
     height: '30%',
-    // backgroundColor: 'skyblue',
     justifyContent: 'center'
   },
   divider: {
@@ -43,20 +42,17 @@ const styles = StyleSheet.create({
     borderBottomColor: 'black'
   },
   notificationsContainer: {
-  //  height: '60%',
     marginTop: 30,
-    // backgroundColor: 'powderblue',
-    //justifyContent: 'center'
   },
-    DreamSpark: {
-        bottom:0,
-        paddingLeft:0,
-        width:55,
-        height:55
-    },
-    Down:{
-        width: '100%',
-        position: 'absolute',
-        bottom: 0
-    }
+  DreamSpark: {
+    bottom: 0,
+    paddingLeft: 0,
+    width: 55,
+    height: 55
+  },
+  Down: {
+    width: '100%',
+    position: 'absolute',
+    bottom: 0
+  }
 });
