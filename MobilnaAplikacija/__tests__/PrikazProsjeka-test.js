@@ -28,7 +28,7 @@ it('prosjeci po semestrima', () => {
         console.warn(tree);
     expect(findElement(tree, 'semestri')).toBeDefined();
 })
-it('prosjeci po semestrima', () => {
+it('prosjeci po godinama', () => {
     let tree  = renderer.create(
         <SortGodine />,
         {

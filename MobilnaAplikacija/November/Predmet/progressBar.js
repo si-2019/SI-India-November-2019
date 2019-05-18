@@ -2,13 +2,16 @@ import React from "react";
 import { View, Text, StyleSheet, Dimensions } from "react-native";
 import ProgressBarAnimated from "react-native-progress-bar-animated";
 import AnimatedBar from "react-native-progress-bar-animated";
+import { tsConstructorType } from "@babel/types";
 
 
 const ProgressBar = (props) => {
+
     state = {
         bodoviZadace: 0,
         bodoviIspiti: 0
       };
+    
       zbirBodovaPoNajboljemRezultatu = (ispiti) =>
       {
       prviParc=-1;
@@ -34,12 +37,13 @@ const ProgressBar = (props) => {
       }
       if(integralno!=-1) {
           this.state.bodoviIspiti = integralno
+          //return integralno;
       }
       else {
           this.state.bodoviIspiti = prviParc + drugiParc
-      }
+            //return prviParc+drugiParc;
+        }
     } 
-   
     promjenaBojeProgressBara = (bodovi) => 
     {
         if(bodovi<33) 
