@@ -19,6 +19,7 @@ export default class Dashboard extends Component {
               <TouchableOpacity activeOpacity = { .5 } onPress={ ()=>{ Linking.openURL('https://e5.onthehub.com/WebStore/Security/Signin.aspx?ws=f7e15a22-e060-e211-a88c-f04da23e67f4')}}>
                   <Image source={require('../assets/DreamSpark.png')} style = {styles.DreamSpark} />
               </TouchableOpacity>
+              <Image source={require('../assets/icons/Zimbra.png')} style = {styles.Webmail} />
           </View>
       </View>
     );
@@ -47,6 +48,11 @@ const styles = StyleSheet.create({
   DreamSpark: {
     bottom: 0,
     paddingLeft: 0,
+    width: 55,
+    height: 55
+  },
+  Webmail: {
+    bottom: 0,
     width: 55,
     height: 55
   },
