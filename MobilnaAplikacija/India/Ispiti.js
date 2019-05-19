@@ -18,6 +18,17 @@ class AktivniIspiti extends React.Component {
         this.setState(inicijalni)
       }
     }
+    detalji()
+	{
+    Alert.alert(
+      'Detalji o ispitu',
+      'Profesor: Richard Feynman \nSala: MA',
+      [
+        {text: 'Nazad'},
+      ],
+        {cancelable: true}
+    );
+  }
     promijeniTekstButtona = i => {
       this.setState(state => {
         const list = state.ispiti_info.map((item, j) => {
