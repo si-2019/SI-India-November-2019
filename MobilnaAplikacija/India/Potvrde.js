@@ -37,6 +37,7 @@ class Potvrde extends React.Component {
     const svrhe = [{ label: "Regulisanje zdravstvenog osiguranja", value: "zdravstveno" },
     { label: "Ostvarivanje prava na stipendiju", value: "stipendija" },
     { label: "Upis na drugi fakultet", value: "upis" }];
+    
     let besplatne_potvrde = 5;
     const jedna_bp = <Text>1 besplatna potvrda!</Text>
     const pet_bp = <Text>5 besplatnih potvrda!</Text>

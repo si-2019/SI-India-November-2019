@@ -16,6 +16,7 @@ import Screen6 from './India/Raspored';
 import Screen7 from  './November/login';
 import Screen8 from  './November/SortiranjeGodina';
 import Predmet from './November/Predmet/Predmet';
+import screen9 from './changelog';
 /*
 export default class App extends React.Component {
   render() {
@@ -161,6 +162,20 @@ const Screen8_StackNavigator = createStackNavigator({
   },
 });
 
+const Screen9_StackNavigator = createStackNavigator({
+  Third: {
+    screen: screen9,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Changelog',
+      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
+      headerStyle: {
+        backgroundColor: '#376ff2',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
+
 const DrawerNavigatorExample = createDrawerNavigator({
   //Drawer Optons and indexing
   Screen1: {
@@ -208,6 +223,12 @@ const DrawerNavigatorExample = createDrawerNavigator({
     screen: Screen8_StackNavigator,
     navigationOptions: {
       drawerLabel: 'Prosjeci',
+    },
+  },
+  Screen9: {
+    screen: Screen9_StackNavigator,
+    navigationOptions: {
+      drawerLabel: 'Changelog',
     },
   },
 });
