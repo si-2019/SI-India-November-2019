@@ -3,6 +3,7 @@ import {View,Text,StyleSheet,ScrollView} from 'react-native';
 import Ispiti from "./Ispiti";
 import Zadace from "./Zadace";
 import ProgressBar from "./ProgressBar"
+import Ocjena  from "./Ocjena"
 export default class Predmet extends Component {
   render() {
  //     console.log(this.props);
@@ -18,7 +19,8 @@ export default class Predmet extends Component {
       <ProgressBar zadace={zadace} ispiti={ispiti}/>
       <Zadace zadace={zadace}/>
       <Text>{"\n"}</Text>
-      <Ispiti ispiti={ispiti} />     
+      <Ispiti ispiti={ispiti} />
+      <Ocjena zadace={zadace} ispiti={ispiti}/>
      
     </ScrollView>
     )
