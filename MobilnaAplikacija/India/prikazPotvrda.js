@@ -11,7 +11,6 @@ class Zahtjev extends React.Component {
         ],
     }
     ponistiZahtjev(zahtjev, status) {
-        console.log("status: " + status);
         Alert.alert(
             'Da li ste sigurni da želite poništiti zahtjev za potvrdu',
             
@@ -24,11 +23,11 @@ class Zahtjev extends React.Component {
         );
     }
     deleteItemByKey(key, status) {
-        console.log(status);
         if(status != 'Obrađen') {
             console.log("TU");
             const filteredData = this.state.data.filter(item => item.key !== key);
             this.setState({ data: filteredData });
+            Alert.alert("Upješno ste poništili poslani zahtjeva");
         }
         else Alert.alert("Ne možete poništiti obrađenu potvrdu");
         console.log(this.state.data);
