@@ -44,7 +44,6 @@ const Ocjena = (props) => {
             this.state.bodoviIspiti = prviParc + drugiParc
         }
     }
-
     return (
         <View style={styles.text1}>
             {props.zadace.map((zadaca, index) => {
@@ -52,7 +51,7 @@ const Ocjena = (props) => {
             })}
             {this.zbirBodovaNajboljiRezultat(props.ispiti)}
             {this.konacnaOcjena(this.state.bodoviZadace + this.state.bodoviIspiti)}
-            <Text>Konačna ocjena je : {(this.state.kOcjena)}</Text>
+            <Text style={styles.ocjene}>Konačna ocjena je : {(this.state.kOcjena)}</Text>
         </View>
     );
 };
@@ -66,5 +65,12 @@ const styles = StyleSheet.create({
     text2: {
         textAlign: 'center',
         margin: 7
+    },
+    ocjene: {
+        textAlign:'center',
+        fontWeight: 'bold',
+        fontSize: 22,
+        color: 'red'
+
     }
 });
