@@ -60,8 +60,7 @@ const ProgressBar = (props) => {
         }
     }
     const progressCustomStyles= {
-        backgroundColor: 'green', 
-        borderRadius: 1,
+        backgroundColor: 'green',
         height: 30,
         borderColor: 'black',
         borderRadius: 50
