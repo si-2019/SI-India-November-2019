@@ -4,9 +4,15 @@ import { View, Text, StyleSheet, Dimensions } from "react-native";
 const Ocjena = (props) => {
     state = {
         bodoviZadace: 0,
-        bodoviIspiti: 0
+        bodoviIspiti: 0,
+        kOcjena :0
     };
-    konacnaOcjena = (bodovi) => {
+    konacnaOcjena = (ocjena) => {
+         if (ocjena >=55 && ocjena < 65) this.state.kOcjena = 6;
+        else if (ocjena >=65 && ocjena < 75) this.state.kOcjena = 7;
+        else if (ocjena >=75 && ocjena < 85) this.state.kOcjena = 8;
+        else if (ocjena >=85 && ocjena < 95) this.state.kOcjena = 9;
+        else if (ocjena >=95 && ocjena <= 100) this.state.kOcjena = 10;
 
     }
     zbirBodovaNajboljiRezultat = (ispiti) =>
@@ -38,26 +44,17 @@ const Ocjena = (props) => {
             this.state.bodoviIspiti = prviParc + drugiParc
         }
     }
+
     return (
         <View style={styles.text1}>
             {props.zadace.map((zadaca, index) => {
                 this.state.bodoviZadace = this.state.bodoviZadace + zadaca.bodovi
             })}
-            {this.zbirBodovaNajboljiRezultat(props.ispiti)}
+            {this.zbirBodovaNajboljiRezultat(props.ispiti )}
+            {this.konacnaOcjena(this.state.bodoviZadace+this.state.bodoviIspiti)};
+            <Text>Ocjena: (this.state.kOcjena)</Text>
 
-            <Text style= {styles.text1}>Osvojili ste: {this.state.bodoviZadace+this.state.bodoviIspiti} bodova</Text>
-            {this.promjenaBojeProgressBara(this.state.bodoviZadace+this.state.bodoviIspiti)}
 
-            <ProgressBarAnimated
-                {...progressCustomStyles}
-                width= {Dimensions.get('screen').width - 45}
-                value={this.state.bodoviZadace+this.state.bodoviIspiti}
-                backgroundColorOnComplete="green"
-            >
-            </ProgressBarAnimated>
-            <Text style={styles.text2}>
-                što je {(this.state.bodoviZadace+this.state.bodoviIspiti)}% od ukupno mogućih 100 bodova.
-            </Text>
         </View>
     );
 };
