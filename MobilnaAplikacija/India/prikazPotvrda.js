@@ -10,6 +10,7 @@ class Zahtjev extends React.Component {
             {key: 'Potvrda o regulisanju stipendije', value: '25.01.2019', status: 'Neobrađen'}, {key: 'Potvrda o regulisanju zdravstvenog osiguranja', value:'02.02.2019.', status: 'Obrađen'}
         ],
     }
+
     ponistiZahtjev(zahtjev, status) {
         Alert.alert(
             'Da li ste sigurni da želite poništiti zahtjev za potvrdu',
@@ -24,7 +25,7 @@ class Zahtjev extends React.Component {
     }
     deleteItemByKey(key, status) {
         if(status != 'Obrađen') {
-            console.log("TU");
+            //console.log("TU");
             const filteredData = this.state.data.filter(item => item.key !== key);
             this.setState({ data: filteredData });
             Alert.alert("Upješno ste poništili poslani zahtjeva");
