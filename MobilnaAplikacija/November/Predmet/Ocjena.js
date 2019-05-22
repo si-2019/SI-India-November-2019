@@ -51,7 +51,7 @@ const Ocjena = (props) => {
             })}
             {this.zbirBodovaNajboljiRezultat(props.ispiti)}
             {this.konacnaOcjena(this.state.bodoviZadace + this.state.bodoviIspiti)}
-            <Text style={styles.ocjene}>Konačna ocjena je : {(this.state.kOcjena)}</Text>
+            <Text style={styles.ocjene}>Konačna ocjena: {(this.state.kOcjena)}</Text>
         </View>
     );
 };
@@ -67,10 +67,9 @@ const styles = StyleSheet.create({
         margin: 7
     },
     ocjene: {
+        marginTop: 20,
         textAlign:'center',
         fontWeight: 'bold',
-        fontSize: 22,
-        color: 'red'
-
+        fontSize: 20
     }
 });
