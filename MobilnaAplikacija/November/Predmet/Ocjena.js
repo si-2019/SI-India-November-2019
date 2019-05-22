@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
         margin: 7
     },
     ocjene: {
-        marginTop: 20,
         textAlign:'center',
         fontWeight: 'bold',
         fontSize: 20
