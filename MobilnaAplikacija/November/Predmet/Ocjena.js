@@ -5,15 +5,15 @@ const Ocjena = (props) => {
     state = {
         bodoviZadace: 0,
         bodoviIspiti: 0,
-        kOcjena :0
+        kOcjena: 0
     };
     konacnaOcjena = (ocjena) => {
-         if (ocjena >=55 && ocjena < 65) this.state.kOcjena = 6;
-        else if (ocjena >=65 && ocjena < 75) this.state.kOcjena = 7;
-        else if (ocjena >=75 && ocjena < 85) this.state.kOcjena = 8;
-        else if (ocjena >=85 && ocjena < 95) this.state.kOcjena = 9;
-        else if (ocjena >=95 && ocjena <= 100) this.state.kOcjena = 10;
-
+        if (ocjena < 55) this.state.kOcjena = "Niste položili predmet!";
+        else if (ocjena>=55 && ocjena<65) this.state.kOcjena = 6;
+        else if (ocjena>=65 && ocjena<75) this.state.kOcjena = 7;
+        else if (ocjena>=75 && ocjena<85) this.state.kOcjena =8;
+        else if (ocjena>=85 && ocjena<95) this.state.kOcjena = 9;
+        else if (ocjena>=95 && ocjena<=100) this.state.kOcjena = 10;
     }
     zbirBodovaNajboljiRezultat = (ispiti) =>
     {
@@ -50,17 +50,13 @@ const Ocjena = (props) => {
             {props.zadace.map((zadaca, index) => {
                 this.state.bodoviZadace = this.state.bodoviZadace + zadaca.bodovi
             })}
-            {this.zbirBodovaNajboljiRezultat(props.ispiti )}
-            {this.konacnaOcjena(this.state.bodoviZadace+this.state.bodoviIspiti)};
-            <Text>Ocjena: (this.state.kOcjena)</Text>
-
-
+            {this.zbirBodovaNajboljiRezultat(props.ispiti)}
+            {this.konacnaOcjena(this.state.bodoviZadace + this.state.bodoviIspiti)}
+            <Text>Konačna ocjena je : {(this.state.kOcjena)}</Text>
         </View>
     );
 };
-
 export default Ocjena;
-
 const styles = StyleSheet.create({
     text1: {
         textAlign: 'center',
