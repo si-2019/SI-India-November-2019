@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList, ScrollView } from 'react-native-gesture-handler';
 
 
 export default class odslusaniPredmeti extends React.Component {
@@ -55,14 +55,14 @@ export default class odslusaniPredmeti extends React.Component {
 
     renderItem = ({item}) => {
           return (
-              <>
+              <ScrollView>
                    <Text style={{ fontSize: 23 }}> {item.Naziv}</Text>
                    <FlatList
                         data = {item.Predmeti}
                         keyExtractor={item=>item.predmet}
                         renderItem = {({item}) => <Text>{item.predmet}</Text>}
                    />
-              </>
+              </ScrollView>
           )
     }
   
