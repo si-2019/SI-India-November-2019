@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
 
 
-export default class odslusaniPredmeti extends Component {
+export default class odslusaniPredmeti extends React.Component {
   
-  cosntructor(props)
+  constructor(props)
   {
-      
-      this.state =
-      {
+       super(props);
+       this.state = 
+       {
            lista: []
-      }
+       }
   }
+
 
   dohvatiPredmete()
     {
+        //Ubaciti api poziv
+
          this.state.lista = 
          [
              {
@@ -42,11 +46,34 @@ export default class odslusaniPredmeti extends Component {
            }
          ]
     }
+
+    
+    componentWillMount()
+    {
+        this.dohvatiPredmete();
+    }
+
+    renderItem = ({item}) => {
+          return (
+              <>
+                   <Text style={{ fontSize: 23 }}> {item.Naziv}</Text>
+                   <FlatList
+                        data = {item.Predmeti}
+                        keyExtractor={item=>item.predmet}
+                        renderItem = {({item}) => <Text>{item.predmet}</Text>}
+                   />
+              </>
+          )
+    }
   
   render() {
         return (
       <View style={styles.MainContainer}>
-          
+           <FlatList
+            data = {this.state.lista}
+            keyExtractor = {item => item.Naziv}
+            renderItem = {this.renderItem}
+           />
       </View>
     );
   }
