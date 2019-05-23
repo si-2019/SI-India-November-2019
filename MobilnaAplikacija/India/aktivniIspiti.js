@@ -7,7 +7,7 @@ let inicijalni ={ispiti_info:[], ispiti: [{ key: 0, predmet: "Vjestacka intelige
 { key: 1, predmet: "Organizacija softverskog projekta", tip: "Drugi parcijalni", datum: "13.6.2019. 18:00", aktivan: 1, prijavljen: 0, popunjen: 0 },
 { key: 2, predmet: "Softverski inzenjering", tip: "Prvi parcijalni", datum: "15.6.2019. 10:30", aktivan: 0, prijavljen: 1, popunjen: 1 },
 { key: 3, predmet: "Projektovanje informacionih sistema", tip: "Usmeni", datum: "16.6.2019. 13:00", aktivan: 1, prijavljen: 0, popunjen: 0 },
-{ key: 4, predmet: "Projektovanje informativnih sistema", tip: "Usmeni", datum: "16.6.2019. 11:00", aktivan: 1, prijavljen: 1, popunjen: 1 }], 
+{ key: 4, predmet: "Projektovanje informacionih sistema", tip: "Usmeni", datum: "16.6.2019. 11:00", aktivan: 1, prijavljen: 1, popunjen: 1 }], 
 kopijaIspiti: []
 } 
 let notifikacije = true;
@@ -54,14 +54,42 @@ class AktivniIspiti extends React.Component {
     };
 
     filtrirajPopunjene() {
-      this.setState({kopijaIspiti: this.state.ispiti}, () => {
+        if(this.state.kopijaIspiti.length === 0) {
+            this.setState({kopijaIspiti: this.state.ispiti}, () => {
+                this.setState({ispiti: this.state.ispiti.filter(ispit=>  ispit.popunjen !== 1)});
+            });
+        } else 
         this.setState({ispiti: this.state.ispiti.filter(ispit=>  ispit.popunjen !== 1)});
-      });
+    }
+
+    filtrirajPrijavljene() {
+        var prijavljeni = [];
+        let k = 0;
+        for(let i in this.state.ispiti) {
+            for(let j in this.state.ispiti) {
+                if(this.state.ispiti[i].prijavljen && (this.state.ispiti[i] == this.state.ispiti[j] || (this.state.ispiti[i].predmet == this.state.ispiti[j].predmet && this.state.ispiti[i].tip == this.state.ispiti[j].tip)))
+                {
+                    prijavljeni[k] = this.state.ispiti[j];    
+                    k++;
+                } 
+                else continue;
+            }
+        }
+        if(this.state.kopijaIspiti.length === 0) {
+            this.setState({kopijaIspiti: this.state.ispiti}, () => {
+                this.setState({ispiti: this.state.ispiti.filter( ( el ) => !prijavljeni.includes( el ))});
+            });
+        } else
+            this.setState({ispiti: this.state.ispiti.filter( ( el ) => !prijavljeni.includes( el ))});
+    }
+
+    prikaziSve() {
+        console.log(this.state.kopijaIspiti);
+        if (this.state.kopijaIspiti.length !== 0) 
+            this.setState({ispiti: this.state.kopijaIspiti});
     }
 
     render() {
-      
-        
         let k = 0;
         this.state.ispiti.map((ispit) => {
             let porukaa;
@@ -145,7 +173,15 @@ class AktivniIspiti extends React.Component {
                 <View>
                     {ispisAktivnihIspita}
                 </View>
-                <Button onPress={() => this.filtrirajPopunjene()} title="Sakrij popunjene termine"/>
+                <View style = {styles.Button}>
+                    <Button onPress={() => this.filtrirajPopunjene()} title="Sakrij popunjene termine"/>
+                </View>
+                <View style = {styles.Button}>
+                    <Button onPress={() => this.filtrirajPrijavljene()} title="Sakrij prijavljene termine"/>
+                </View>
+                <View style = {styles.Button}>
+                    <Button onPress={() => this.prikaziSve()} title="Prikaži sve"/>
+                </View>
             </View>
         );
     }
@@ -182,4 +218,7 @@ const styles = StyleSheet.create({
       flex: 1,
       textAlign: 'center'
     }, 
+    Button: {
+        padding: 10
+    },
   });
