@@ -98,10 +98,25 @@ class AktivniIspiti extends React.Component {
                                         alert('Prijavljeni ste na drugi termin ovog ispita, odjavite ga kako bi se mogli prijavili na ovaj!');
                                     }
                                     else if (ispit.prijavljen) {
-                                        this.state.ispiti[j].prijavljen = 0;
+                                        Alert.alert(
+                                            "Upozorenje",
+                                            "Jeste li sigurni da se želite odjaviti?",
+                                            [
+                                              { text: "Da", onPress: () => {
+                                                this.state.ispiti[j].prijavljen = 0;
                                         
                                         this.promijeniTekstButtona(j);
                                         alert('Ispit uspješno odjavljen!');
+                                    } },
+                                              {
+                                                text: "Otkaži",
+                                                onPress: () => console.log("Ipak se ne želim odjaviti"),
+                                                style: "cancel"
+                                              },
+                                            ],
+                                            { cancelable: false }
+                                          );
+                                        
                                     }
                                     else {
                                         this.state.ispiti[j].prijavljen = 1;
