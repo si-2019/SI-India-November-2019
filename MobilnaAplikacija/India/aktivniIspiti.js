@@ -54,9 +54,12 @@ class AktivniIspiti extends React.Component {
     };
 
     filtrirajPopunjene() {
-      this.setState({kopijaIspiti: this.state.ispiti}, () => {
+        if(this.state.kopijaIspiti.length === 0) {
+            this.setState({kopijaIspiti: this.state.ispiti}, () => {
+                this.setState({ispiti: this.state.ispiti.filter(ispit=>  ispit.popunjen !== 1)});
+            });
+        } else 
         this.setState({ispiti: this.state.ispiti.filter(ispit=>  ispit.popunjen !== 1)});
-      });
     }
 
     filtrirajPrijavljene() {
@@ -72,14 +75,21 @@ class AktivniIspiti extends React.Component {
                 else continue;
             }
         }
-        this.setState({kopijaIspiti: this.state.ispiti}, () => {
+        if(this.state.kopijaIspiti.length === 0) {
+            this.setState({kopijaIspiti: this.state.ispiti}, () => {
+                this.setState({ispiti: this.state.ispiti.filter( ( el ) => !prijavljeni.includes( el ))});
+            });
+        } else
             this.setState({ispiti: this.state.ispiti.filter( ( el ) => !prijavljeni.includes( el ))});
-        });
+    }
+
+    prikaziSve() {
+        console.log(this.state.kopijaIspiti);
+        if (this.state.kopijaIspiti.length !== 0) 
+            this.setState({ispiti: this.state.kopijaIspiti});
     }
 
     render() {
-      
-        
         let k = 0;
         this.state.ispiti.map((ispit) => {
             let porukaa;
