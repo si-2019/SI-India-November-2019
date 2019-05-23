@@ -4,11 +4,16 @@ import { StyleSheet, View, Text } from 'react-native';
 
 
 export default class Izvjestaji extends Component {
-  //Komponenta za izvještaje
   render() {
+
+    const studentID = this.props.navigation.state.params;
+
+    
+
+
     return (
       <View style={styles.MainContainer}>
-        <Text style={{ fontSize: 23 }}> Izvještaji </Text>
+          
       </View>
     );
   }
