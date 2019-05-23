@@ -58,10 +58,24 @@ class PrijavljeniIspiti extends React.Component {
                         <TouchableOpacity  >
                             <Text style={[styles.elementi_tabele_tekst, {color:'blue'}]} onPress={()=>{
                                 j=this.state.ispiti.indexOf(ispit);
-                                this.state.ispiti[j].prijavljen=0;
+                                Alert.alert(
+                                  "Upozorenje",
+                                  "Jeste li sigurni da se želite odjaviti?",
+                                  [
+                                    { text: "Da", onPress: () => {
+                                      this.state.ispiti[j].prijavljen=0;
                                 
                                 this.OdjaviIspitIzPrijavljenih(j);             
-                                alert('Ispit odjavljen!');
+                                alert('Ispit odjavljen!');} },
+                                    {
+                                      text: "Otkaži",
+                                      onPress: () => console.log("Ipak se ne želim odjaviti"),
+                                      style: "cancel"
+                                    },
+                                  ],
+                                  { cancelable: false }
+                                );
+                                
                                 
                             }} >{this.state.ispiti_info[this.state.ispiti.indexOf(ispit)].prijavaTekst}</Text>
                         </TouchableOpacity>

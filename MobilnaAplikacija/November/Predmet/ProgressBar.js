@@ -72,18 +72,18 @@ const ProgressBar = (props) => {
             })}
             {this.zbirBodovaPoNajboljemRezultatu(props.ispiti)}
             
-            <Text style= {styles.text1}>Osvojili ste: {this.state.bodoviZadace+this.state.bodoviIspiti} bodova</Text> 
+            <Text style= {styles.text1}>Osvojili ste: {this.state.bodoviZadace+this.state.bodoviIspiti+props.prisustvo} bodova</Text> 
             {this.promjenaBojeProgressBara(this.state.bodoviZadace+this.state.bodoviIspiti)}
            
             <ProgressBarAnimated
             {...progressCustomStyles}
             width= {Dimensions.get('screen').width - 45}
-            value={this.state.bodoviZadace+this.state.bodoviIspiti}            
+            value={this.state.bodoviZadace+this.state.bodoviIspiti+props.prisustvo}            
             backgroundColorOnComplete="green"
           >
           </ProgressBarAnimated>
           <Text style={styles.text2}>
-          što je {(this.state.bodoviZadace+this.state.bodoviIspiti)}% od ukupno mogućih 100 bodova.
+          što je {(this.state.bodoviZadace+this.state.bodoviIspiti+props.prisustvo)}% od ukupno mogućih 100 bodova.
           </Text>
         </View>
     );
