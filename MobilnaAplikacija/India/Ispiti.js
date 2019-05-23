@@ -5,11 +5,16 @@ import {
   createAppContainer,
 } from 'react-navigation';
 
+import AktivniIspiti from './aktivniIspiti'
+import PrijavljeniIspiti from './prijavljeniIspiti'
+import SviPrijavljeniIspiti from './sviPrijavljeniIspiti'
 import Notifikacija from './notifikacije'
 
 const TabScreen = createMaterialTopTabNavigator(
   {
-  'Aktivni ispiti': { screen: Notifikacija},
+  'Aktivni ispiti': { screen: AktivniIspiti},
+  'Prijavljeni ispiti': { screen: PrijavljeniIspiti},
+  'Svi prijavljeni ispiti' : { screen: SviPrijavljeniIspiti},
   },
   {
     tabBarPosition: 'top',
