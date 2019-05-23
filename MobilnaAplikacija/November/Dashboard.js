@@ -12,6 +12,11 @@ export default class Dashboard extends Component {
            <SubjectsList navigation={this.props.navigation}/>
          </View>
          <Divider style={styles.divider} />
+         <TouchableOpacity onPress={() => this.props.navigation.navigate("odslusaniPredmeti", 1)}>
+            <Text style={{textDecorationLine: 'underline'}}>
+                Odslušani predmeti
+            </Text>
+         </TouchableOpacity>
          <View style={styles.notificationsContainer}>
              <Obavijesti id={1}/>
          </View>
