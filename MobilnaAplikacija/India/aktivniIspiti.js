@@ -7,7 +7,8 @@ let inicijalni ={ispiti_info:[], ispiti: [{ key: 0, predmet: "Vjestacka intelige
 { key: 1, predmet: "Organizacija softverskog projekta", tip: "Drugi parcijalni", datum: "13.6.2019. 18:00", aktivan: 1, prijavljen: 0, popunjen: 0 },
 { key: 2, predmet: "Softverski inzenjering", tip: "Prvi parcijalni", datum: "15.6.2019. 10:30", aktivan: 0, prijavljen: 1, popunjen: 1 },
 { key: 3, predmet: "Projektovanje informacionih sistema", tip: "Usmeni", datum: "16.6.2019. 13:00", aktivan: 1, prijavljen: 0, popunjen: 0 },
-{ key: 4, predmet: "Projektovanje informacionih sistema", tip: "Usmeni", datum: "16.6.2019. 11:00", aktivan: 1, prijavljen: 1, popunjen: 1 }], 
+{ key: 4, predmet: "Projektovanje informacionih sistema", tip: "Usmeni", datum: "16.6.2019. 11:00", aktivan: 1, prijavljen: 1, popunjen: 1 },
+{ key: 4, predmet: "Softverski inzenjering", tip: "Drugi parcijalni", datum: "24.6.2019. 09:00", aktivan: 1, prijavljen: 0, popunjen: 1 }], 
 kopijaIspiti: []
 } 
 let notifikacije = true;
@@ -40,10 +41,14 @@ class AktivniIspiti extends React.Component {
             const list = this.state.ispiti_info.map((item, j) => {
               
                 if (j === i) {
-                    if (item.prijavaTekst === 'Prijavi') 
+                    if (item.prijavaTekst === 'Prijavi') {
                         item.prijavaTekst = 'Odjavi'
-                    else
-                        item.prijavaTekst = 'Prijavi'   
+                        item.statusPrijave = 'Prijavljen'
+                    }
+                    else {
+                        item.prijavaTekst = 'Prijavi'
+                        item.statusPrijave = 'Aktivan'
+                    }   
                 } 
                 return item;
             });
@@ -92,10 +97,19 @@ class AktivniIspiti extends React.Component {
     render() {
         let k = 0;
         this.state.ispiti.map((ispit) => {
-            let porukaa;
-            if (ispit.prijavljen) porukaa = 'Odjavi'
-            else porukaa = 'Prijavi'
-            inicijalni.ispiti_info[k] = { ind: k, key: ispit.key, prijavaTekst: porukaa }
+            let porukaa = '';
+            let statusPrijave = '';
+            if (ispit.prijavljen) {
+                porukaa = 'Odjavi'
+                statusPrijave = 'Prijavljen'
+            } 
+            else {
+                porukaa = 'Prijavi'            
+                statusPrijave = 'Aktivan'
+            } 
+            if(ispit.popunjen)
+                statusPrijave += '\nPopunjen'
+            inicijalni.ispiti_info[k] = { ind: k, key: ispit.key, prijavaTekst: porukaa, statusPrijave: statusPrijave }
             k++;
         })
         this.inicijalizovanjeIspita;
@@ -116,14 +130,18 @@ class AktivniIspiti extends React.Component {
                                 <Text style={[styles.elementi_tabele_tekst, { color: 'blue' }]} onPress={() => {
                                     j = this.state.ispiti.indexOf(ispit);
                                     
-                                    greska = 0;
+                                    greska = 0; greska2 = 0;
                                     this.state.ispiti.map((item) => {
                                         if (item.key != ispit.key && item.predmet === ispit.predmet && item.tip === item.tip && item.prijavljen == 1) {
                                             greska = 1;
                                         }
+                                        if(ispit.popunjen) greska2 = 1;
                                     });
                                     if (greska) {
                                         alert('Prijavljeni ste na drugi termin ovog ispita, odjavite ga kako bi se mogli prijavili na ovaj!');
+                                    }
+                                    else if (greska2){
+                                        alert('Termin ispita je nažalost popunjen!');
                                     }
                                     else if (ispit.prijavljen) {
                                         Alert.alert(
@@ -132,7 +150,8 @@ class AktivniIspiti extends React.Component {
                                             [
                                               { text: "Da", onPress: () => {
                                                 this.state.ispiti[j].prijavljen = 0;
-                                        
+                                                if(ispit.popunjen)
+                                                    this.state.ispiti[j].popunjen = 0;
                                         this.promijeniTekstButtona(j);
                                         alert('Ispit uspješno odjavljen!');
                                     } },
@@ -154,8 +173,7 @@ class AktivniIspiti extends React.Component {
 
                                 }}>{this.state.ispiti_info[this.state.ispiti.indexOf(ispit)].prijavaTekst}</Text>
                             </TouchableOpacity></View>
-                        {/* <View style={styles.elementi_tabele}><Text style={styles.elementi_tabele_tekst} onPress={this.handleClick} color = 'blue'>{prijava}</Text></View>
-            <Button onPress={this.handleClick} title={prijava} type="clear" />*/}
+                            <View style={styles.elementi_tabele}><Text style={styles.elementi_tabele_tekst}>{this.state.ispiti_info[this.state.ispiti.indexOf(ispit)].statusPrijave}</Text></View>
                     </View>
                 );
             }
@@ -167,8 +185,9 @@ class AktivniIspiti extends React.Component {
                 <View style={styles.header_container}>
                     <View style={styles.header}><Text style={styles.header_tekst}>Predmet</Text></View>
                     <View style={styles.header}><Text style={styles.header_tekst}>Tip</Text></View>
-                    <View style={styles.header}><Text style={styles.header_tekst}>Datum</Text></View>
+                    <View style={styles.header}><Text style={styles.header_tekst}>Datum</Text></View>  
                     <View style={styles.header}><Text style={styles.header_tekst}>Prijava</Text></View>
+                    <View style={styles.header}><Text style={styles.header_tekst}>Status</Text></View>
                 </View>
                 <View>
                     {ispisAktivnihIspita}
