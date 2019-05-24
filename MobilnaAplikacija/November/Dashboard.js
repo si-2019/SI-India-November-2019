@@ -27,6 +27,9 @@ export default class Dashboard extends Component {
               <TouchableOpacity activeOpacity = { .5 } onPress={ ()=>{ Linking.openURL('https://mail.etf.unsa.ba')}}>
                 <Image source={require('../assets/icons/Zimbra.png')} style = {styles.Icon} />
               </TouchableOpacity>
+              <TouchableOpacity activeOpacity = { .5 } onPress={ ()=>{ Linking.openURL('https://c9.etf.unsa.ba')}}>
+                <Image source={require('../assets/icons/c9.png')} style = {styles.Icon} />
+              </TouchableOpacity>
           </View>
       </View>
     );

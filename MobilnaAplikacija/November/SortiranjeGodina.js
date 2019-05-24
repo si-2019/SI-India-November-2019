@@ -87,6 +87,8 @@ export default class SortiranjeGodina extends Component {
         var treciSemestar = this.racunanjeProsjeka(this.state.druga.slice(0, this.state.druga.length/2));
         var cetvrtiSemestar = this.racunanjeProsjeka(this.state.druga.slice(this.state.druga.length/2, this.state.druga.length));
         var petiSemestar = this.racunanjeProsjeka(this.state.treca.slice(0, this.state.treca.length/2));
+        var sveOcjene = this.state.prva.concat(this.state.druga, this.state.treca);
+        var ukupniProsjek = this.racunanjeProsjeka(sveOcjene);
        
         var semestriProsjek = [
             {
@@ -184,6 +186,15 @@ export default class SortiranjeGodina extends Component {
         )
         return (
             <View style={styles.MainContainer}>  
+                <View testID="ukupni">
+                    <Text style={{ fontSize: 18, fontWeight: 'bold', marginTop: 10 }}> Ukupan prosjek: {ukupniProsjek}{"\n"}</Text>
+                </View>
+                <View
+                    style={{
+                        borderBottomColor: 'black',
+                        borderBottomWidth: 1,
+                    }}
+                />
                 <View testID="godine">
                     <Text style={{ fontSize: 18,  fontWeight: 'bold'}}> Prosjeci po godinama{"\n"}</Text>
                     <FlatList
