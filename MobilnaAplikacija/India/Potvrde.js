@@ -38,7 +38,7 @@ class Potvrde extends React.Component {
     { label: "Ostvarivanje prava na stipendiju", value: "stipendija" },
     { label: "Upis na drugi fakultet", value: "upis" }];
     
-    let besplatne_potvrde = 5;
+    let besplatne_potvrde = 0;
     const jedna_bp = <Text>1 besplatna potvrda!</Text>
     const pet_bp = <Text>5 besplatnih potvrda!</Text>
     const izmedju_bp = ' besplatne potvrde!'
@@ -56,7 +56,7 @@ class Potvrde extends React.Component {
     }
     else {
       pocetak_recenice = <Text></Text>
-      kraj_rec = <Text>Nemate više besplatnih potvrda!</Text>
+      kraj_rec = <Text>Nemate više besplatnih potvrda! Cijena po potvrdi je 2KM, a plaćanje se vrši pri preuzimanju potvrde.</Text>
     }
    
     return (

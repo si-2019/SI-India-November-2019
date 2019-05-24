@@ -17,6 +17,7 @@ import Screen7 from  './November/login';
 import Screen8 from  './November/SortiranjeGodina';
 import Predmet from './November/Predmet/Predmet';
 import screen9 from './changelog';
+import odslusaniPredmeti from './November/odslusaniPredmeti';
 /*
 export default class App extends React.Component {
   render() {
@@ -69,7 +70,13 @@ const FirstActivity_StackNavigator = createStackNavigator({
   },
   Predmet: {
     screen: Predmet
-  }
+  },
+  odslusaniPredmeti: {
+    screen: odslusaniPredmeti,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Odslušani predmeti',
+    }),
+  },
 });
 
 

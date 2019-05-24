@@ -3,10 +3,11 @@ import {View,Text,StyleSheet,ScrollView} from 'react-native';
 import Ispiti from "./Ispiti";
 import Zadace from "./Zadace";
 import ProgressBar from "./ProgressBar"
+import Ocjena  from "./Ocjena"
 export default class Predmet extends Component {
   render() {
  //     console.log(this.props);
-    const {title, profesor, ECTS, asistenti,ispiti, zadace}=this.props.navigation.state.params;
+    const {title, profesor, ECTS, asistenti,ispiti, zadace, prisustvo}=this.props.navigation.state.params;
    // console.log(ispiti);
     return (
     <ScrollView style={style.container}>
@@ -15,10 +16,12 @@ export default class Predmet extends Component {
       <Text style={style.text}>Broj ECTS bodova: {ECTS}</Text>
       <Text style={style.text}>Asistenti: {asistenti}{"\n"}</Text>
       
-      <ProgressBar zadace={zadace} ispiti={ispiti}/>
+      <ProgressBar zadace={zadace} ispiti={ispiti} prisustvo={prisustvo}/>
+      <Text >{"\n"}Prisustvo: {prisustvo} {"\n"}</Text>
       <Zadace zadace={zadace}/>
       <Text>{"\n"}</Text>
-      <Ispiti ispiti={ispiti} />     
+      <Ispiti ispiti={ispiti} />
+      <Ocjena zadace={zadace} ispiti={ispiti}/>
      
     </ScrollView>
     )
