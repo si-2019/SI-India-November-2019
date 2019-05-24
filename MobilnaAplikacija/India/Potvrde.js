@@ -20,7 +20,7 @@ class Potvrde extends React.Component {
       'Odabrani zahtjev',
       'Potvrda: '+ tip.label +'\nSvrha: '+ svrha.label,
       [
-        {text: 'Predaj', onPress: () => console.log('Predao')},
+        {text: 'Predaj', onPress: () => Alert.alert("Uspješno ste poslali zahtjev za obradu potvrde")},
           {
           text: 'Poništi',
           onPress: () => console.log('Poništio'),
@@ -58,11 +58,12 @@ class Potvrde extends React.Component {
       pocetak_recenice = <Text></Text>
       kraj_rec = <Text>Nemate više besplatnih potvrda! Cijena po potvrdi je 2KM, a plaćanje se vrši pri preuzimanju potvrde.</Text>
     }
+   
     return (
       <ScrollView> 
         <Text style={{ fontSize: RF(3.5), margin: 70, alignSelf: 'center' }}>Zahtjev za izdavanje ovjerenog uvjerenja</Text>
         <Naslov/>
-        <Zahtjev/>
+        <Zahtjev/> 
         <Text style={{ fontSize: RF(2.5), alignSelf: 'center' }}>Izaberite tip potvrde: </Text>
         <Picker
           selectedValue={lista[this.state.pickerSelection].value}
