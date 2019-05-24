@@ -8,6 +8,7 @@ import {
 import AktivniIspiti from './aktivniIspiti'
 import PrijavljeniIspiti from './prijavljeniIspiti'
 import SviPrijavljeniIspiti from './sviPrijavljeniIspiti'
+import Notifikacija from './notifikacije'
 
 const TabScreen = createMaterialTopTabNavigator(
   {
@@ -35,7 +36,16 @@ const TabScreen = createMaterialTopTabNavigator(
         borderBottomWkeyth: 2,
       },
     },
+    navigationOptions: {
+      header: props => <Notifikacija/>,
+    }
   }
 );
+const IspitiTab = createStackNavigator({
+  TabScreen: {
+    screen: TabScreen,
+    
+  },
+});
 
-export default createAppContainer(TabScreen);
+export default createAppContainer(IspitiTab);
