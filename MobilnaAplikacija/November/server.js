@@ -132,7 +132,7 @@ axios.get('http://localhost:31914/predmeti/'+idstudenta)
       if(element.bodovi[0].zavrsni!="/") ukupnoBodova=ukupnoBodova+element.bodovi[0].zavrsni;
       if(element.bodovi[0].zadaca!="/") ukupnoBodova=ukupnoBodova+element.bodovi[0].zadaca;
       if(element.bodovi[0].projekat!="/") ukupnoBodova=ukupnoBodova+element.bodovi[0].projekat;
-      console.log(ukupnoBodova + element.bodovi[1].predmet);
+      //console.log(ukupnoBodova + element.bodovi[1].predmet);
       resp=resp+"{\"predmet\":\""+element.bodovi[1].predmet+"\",\"bodovi\":\""+ukupnoBodova+"\"},"
     })
     axios.get('http://localhost:31914/odslusani/'+idstudenta) 
@@ -149,7 +149,7 @@ axios.get('http://localhost:31914/predmeti/'+idstudenta)
       if(element.bodovi[0].zavrsni!="/") ukupnoBodova=ukupnoBodova+element.bodovi[0].zavrsni;
       if(element.bodovi[0].zadaca!="/") ukupnoBodova=ukupnoBodova+element.bodovi[0].zadaca;
       if(element.bodovi[0].projekat!="/") ukupnoBodova=ukupnoBodova+element.bodovi[0].projekat;
-      console.log(ukupnoBodova + element.bodovi[1].predmet);
+      //console.log(ukupnoBodova + element.bodovi[1].predmet);
       resp=resp+"{\"predmet\":\""+element.bodovi[1].predmet+"\",\"bodovi\":\""+ukupnoBodova+"\"},"
     })
     
