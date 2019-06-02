@@ -20,11 +20,16 @@ class Zavrsni extends React.Component {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sociis natoque penatibus et magnis dis parturient montes nascetur. Elementum integer enim neque volutpat ac tincidunt vitae semper. Praesent semper feugiat nibh sed pulvinar proin. Nec feugiat nisl pretium fusce id velit ut. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat. Eget est lorem ipsum dolor sit amet consectetur adipiscing. Quis varius quam quisque id diam vel quam elementum. Sodales neque sodales ut etiam sit amet.
                  </Text>
                 </ReadMore>
-
-                <Button
-                    title="Odaberi dokument"
-                    onPress={this.odaberiDokument}
-                />
+                <Text>{"\n"}</Text>
+                <Text style={{fontSize: 18,  fontWeight: 'bold'}}>Poslani fajlovi</Text>
+                <Text style={{fontSize:15}}>Nije poslan niti jedan dokument. Odaberite novi fajl. </Text>
+                <TouchableOpacity
+                    style={styles.dugme}
+                    onPress={
+                        () => this.odaberiDokument()
+                    }>
+                    <Text style={styles.submitButtonText}> Učitaj dokument </Text>
+                </TouchableOpacity>
             </View>
         )
     }
@@ -48,3 +53,12 @@ class Zavrsni extends React.Component {
 }
 
 export default Zavrsni;
+
+const styles = StyleSheet.create({
+    dugme: {
+        backgroundColor: '#376ff2',
+        padding: 10,
+        margin: 15,
+        height: 40,
+    }
+});
