@@ -6,8 +6,7 @@ export default class Izvjestaj extends Component {
     console.log(title);
     return (
     <ScrollView style={style.container}>
-      <Text style={style.text}>Izvještaj: {title}{"\n"}</Text>
-     
+      <Text style={style.text}>Izvještaj: {title}{"\n"}</Text>   
     </ScrollView>
     )
   }
