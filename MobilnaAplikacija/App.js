@@ -14,10 +14,12 @@ import Screen4 from './India/Ispiti';
 import Screen5 from './India/Potvrde';
 import Screen6 from './India/Raspored';
 import Screen7 from  './November/login';
+import Screen10 from './November/Zavrsni';
 import Screen8 from  './November/SortiranjeGodina';
 import Predmet from './November/Predmet/Predmet';
 import screen9 from './changelog';
 import odslusaniPredmeti from './November/odslusaniPredmeti';
+
 /*
 export default class App extends React.Component {
   render() {
@@ -183,6 +185,20 @@ const Screen9_StackNavigator = createStackNavigator({
   },
 });
 
+const Screen10_StackNavigator = createStackNavigator({
+  Third: {
+    screen: Screen10,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Završni rad',
+      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
+      headerStyle: {
+        backgroundColor: '#376ff2',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
+
 const DrawerNavigatorExample = createDrawerNavigator({
   //Drawer Optons and indexing
   Screen1: {
@@ -232,12 +248,18 @@ const DrawerNavigatorExample = createDrawerNavigator({
       drawerLabel: 'Prosjeci',
     },
   },
+  Screen10: {
+    screen: Screen10_StackNavigator,
+    navigationOptions: {
+      drawerLabel: 'Završni rad',
+    },
+  },
   Screen9: {
     screen: Screen9_StackNavigator,
     navigationOptions: {
       drawerLabel: 'Changelog',
     },
-  },
+  }
 });
 
 export default createAppContainer(DrawerNavigatorExample);
