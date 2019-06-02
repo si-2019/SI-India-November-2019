@@ -27,13 +27,13 @@ export class ListaIzvjestaja extends React.Component {
     return (
       <View>
         <FlatList
-          data={this.state.subjects}
+          data={this.state.izvjestaji}
           keyExtractor={item => item.id.toString()}
           renderItem={({ item }) => (
-            <TouchableOpacity>
+            <TouchableOpacity style={styles.buttonStyle}>
               <Text
                 style={styles.item}
-                onPress={() => this.props.navigation.navigate("Predmet", item)}
+                onPress={() => this.props.navigation.navigate("Izvjestaj", item)}
               >
                 {item.title}
               </Text>
@@ -82,6 +82,13 @@ const styles = StyleSheet.create({
   item: {
     padding: 5,
     fontSize: 16,
-    height: 32
-  }
+    height: 50,
+    textAlign: 'center'
+  },
+  buttonStyle: {
+    padding:1,
+    backgroundColor: '#ededed',
+    borderRadius:4,
+    margin: 10
+    }
 });
