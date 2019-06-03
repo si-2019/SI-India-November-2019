@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { StyleSheet, View, Text, Image, TouchableOpacity, Linking } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity, Linking, Button } from 'react-native';
 import { SubjectsList } from './SubjectsList';
 import { Divider } from 'react-native-elements';
 import Obavijesti from './NewsFeed/Obavijesti';
@@ -12,11 +12,11 @@ export default class Dashboard extends Component {
            <SubjectsList navigation={this.props.navigation}/>
          </View>
          <Divider style={styles.divider} />
-         <TouchableOpacity onPress={() => this.props.navigation.navigate("odslusaniPredmeti", 1)}>
-            <Text style={{textDecorationLine: 'underline'}}>
-                Odslušani predmeti
-            </Text>
-         </TouchableOpacity>
+         <Button
+          onPress={() => this.props.navigation.navigate("odslusaniPredmeti", 1)}
+          title="Odslušani predmeti"
+          accessibilityLabel="Odslušani predmeti"
+          />
          <View style={styles.notificationsContainer}>
              <Obavijesti id={1}/>
          </View>

@@ -77,6 +77,10 @@ const FirstActivity_StackNavigator = createStackNavigator({
     screen: odslusaniPredmeti,
     navigationOptions: ({ navigation }) => ({
       title: 'Odslušani predmeti',
+      headerStyle: {
+        backgroundColor: '#376ff2',
+      },
+      headerTintColor: '#fff',
     }),
   },
 });
