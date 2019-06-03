@@ -17,6 +17,7 @@ import Screen7 from  './November/login';
 import Screen10 from './November/Zavrsni';
 import Screen8 from  './November/SortiranjeGodina';
 import Predmet from './November/Predmet/Predmet';
+import Izvjestaj from './November/SviIzvjestaji/Izvjestaj';
 import screen9 from './changelog';
 import odslusaniPredmeti from './November/odslusaniPredmeti';
 
@@ -103,7 +104,7 @@ const Screen2_StackNavigator = createStackNavigator({
 
 
 const Screen3_StackNavigator = createStackNavigator({
-  Third: {
+  First: {
     screen: Screen3,
     navigationOptions: ({ navigation }) => ({
       title: 'Izvještaji',
@@ -114,6 +115,9 @@ const Screen3_StackNavigator = createStackNavigator({
       headerTintColor: '#fff',
     }),
   },
+  Izvjestaj: {
+    screen: Izvjestaj
+  }
 });
 
 
