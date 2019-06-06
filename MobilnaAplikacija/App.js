@@ -14,7 +14,7 @@ import Screen4 from './India/Ispiti';
 import Screen5 from './India/Potvrde';
 import Screen6 from './India/Raspored';
 import Screen7 from  './November/login';
-import Screen10 from './November/Zavrsni';
+import Zavrsni from './November/Zavrsni';
 import Screen8 from  './November/SortiranjeGodina';
 import Predmet from './November/Predmet/Predmet';
 import Izvjestaj from './November/SviIzvjestaji/Izvjestaj';
@@ -71,8 +71,19 @@ const FirstActivity_StackNavigator = createStackNavigator({
       headerTintColor: '#fff',
     }),
   },
+  Zavrsni: {
+    screen : Zavrsni,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Završni rad',
+      headerStyle: {
+        backgroundColor: '#376ff2',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
   Predmet: {
-    screen: Predmet
+    screen: Predmet,
+
   },
   odslusaniPredmeti: {
     screen: odslusaniPredmeti,
@@ -193,19 +204,7 @@ const Screen9_StackNavigator = createStackNavigator({
   },
 });
 
-const Screen10_StackNavigator = createStackNavigator({
-  Third: {
-    screen: Screen10,
-    navigationOptions: ({ navigation }) => ({
-      title: 'Završni rad',
-      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-      headerStyle: {
-        backgroundColor: '#376ff2',
-      },
-      headerTintColor: '#fff',
-    }),
-  },
-});
+
 
 const DrawerNavigatorExample = createDrawerNavigator({
   //Drawer Optons and indexing
@@ -254,12 +253,6 @@ const DrawerNavigatorExample = createDrawerNavigator({
     screen: Screen8_StackNavigator,
     navigationOptions: {
       drawerLabel: 'Prosjeci',
-    },
-  },
-  Screen10: {
-    screen: Screen10_StackNavigator,
-    navigationOptions: {
-      drawerLabel: 'Završni rad',
     },
   },
   Screen9: {

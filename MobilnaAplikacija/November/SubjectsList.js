@@ -9,6 +9,7 @@ import {
 } from "react-native";
 // import axios from 'axios';
 
+import Zavrsni from './Zavrsni';
 export class SubjectsList extends React.Component {
   constructor(props) {
     super(props);
@@ -49,6 +50,9 @@ export class SubjectsList extends React.Component {
             </TouchableOpacity>
           )}
         />
+        <TouchableOpacity>
+          <Text style={styles.iteme}  onPress={() => this.props.navigation.navigate("Zavrsni",1)}>Završni rad</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -141,22 +145,8 @@ const getSubjects = [
       { naziv : "Zadaća 6", bodovi : 2}
     ],
     prisustvo:10
-  },
-  {
-    id: 5,
-    title: "Završni rad",
-    profesor: "Profesor ZR",
-    ECTS: "4",
-    asistenti: "Asistent",
-    ispiti: [
-      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 0 },
-      { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 0 }
-    ],
-    zadace: [
-      { naziv: "Zadaća 1", bodovi: 25.9 }
-    ],
-    prisustvo:10
   }
+
 ];
 
 const styles = StyleSheet.create({
@@ -164,5 +154,10 @@ const styles = StyleSheet.create({
     padding: 5,
     fontSize: 16,
     height: 32
-  }
+  },
+  iteme: {
+    padding: 5,
+    fontSize: 16,
+    height: 50
+  },
 });

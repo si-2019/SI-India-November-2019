@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react'
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity ,Button} from 'react-native';
 import  ReadMore from 'react-native-read-more-text';
 import { DocumentPicker} from 'expo';
+
 class Zavrsni extends React.Component {
 
     render() {
-        return (
+            return (
             <ScrollView>
             <View>
+                <Text>{"\n"}</Text>
                 <Text style={{ fontSize: 18,  fontWeight: 'bold'}}>Tema: Naziv teme</Text>
                 <Text style={{fontSize: 18,  fontWeight: 'bold'}}>Mentor: prof. dr. John Doe </Text>
                 <Text>{"\n"}</Text>

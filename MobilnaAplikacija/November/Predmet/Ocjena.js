@@ -9,11 +9,11 @@ const Ocjena = (props) => {
     };
     konacnaOcjena = (ocjena) => {
         if (ocjena < 55) this.state.kOcjena = "Niste položili predmet!";
-        else if (ocjena>=55 && ocjena<65) this.state.kOcjena = 6;
-        else if (ocjena>=65 && ocjena<75) this.state.kOcjena = 7;
-        else if (ocjena>=75 && ocjena<85) this.state.kOcjena =8;
-        else if (ocjena>=85 && ocjena<95) this.state.kOcjena = 9;
-        else if (ocjena>=95 && ocjena<=100) this.state.kOcjena = 10;
+        else if (ocjena>=55 && ocjena<65) this.state.kOcjena = "Konačna ocjena: " + 6;
+        else if (ocjena>=65 && ocjena<75) this.state.kOcjena = "Konačna ocjena: " + 7;
+        else if (ocjena>=75 && ocjena<85) this.state.kOcjena ="Konačna ocjena: " + 8;
+        else if (ocjena>=85 && ocjena<95) this.state.kOcjena = "Konačna ocjena: " + 9;
+        else if (ocjena>=95 && ocjena<=100) this.state.kOcjena = "Konačna ocjena: " + 10;
     }
     zbirBodovaNajboljiRezultat = (ispiti) =>
     {
@@ -51,7 +51,7 @@ const Ocjena = (props) => {
             })}
             {this.zbirBodovaNajboljiRezultat(props.ispiti)}
             {this.konacnaOcjena(this.state.bodoviZadace + this.state.bodoviIspiti)}
-            <Text style={styles.ocjene}>Konačna ocjena: {(this.state.kOcjena)}</Text>
+            <Text style={styles.ocjene}>{(this.state.kOcjena)}</Text>
         </View>
     );
 };
