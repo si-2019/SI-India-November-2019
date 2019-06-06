@@ -17,7 +17,8 @@ export default class Predmet extends Component {
       <Text style={style.text}>Asistenti: {asistenti}{"\n"}</Text>
       
       <ProgressBar zadace={zadace} ispiti={ispiti} prisustvo={prisustvo}/>
-      <Text >{"\n"}Prisustvo: {prisustvo} {"\n"}</Text>
+      <Text style={{fontWeight: 'bold'}}>{"\n"}Prisustvo: {prisustvo} {"\n"}</Text>
+      <Text>{"\n"}</Text>
       <Zadace zadace={zadace}/>
       <Text>{"\n"}</Text>
       <Ispiti ispiti={ispiti} />

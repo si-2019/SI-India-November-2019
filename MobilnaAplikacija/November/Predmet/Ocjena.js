@@ -58,13 +58,10 @@ const Ocjena = (props) => {
 export default Ocjena;
 const styles = StyleSheet.create({
     text1: {
+        marginTop:43,
         textAlign: 'center',
-        fontWeight: 'bold',
-        margin: 10
-    },
-    text2: {
-        textAlign: 'center',
-        margin: 7
+        fontWeight: 'bold'
+
     },
     ocjene: {
         textAlign:'center',
