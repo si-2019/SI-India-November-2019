@@ -105,8 +105,8 @@ class pet extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>   
-      
+      <View style={styles.sloboDan}>   
+      <Text>Nema dodanih obaveza</Text>
 
       </View>
     );
@@ -121,7 +121,8 @@ class sub extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>   
+      <View style={styles.sloboDan}>   
+      <Text>Nema dodanih obaveza</Text>
       
 
       </View>
@@ -137,7 +138,9 @@ class ned extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>   
+      <View style={styles.sloboDan}>  
+      <Text>Nema dodanih obaveza</Text> 
+
       </View>
     );
   
@@ -157,6 +160,16 @@ const TabNavigator = createBottomTabNavigator({
 });
 
 const styles = StyleSheet.create({
+
+  sloboDan: {
+    backgroundColor: 'lightskyblue',
+    flexDirection: 'row',   
+    color: 'blue',
+    paddingTop: '25%',
+    flex:1,
+    paddingLeft: '7%',
+  },
+
   container: {
     flex: 1,
     backgroundColor: 'white',
