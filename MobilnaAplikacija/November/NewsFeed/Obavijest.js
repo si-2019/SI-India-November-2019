@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
   render() {
     return (
       <View style={styles.container}>
-          <Text style={styles.text}>Obavijest: {this.props.naziv}</Text>
+          <Text style={styles.tekst1}>Obavijest: {this.props.naziv}</Text>
           <Text style={styles.text}>{this.props.tekst}</Text>
       </View>
     )
@@ -19,12 +19,21 @@ const styles = StyleSheet.create({
     container: {
         marginTop:5,
         width: "100%",
-        textAlign:"left"
+        textAlign:"left",
+        borderWidth: 1,
+        borderColor: 'lightgrey'
     },
     text:{
-        width:"100%",
-        fontSize:16
-    }
+      marginLeft: 7,
+      height: 'auto',
+      width: '90%',
+    },
+    tekst1: {
+      color: '#737373',
+      fontSize: 13,
+      marginTop: 7,
+      marginLeft: 10
+      }
     ,
   });
 export default Obavijest;
