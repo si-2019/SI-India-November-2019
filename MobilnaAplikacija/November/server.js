@@ -170,7 +170,22 @@ console.log(error);
 {"predmet":"IEK","bodovi":"10"},{"predmet":"SI","bodovi":"28"}]
 */
 });
-
+app.get('/predmeti/:idstudenta/prviParcijalni', (req, res) => {
+  res.json( [
+    {
+      predmet: "Administracija racunarskih mreza",
+      bodovi : 6
+    },
+    {
+      predmet: "Vještačka inteligencija",
+      bodovi : 13
+    },
+    {
+      predmet: "Softver inženjering",
+      bodovi : 17
+    }
+  ]);
+});
 
 app.listen(31914);
 
