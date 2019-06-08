@@ -20,12 +20,15 @@ class Potvrde extends React.Component {
       'Odabrani zahtjev',
       'Potvrda: '+ tip.label +'\nSvrha: '+ svrha.label,
       [
-        {text: 'Predaj', onPress: () => Alert.alert("Uspješno ste poslali zahtjev za obradu potvrde")},
-          {
-          text: 'Poništi',
-          onPress: () => console.log('Poništio'),
-          style: 'cancel',
-        },
+        {text: 'Predaj', onPress: () => Alert.alert(
+		'Upozorenje', 'Da li ste sigurni?',
+		[
+		{text: 'Da', onPress: () => Alert.alert('Zahtjev uspješno poslan!')},
+			{text: 'Ne', onPress: () => Alert.alert('Uspješno ste otkazali slanje zahtjeva!')}
+		
+		]
+		)},
+        {text: 'Poništi',onPress: () => console.log('Poništio'), style: 'cancel'},
       ],
       {cancelable: false},
     );
