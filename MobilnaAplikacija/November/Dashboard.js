@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   notificationsContainer: {
   
-    marginBottom: 45
+    marginBottom: 55
   },
   Icon: {
     width: 55,
