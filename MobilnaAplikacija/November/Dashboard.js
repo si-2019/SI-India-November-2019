@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
     padding:0
   },
   subjectsContainer: {
-    height: '30%',
+    height: '32%',
+    width: '100%',
     justifyContent: 'center'
   },
   divider: {

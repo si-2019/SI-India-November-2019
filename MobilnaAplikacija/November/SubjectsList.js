@@ -2,11 +2,12 @@ import React from "react";
 import {
   StyleSheet,
   Text,
-  View,
+  ScrollView,
   FlatList,
   TouchableOpacity,
   ActivityIndicator
 } from "react-native";
+import { ListItem } from 'react-native-elements';
 // import axios from 'axios';
 
 import Zavrsni from './Zavrsni';
@@ -35,25 +36,22 @@ export class SubjectsList extends React.Component {
   }
   render() {
     return (
-      <View>
+      <ScrollView>
         <FlatList
           data={this.state.subjects}
           keyExtractor={item => item.id.toString()}
           renderItem={({ item }) => (
-            <TouchableOpacity>
-              <Text
-                style={styles.item}
-                onPress={() => this.props.navigation.navigate("Predmet", item)}
-              >
-                {item.title}
-              </Text>
-            </TouchableOpacity>
+            <ListItem
+              title={item.title}
+              onPress={() => this.props.navigation.navigate("Predmet", item)}
+              chevron
+            />
           )}
         />
         <TouchableOpacity>
           <Text style={styles.iteme}  onPress={() => this.props.navigation.navigate("Zavrsni",1)}>Završni rad</Text>
         </TouchableOpacity>
-      </View>
+      </ScrollView>
     );
   }
 
@@ -157,7 +155,9 @@ const styles = StyleSheet.create({
   },
   iteme: {
     padding: 5,
-    fontSize: 16,
+    marginTop: 5,
+    marginLeft: 10,
+    fontSize: 17,
     height: 50
   },
 });
