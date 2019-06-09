@@ -12,7 +12,7 @@ import { Agenda } from 'react-native-calendars';
 import { Button } from 'react-native-elements';
 //crna tacka - imaju zabilješke
 //tacke u boji - zavisno od preostalog perioda
-let obaveze = [{ naziv: 'Zadaca 3', predmet: 'Administracija računarskih mreža', tip: 'zadaća', datum: "9.6.2019. 10:30", zabiljeske:[] },
+let obaveze = [{ naziv: 'Zadaca 3', predmet: 'Administracija računarskih mreža', tip: 'zadaća', datum: "10.6.2019. 10:30", zabiljeske:[] },
 { naziv: 'Zadaca 4', predmet: 'Administracija računarskih mreža', tip: 'Završni ispit', datum: "15.7.2019. 10:30", zabiljeske:[]},
 { naziv: 'Zadaca 2', predmet: 'Administracija računarskih mreža', tip: 'zadaća', datum: "25.6.2019. 10:30", zabiljeske:[] },
 { naziv: 'Zadaca 2', predmet: 'Osnove računarskih mreža', tip: 'zadaća', datum: "25.6.2019. 11:00", zabiljeske:[]},
@@ -183,7 +183,7 @@ export default class AgendaScreen extends Component {
                     onChangeText={(tekst) => this.setState({ markirani: this.state.markirani, items: this.state.items, text: tekst })}
                    //value={this.state.text}
                 />
-                <Text>   </Text>
+                <Text style={{height:1}}></Text>
                 <TouchableOpacity>
                     <Text style={[ {backgroundColor:'#fafafa', alignContent:'center',textAlign:'center', color: '#376ff2' }]} onPress={() => {
                         if(this.state.text!=undefined && this.state.text!='' && this.state.text!=' '){
