@@ -13,7 +13,7 @@ import { Button } from 'react-native-elements';
 //crna tacka - imaju zabilješke
 //tacke u boji - zavisno od preostalog perioda
 let inicijalni={
-    obaveze :[{ naziv: 'Zadaca 3', predmet: 'Administracija računarskih mreža', tip: 'zadaća', datum: "10.6.2019. 10:30", zabiljeske: ['Amina', 'Aminaa', 'Amina'] },
+    obaveze :[{ naziv: 'Zadaca 3', predmet: 'Administracija računarskih mreža', tip: 'zadaća', datum: "10.6.2019. 10:30", zabiljeske: ['Biljeska1', 'Biljeska2', 'Biljeska3'] },
     { naziv: 'Zadaca 4', predmet: 'Administracija računarskih mreža', tip: 'Završni ispit', datum: "15.7.2019. 10:30", zabiljeske: [] },
     { naziv: 'Zadaca 2', predmet: 'Administracija računarskih mreža', tip: 'zadaća', datum: "25.6.2019. 10:30", zabiljeske: [] },
     { naziv: 'Zadaca 2', predmet: 'Osnove računarskih mreža', tip: 'zadaća', datum: "25.6.2019. 11:00", zabiljeske: [] },
