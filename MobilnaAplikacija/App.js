@@ -54,7 +54,7 @@ class NavigationDrawerStructure extends Component {
           </TouchableOpacity>
         </View>
       </>
-    );
+    ); 
   }
 }
 
