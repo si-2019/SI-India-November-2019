@@ -13,12 +13,12 @@ import { Button } from 'react-native-elements';
 //crna tacka - imaju zabilješke
 //tacke u boji - zavisno od preostalog perioda
 let inicijalni={
-    obaveze :[{ naziv: 'Zadaca 3', predmet: 'Administracija računarskih mreža', tip: 'zadaća', datum: "10.6.2019. 10:30", zabiljeske: ['Biljeska1', 'Biljeska2', 'Biljeska3'] },
-    { naziv: 'Zadaca 4', predmet: 'Administracija računarskih mreža', tip: 'Završni ispit', datum: "15.7.2019. 10:30", zabiljeske: [] },
-    { naziv: 'Zadaca 2', predmet: 'Administracija računarskih mreža', tip: 'zadaća', datum: "25.6.2019. 10:30", zabiljeske: [] },
-    { naziv: 'Zadaca 2', predmet: 'Osnove računarskih mreža', tip: 'zadaća', datum: "25.6.2019. 11:00", zabiljeske: [] },
-    { naziv: 'Laboratorijska vježba 7', predmet: 'Administracija Računarskih mreža', tip: 'lab', datum: "20.6.2019. 10:30", zabiljeske: [] },
-    { naziv: 'Predavanje 8', predmet: 'Vještačka inteligencija', tip: 'predavanje', datum: "28.6.2019. 10:30", zabiljeske: [] }],
+    obaveze :[{ naziv: 'Zadaca 3', status: 'Poslano', predmet: 'Administracija računarskih mreža', tip: 'zadaća', datum: "10.6.2019. 10:30", zabiljeske: ['Biljeska1', 'Biljeska2', 'Biljeska3'] },
+    { naziv: 'Zadaca 4', status: 'Nije poslano', predmet: 'Administracija računarskih mreža', tip: 'Završni ispit', datum: "15.7.2019. 10:30", zabiljeske: [] },
+    { naziv: 'Zadaca 2', status: 'Nije poslano', predmet: 'Administracija računarskih mreža', tip: 'zadaća', datum: "25.6.2019. 10:30", zabiljeske: [] },
+    { naziv: 'Zadaca 2', status: 'Nije poslano', predmet: 'Osnove računarskih mreža', tip: 'zadaća', datum: "25.6.2019. 11:00", zabiljeske: [] },
+    { naziv: 'Laboratorijska vježba 7', status: 'Nije poslano', predmet: 'Administracija Računarskih mreža', tip: 'lab', datum: "20.6.2019. 10:30", zabiljeske: [] },
+    { naziv: 'Predavanje 8', status: 'Nema obaveza', predmet: 'Vještačka inteligencija', tip: 'predavanje', datum: "28.6.2019. 10:30", zabiljeske: [] }],
     markirani: {},
     items: {},
     text: ''
@@ -99,7 +99,7 @@ export default class AgendaScreen extends Component {
                     //       if(i==0){ this.state.items[day.year+'-'+day.month+'-'+dan]=[]
                     //       i++;}
                     let da = 0, boja;
-                    this.state.items[puniDatum].push({ key: puniDatum, naziv: obaveza.naziv, tip: obaveza.tip, datum: obaveza.datum, predmet: obaveza.predmet, zabiljeske: obaveza.zabiljeske });
+                    this.state.items[puniDatum].push({ key: puniDatum, naziv: obaveza.naziv, tip: obaveza.tip, datum: obaveza.datum, status: obaveza.status, predmet: obaveza.predmet, zabiljeske: obaveza.zabiljeske });
                     if (puniDatum >= moment().format('YYYY-MM-DD')) {
                         da = 1;
                         var now = moment();
@@ -204,6 +204,7 @@ export default class AgendaScreen extends Component {
                 <Text style={{ fontFamily:'System', fontWeight:"bold", fontSize:18 }}>{moment(item.datum, 'DD.MM.YYYY hh:mm').format('hh:mm')}</Text>
                 <Text> <Text style={{ fontWeight: "bold"  , fontFamily:'System', fontSize:18}}>{item.naziv}</Text></Text>
                 <Text style={{ fontFamily:'System', fontSize:14.5}}>{item.predmet}</Text>
+                <Text style={{ fontWeight: "bold", fontFamily:'System', fontSize:15.5}}>{item.status}</Text>
                 <Text style={{ fontFamily:'System', fontSize:14.5}}>{item.tip}</Text>
                 <Text style={{ fontFamily:'System',}}>Zabilješke:</Text>
                 <View style={{backgroundColor:'#f4f4f4', borderRadius:5, borderColor:'white', padding:2}}>

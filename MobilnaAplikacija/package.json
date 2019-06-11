@@ -13,6 +13,7 @@
     "link": "^0.1.5",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "react-native-calendar": "^0.13.1",
     "react-native-calendars": "^1.185.0",
     "react-native-document-picker": "^2.3.0",
     "react-native-elements": "^1.1.0",
