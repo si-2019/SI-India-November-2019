@@ -155,7 +155,7 @@ export default class SortiranjeGodina extends Component {
         })
         prosjeciPoSemestruSort = (
             <View testID="semestri">
-            <Text style={{ fontSize: 18,  fontWeight: 'bold'}}> Prosjeci po semestrima sortirani{"\n"}</Text>
+            <Text style={styles.subHeader}> Prosjeci po semestrima sortirani</Text>
             <FlatList
                 data={semestriProsjek}
                 keyExtractor={item => item.id.toString()}
@@ -171,7 +171,7 @@ export default class SortiranjeGodina extends Component {
         prosjeciPoSemestruNesort = (
             
             <View>
-            <Text style={{ fontSize: 18,  fontWeight: 'bold'}}> Prosjeci po semestrima{"\n"}</Text>
+            <Text style={styles.subHeader}> Prosjeci po semestrima</Text>
             <FlatList
             data={semestriProsjekNesortirano}
                 keyExtractor={item => item.id.toString()}
@@ -185,9 +185,10 @@ export default class SortiranjeGodina extends Component {
             
         )
         return (
+            <ScrollView>
             <View style={styles.MainContainer}>  
                 <View testID="ukupni">
-                    <Text style={{ fontSize: 18, fontWeight: 'bold', marginTop: 10 }}> Ukupan prosjek: {ukupniProsjek}{"\n"}</Text>
+                    <Text style={{ fontSize: 18, fontWeight: 'bold', marginTop: 10 }}> Ukupan prosjek: {ukupniProsjek}</Text>
                 </View>
                 <View
                     style={{
@@ -196,7 +197,7 @@ export default class SortiranjeGodina extends Component {
                     }}
                 />
                 <View testID="godine">
-                    <Text style={{ fontSize: 18,  fontWeight: 'bold'}}> Prosjeci po godinama{"\n"}</Text>
+                    <Text style={styles.subHeader}> Prosjeci po godinama</Text>
                     <FlatList
                         data = {[
                             {key:godineProsjekNesortirano[0].godina, value:godineProsjekNesortirano[0].prosjek},
@@ -217,7 +218,7 @@ export default class SortiranjeGodina extends Component {
                     }}
                     />
                 <View>
-                    <Text style={{ fontSize: 18,  fontWeight: 'bold'}}> Prosjeci po godinama sortirani{"\n"} </Text>
+                    <Text style={styles.subHeader}> Prosjeci po godinama sortirani</Text>
                     <FlatList
                         data = {[
                             {key:godineProsjek[0].godina, value:godineProsjek[0].prosjek},
@@ -246,12 +247,13 @@ export default class SortiranjeGodina extends Component {
                         else
                         this.promjenaSemestara('1')}} 
                      style = {styles.button} >
-                        <Text>
+                        <Text style={{color: 'white', fontWeight:'bold'}}>
                         {this.state.tekstButtonaSortSemestre}
                         </Text>
                     </TouchableOpacity> 
                 </View>
             </View>
+            </ScrollView>
         );
     }
 }
@@ -296,8 +298,7 @@ const getSemester = [
 const styles = StyleSheet.create({
     MainContainer: {
         flex: 1,
-        paddingTop: 15,
-        padding: 20
+        
     },
     item: {
         padding: 3,
@@ -305,12 +306,21 @@ const styles = StyleSheet.create({
         height: 25,
     },
     button: {
-        backgroundColor: 'lightgrey', 
+        backgroundColor: '#2097F3', 
         alignItems: 'center', 
         justifyContent: 'center', 
-        borderRadius: 10,
+        borderRadius: 4,
         padding: 8,
         marginTop: 6,
         marginBottom: 10
-    }
+    },
+    subHeader:{
+        backgroundColor: '#195dc4',
+        color: 'white',
+        padding: 5,
+        fontSize: 15,
+        fontWeight: 'bold',
+     
+        width: '100%'
+      },
 });

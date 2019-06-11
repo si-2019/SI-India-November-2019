@@ -8,19 +8,19 @@ import Obavijesti from './NewsFeed/Obavijesti';
 export default class Dashboard extends Component {
   render() {
     return (
+      <ScrollView>
       <View style={styles.MainContainer}>
            <Text style={styles.subHeader}>Predmeti aktuelnog semestra:</Text>
          <View style={styles.subjectsContainer}>
            <SubjectsList navigation={this.props.navigation}/>
          </View>
-         <Divider style={styles.divider} />
-          <TouchableOpacity 
-           style = {styles.button} 
-           onPress={() => this.props.navigation.navigate("odslusaniPredmeti", 1)}>
-          <Text>
-              Pregled odslušanih predmeta
+         <TouchableOpacity style={styles.buttonChoose}  onPress={() => this.props.navigation.navigate("odslusaniPredmeti", 1)}>
+         <Text style = {styles.dugmeTekst}>
+            Odslušani predmeti
           </Text>
-         </TouchableOpacity> 
+          </TouchableOpacity>
+          
+          <Text style={{ fontSize: 10 }}></Text>
           <Text style={styles.subHeader}>Aktuelne obavijesti:</Text>
           <ScrollView style={styles.notificationsContainer}>
               <Obavijesti id={1}/>
@@ -39,6 +39,7 @@ export default class Dashboard extends Component {
               </TouchableOpacity>
           </View>
       </View>
+      </ScrollView>
     );
   }
 }
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
     padding:0
   },
   subjectsContainer: {
-    height: '32%',
+    //height: '32%',
     width: '100%',
     justifyContent: 'center'
   },
@@ -97,6 +98,24 @@ const styles = StyleSheet.create({
     marginLeft: '18%',
     marginRight: '18%',
     marginBottom: 10
-  }
+  },
+  button2: {
+    width: '50%',
+    marginBottom: 10,
+  },
+  buttonChoose: {
+    backgroundColor: '#2097F3', 
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    borderRadius: 4,
+    padding: 10,
+    marginTop: 10,
+    marginLeft: '8%',
+    marginRight: '8%'
+    },
+    dugmeTekst: {
+      color: '#ffffff',
+      fontWeight: 'bold',
+     },
 
 });

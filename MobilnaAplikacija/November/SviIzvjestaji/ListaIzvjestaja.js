@@ -83,11 +83,12 @@ const styles = StyleSheet.create({
     padding: 5,
     fontSize: 16,
     height: 50,
-    textAlign: 'center'
+    textAlign: 'center',
+    color: 'white',
   },
   buttonStyle: {
     padding:1,
-    backgroundColor: '#ededed',
+    backgroundColor: '#2097F3',
     borderRadius:4,
     margin: 10
     }
