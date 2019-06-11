@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#195dc4',
     color: 'white',
     padding: 5,
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: 'bold',
     width: '100%',
     paddingLeft: 20,
