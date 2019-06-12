@@ -4,6 +4,7 @@ const https = require('https');
 const request = require('request');
 const axios = require('axios');
 
+var PORT = process.env.PORT || 31914;
 
 //Vraca sve o predmetima koje student trenutno slusa
 //Potrebno pokrenuti Sierra i Lima server
@@ -187,5 +188,5 @@ app.get('/predmeti/:idstudenta/prviParcijalni', (req, res) => {
   ]);
 });
 
-app.listen(31914);
+app.listen(PORT,function(){ console.log('server successfully started on port '+PORT); });
 
