@@ -188,5 +188,10 @@ app.get('/predmeti/:idstudenta/prviParcijalni', (req, res) => {
   ]);
 });
 
+app.get('/testic', (req,res) => {
+   res.send("aaaaa");
+
+});
+
 app.listen(PORT,function(){ console.log('server successfully started on port '+PORT); });
 
