@@ -10,15 +10,16 @@ import {
 import moment, { isMoment, now } from 'moment'
 import { Agenda } from 'react-native-calendars';
 import { Button } from 'react-native-elements';
+
 //crna tacka - imaju zabilješke
 //tacke u boji - zavisno od preostalog perioda
 let inicijalni={
-    obaveze :[{ naziv: 'Zadaca 3', status: 'Poslano', predmet: 'Administracija računarskih mreža', tip: 'zadaća', datum: "10.6.2019. 10:30", zabiljeske: ['Biljeska1', 'Biljeska2', 'Biljeska3'] },
-    { naziv: 'Zadaca 4', status: 'Nije poslano', predmet: 'Administracija računarskih mreža', tip: 'Završni ispit', datum: "15.7.2019. 10:30", zabiljeske: [] },
-    { naziv: 'Zadaca 2', status: 'Nije poslano', predmet: 'Administracija računarskih mreža', tip: 'zadaća', datum: "25.6.2019. 10:30", zabiljeske: [] },
-    { naziv: 'Zadaca 2', status: 'Nije poslano', predmet: 'Osnove računarskih mreža', tip: 'zadaća', datum: "25.6.2019. 11:00", zabiljeske: [] },
-    { naziv: 'Laboratorijska vježba 7', status: 'Nije poslano', predmet: 'Administracija Računarskih mreža', tip: 'lab', datum: "20.6.2019. 10:30", zabiljeske: [] },
-    { naziv: 'Predavanje 8', status: 'Nema obaveza', predmet: 'Vještačka inteligencija', tip: 'predavanje', datum: "28.6.2019. 10:30", zabiljeske: [] }],
+    obaveze :[{ naziv: 'Zadaca 3', predmet: 'Administracija računarskih mreža', tip: 'zadaća', datum: "10.6.2019. 10:30", zabiljeske: ['Biljeska1', 'Biljeska2', 'Biljeska3'] },
+    { naziv: 'Zadaca 4', predmet: 'Administracija računarskih mreža', tip: 'Završni ispit', datum: "15.7.2019. 10:30", zabiljeske: [] },
+    { naziv: 'Zadaca 2', predmet: 'Administracija računarskih mreža', tip: 'zadaća', datum: "25.6.2019. 10:30", zabiljeske: [] },
+    { naziv: 'Zadaca 2', predmet: 'Osnove računarskih mreža', tip: 'zadaća', datum: "25.6.2019. 11:00", zabiljeske: [] },
+    { naziv: 'Laboratorijska vježba 7', predmet: 'Administracija Računarskih mreža', tip: 'lab', datum: "20.6.2019. 10:30", zabiljeske: [] },
+    { naziv: 'Predavanje 8', predmet: 'Vještačka inteligencija', tip: 'predavanje', datum: "28.6.2019. 10:30", zabiljeske: [] }],
     markirani: {},
     items: {},
     text: ''
@@ -99,7 +100,7 @@ export default class AgendaScreen extends Component {
                     //       if(i==0){ this.state.items[day.year+'-'+day.month+'-'+dan]=[]
                     //       i++;}
                     let da = 0, boja;
-                    this.state.items[puniDatum].push({ key: puniDatum, naziv: obaveza.naziv, tip: obaveza.tip, datum: obaveza.datum, status: obaveza.status, predmet: obaveza.predmet, zabiljeske: obaveza.zabiljeske });
+                    this.state.items[puniDatum].push({ key: puniDatum, naziv: obaveza.naziv, tip: obaveza.tip, datum: obaveza.datum, predmet: obaveza.predmet, zabiljeske: obaveza.zabiljeske });
                     if (puniDatum >= moment().format('YYYY-MM-DD')) {
                         da = 1;
                         var now = moment();
@@ -164,32 +165,26 @@ export default class AgendaScreen extends Component {
                     <View style={{ flex: 9 / 10, alignItems: 'center', borderColor:'white',borderRadius:10, borderWidth:2 }}><Text style={{ textAlign: 'center', fontFamily:'System'}}>{zabilj}</Text></View>
                     <View style={{ flex: 1 / 10, alignItems: 'center', justifyContent: 'center' }}><TouchableOpacity style={{ backgroundColor: '#376ff2', borderRadius:10}}>
                         <Text style={{ color: '#fafafa', fontWeight: 'bold', textAlign: 'center'}} onPress={() => {
-                        /*    { let kopijaItema=this.state.items
-                             let kopijaObaveza=this.state.obaveze
-                             
-                                  let i=0;
-                                // console.log(kopijaState.items) 
-                                kopijaItema.map((obaveza)=>{
-                                    
-                                  if(obaveza.naziv==item.naziv && obaveza.datum==item.naziv && obaveza.key==item.key && obaveza.zabiljeske==item.zabiljeske){
-                                      kopijaZabilješki=obaveza.zabiljeske.filter(function(zabiljeska, indexic){
-                                          return indexic!=ind
-                                      })
-                                      kopijaItema[moment(obaveza.datum, 'DD.MM.YYYY hh:mm').format('YYYY-MM-DD')].zabiljeske=kopijaZabilješki
-                                  }
-                                i++;
-                              })
-                              kopijaObaveza.map((obaveza, indexObaveze)=>{
-                                if(obaveza.naziv==item.naziv && obaveza.datum==item.naziv && obaveza.zabiljeske==item.zabiljeske){
-                                    kopijaZabilješki=obaveza.zabiljeske.filter(function(zabiljeska, indexic){
-                                        return indexic!=ind
+                        
+                              let updatedMarkedDates = this.state.obaveze;
+                            let i = 0, odredjenI;
+                            let noviNiz=[]
+                            updatedMarkedDates.map((it) => {
+                                if (it.naziv == item.naziv && it.datum == item.datum && it.predmet == item.predmet && it.tip == item.tip){
+                                    updatedMarkedDates[i].zabiljeske.map((biljeska, index)=>{
+                                        if(index!=ind) noviNiz.push(biljeska)
                                     })
-                                    kopijaObaveza[indexObaveze].zabiljeske=kopijaZabilješki
+                                    odredjenI=i
                                 }
-                              i++;
+                                i++
                             })
-                              this.setState({obaveze:kopijaObaveza, markirani: this.state.markirani, items: kopijaItema, text: this.state.text });
-                              alert('obrisano') ;}*/
+                            updatedMarkedDates[odredjenI].zabiljeske=noviNiz;
+                            this.setState({obaveze:updatedMarkedDates, markirani: this.state.markirani, items: this.state.items, text: this.state.text })
+                           // console.log(this.state)
+                           this.loadItems
+                            this.forceUpdate()
+                            alert('Bilješka uspješno obrisana!');
+                            
                         }}> X </Text>
 
                     </TouchableOpacity></View>
@@ -204,7 +199,6 @@ export default class AgendaScreen extends Component {
                 <Text style={{ fontFamily:'System', fontWeight:"bold", fontSize:18 }}>{moment(item.datum, 'DD.MM.YYYY hh:mm').format('hh:mm')}</Text>
                 <Text> <Text style={{ fontWeight: "bold"  , fontFamily:'System', fontSize:18}}>{item.naziv}</Text></Text>
                 <Text style={{ fontFamily:'System', fontSize:14.5}}>{item.predmet}</Text>
-                <Text style={{ fontWeight: "bold", fontFamily:'System', fontSize:15.5}}>{item.status}</Text>
                 <Text style={{ fontFamily:'System', fontSize:14.5}}>{item.tip}</Text>
                 <Text style={{ fontFamily:'System',}}>Zabilješke:</Text>
                 <View style={{backgroundColor:'#f4f4f4', borderRadius:5, borderColor:'white', padding:2}}>
@@ -223,17 +217,20 @@ export default class AgendaScreen extends Component {
                 <TouchableOpacity style={{borderRadius:10,backgroundColor: '#376ff2' }}>
                     <Text style={[{height:30, paddingTop:5,  justifyContent: 'center', fontFamily: 'System', textAlign: 'center', color: '#fafafa', fontWeight:'bold' }]} onPress={() => {
                         if (this.state.text != undefined && this.state.text != '' && this.state.text != ' ') {
-                            let updatedMarkedDates = this.state.items;
+                          
+                            let updatedMarkedDates = this.state.obaveze;
                             let i = 0;
-                            updatedMarkedDates[moment(item.datum, 'DD.MM.YYYY hh:mm').format('YYYY-MM-DD')].map((it) => {
+                            updatedMarkedDates.map((it) => {
                                 if (it.naziv == item.naziv && it.datum == item.datum && it.predmet == item.predmet && it.tip == item.tip)
-                                    updatedMarkedDates[moment(item.datum, 'DD.MM.YYYY hh:mm').format('YYYY-MM-DD')][i].zabiljeske.push(this.state.text)
+                                    updatedMarkedDates[i].zabiljeske.push(this.state.text)
                                 i++
                             })
-                            this.setState({obaveze:this.state.obaveze, markirani: this.state.markirani, items: updatedMarkedDates, text: '' })
+                            this.setState({obaveze:updatedMarkedDates, markirani: this.state.markirani, items: this.state.items, text: '' })
                            // console.log(this.state)
+                           this.loadItems
+                           this.forceUpdate()
                             alert('Bilješka uspješno dodana!');
-                            this.forceUpdate()
+                           
                         }
 
                         else {
