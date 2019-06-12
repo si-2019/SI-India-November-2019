@@ -188,8 +188,8 @@ app.get('/predmeti/:idstudenta/prviParcijalni', (req, res) => {
   ]);
 });
 
-app.get('/testic', (req,res) => {
-   res.send("aaaaa");
+app.get('/', (req,res) => {
+   res.send("November backend spreman za upotrebu");
 
 });
 
