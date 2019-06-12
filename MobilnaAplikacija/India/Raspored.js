@@ -165,32 +165,7 @@ export default class AgendaScreen extends Component {
                     <View style={{ flex: 9 / 10, alignItems: 'center', borderColor:'white',borderRadius:10, borderWidth:2 }}><Text style={{ textAlign: 'center', fontFamily:'System'}}>{zabilj}</Text></View>
                     <View style={{ flex: 1 / 10, alignItems: 'center', justifyContent: 'center' }}><TouchableOpacity style={{ backgroundColor: '#376ff2', borderRadius:10}}>
                         <Text style={{ color: '#fafafa', fontWeight: 'bold', textAlign: 'center'}} onPress={() => {
-                        /*    { let kopijaItema=this.state.items
-                             let kopijaObaveza=this.state.obaveze
-                             
-                                  let i=0;
-                                // console.log(kopijaState.items) 
-                                kopijaItema.map((obaveza)=>{
-                                    
-                                  if(obaveza.naziv==item.naziv && obaveza.datum==item.naziv && obaveza.key==item.key && obaveza.zabiljeske==item.zabiljeske){
-                                      kopijaZabilješki=obaveza.zabiljeske.filter(function(zabiljeska, indexic){
-                                          return indexic!=ind
-                                      })
-                                      kopijaItema[moment(obaveza.datum, 'DD.MM.YYYY hh:mm').format('YYYY-MM-DD')].zabiljeske=kopijaZabilješki
-                                  }
-                                i++;
-                              })
-                              kopijaObaveza.map((obaveza, indexObaveze)=>{
-                                if(obaveza.naziv==item.naziv && obaveza.datum==item.naziv && obaveza.zabiljeske==item.zabiljeske){
-                                    kopijaZabilješki=obaveza.zabiljeske.filter(function(zabiljeska, indexic){
-                                        return indexic!=ind
-                                    })
-                                    kopijaObaveza[indexObaveze].zabiljeske=kopijaZabilješki
-                                }
-                              i++;
-                            })
-                              this.setState({obaveze:kopijaObaveza, markirani: this.state.markirani, items: kopijaItema, text: this.state.text });
-                              alert('obrisano') ;}*/
+                        
                               let updatedMarkedDates = this.state.obaveze;
                             let i = 0, odredjenI;
                             let noviNiz=[]
@@ -242,13 +217,7 @@ export default class AgendaScreen extends Component {
                 <TouchableOpacity style={{borderRadius:10,backgroundColor: '#376ff2' }}>
                     <Text style={[{height:30, paddingTop:5,  justifyContent: 'center', fontFamily: 'System', textAlign: 'center', color: '#fafafa', fontWeight:'bold' }]} onPress={() => {
                         if (this.state.text != undefined && this.state.text != '' && this.state.text != ' ') {
-                          /* { let updatedMarkedDates = this.state.items;
-                            let i = 0;
-                            updatedMarkedDates[moment(item.datum, 'DD.MM.YYYY hh:mm').format('YYYY-MM-DD')].map((it) => {
-                                if (it.naziv == item.naziv && it.datum == item.datum && it.predmet == item.predmet && it.tip == item.tip)
-                                    updatedMarkedDates[moment(item.datum, 'DD.MM.YYYY hh:mm').format('YYYY-MM-DD')][i].zabiljeske.push(this.state.text)
-                                i++
-                            })}*/
+                          
                             let updatedMarkedDates = this.state.obaveze;
                             let i = 0;
                             updatedMarkedDates.map((it) => {
