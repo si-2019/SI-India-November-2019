@@ -5,24 +5,24 @@ import axios from 'axios';
 
 let http=axios.create();
 http.defaults.timeout = 200;
-class NepolozeniIzvjestaj extends Component {
+class PolozeniIzvjestaj extends Component {
 
   // default State object
   state = {
-    nepolozeni: []
+    polozeni: []
   };
 
-  dohvatiNepolozene()
+  dohvatiPolozene()
   {
-      this.state.nepolozeni = 
+      this.state.polozeni = 
       [
            {
               key:"1",
-              naziv:"Softver inženjering"
+              naziv:"Projektovanje informacionih sistema"
            },
            {
               key:"2",
-              naziv:"Vještačka inteligencija"
+              naziv:"Projektovanje i sinteza digitalnih sistema"
            }
       ]
   }
@@ -30,7 +30,7 @@ class NepolozeniIzvjestaj extends Component {
   
     componentWillMount() 
     {
-        this.dohvatiNepolozene();   
+        this.dohvatiPolozene();   
     }
 
 
@@ -39,7 +39,7 @@ class NepolozeniIzvjestaj extends Component {
       <ScrollView >
       <Text style={styles.tekstov}>Niste položili predmete:</Text>
       <FlatList
-          data={this.state.nepolozeni}
+          data={this.state.polozeni}
           keyExtractor = {item => item.key}
           renderItem={({ item }) => (
             <ListItem
@@ -54,7 +54,7 @@ class NepolozeniIzvjestaj extends Component {
 }
 
 //Hardkodirani podaci Za slučaj kad se ne može konektovati na bazu
-export default NepolozeniIzvjestaj;
+export default PolozeniIzvjestaj;
 
 
 const styles = StyleSheet.create({
