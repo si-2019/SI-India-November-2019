@@ -4,7 +4,7 @@ const https = require('https');
 const request = require('request');
 const axios = require('axios');
 const swagger_document=require('./swagger-document.js');
-
+import {MOCK_DATA_NOVOSTI, MOCK_DATA_PRVI_PARCIJALNI } from './MOCK_DATA';
 var PORT = process.env.PORT || 31914;
 
 //Vraca sve o predmetima koje student trenutno slusa
@@ -173,23 +173,13 @@ console.log(error);
 */
 });
 app.get('/predmeti/:idstudenta/prviParcijalni', (req, res) => {
-  res.json( [
-    {
-      predmet: "Administracija racunarskih mreza",
-      bodovi : 6
-    },
-    {
-      predmet: "Vještačka inteligencija",
-      bodovi : 13
-    },
-    {
-      predmet: "Softver inženjering",
-      bodovi : 17
-    }
-  ]);
+  res.json(MOCK_DATA_PRVI_PARCIJALNI);
 });
-
+app.get('/November/novosti', (req, res) => {
+  res.json(MOCK_DATA_NOVOSTI);
+})
 swagger_document(app);
+
 
 app.listen(PORT,function(){ console.log('server successfully started on port '+PORT); });
 
