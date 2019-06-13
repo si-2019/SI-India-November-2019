@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {View,Text,StyleSheet, FlatList, TouchableOpacity, ScrollView} from 'react-native';
+import { ListItem } from 'react-native-elements';
 import axios from 'axios';
 
 let http=axios.create();
@@ -11,34 +12,39 @@ class NepolozeniIzvjestaj extends Component {
     nepolozeni: []
   };
 
-  componentDidMount() {
-      this.dohvatiNepolozene();   
-  }
-
   dohvatiNepolozene()
   {
-
+      this.state.nepolozeni = 
+      [
+           {
+              key:"1",
+              naziv:"Softver inženjering"
+           },
+           {
+              key:"2",
+              naziv:"Vještačka inteligencija"
+           }
+      ]
   }
+
+  
+    componentWillMount() 
+    {
+        this.dohvatiNepolozene();   
+    }
+
 
   render() {
     return (
       <ScrollView >
+      <Text style={styles.tekstov}>Niste položili predmete:</Text>
       <FlatList
-          data={this.state.subjects}
-          keyExtractor={item => item.predmet.toString()}
+          data={this.state.nepolozeni}
+          keyExtractor = {item => item.key}
           renderItem={({ item }) => (
-            <View style={styles.Viewitem}>
-            <View style={styles.Viewitem1}>
-              <Text style={styles.item}>
-                {item.predmet}
-              </Text>
-              </View>
-              <View style={styles.Viewitem2}>
-              <Text style={styles.item}>
-                {item.bodovi}
-              </Text>
-              </View>
-              </View>
+            <ListItem
+            title={item.naziv}
+             />
           )}
         />
       </ScrollView>
@@ -78,6 +84,11 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-end',
+  },
+  tekstov:
+  {
+      fontSize: 24,
+      
   }
 });
 
