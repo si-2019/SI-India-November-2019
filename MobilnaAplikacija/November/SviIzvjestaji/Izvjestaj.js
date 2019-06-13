@@ -4,6 +4,7 @@ import UkupanBrojBodova from './UkupanBrojBodova'
 import PrviParcijalniIzvjestaj from './PrviParcijalniIzvjestaj';
 import DrugiParcijalniIzvjestaj from './DrugiParcijalniIzvjestaj';
 import ZavrsniIspitIzvjestaj from './ZavrsniIspitIzvjestaj';
+import PrisustvoIzvjestaj from './PrisustvoIzvjestaj';
 export default class Izvjestaj extends Component {
   render() {
     const {id, title}=this.props.navigation.state.params;
@@ -22,6 +23,7 @@ export default class Izvjestaj extends Component {
     return (
       <ScrollView style={style.container}>
         <Text style={style.text}>Izvještaj: {title}{"\n"}</Text>
+        <PrisustvoIzvjestaj/>
       </ScrollView>
       )
       
