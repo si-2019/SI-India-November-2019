@@ -12,6 +12,7 @@ class ZavrsniIspitIzvjestaj extends Component {
     componentDidMount() {
         //ovdje ide localhost ako se testira preko emulatora na PC-ju, http://localhost:31914/predmeti/1/ukupnoBodova
         //a ako se testira preko expo, staviti ip adresu svog racunara
+
         axios
             .get("http://192.168.0.16:31914/predmeti/1/zavrsniIspit")
             .then(response => {
@@ -30,6 +31,7 @@ class ZavrsniIspitIzvjestaj extends Component {
                 this.setState(newState);
                 //console.log(this.state.subjects)
             })
+
             //Kada se ne možemo konektovati na bazu koristimo hardkodirane podatke
             .catch(error => {
                 console.log(error)
@@ -65,7 +67,6 @@ class ZavrsniIspitIzvjestaj extends Component {
     }
 
 }
-
 //Hardkodirani podaci Za slučaj kad se ne može konektovati na bazu
 export default ZavrsniIspitIzvjestaj;
 const getSubjects = [
