@@ -4,7 +4,7 @@ import axios from 'axios';
 
 let http=axios.create();
 http.defaults.timeout = 200;
-class PrisustvoIzvjestaj extends Component {
+class ZadaceIzvjestaj extends Component {
 
   // default State object
   state = {
@@ -45,19 +45,19 @@ class PrisustvoIzvjestaj extends Component {
 }
 
 //Hardkodirani podaci Za slučaj kad se ne može konektovati na bazu
-export default PrisustvoIzvjestaj;
+export default ZadaceIzvjestaj;
 const getSubjects = [
   {
     predmet: "Administracija racunarskih mreza",
-    bodovi : 10
+    bodovi : 15
   },
   {
     predmet: "Vještačka inteligencija",
-    bodovi : 10
+    bodovi : 12
   },
   {
     predmet: "Softver inženjering",
-    bodovi : 10
+    bodovi : 0
   }
 ]
 const styles = StyleSheet.create({

@@ -75,7 +75,19 @@ const getIzvjestaji = [
   {
     id: 5,
     title: "Izvještaj o ostvarenom broju bodova na završnom ispitu za pojedine predmete"
-  }
+  },
+  {
+    id: 6,
+    title: "Izvještaj o ostvarenom broju bodova na zadaćama za pojedine predmete"
+  },
+  {
+    id: 7,
+    title: "Izvještaj o položenim predmetima za tekuću akademsku godinu"
+  },
+  {
+    id: 8,
+    title: "Izvještaj o nepoloženim predmetima za tekuću akademsku godinu"
+  },
 ];
 
 const styles = StyleSheet.create({
