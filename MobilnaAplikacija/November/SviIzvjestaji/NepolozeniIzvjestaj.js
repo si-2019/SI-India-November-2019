@@ -4,46 +4,20 @@ import axios from 'axios';
 
 let http=axios.create();
 http.defaults.timeout = 200;
-class PrviParcijalniIzvjestaj extends Component {
+class NepolozeniIzvjestaj extends Component {
 
   // default State object
   state = {
-    subjects: []
+    nepolozeni: []
   };
 
   componentDidMount() {
-    //ovdje ide localhost ako se testira preko emulatora na PC-ju, http://localhost:31914/predmeti/1/ukupnoBodova
-    //a ako se testira preko expo, staviti ip adresu svog racunara
-    http
-      .get("http://localhost:31914/predmeti/1/prviParcijajni",
-      {timeout:5}) 
-      .then(response => {
+      this.dohvatiNepolozene();   
+  }
 
-        const newContacts = response.data.map(c => {
-          return {
-            predmet: c.predmet,
-            bodovi: c.bodovi
-          };
-          
-        });
-        //console.log(newContacts);
-        const newState = Object.assign({}, this.state, {
-          subjects: newContacts
-        });
-        this.setState(newState);
-        //console.log(this.state.subjects)
-      })
-      //Kada se ne možemo konektovati na bazu koristimo hardkodirane podatke
-      .catch(error => {
-        console.log(error)
-        this.setState({
-          subjects: getSubjects
-        });
-      }).finally(()=>{
-        this.setState({
-            subjects: getSubjects
-          });
-      });
+  dohvatiNepolozene()
+  {
+
   }
 
   render() {
@@ -74,21 +48,9 @@ class PrviParcijalniIzvjestaj extends Component {
 }
 
 //Hardkodirani podaci Za slučaj kad se ne može konektovati na bazu
-export default PrviParcijalniIzvjestaj;
-const getSubjects = [
-  {
-    predmet: "Administracija racunarskih mreza",
-    bodovi : 6
-  },
-  {
-    predmet: "Vještačka inteligencija",
-    bodovi : 16
-  },
-  {
-    predmet: "Softver inženjering",
-    bodovi : 17
-  }
-]
+export default NepolozeniIzvjestaj;
+
+
 const styles = StyleSheet.create({
   item: {
     padding: 5,
