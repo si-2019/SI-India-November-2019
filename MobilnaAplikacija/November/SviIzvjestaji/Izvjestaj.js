@@ -3,6 +3,7 @@ import {View,Text,StyleSheet,ScrollView} from 'react-native';
 import UkupanBrojBodova from './UkupanBrojBodova'
 import PrviParcijalniIzvjestaj from './PrviParcijalniIzvjestaj';
 import DrugiParcijalniIzvjestaj from './DrugiParcijalniIzvjestaj';
+import ZavrsniIspitIzvjestaj from './ZavrsniIspitIzvjestaj';
 export default class Izvjestaj extends Component {
   render() {
     const {id, title}=this.props.navigation.state.params;
@@ -47,6 +48,7 @@ export default class Izvjestaj extends Component {
     return (
       <ScrollView style={style.container}>
         <Text style={style.text}>Izvještaj: {title}{"\n"}</Text>
+        <ZavrsniIspitIzvjestaj/>
       </ScrollView>
       )
   }
