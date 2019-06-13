@@ -4,7 +4,7 @@ import axios from 'axios';
 
 let http=axios.create();
 http.defaults.timeout = 200;
-class PrviParcijalniIzvjestaj extends Component {
+class PrisustvoIzvjestaj extends Component {
 
   // default State object
   state = {
@@ -12,8 +12,6 @@ class PrviParcijalniIzvjestaj extends Component {
   };
 
   componentDidMount() {
-    //ovdje ide localhost ako se testira preko emulatora na PC-ju, http://localhost:31914/predmeti/1/ukupnoBodova
-    //a ako se testira preko expo, staviti ip adresu svog racunara
     http
       .get("http://localhost:31914/predmeti/1/prviParcijajni",
       {timeout:5}) 
@@ -26,12 +24,12 @@ class PrviParcijalniIzvjestaj extends Component {
           };
           
         });
-        //console.log(newContacts);
+    
         const newState = Object.assign({}, this.state, {
           subjects: newContacts
         });
         this.setState(newState);
-        //console.log(this.state.subjects)
+        
       })
       //Kada se ne možemo konektovati na bazu koristimo hardkodirane podatke
       .catch(error => {
@@ -74,19 +72,19 @@ class PrviParcijalniIzvjestaj extends Component {
 }
 
 //Hardkodirani podaci Za slučaj kad se ne može konektovati na bazu
-export default PrviParcijalniIzvjestaj;
+export default PrisustvoIzvjestaj;
 const getSubjects = [
   {
     predmet: "Administracija racunarskih mreza",
-    bodovi : 6
+    bodovi : 10
   },
   {
     predmet: "Vještačka inteligencija",
-    bodovi : 16
+    bodovi : 10
   },
   {
     predmet: "Softver inženjering",
-    bodovi : 17
+    bodovi : 10
   }
 ]
 const styles = StyleSheet.create({
