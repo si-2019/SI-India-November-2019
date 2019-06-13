@@ -13,7 +13,7 @@ class PrisustvoIzvjestaj extends Component {
 
   componentDidMount() {
     http
-      .get("http://localhost:31914/predmeti/1/prviParcijajni",
+      .get("http://localhost:31914/November/prisustvo",
       {timeout:5}) 
       .then(response => {
 
