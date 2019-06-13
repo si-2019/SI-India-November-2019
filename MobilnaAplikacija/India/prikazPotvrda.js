@@ -6,9 +6,7 @@ const extractKey = ({key}) => key
 
 class Zahtjev extends React.Component {
     state = {
-        data: [
-            {key: 'Potvrda o regulisanju stipendije', value: '25.01.2019', status: 'Neobrađen'}, {key: 'Potvrda o regulisanju zdravstvenog osiguranja', value:'02.02.2019.', status: 'Obrađen'}
-        ],
+        data: this.props.data
     }
 
     ponistiZahtjev(zahtjev, status) {
@@ -53,10 +51,11 @@ class Zahtjev extends React.Component {
     
     render() {
         //console.log("TU SAM 2");
-        
+        console.log("Renderana komponenta prikazPotvrda");
+        console.log("Data u prikazPotvrda = " + JSON.stringify(this.state.data));
         return (
             <View>
-                <FlatList data={this.state.data} extraData={this.state} renderItem={this.renderItem} keyExtractor={extractKey} /> 
+                <FlatList data={this.state.data} extraData={this.props} renderItem={this.renderItem} keyExtractor={extractKey} /> 
             </View>
         );
     }
