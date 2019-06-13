@@ -37,7 +37,7 @@ class PolozeniIzvjestaj extends Component {
   render() {
     return (
       <ScrollView >
-      <Text style={styles.tekstov}>Niste položili predmete:</Text>
+      <Text style={styles.tekstov}>Položili ste predmete:</Text>
       <FlatList
           data={this.state.polozeni}
           keyExtractor = {item => item.key}
