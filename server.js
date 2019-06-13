@@ -3,6 +3,7 @@ const app = express();
 const https = require('https');
 const request = require('request');
 const axios = require('axios');
+const swagger_document=require('./swagger-document.js');
 
 var PORT = process.env.PORT || 31914;
 
@@ -188,10 +189,7 @@ app.get('/predmeti/:idstudenta/prviParcijalni', (req, res) => {
   ]);
 });
 
-app.get('/', (req,res) => {
-   res.send("November backend spreman za upotrebu");
-
-});
+swagger_document(app);
 
 app.listen(PORT,function(){ console.log('server successfully started on port '+PORT); });
 
