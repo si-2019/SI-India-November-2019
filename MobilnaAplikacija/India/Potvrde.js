@@ -6,6 +6,7 @@ import Zahtjev from './prikazPotvrda'
 var podaci = [
   {key: 'Potvrda o regulisanju stipendije', value: '25.01.2019', status: 'Neobrađen'}, {key: 'Potvrda o regulisanju zdravstvenog osiguranja', value:'02.02.2019.', status: 'Obrađen'}
 ];
+
 class Potvrde extends React.Component {
   
   constructor(props) {
