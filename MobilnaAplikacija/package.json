@@ -9,7 +9,9 @@
     "axios": "^0.19.0",
     "expo": "^32.0.0",
     "express": "^4.16.4",
+    "https": "^1.0.0",
     "jest": "^24.8.0",
+    "mysql2": "^1.6.5",
     "link": "^0.1.5",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
@@ -23,7 +25,8 @@
     "react-native-responsive-fontsize": "^0.1.8",
     "react-native-view-more-text": "^2.1.0",
     "react-navigation": "^3.11.0",
-    "react-test-renderer": "^16.8.6"
+    "react-test-renderer": "^16.8.6",
+    "sequelize": "^5.8.7"
   },
   "devDependencies": {},
   "scripts": {
