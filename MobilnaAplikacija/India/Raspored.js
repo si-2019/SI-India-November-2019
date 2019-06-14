@@ -24,6 +24,7 @@ let inicijalni={
     items: {},
     text: ''
 }
+
 const boje = ['#7DFF00', '#BEFF00', '#D5FF00', '#E1FF00', '#F0FF00', '#FFF700', "#FFE700", "#FFD800",
     "#FFD000", '#FFB900', '#FFB100', '#FFA200', '#FF9200', '#FF6400', '#FF4D00', '#FF0000'] //27
 export default class AgendaScreen extends Component {
@@ -280,5 +281,14 @@ const styles = StyleSheet.create({
         padding: 10,
         backgroundColor:'white',
         borderRadius:5
-    }
+    },
+    sloboDan: {
+    backgroundColor: 'lightskyblue',
+    flexDirection: 'row',   
+    color: 'blue',
+    paddingTop: '25%',
+    flex:1,
+    paddingLeft: '7%',
+  }
 });
+
