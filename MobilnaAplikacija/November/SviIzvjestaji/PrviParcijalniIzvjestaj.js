@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import {View,Text,StyleSheet, FlatList, TouchableOpacity, ScrollView} from 'react-native';
-import axios from 'axios';
-
-let http=axios.create();
-http.defaults.timeout = 200;
+const API_BASE_URL= 'https://si2019november.herokuapp.com';
 class PrviParcijalniIzvjestaj extends Component {
 
   // default State object
@@ -14,36 +11,21 @@ class PrviParcijalniIzvjestaj extends Component {
   componentDidMount() {
     //ovdje ide localhost ako se testira preko emulatora na PC-ju, http://localhost:31914/predmeti/1/ukupnoBodova
     //a ako se testira preko expo, staviti ip adresu svog racunara
-    http
-      .get("http://localhost:31914/predmeti/1/prviParcijajni",
-      {timeout:5}) 
-      .then(response => {
-
-        const newContacts = response.data.map(c => {
-          return {
-            predmet: c.predmet,
-            bodovi: c.bodovi
-          };
-          
-        });
-        //console.log(newContacts);
-        const newState = Object.assign({}, this.state, {
-          subjects: newContacts
-        });
-        this.setState(newState);
-        //console.log(this.state.subjects)
-      })
-      //Kada se ne možemo konektovati na bazu koristimo hardkodirane podatke
-      .catch(error => {
-        console.log(error)
-        this.setState({
-          subjects: getSubjects
-        });
-      }).finally(()=>{
-        this.setState({
-            subjects: getSubjects
-          });
+    fetch(API_BASE_URL+`/November/dohvatiPrveParcijale?idStudenta=3`)
+    .then(res=>res.json()).then(response=>{
+      const newContacts = response.map(c => {
+        return {
+          predmet: c.predmet,
+          bodovi: c.bodovi
+        };
       });
+      const newState = Object.assign({}, this.state, {
+        subjects: newContacts
+      });
+      this.setState(newState);
+    }).catch(e=>{
+     
+    })
   }
 
   render() {
