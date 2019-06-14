@@ -46,14 +46,13 @@ export default class login2 extends Component {
       if(global.logovan == true)
       {
           return(
-              <ScrollView>
-                  <Button
-                  onPress = {() => this.logout()}
-                  title="Odjava"
-                  accessibilityLabel="Odjava"
-                  />
-                 
-              </ScrollView>
+                <TouchableOpacity
+                  style={styles.submitButton}
+                  onPress={
+                      () => this.logout()
+                  }>
+                  <Text style={styles.submitButtonText}> Odjavi se </Text>
+               </TouchableOpacity>
           );
       }
       else
