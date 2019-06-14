@@ -30,7 +30,10 @@ class Potvrde extends React.Component {
       'Odabrani zahtjev',
       'Potvrda: '+ tip.label +'\nSvrha: '+ svrha.label,
       [
-        {text: 'Predaj', onPress: () => {
+        {text: 'Predaj', onPress: () => Alert.alert(
+		'Upozorenje', 'Da li ste sigurni?',
+		[
+		  {text: 'Da', onPress: () => {
             Alert.alert("Uspješno ste poslali zahtjev za obradu potvrde")
             podaci.push({'key': svrha.label, 'value': today, 'status': 'Neobrađen'});
             this.setState({
@@ -41,11 +44,11 @@ class Potvrde extends React.Component {
               
             })
         }},
-          {
-          text: 'Poništi',
-          onPress: () => console.log('Poništio'),
-          style: 'cancel',
-        },
+			{text: 'Ne', onPress: () => Alert.alert('Uspješno ste otkazali slanje zahtjeva!')}
+		
+		]
+		)},
+        {text: 'Poništi',onPress: () => console.log('Poništio'), style: 'cancel'},
       ],
       {cancelable: false},
     );
