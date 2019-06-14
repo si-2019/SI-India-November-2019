@@ -3,20 +3,20 @@ import {Alert,Text, View, Image, TouchableOpacity, StyleSheet, Button } from 're
 import moment from 'moment';
 
 
-let inicijalni ={ispiti_info:[], ispiti: [{ key: 0, predmet: "Vjestacka inteligencija", tip: "Prvi parcijalni", datum: "10.2.2019. 13:00", aktivan: 1, prijavljen: 1, popunjen: 0 },
+/*let inicijalni ={ispiti_info:[], ispiti: [{ key: 0, predmet: "Vjestacka inteligencija", tip: "Prvi parcijalni", datum: "10.2.2019. 13:00", aktivan: 1, prijavljen: 1, popunjen: 0 },
 { key: 1, predmet: "Organizacija softverskog projekta", tip: "Drugi parcijalni", datum: "13.6.2019. 18:00", aktivan: 1, prijavljen: 1, popunjen: 0 },
 { key: 2, predmet: "Softverski inzenjering", tip: "Prvi parcijalni", datum: "15.6.2019. 10:30", aktivan: 0, prijavljen: 1, popunjen: 1 },
 { key: 3, predmet: "Projektovanje informacionih sistema", tip: "Usmeni", datum: "16.6.2019. 13:00", aktivan: 1, prijavljen: 0, popunjen: 0 },
 { key: 4, predmet: "Projektovanje informativnih sistema", tip: "Usmeni", datum: "16.6.2019. 11:00", aktivan: 1, prijavljen: 1, popunjen: 1 }], 
 kopijaIspiti: []
 }
-
+*/
 class PrijavljeniIspiti extends React.Component {
     constructor(props) {
         super(props);
-        this.state = inicijalni
+        this.state = this.props.propovi.inicijalni
         inicijalizovanjeIspita = () => {
-            this.setState(inicijalni)
+            this.setState(this.props.propovi.inicijalni)
         }
         this.OdjaviIspitIzPrijavljenih = this.OdjaviIspitIzPrijavljenih.bind(this);
         l = 0;
@@ -33,12 +33,13 @@ class PrijavljeniIspiti extends React.Component {
     };
     
     render() {
+      //console.log("Komponenta prijavljeniIspiti renderana.");
         let k=0;
         this.state.ispiti.map((ispit)=>{
             let porukaa;
             if(ispit.prijavljen) porukaa='Odjavi'
             else porukaa='Prijavi'
-            inicijalni.ispiti_info[k]={ind:k, key:ispit.key,  prijavaTekst: porukaa}
+            this.state.ispiti_info[k]={ind:k, key:ispit.key,  prijavaTekst: porukaa}
             k++;
         })
        this.inicijalizovanjeIspita;
