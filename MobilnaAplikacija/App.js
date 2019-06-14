@@ -20,6 +20,7 @@ import Predmet from './November/Predmet/Predmet';
 import Izvjestaj from './November/SviIzvjestaji/Izvjestaj';
 import screen9 from './changelog';
 import odslusaniPredmeti from './November/odslusaniPredmeti';
+import screenLogin from './November/login2';
 
 /*
 export default class App extends React.Component {
@@ -40,6 +41,9 @@ class NavigationDrawerStructure extends Component {
   toggleDrawer = () => {
     this.props.navigationProps.toggleDrawer();
   };
+
+ 
+
   render() {
 
     return (
@@ -204,10 +208,30 @@ const Screen9_StackNavigator = createStackNavigator({
   },
 });
 
+const loginNavigator = createStackNavigator({
+  login: {
+    screen: screenLogin,
+    navigationOptions: ({ navigation }) => ({
+      title: '',
+      headerStyle: {
+        backgroundColor: '#376ff2',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
 
 
 const DrawerNavigatorExample = createDrawerNavigator({
   //Drawer Optons and indexing
+   
+  loginScreen: {
+    screen: loginNavigator,
+    navigationOptions: {
+      drawerLabel: 'Prijava/odjava',
+    },
+  },
+
   Screen1: {
     screen: FirstActivity_StackNavigator,
     navigationOptions: {
@@ -260,7 +284,8 @@ const DrawerNavigatorExample = createDrawerNavigator({
     navigationOptions: {
       drawerLabel: 'Changelog',
     },
-  }
+  },
+  
 });
 
 export default createAppContainer(DrawerNavigatorExample);

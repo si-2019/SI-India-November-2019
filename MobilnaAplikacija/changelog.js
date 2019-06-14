@@ -5,7 +5,20 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 
 export default class changelog extends Component {
-  //Komponenta za raspored
+  componentDidMount()
+  {
+      this.load()
+      this.props.navigation.addListener('willFocus', this.load)
+      
+  }
+
+  load = () => {
+    if(global.logovan != true)
+    {
+        this.props.navigation.navigate("loginScreen", {})
+    }  
+  }
+
   render() {
     return (
     

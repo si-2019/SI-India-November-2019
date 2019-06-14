@@ -4,8 +4,25 @@ import { StyleSheet, View, ScrollView, Text, Image, TouchableOpacity, Linking, B
 import { SubjectsList } from './SubjectsList';
 import { Divider } from 'react-native-elements';
 import Obavijesti from './NewsFeed/Obavijesti';
+import { NavigationActions } from 'react-navigation';
 
 export default class Dashboard extends Component {
+
+
+  componentDidMount()
+  {
+      this.load()
+      this.props.navigation.addListener('willFocus', this.load)
+      
+  }
+
+  load = () => {
+    if(global.logovan != true)
+    {
+        this.props.navigation.navigate("loginScreen", {})
+    }  
+  }
+ 
   render() {
     return (
       <ScrollView>

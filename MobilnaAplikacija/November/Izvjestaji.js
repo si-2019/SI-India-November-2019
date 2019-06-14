@@ -4,6 +4,21 @@ import { StyleSheet, View, Text } from 'react-native';
 import {ListaIzvjestaja} from './SviIzvjestaji/ListaIzvjestaja'
 
 export default class Izvjestaji extends Component {
+
+  componentDidMount()
+  {
+      this.load()
+      this.props.navigation.addListener('willFocus', this.load)
+      
+  }
+
+  load = () => {
+    if(global.logovan != true)
+    {
+        this.props.navigation.navigate("loginScreen", {})
+    }  
+  }
+
   //Komponenta za izvještaje
   render() {
 

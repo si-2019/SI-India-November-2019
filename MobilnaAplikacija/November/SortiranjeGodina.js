@@ -10,6 +10,7 @@ import {
 // import axios from 'axios';
 
 export default class SortiranjeGodina extends Component {
+
     racunanjeProsjeka(nizOcjena) {
         var prosjek= 0;
         for (var i = 0; i < nizOcjena.length; i++) {
@@ -32,6 +33,11 @@ export default class SortiranjeGodina extends Component {
     }
 
     componentDidMount() {
+        this.load()
+        this.props.navigation.addListener('willFocus', this.load)//ovo ne brisati ni slucajno
+
+
+
         /* axios.get("http://localhost:3000/subjects")
             .then(res => {
                 const newSubjects = res.data;
@@ -46,6 +52,14 @@ export default class SortiranjeGodina extends Component {
             semestri: getSemester
         });
     }
+       
+    load = () => {
+        if(global.logovan != true)
+        {
+            this.props.navigation.navigate("loginScreen", {})
+        }  
+    }
+
     promjenaSemestara = (data) => {
         if(data=='1') {
         this.setState({ 

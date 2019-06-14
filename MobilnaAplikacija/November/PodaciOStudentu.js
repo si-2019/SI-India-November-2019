@@ -5,6 +5,7 @@ import * as res from './pomocniPodaciOStudentu'
 
 export default class PodaciOStudentu extends Component {
 
+
 state= { 
     ime: res.ime, 
     prezime: res.prezime, 
