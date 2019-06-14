@@ -114,6 +114,13 @@ class AktivniIspiti extends React.Component {
             } 
             if(ispit.popunjen)
                 statusPrijave += '\nPopunjen'
+                                    greska = 0; 
+                                    this.state.ispiti.map((item) => {
+                                        if (item.key != ispit.key && item.predmet === ispit.predmet && item.tip === item.tip && item.prijavljen == 1) {
+                                            greska = 1;
+                                        }
+                                    });	
+			if(greska) statusPrijave += '\nDrugi'
             inicijalni.ispiti_info[k] = { ind: k, key: ispit.key, prijavaTekst: porukaa, statusPrijave: statusPrijave }
             k++;
         })*/
