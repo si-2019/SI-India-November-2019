@@ -5,63 +5,6 @@ const db = require('./modeli/db.js');
 const sequelize = require('sequelize');
 var app = express();
 const port=31909;
-
-app.get('/izdanepotvrde/:id', function(req, res)
-{
-    var id1 = req.params.id;
-    var podaci2 = [];
-
-        ZahtjevZaPotvrdu.findAll({where: {idStudenta:id1}}).then(function(potvrde){
-            potvrde.forEach(potvrda => {
-                SvrhaPotvrde.findOne({where: {id: potvrda.idSvrhe}}).then(function(svrhica){
-                podaci2.push(svrhica.nazivSvrhe);
-                podaci2.push(potvrda.datumZahtjeva);
-                podaci2.push(potvrda.obradjen);
-            });
-        });
-    });
-
-        res.send(podaci2);
-
-    });
-
-app.get('/danasnjezadace/:id', function(req, res) {
-//dodati studentid u zadace i pretrazivati po njemu!!
-    var zadacice = [];
-    var today = Date.now();
-
-  Zadaca.findAll({where: {rokZaPredaju: today}}).then(function(zadace){
-    zadaca.forEach(zadaca => {
-        zadacice.push(zadaca.naziv);
-        zadacice.push(zadaca.idPredmet);
-    });
-});
-
-    res.send(zadacice);
-
-});
-
-app.get('/obradjenZahtjev/:id', function(req, res) {
-
-    var id1 = req.params.id;
-
-    ZahtjevZaPotvrdu.findOne({where: {id:id1}}).then(function(zahtjevcic){
-        zahtjevcic.update({    
-            obradjen: 1
-        })
-        Student.findOne({where: {id:zahtjevcic.idStudenta}}).then(function(studentic){
-            var broj = studentic.brojbesplatnih-1;
-        studentic.update({
-            brojbesplatnih: broj
-        })
-        SvrhaPotvrde.findOne({where: {id: zahtjevcic.idSvrhe}}).then(function(svrhica){
-        alert("Uspješno je obrađen zahtjev" + svrhica.naziv);
-            });
-        });
-    });
-});
-
-
 const StudentIspit = db.sequelize.import(__dirname+'/modeli/StudentIspit.js');
 const Ispit = db.sequelize.import(__dirname+'/modeli/Ispit.js');
 const Predmet = db.sequelize.import(__dirname+'/modeli/Predmet.js');
@@ -69,7 +12,7 @@ const Korisnik = db.sequelize.import(__dirname+'/modeli/Korisnik.js');
 const Uloga = db.sequelize.import(__dirname+'/modeli/Uloga.js');
 const Odsjek = db.sequelize.import(__dirname+'/modeli/Odsjek.js');
 const AkademskaGodina = db.sequelize.import(__dirname+'/modeli/AkademskaGodina.js');
-const PredmetStudnet = db.sequelize.import(__dirname+'/modeli/PredmetStudent.js');
+const PredmetStudent = db.sequelize.import(__dirname+'/modeli/PredmetStudent.js');
 
 db.sequelize.sync()
 .then(() => console.log('Konektovano na bazu'))
@@ -199,6 +142,68 @@ app.get('/student/:id/aktivni', function(req, res) {
     });
  
 });
+
+//POTVRDE KOJE STUDENT CEKA
+
+app.get('/izdanepotvrde/:id', function(req, res)
+{
+    var id1 = req.params.id;
+    var podaci2 = [];
+
+        ZahtjevZaPotvrdu.findAll({where: {idStudenta:id1}}).then(function(potvrde){
+            potvrde.forEach(potvrda => {
+                SvrhaPotvrde.findOne({where: {id: potvrda.idSvrhe}}).then(function(svrhica){
+                podaci2.push(svrhica.nazivSvrhe);
+                podaci2.push(potvrda.datumZahtjeva);
+                podaci2.push(potvrda.obradjen);
+            });
+        });
+    });
+
+        res.send(podaci2);
+
+    });
+
+// SVE ZADACE KOJIMA JE ROK DANASNJI DAN - ZA RASPORED!!
+
+app.get('/danasnjezadace/:id', function(req, res) {
+//dodati studentid u zadace i pretrazivati po njemu!!
+    var zadacice = [];
+    var today = Date.now();
+
+  Zadaca.findAll({where: {rokZaPredaju: today}}).then(function(zadace){
+    zadaca.forEach(zadaca => {
+        zadacice.push(zadaca.naziv);
+        zadacice.push(zadaca.idPredmet);
+    });
+});
+
+    res.send(zadacice);
+
+});
+
+//OBRADA ZAHTJEVA ZA DOKUMENT
+
+app.get('/obradjenZahtjev/:id', function(req, res) {
+
+    var id1 = req.params.id;
+
+    ZahtjevZaPotvrdu.findOne({where: {id:id1}}).then(function(zahtjevcic){
+        zahtjevcic.update({    
+            obradjen: 1
+        })
+        Student.findOne({where: {id:zahtjevcic.idStudenta}}).then(function(studentic){
+            var broj = studentic.brojbesplatnih-1;
+        studentic.update({
+            brojbesplatnih: broj
+        })
+        SvrhaPotvrde.findOne({where: {id: zahtjevcic.idSvrhe}}).then(function(svrhica){
+        alert("Uspješno je obrađen zahtjev" + svrhica.naziv);
+            });
+        });
+    });
+});
+
 
 
 app.listen(port, () => console.log(`Server pokrenut na portu ${port}!`))
