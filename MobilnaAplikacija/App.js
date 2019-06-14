@@ -14,10 +14,14 @@ import Screen4 from './India/Ispiti';
 import Screen5 from './India/Potvrde';
 import Screen6 from './India/Raspored';
 import Screen7 from  './November/login';
+import Zavrsni from './November/Zavrsni';
 import Screen8 from  './November/SortiranjeGodina';
 import Predmet from './November/Predmet/Predmet';
+import Izvjestaj from './November/SviIzvjestaji/Izvjestaj';
 import screen9 from './changelog';
 import odslusaniPredmeti from './November/odslusaniPredmeti';
+import screenLogin from './November/login2';
+
 /*
 export default class App extends React.Component {
   render() {
@@ -37,6 +41,9 @@ class NavigationDrawerStructure extends Component {
   toggleDrawer = () => {
     this.props.navigationProps.toggleDrawer();
   };
+
+ 
+
   render() {
 
     return (
@@ -51,7 +58,7 @@ class NavigationDrawerStructure extends Component {
           </TouchableOpacity>
         </View>
       </>
-    );
+    ); 
   }
 }
 
@@ -68,13 +75,28 @@ const FirstActivity_StackNavigator = createStackNavigator({
       headerTintColor: '#fff',
     }),
   },
+  Zavrsni: {
+    screen : Zavrsni,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Završni rad',
+      headerStyle: {
+        backgroundColor: '#376ff2',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
   Predmet: {
-    screen: Predmet
+    screen: Predmet,
+
   },
   odslusaniPredmeti: {
     screen: odslusaniPredmeti,
     navigationOptions: ({ navigation }) => ({
       title: 'Odslušani predmeti',
+      headerStyle: {
+        backgroundColor: '#376ff2',
+      },
+      headerTintColor: '#fff',
     }),
   },
 });
@@ -97,7 +119,7 @@ const Screen2_StackNavigator = createStackNavigator({
 
 
 const Screen3_StackNavigator = createStackNavigator({
-  Third: {
+  First: {
     screen: Screen3,
     navigationOptions: ({ navigation }) => ({
       title: 'Izvještaji',
@@ -108,6 +130,9 @@ const Screen3_StackNavigator = createStackNavigator({
       headerTintColor: '#fff',
     }),
   },
+  Izvjestaj: {
+    screen: Izvjestaj
+  }
 });
 
 
@@ -183,8 +208,30 @@ const Screen9_StackNavigator = createStackNavigator({
   },
 });
 
+const loginNavigator = createStackNavigator({
+  login: {
+    screen: screenLogin,
+    navigationOptions: ({ navigation }) => ({
+      title: '',
+      headerStyle: {
+        backgroundColor: '#376ff2',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
+
+
 const DrawerNavigatorExample = createDrawerNavigator({
   //Drawer Optons and indexing
+   
+  loginScreen: {
+    screen: loginNavigator,
+    navigationOptions: {
+      drawerLabel: 'Prijava/odjava',
+    },
+  },
+
   Screen1: {
     screen: FirstActivity_StackNavigator,
     navigationOptions: {
@@ -238,6 +285,7 @@ const DrawerNavigatorExample = createDrawerNavigator({
       drawerLabel: 'Changelog',
     },
   },
+  
 });
 
 export default createAppContainer(DrawerNavigatorExample);

@@ -3,29 +3,52 @@ import { Button, Alert, StyleSheet, Text, View, ScrollView, Picker } from 'react
 import RF from "react-native-responsive-fontsize"
 import Naslov from './naslov'
 import Zahtjev from './prikazPotvrda'
-
+var podaci = [
+  {key: 'Potvrda o regulisanju stipendije', value: '25.01.2019', status: 'Neobrađen'}, {key: 'Potvrda o regulisanju zdravstvenog osiguranja', value:'02.02.2019.', status: 'Obrađen'}
+];
 class Potvrde extends React.Component {
-
+  
   constructor(props) {
     super(props);
 
     this.state = {
       pickerSelection: 0,
-      svrha: 0
+      svrha: 0, 
+      data: podaci
     }
+    this.handleClick = this.handleClick.bind(this);
   } 
 
   handleClick(tip,svrha) {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = dd + '.' + mm + '.' + yyyy;
     Alert.alert(
       'Odabrani zahtjev',
       'Potvrda: '+ tip.label +'\nSvrha: '+ svrha.label,
       [
-        {text: 'Predaj', onPress: () => Alert.alert("Uspješno ste poslali zahtjev za obradu potvrde")},
-          {
-          text: 'Poništi',
-          onPress: () => console.log('Poništio'),
-          style: 'cancel',
-        },
+        {text: 'Predaj', onPress: () => Alert.alert(
+		'Upozorenje', 'Da li ste sigurni?',
+		[
+		  {text: 'Da', onPress: () => {
+            Alert.alert("Uspješno ste poslali zahtjev za obradu potvrde")
+            podaci.push({'key': svrha.label, 'value': today, 'status': 'Neobrađen'});
+            this.setState({
+              data: podaci
+            }, () => {
+              //this.forceUpdate();
+              console.log("Sad mi je data: " + JSON.stringify(this.state.data));
+              
+            })
+        }},
+			{text: 'Ne', onPress: () => Alert.alert('Uspješno ste otkazali slanje zahtjeva!')}
+		
+		]
+		)},
+        {text: 'Poništi',onPress: () => console.log('Poništio'), style: 'cancel'},
       ],
       {cancelable: false},
     );
@@ -63,7 +86,7 @@ class Potvrde extends React.Component {
       <ScrollView> 
         <Text style={{ fontSize: RF(3.5), margin: 70, alignSelf: 'center' }}>Zahtjev za izdavanje ovjerenog uvjerenja</Text>
         <Naslov/>
-        <Zahtjev/> 
+        <Zahtjev data={this.state.data}/> 
         <Text style={{ fontSize: RF(2.5), alignSelf: 'center' }}>Izaberite tip potvrde: </Text>
         <Picker
           selectedValue={lista[this.state.pickerSelection].value}

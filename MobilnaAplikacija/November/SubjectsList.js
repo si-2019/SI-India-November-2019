@@ -2,13 +2,15 @@ import React from "react";
 import {
   StyleSheet,
   Text,
-  View,
+  ScrollView,
   FlatList,
   TouchableOpacity,
   ActivityIndicator
 } from "react-native";
+import { ListItem } from 'react-native-elements';
 // import axios from 'axios';
 
+import Zavrsni from './Zavrsni';
 export class SubjectsList extends React.Component {
   constructor(props) {
     super(props);
@@ -34,22 +36,22 @@ export class SubjectsList extends React.Component {
   }
   render() {
     return (
-      <View>
+      <ScrollView>
         <FlatList
           data={this.state.subjects}
           keyExtractor={item => item.id.toString()}
           renderItem={({ item }) => (
-            <TouchableOpacity>
-              <Text
-                style={styles.item}
-                onPress={() => this.props.navigation.navigate("Predmet", item)}
-              >
-                {item.title}
-              </Text>
-            </TouchableOpacity>
+            <ListItem
+              title={item.title}
+              onPress={() => this.props.navigation.navigate("Predmet", item)}
+              chevron
+            />
           )}
         />
-      </View>
+        <TouchableOpacity>
+          <Text style={styles.iteme}  onPress={() => this.props.navigation.navigate("Zavrsni",1)}>Završni rad</Text>
+        </TouchableOpacity>
+      </ScrollView>
     );
   }
 
@@ -141,22 +143,8 @@ const getSubjects = [
       { naziv : "Zadaća 6", bodovi : 2}
     ],
     prisustvo:10
-  },
-  {
-    id: 5,
-    title: "Završni rad",
-    profesor: "Profesor ZR",
-    ECTS: "4",
-    asistenti: "Asistent",
-    ispiti: [
-      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 0 },
-      { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 0 }
-    ],
-    zadace: [
-      { naziv: "Zadaća 1", bodovi: 25.9 }
-    ],
-    prisustvo:10
   }
+
 ];
 
 const styles = StyleSheet.create({
@@ -164,5 +152,12 @@ const styles = StyleSheet.create({
     padding: 5,
     fontSize: 16,
     height: 32
-  }
+  },
+  iteme: {
+    padding: 5,
+    marginTop: 5,
+    marginLeft: 10,
+    fontSize: 17,
+    height: 50
+  },
 });

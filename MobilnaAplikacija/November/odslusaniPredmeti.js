@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import { ListItem } from 'react-native-elements';
 
 
 export default class odslusaniPredmeti extends React.Component {
@@ -55,12 +56,18 @@ export default class odslusaniPredmeti extends React.Component {
 
     renderItem = ({item}) => {
           return (
-              <ScrollView>
-                   <Text style={{ fontSize: 23 }}> {item.Naziv}</Text>
+              <ScrollView style={{width: "100%"}}>
+                   <Text style={styles.subHeader}> {item.Naziv}</Text>
                    <FlatList
                         data = {item.Predmeti}
                         keyExtractor={item=>item.predmet}
-                        renderItem = {({item}) => <Text>{item.predmet}</Text>}
+                        renderItem = {({item}) => (
+                            <ListItem
+                                title={item.predmet}
+                                chevron
+                            />
+                        )}
+                       
                    />
               </ScrollView>
           )
@@ -82,9 +89,18 @@ export default class odslusaniPredmeti extends React.Component {
 const styles = StyleSheet.create({
   MainContainer: {
     flex: 1,
-    paddingTop: 20,
-    alignItems: 'center',
-    marginTop: 50,
-    justifyContent: 'center',
+    
+    
+  },
+  subHeader:{
+    flex: 1,
+    backgroundColor: '#195dc4',
+    color: 'white',
+    padding: 5,
+    fontSize: 16,
+    fontWeight: 'bold',
+    width: '100%',
+    paddingLeft: 20,
+    paddingRight: 20,
   },
 });

@@ -5,6 +5,7 @@ import * as res from './pomocniPodaciOStudentu'
 
 export default class PodaciOStudentu extends Component {
 
+
 state= { 
     ime: res.ime, 
     prezime: res.prezime, 
@@ -181,7 +182,7 @@ drzavaRod: res.drzavaRod, nacionalnost: res.nacionalnost, kanton: res.kanton, dr
         onChangeText={(text) => this.setState({drzavljanstvo: text})}/>
     </View>   
       <TouchableOpacity  style = {styles.button} >
-          <Text>
+          <Text style={styles.dugmeTekst}>
           Pošalji zahtjev
           </Text>
       </TouchableOpacity>  
@@ -196,10 +197,10 @@ drzavaRod: res.drzavaRod, nacionalnost: res.nacionalnost, kanton: res.kanton, dr
     flexDirection: 'row'
     },
     button: {
-    backgroundColor: 'lightgrey', 
+    backgroundColor: '#2097F3', 
     alignItems: 'center', 
     justifyContent: 'center', 
-    borderRadius: 10,
+    borderRadius: 4,
     padding: 12,
     marginTop: 10,
     marginLeft: '18%',
@@ -226,5 +227,9 @@ drzavaRod: res.drzavaRod, nacionalnost: res.nacionalnost, kanton: res.kanton, dr
     fontSize: 13,
     marginTop: 7,
     marginLeft: 10
-    }
+    },
+    dugmeTekst: {
+        color: '#ffffff',
+        fontWeight: 'bold',
+       },
    })

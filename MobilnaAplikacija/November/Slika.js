@@ -15,16 +15,14 @@ return (
   Slika
 </Text>
 {image && <Image source={{ uri: image }} style={styles.slika} />}
-  <TouchableOpacity
-    style={styles.buttonChoose}
-    onPress={this._pickImage}
-  >
-  <Text>
+  <TouchableOpacity style={styles.buttonChoose} onPress={this._pickImage}>
+  <Text style = {styles.dugmeTekst}>
     Choose file
   </Text>
   </TouchableOpacity>
+    
   <TouchableOpacity style={styles.buttonChoose}>
-  <Text>
+  <Text style = {styles.dugmeTekst}>
     Dodaj sliku
   </Text>
   </TouchableOpacity>
@@ -55,10 +53,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
     },
     buttonChoose: {
-    backgroundColor: 'lightgrey', 
+    backgroundColor: '#2097F3', 
     alignItems: 'center', 
     justifyContent: 'center', 
-    borderRadius: 10,
+    borderRadius: 4,
     padding: 10,
     marginTop: 10,
     marginLeft: '8%',
@@ -68,7 +66,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgrey', 
     alignItems: 'center', 
     justifyContent: 'center', 
-    borderRadius: 10,
+    borderRadius: 2,
     padding: 20,
     marginTop: 10,
     marginRight: '8%'
@@ -93,5 +91,9 @@ const styles = StyleSheet.create({
     imagestyle: {
     justifyContent: 'center',
     alignItems: 'center',
-    }
+    },
+    dugmeTekst: {
+       color: '#ffffff',
+       fontWeight: 'bold',
+      },
    })
