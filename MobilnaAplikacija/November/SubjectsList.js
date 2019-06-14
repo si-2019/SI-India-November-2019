@@ -8,9 +8,10 @@ import {
   ActivityIndicator
 } from "react-native";
 import { ListItem } from 'react-native-elements';
-// import axios from 'axios';
 
 import Zavrsni from './Zavrsni';
+
+const API_BASE_URL= 'https://si2019november.herokuapp.com';
 export class SubjectsList extends React.Component {
   constructor(props) {
     super(props);
@@ -20,19 +21,18 @@ export class SubjectsList extends React.Component {
     };
   }
 
-  componentDidMount() {
-    /* axios.get("http://localhost:3000/subjects")
-            .then(res => {
-                const newSubjects = res.data;
-                this.setState({ subjects: newSubjects });
-            })
-            .then(error => {
-                console.error(error);
-            }
-        ) */
-    this.setState({
-      subjects: getSubjects
-    });
+  componentWillMount() {
+    fetch(API_BASE_URL+`/November/predmeti?StudentId=3`).then( res => res.json()).
+    then(response=>{
+      this.setState({
+        subjects: response
+      })
+    }).catch(e =>{
+      
+      this.setState({
+        subjects: getSubjects
+      })
+    })
   }
   render() {
     return (
@@ -54,23 +54,13 @@ export class SubjectsList extends React.Component {
       </ScrollView>
     );
   }
-
-  _getSubjectsFromApi = async endpoint => {
-    try {
-      const response = await fetch(endpoint);
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error(error);
-    }
-  };
 }
 
 const getSubjects = [
   {
     id: 1,
-    title: "Organizacija softverskog projekta",
-    profesor: "Profesor OSP",
+    title: "ARM",
+    profesor: "Profesor ARM",
     ECTS: "4",
     asistenti: "Asistent",
     ispiti: [
