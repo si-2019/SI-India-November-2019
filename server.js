@@ -178,7 +178,10 @@ app.get('/predmeti/:idstudenta/prviParcijalni', (req, res) => {
 });
 app.get('/November/novosti', (req, res) => {
   res.json(MOCK_DATA_NOVOSTI);
-})
+});
+app.get('/November/predmeti', (req, res)=>{
+  res.json(MOCK_DATA_PREDMETI);
+});
 swagger_document(app);
 
 
@@ -207,5 +210,85 @@ const MOCK_DATA_NOVOSTI= [
   {
     predmet: "Softver inženjering",
     bodovi : 17
+  }
+];
+
+const MOCK_DATA_PREDMETI = [
+  {
+    id: 1,
+    title: "Organizacija softverskog projekta",
+    profesor: "Profesor OSP",
+    ECTS: "4",
+    asistenti: "Asistent",
+    ispiti: [
+      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 13 },
+      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 15 },
+      { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 13 }
+    ],
+    zadace: [
+      { naziv: "Zadaća 1", bodovi: 3 },
+      { naziv: "Zadaća 2", bodovi: 4 },
+      { naziv: "Zadaća 3",bodovi: 2 },
+      { naziv : "Zadaća 4", bodovi : 5}
+    ],
+    prisustvo:10
+  },
+  {
+    id: 2,
+    title: "Projektovanje informacionih sistema",
+    profesor: "Profesor PIS",
+    ECTS: "4",
+    asistenti: "Asistent",
+    ispiti: [
+      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 13 },
+      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 15 },
+      { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 13 }
+    ],
+    zadace: [
+      { naziv: "Zadaća 1", bodovi: 5 },
+      { naziv: "Zadaća 2", bodovi: 4 },
+      { naziv: "Zadaća 3",bodovi: 3 }
+    ],
+    prisustvo:10
+  },
+  {
+    id: 3,
+    title: "Softver inženjering",
+    profesor: "Profesor SI",
+    ECTS: "4",
+    asistenti: "Asistent",
+    ispiti: [
+      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 13 },
+      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 15 },
+      { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 13 }
+    ],
+    zadace: [
+      { naziv: "Zadaća 1", bodovi: 5 },
+      { naziv: "Zadaća 2", bodovi: 8 },
+      { naziv: "Zadaća 3",bodovi: 10 },
+      { naziv : "Zadaća 4", bodovi : 10}
+    ],
+    prisustvo:10
+  },
+  {
+    id: 4,
+    title: "Vještačka inteligencija",
+    profesor: "Profesor VI",
+    ECTS: "4",
+    asistenti: "Asistent",
+    ispiti: [
+      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 13 },
+      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 15 },
+      { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 13 }
+    ],
+    zadace: [
+      { naziv: "Zadaća 1", bodovi: 1 },
+      { naziv: "Zadaća 2", bodovi: 2 },
+      { naziv: "Zadaća 3",bodovi: 2 },
+      { naziv : "Zadaća 4", bodovi : 1},
+      { naziv: "Zadaća 5",bodovi: 2 },
+      { naziv : "Zadaća 6", bodovi : 2}
+    ],
+    prisustvo:10
   }
 ];
