@@ -185,15 +185,13 @@ app.get('/obradjenZahtjev/:id', function(req, res) {
 
     var id1 = req.params.id;
 
-    ZahtjevZaPotvrdu.findOne({where: {id:id1}}).then(function(zahtjevcic){
-        zahtjevcic.update({    
-            obradjen: 1
-        })
+
+    ZahtjevZaPotvrdu.Update({obradjen: 1}, {where: {id:id1}}).then(function(zahtjevcic){
+    
         Student.findOne({where: {id:zahtjevcic.idStudenta}}).then(function(studentic){
             var broj = studentic.brojbesplatnih-1;
-        studentic.update({
-            brojbesplatnih: broj
-        })
+        Student.Update({brojbesplatnih: broj}, {where: {id:zahtjevcic.idStudenta}});
+        
         SvrhaPotvrde.findOne({where: {id: zahtjevcic.idSvrhe}}).then(function(svrhica){
         alert("Uspješno je obrađen zahtjev" + svrhica.naziv);
             });
@@ -232,10 +230,7 @@ app.get('/termin/:id/:dan', function(req, res) {
     var novi = dan;
     var ispit = req.params.id;
 
-  Ispiti.findOne({where: {id: ispit}}).then(function(ispit){
-      ispit.update ({
-    datumIspita: novi
-      }); 
+  Ispiti.Update({datumIspita: novi}, {where: {id: ispit}}).then(function(ispit){
     Predmet.findOne({where: {id: ispit.idPredmet}}).then(function(predmet){
       alert("Novi termin ispita " + predmet.naziv + " je " + novi)
     });
