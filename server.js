@@ -5,6 +5,10 @@ const https = require('https');
 const request = require('request');
 const axios = require('axios');
 const swagger_document=require('./swagger-document.js');
+var cors = require("cors");
+
+app.use(cors());
+
 
 var PORT = process.env.PORT || 31914;
 
@@ -185,6 +189,15 @@ app.get('/November/predmeti', (req, res)=>{
 app.get('/November/dohvatiPrveParcijale',(req, res)=>{
   res.json(MOCK_DATA_PRVI_PARCIJALNI);
 });
+
+
+
+
+
+
+
+
+
 swagger_document(app);
 
 
