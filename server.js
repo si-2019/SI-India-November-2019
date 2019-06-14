@@ -182,6 +182,9 @@ app.get('/November/novosti', (req, res) => {
 app.get('/November/predmeti', (req, res)=>{
   res.json(MOCK_DATA_PREDMETI);
 });
+app.get('/November/dohvatiPrveParcijale',(req, res)=>{
+  res.json(MOCK_DATA_PRVI_PARCIJALNI);
+});
 swagger_document(app);
 
 
