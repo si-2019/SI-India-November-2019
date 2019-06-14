@@ -2,24 +2,26 @@ import React from 'react';
 //import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import {Alert,Text, View, Image, TouchableOpacity, StyleSheet, Button } from 'react-native';
 import moment from 'moment';
+import { NativeViewGestureHandler } from 'react-native-gesture-handler';
 
-let inicijalni ={ispiti_info:[], ispiti: [{ key: 0, predmet: "Vjestacka inteligencija", tip: "Prvi parcijalni", datum: "10.2.2019. 13:00", aktivan: 1, prijavljen: 1, popunjen: 0 },
-{ key: 1, predmet: "Organizacija softverskog projekta", tip: "Drugi parcijalni", datum: "13.6.2019. 18:00", aktivan: 1, prijavljen: 0, popunjen: 1},
+
+/*let inicijalni ={ispiti_info:[], ispiti: [{ key: 0, predmet: "Vjestacka inteligencija", tip: "Prvi parcijalni", datum: "10.2.2019. 13:00", aktivan: 1, prijavljen: 1, popunjen: 0 },
+{ key: 1, predmet: "Organizacija softverskog projekta", tip: "Drugi parcijalni", datum: "13.6.2019. 18:00", aktivan: 1, prijavljen: 0, popunjen: 0 },
 { key: 2, predmet: "Softverski inzenjering", tip: "Prvi parcijalni", datum: "15.6.2019. 10:30", aktivan: 0, prijavljen: 1, popunjen: 1 },
 { key: 3, predmet: "Projektovanje informacionih sistema", tip: "Usmeni", datum: "16.6.2019. 13:00", aktivan: 1, prijavljen: 0, popunjen: 0 },
 { key: 4, predmet: "Projektovanje informacionih sistema", tip: "Usmeni", datum: "16.6.2019. 11:00", aktivan: 1, prijavljen: 1, popunjen: 1 },
 { key: 4, predmet: "Softverski inzenjering", tip: "Drugi parcijalni", datum: "24.6.2019. 09:00", aktivan: 1, prijavljen: 0, popunjen: 1 }], 
 kopijaIspiti: []
-} 
+} */
 let notifikacije = true;
 
 class AktivniIspiti extends React.Component {
     
     constructor(props) {
         super(props);
-        this.state = inicijalni
+        this.state = this.props.propovi.inicijalni
         inicijalizovanjeIspita = () => {
-            this.setState(inicijalni)
+            this.setState(this.props.propovi.inicijalni)
         }
         this.promijeniTekstButtona = this.promijeniTekstButtona.bind(this);
         this.filtrirajPopunjene = this.filtrirajPopunjene.bind(this);
@@ -36,27 +38,7 @@ class AktivniIspiti extends React.Component {
       );
     }
 
-    promijeniTekstButtona = i => {
-        this.setState(() => {
-            const list = this.state.ispiti_info.map((item, j) => {
-              
-                if (j === i) {
-                    if (item.prijavaTekst === 'Prijavi') {
-                        item.prijavaTekst = 'Odjavi'
-                        item.statusPrijave = 'Prijavljen'
-                    }
-                    else {
-                        item.prijavaTekst = 'Prijavi'
-                        item.statusPrijave = 'Aktivan'
-                    }   
-                } 
-                return item;
-            });
-            return {
-                list,
-            };
-        });
-    };
+    
 
     filtrirajPopunjene() {
         if(this.state.kopijaIspiti.length === 0) {
@@ -93,8 +75,31 @@ class AktivniIspiti extends React.Component {
         if (this.state.kopijaIspiti.length !== 0) 
             this.setState({ispiti: this.state.kopijaIspiti});
     }
-
+    promijeniTekstButtona = i => {
+        this.setState(() => {
+            const list = this.state.ispiti_info.map((item, j) => {
+              
+                if (j === i) {
+                    if (item.prijavaTekst === 'Prijavi') {
+                        item.prijavaTekst = 'Odjavi'
+                        item.statusPrijave = 'Prijavljen'
+                    }
+                    else {
+                        item.prijavaTekst = 'Prijavi'
+                        item.statusPrijave = 'Aktivan'
+                    }   
+                } 
+                return item;
+            });
+            return {
+                list,
+            };
+        });
+      };
     render() {
+        
+        this.props.propovi.naRender();
+        /*
         let k = 0;
         this.state.ispiti.map((ispit) => {
             let porukaa = '';
@@ -111,7 +116,7 @@ class AktivniIspiti extends React.Component {
                 statusPrijave += '\nPopunjen'
             inicijalni.ispiti_info[k] = { ind: k, key: ispit.key, prijavaTekst: porukaa, statusPrijave: statusPrijave }
             k++;
-        })
+        })*/
         this.inicijalizovanjeIspita;
         let j, greska;
         ispisAktivnihIspita = this.state.ispiti.map((ispit) => {
@@ -127,57 +132,13 @@ class AktivniIspiti extends React.Component {
                         <View style={styles.elementi_tabele}><Text style={styles.elementi_tabele_tekst}>{ispit.datum}</Text></View>
                         <View style={styles.elementi_tabele}>
                             <TouchableOpacity>
-                                <Text style={[styles.elementi_tabele_tekst, { color: 'blue' }]} onPress={() => {
-                                    j = this.state.ispiti.indexOf(ispit);
-                                    
-                                    greska = 0; greska2 = 0;
-                                    this.state.ispiti.map((item) => {
-                                        if (item.key != ispit.key && item.predmet === ispit.predmet && item.tip === item.tip && item.prijavljen == 1) {
-                                            greska = 1;
-                                        }
-                                        if(ispit.popunjen) greska2 = 1;
-                                    });
-                                    if (greska) {
-                                        alert('Prijavljeni ste na drugi termin ovog ispita, odjavite ga kako bi se mogli prijavili na ovaj!');
-                                    }
-                                    else if (ispit.prijavljen) {
-                                        Alert.alert(
-                                            "Upozorenje",
-                                            "Jeste li sigurni da se želite odjaviti?",
-                                            [
-                                              { text: "Da", onPress: () => {
-                                                this.state.ispiti[j].prijavljen = 0;
-                                                if(ispit.popunjen)
-                                                    this.state.ispiti[j].popunjen = 0;
-                                        this.promijeniTekstButtona(j);
-                                        alert('Ispit uspješno odjavljen!');
-                                    } },
-                                              {
-                                                text: "Otkaži",
-                                                onPress: () => console.log("Ipak se ne želim odjaviti"),
-                                                style: "cancel"
-                                              },
-                                            ],
-                                            { cancelable: false }
-                                          );
-                                        
-                                    }
-                                    else if (greska2){
-                                        alert('Termin ispita je nažalost popunjen!');
-                                    }
-                                    else {
-                                        this.state.ispiti[j].prijavljen = 1;
-                                        this.promijeniTekstButtona(j);
-                                        alert('Ispit uspješno prijavljen!');
-                                    }
-
-                                }}>{this.state.ispiti_info[this.state.ispiti.indexOf(ispit)].prijavaTekst}</Text>
+                                <Text style={[styles.elementi_tabele_tekst, { color: 'blue' }]} onPress={() => this.props.propovi.onPressAktivni(ispit, this.promijeniTekstButtona)}>{this.state.ispiti_info[this.state.ispiti.indexOf(ispit)].prijavaTekst}</Text>
                             </TouchableOpacity></View>
                             <View style={styles.elementi_tabele}><Text style={styles.elementi_tabele_tekst}>{this.state.ispiti_info[this.state.ispiti.indexOf(ispit)].statusPrijave}</Text></View>
                     </View>
                 );
             }
-        })
+        }) 
 
         return (
 

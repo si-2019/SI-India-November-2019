@@ -75,7 +75,19 @@ const getIzvjestaji = [
   {
     id: 5,
     title: "Izvještaj o ostvarenom broju bodova na završnom ispitu za pojedine predmete"
-  }
+  },
+  {
+    id: 6,
+    title: "Izvještaj o ostvarenom broju bodova na zadaćama za pojedine predmete"
+  },
+  {
+    id: 7,
+    title: "Izvještaj o položenim predmetima za tekuću akademsku godinu"
+  },
+  {
+    id: 8,
+    title: "Izvještaj o nepoloženim predmetima za tekuću akademsku godinu"
+  },
 ];
 
 const styles = StyleSheet.create({
@@ -83,11 +95,12 @@ const styles = StyleSheet.create({
     padding: 5,
     fontSize: 16,
     height: 50,
-    textAlign: 'center'
+    textAlign: 'center',
+    color: 'white',
   },
   buttonStyle: {
     padding:1,
-    backgroundColor: '#ededed',
+    backgroundColor: '#2097F3',
     borderRadius:4,
     margin: 10
     }

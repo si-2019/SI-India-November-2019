@@ -8,6 +8,7 @@ import {
     TextInput,
     TouchableOpacity,
     View,
+    Button
 } from 'react-native';
 
 import {
@@ -18,11 +19,19 @@ import {
 
 import axios from 'axios';
 import Screen1 from './Dashboard.js';
-class App extends React.Component {
+import { ScrollView } from 'react-native-gesture-handler';
+class login extends React.Component {
     /*var token = 'temp';*/ /*Za validaciju*/
+    constructor(props)
+    {
+        super(props);
+        
+    }
+
     state = {
         email: '',
-        password: ''
+        password: '',
+        logovan: false
     }
     handleUserName = (text) => {
         this.setState({email: text})
@@ -31,13 +40,26 @@ class App extends React.Component {
         this.setState({password: text})
     }
     login = (email, pass) => {
-        if (email.length !== 0 && pass.length!== 0) {
+        this.state.logovan = true;
+        global.logovan = true;
+        global.idStudenta = 1;
+        global.token = "blabla";
+        this.props.navigation.navigate("Screen1", 1);//Šalje na dashboard
+        //OVDJE UBACITI POZIV ZA LOGIN I AKO JE USPJEŠAN POSTAVITI OVE GORE GLOBALNE VARIJABLE NA ODGOVARAJUĆE VRIJEDNOSTI I POZVATI NAVIGATORSKU FUNKCIJU
+        //KOJA KORISNIKA ŠALJE NA DASHBOARD
+
+
+
+
+
+
+        //if (email.length !== 0 && pass.length!== 0) {
 
             /*Dummy podaci*/
-            if(email !== 'student' || pass!=='student') Alert.alert('Greška!','Netačni podaci!');
+            //if(email !== 'student' || pass!=='student') Alert.alert('Greška!','Netačni podaci!');
 
             /*Ukoliko je ok validacija*/
-            else {
+            //else {
                 /*Nakon implementacije backenda.
                 ISKORISTITI varijablu token za ovo
                 axios.get("urlapi-a kada urade hehe ? id="+this.props.id).then(response=>{
@@ -46,54 +68,76 @@ class App extends React.Component {
                 })
                 key  zamijenjeniti sa uid !
                 */
-                Alert.alert('OK','Treba se prebaciti na Home Page');
-            }
-        }
-        else if(email.length === 0 || pass.length === 0) Alert.alert('Greška!','Molimo unesite oba podatka!')
+                //Alert.alert('OK','Treba se prebaciti na Home Page');
+            //}
+        //}
+        //else if(email.length === 0 || pass.length === 0) Alert.alert('Greška!','Molimo unesite oba podatka!')
     }
+    logout()
+    {
+        alert(this.state.logovan)
+        global.logovan = false
+        this.state.logovan = true
+        
+    }
+
     render() {
-        return (
-            <View style={styles.container}>
-                <View style={styles.container} contentContainerStyle={styles.contentContainer}>
-                    <View style={styles.welcomeContainer}>
-                        <Image source={require('../assets/logo.jpg')}
-                               style={styles.welcomeImage}/>
-                    </View>
-                    <Text style={styles.developmentModeText}>
-                        Dobrodošli na oficijelnu stranicu Elektrotehničkog fakulteta, Sarajevo
-                    </Text>
-                    <TextInput style={styles.input}
-                               underlineColorAndroid="transparent"
-                               placeholder=" Korisničko ime"
-                               placeholderTextColor="#000000"
-                               autoCapitalize="none"
-                               onChangeText={this.handleUserName}/>
-                    <TextInput style={styles.input}
-                               secureTextEntry={true}
-                               underlineColorAndroid="transparent"
-                               placeholder=" Lozinka"
-                               placeholderTextColor="#000000"
-                               autoCapitalize="none"
-                               onChangeText={this.handlePassword}/>
-                    <TouchableOpacity
-                        style={styles.submitButton}
-                        onPress={
-                            () => this.login(this.state.email, this.state.password)
-                        }>
-                        <Text style={styles.submitButtonText}> Prijavi se </Text>
-                    </TouchableOpacity>
-                    <View style={styles.down}>
-                        <Text style = {styles.footer}>
-                            {'\u00A9'} November-India, 2019
+        if(!this.state.logovan)
+        {
+            return(
+                <ScrollView>
+                    <Button
+                    onPress = {this.logout()}
+                    title="Odjava"
+                    accessibilityLabel="Odjava"
+                    />
+            
+                </ScrollView>
+            );
+        }
+        else
+        {
+            return (
+                <ScrollView>
+                <View style={styles.container}>
+                    <View style={styles.container} contentContainerStyle={styles.contentContainer}>
+                        <View style={styles.welcomeContainer}>
+                            <Image source={require('../assets/logo.jpg')}
+                                style={styles.welcomeImage}/>
+                        </View>
+                        <Text style={styles.developmentModeText}>
+                            Dobrodošli na oficijelnu stranicu Elektrotehničkog fakulteta, Sarajevo
                         </Text>
+                        <TextInput style={styles.input}
+                                underlineColorAndroid="transparent"
+                                placeholder=" Korisničko ime"
+                                placeholderTextColor="#000000"
+                                autoCapitalize="none"
+                                onChangeText={this.handleUserName}/>
+                        <TextInput style={styles.input}
+                                secureTextEntry={true}
+                                underlineColorAndroid="transparent"
+                                placeholder=" Lozinka"
+                                placeholderTextColor="#000000"
+                                autoCapitalize="none"
+                                onChangeText={this.handlePassword}/>
+                        <TouchableOpacity
+                            style={styles.submitButton}
+                            onPress={
+                                () => this.login(this.state.email, this.state.password)
+                            }>
+                            <Text style={styles.submitButtonText}> Prijavi se </Text>
+                        </TouchableOpacity>
+                    
                     </View>
                 </View>
-            </View>
-        )
+                </ScrollView>
+            );
+        }
     }
 }
 
-export default  App
+export default  login
 
 
 const styles = StyleSheet.create({
@@ -218,5 +262,19 @@ const styles = StyleSheet.create({
     helpLinkText: {
         fontSize: 14,
         color: '#2e78b7',
+    },
+    buttonChoose: {
+        backgroundColor: '#2097F3', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        borderRadius: 4,
+        padding: 10,
+        marginTop: 10,
+        marginLeft: '8%',
+        marginRight: '8%'
+    },
+    dugmeTekst: {
+          color: '#ffffff',
+          fontWeight: 'bold',
     },
 });

@@ -57,7 +57,7 @@ export default class odslusaniPredmeti extends React.Component {
     renderItem = ({item}) => {
           return (
               <ScrollView style={{width: "100%"}}>
-                   <Text style={{ fontSize: 23 }}> {item.Naziv}</Text>
+                   <Text style={styles.subHeader}> {item.Naziv}</Text>
                    <FlatList
                         data = {item.Predmeti}
                         keyExtractor={item=>item.predmet}
@@ -89,9 +89,18 @@ export default class odslusaniPredmeti extends React.Component {
 const styles = StyleSheet.create({
   MainContainer: {
     flex: 1,
-    paddingTop: 10,
-    alignItems: 'center',
-    marginTop: 10,
     
+    
+  },
+  subHeader:{
+    flex: 1,
+    backgroundColor: '#195dc4',
+    color: 'white',
+    padding: 5,
+    fontSize: 16,
+    fontWeight: 'bold',
+    width: '100%',
+    paddingLeft: 20,
+    paddingRight: 20,
   },
 });
