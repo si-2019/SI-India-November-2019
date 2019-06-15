@@ -16,6 +16,11 @@ var PORT = process.env.PORT || 31914;
 app.get('/predmeti/:idstudenta/prviParcijalni', (req, res) => {
   res.json(MOCK_DATA_PRVI_PARCIJALNI);
 });
+
+app.get('/predmeti/:idstudenta/drugiParcijalni', (req, res) => {
+  res.json(MOCK_DATA_DRUGI_PARCIJALNI);
+});
+
 app.get('/November/novosti', (req, res) => {
   res.json(MOCK_DATA_NOVOSTI);
 });
@@ -109,6 +114,25 @@ const MOCK_DATA_NOVOSTI= [
   {
     predmet: "Softver inženjering",
     bodovi : 17
+  }
+];
+
+const MOCK_DATA_DRUGI_PARCIJALNI = [
+  {
+    predmet: "Administracija racunarskih mreza",
+    bodovi : 7
+  },
+  {
+    predmet: "Vještačka inteligencija",
+    bodovi : 18
+  },
+  {
+    predmet: "Softver inženjering",
+    bodovi : 15
+  },
+  {
+    predmet: "Projektovanje informacionih sistema",
+    bodovi : 14
   }
 ];
 
