@@ -12,27 +12,31 @@ class UkupanBrojBodova extends Component {
   };
 
   componentDidMount() {
-    //ovdje ide localhost ako se testira preko emulatora na PC-ju, http://localhost:31914/predmeti/1/ukupnoBodova
-    //a ako se testira preko expo, staviti ip adresu svog racunara
-    axios
-      .get(API_BASE_URL+'/November/dohvatiUkupneBodove/'+ID_STUDENTA) 
-      .then(response => {
-        const newContacts = response.data.map(c => {
+    fetch(API_BASE_URL+"/November/dohvatiUkupneBodove/"+global.idStudenta,
+    {
+      headers:{
+        Authorization: global.token
+      }
+      
+    })
+    .then(res=>res.json()).then(response=>{
+        console.log(response)
+        const newContacts = response.map(c => {
           return {
             predmet: c.predmet,
             bodovi: c.bodovi
           };
-          
         });
         const newState = Object.assign({}, this.state, {
           subjects: newContacts
         });
         this.setState(newState);
-        console.log(this.state.subjects)
+        
       })
       //Kada se ne možemo konektovati na bazu koristimo hardkodirane podatke
       .catch(error => {
         console.log(error)
+        
         this.setState({
           subjects: getSubjects
         });

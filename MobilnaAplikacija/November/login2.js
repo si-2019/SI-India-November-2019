@@ -25,7 +25,7 @@ export default class login2 extends Component {
   {
       this.state.logovan = true;
       global.logovan = true;
-      global.idStudenta = 1;
+      global.idStudenta = 2;
       global.token = "blabla";
       this.forceUpdate()
       this.props.navigation.navigate("Screen1", 1);//Šalje na dashboard

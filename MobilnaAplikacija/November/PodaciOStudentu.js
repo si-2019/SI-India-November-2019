@@ -35,7 +35,7 @@ state= {
 
 APIpoziv = () =>
 {
-axios.get("https://si2019november.herokuapp.com/November/dohvatiPodatke/2").then(res =>{ //Staviti ovdje id ulogovanog studenta
+axios.get(`https://si2019november.herokuapp.com/November/dohvatiPodatke/${global.idStudenta}`).then(res =>{ //Staviti ovdje id ulogovanog studenta
    this.dodajPodatke(res.data);
 })
 }
