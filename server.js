@@ -211,12 +211,11 @@ app.get('/November/dohvatiPodatke/:idStudenta',(req, res)=>{
   });
   
 });
-app.get('/November/dohvatiUkupneBodove/:idStudenta',(req, resp)=>{
+app.get('/November/dohvatiUkupneBodove/:idStudenta',(req, res)=>{
   idstudenta=req.params.idStudenta;
-  res = [];
+  resp = [];
   axios.get('https://si2019November.herokuapp.com/November/predmeti') 
   .then(response => {
-    var i=0;
     response.data.forEach(function(element) {
       var res1={}
     res1.predmet=element.title;
@@ -231,13 +230,12 @@ app.get('/November/dohvatiUkupneBodove/:idStudenta',(req, resp)=>{
       zadace=el.bodovi+zadace;
     })
     res1.bodovi=prviParc+drugiParc+zadace+element.prisustvo;
-    res.push(res1);
-    })
-    
-    resp.json(res)
+    resp.push(res1);
+    })  
+    res.json(resp)
 })
   .catch(error => {
-  resp.json(error);
+  res.json(error);
   console.log(error);
   });
   
