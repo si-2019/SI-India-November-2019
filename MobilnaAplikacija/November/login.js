@@ -41,6 +41,7 @@ class login extends React.Component {
     }
     login = (email, pass) => {
         this.state.logovan = true;
+
         global.logovan = true;
         global.idStudenta = 1;
         global.token = "blabla";

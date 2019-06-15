@@ -1,47 +1,89 @@
 import React, { Component } from 'react';
-
+import axios from 'axios'
 import { StyleSheet, View, ScrollView, Text, Image, TouchableOpacity, Linking, Button, TextInput } from 'react-native';
 import { SubjectsList } from './SubjectsList';
 import { Divider } from 'react-native-elements';
 import Obavijesti from './NewsFeed/Obavijesti';
 import { NavigationActions } from 'react-navigation';
 
+const API_BASE_URL= 'https://si2019romeo.herokuapp.com';
+const header = {
+    "Content-Type": "application/json"
+};
+var tacno = true;
 export default class login2 extends Component {
-
   constructor(props)
   {
       super(props);
-     
   }
-   
   state = {
-      email: '',
+      username: '',
       password: '',
       logovan: false
-    
   }
+    handleUserName = (text) => {
+        this.setState({username: text})
+    }
+    handlePassword = (text) => {
+        this.setState({password: text})
+    }
 
   login()
   {
-      this.state.logovan = true;
-      global.logovan = true;
-      global.idStudenta = 2;
-      global.token = "blabla";
-      this.forceUpdate()
-      this.props.navigation.navigate("Screen1", 1);//Šalje na dashboard
-      //OVDJE UBACITI POZIV ZA LOGIN I AKO JE USPJEŠAN POSTAVITI OVE GORE GLOBALNE VARIJABLE NA ODGOVARAJUĆE VRIJEDNOSTI I POZVATI NAVIGATORSKU FUNKCIJU
-      //KOJA KORISNIKA ŠALJE NA DASHBOARD.
+      const body = {
+          username: this.state.username,
+          password: this.state.password
+      }
+      if (this.state.username != '') {
+          tacno = true;
+      }
+      if (this.state.password != '') {
+          tacno = true;
+      }
+      if (this.state.username == '') {
+          tacno = false;
+          alert("Polje 'Korisničko ime' ne može biti prazno!");
+      }
+      if (this.state.password == '') {
+          tacno = false;
+          alert("Polje 'Lozinka' ne može biti prazno!");
+      }
+      if (tacno) {
+          axios.post(API_BASE_URL + '/login', body, header).then((res) => {
+              var data = res.data;
+              const par = '?username=' + this.state.username;
+              axios.get(API_BASE_URL + '/users/id' + par).then((res2) => {
+                  var id = res2.data;
+                  global.token = data.token;
+                  global.idStudenta = id;
+              });
+              this.state.logovan = true;
+              global.logovan = true;
+              this.forceUpdate();
+              this.props.navigation.navigate("Screen1", 1);
+          }).catch((error) => {
+              var res = error.response;
+              if (res) {
+                  if (res.status == 403) {
+                      alert("Korisnik ne postoji!");
+                  }
+                  else {
+                      alert("ERROR!");
+                  }
+              }
+              else {
+                  alert("Aplikacija nije dobila odgovor od servera");
+              }
+          });
+      }
   }
 
   logout()
   {
-     
       global.logovan = false
       this.state.logovan = false
-      //UBACITI SERVIS ZA LOGOUT AKO TAKVOG SERVISA UOPŠTE BUDE
       this.forceUpdate()
   }
-
     render() {
       if(global.logovan == true)
       {
@@ -84,11 +126,10 @@ export default class login2 extends Component {
                         <TouchableOpacity
                             style={styles.submitButton}
                             onPress={
-                                () => this.login(this.state.email, this.state.password)
+                                () => this.login(this.state.username, this.state.password)
                             }>
                             <Text style={styles.submitButtonText}> Prijavi se </Text>
                         </TouchableOpacity>
-                    
                     </View>
                 </View>
                 </ScrollView>
@@ -201,9 +242,9 @@ helpLinkText: {
     color: '#2e78b7',
 },
 buttonChoose: {
-    backgroundColor: '#2097F3', 
-    alignItems: 'center', 
-    justifyContent: 'center', 
+    backgroundColor: '#2097F3',
+    alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 4,
     padding: 10,
     marginTop: 10,
@@ -214,5 +255,4 @@ dugmeTekst: {
       color: '#ffffff',
       fontWeight: 'bold',
 },
-
 });
