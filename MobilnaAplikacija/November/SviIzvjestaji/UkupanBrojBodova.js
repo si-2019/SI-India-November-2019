@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {View,Text,StyleSheet, FlatList, TouchableOpacity, ScrollView} from 'react-native';
 import axios from 'axios';
+const API_BASE_URL= 'https://si2019november.herokuapp.com';
+const ID_STUDENTA = 1;
 
 class UkupanBrojBodova extends Component {
 
@@ -13,9 +15,8 @@ class UkupanBrojBodova extends Component {
     //ovdje ide localhost ako se testira preko emulatora na PC-ju, http://localhost:31914/predmeti/1/ukupnoBodova
     //a ako se testira preko expo, staviti ip adresu svog racunara
     axios
-      .get("http://192.168.0.16:31914/predmeti/1/ukupnoBodova") 
+      .get(API_BASE_URL+'/November/dohvatiUkupneBodove/'+ID_STUDENTA) 
       .then(response => {
-
         const newContacts = response.data.map(c => {
           return {
             predmet: c.predmet,
@@ -23,12 +24,11 @@ class UkupanBrojBodova extends Component {
           };
           
         });
-        //console.log(newContacts);
         const newState = Object.assign({}, this.state, {
           subjects: newContacts
         });
         this.setState(newState);
-        //console.log(this.state.subjects)
+        console.log(this.state.subjects)
       })
       //Kada se ne možemo konektovati na bazu koristimo hardkodirane podatke
       .catch(error => {
