@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {View,Text,StyleSheet, FlatList, TouchableOpacity, ScrollView} from 'react-native';
-import axios from 'axios';
-
+const API_BASE_URL= 'https://si2019november.herokuapp.com';
 class ZavrsniIspitIzvjestaj extends Component {
 
     // default State object
@@ -12,33 +11,21 @@ class ZavrsniIspitIzvjestaj extends Component {
     componentDidMount() {
         //ovdje ide localhost ako se testira preko emulatora na PC-ju, http://localhost:31914/predmeti/1/ukupnoBodova
         //a ako se testira preko expo, staviti ip adresu svog racunara
-
-        axios
-            .get("http://192.168.0.16:31914/predmeti/1/zavrsniIspit")
-            .then(response => {
-
-                const newContacts = response.data.map(c => {
-                    return {
-                        predmet: c.predmet,
-                        bodovi: c.bodovi
-                    };
-
-                });
-                //console.log(newContacts);
-                const newState = Object.assign({}, this.state, {
-                    subjects: newContacts
-                });
-                this.setState(newState);
-                //console.log(this.state.subjects)
-            })
-
-            //Kada se ne možemo konektovati na bazu koristimo hardkodirane podatke
-            .catch(error => {
-                console.log(error)
-                this.setState({
-                    subjects: getSubjects
-                });
+        fetch(API_BASE_URL+`/November/dohvatiZavrsne?idStudenta=3`)
+            .then(res=>res.json()).then(response=>{
+            const newContacts = response.map(c => {
+                return {
+                    predmet: c.predmet,
+                    bodovi: c.bodovi
+                };
             });
+            const newState = Object.assign({}, this.state, {
+                subjects: newContacts
+            });
+            this.setState(newState);
+        }).catch(e=>{
+
+        })
     }
 
     render() {
@@ -67,20 +54,25 @@ class ZavrsniIspitIzvjestaj extends Component {
     }
 
 }
+
 //Hardkodirani podaci Za slučaj kad se ne može konektovati na bazu
 export default ZavrsniIspitIzvjestaj;
 const getSubjects = [
     {
-        predmet: "Organizacija softverskog projekta",
-        bodovi : 20
+        predmet: "Administracija racunarskih mreza",
+        bodovi : 30
     },
     {
         predmet: "Vještačka inteligencija",
-        bodovi : 35
+        bodovi : 40
     },
     {
         predmet: "Softver inženjering",
-        bodovi : 28
+        bodovi : 20
+    },
+    {
+        predmet: "Projektovanje informacionih sistema",
+        bodovi: 35
     }
 ]
 const styles = StyleSheet.create({
