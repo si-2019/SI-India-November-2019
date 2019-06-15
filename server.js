@@ -30,6 +30,9 @@ app.get('/November/predmeti', (req, res)=>{
 app.get('/November/dohvatiPrveParcijale',(req, res)=>{
   res.json(MOCK_DATA_PRVI_PARCIJALNI);
 });
+app.get('/November/dohvatiDrugeParcijale',(req, res)=>{
+  res.json(MOCK_DATA_DRUGI_PARCIJALNI);
+});
 app.get('/predmeti/:idstudenta/zavrsni', (req, res) => {
   res.json(MOCK_DATA_ZAVRSNI);
 });
