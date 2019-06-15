@@ -187,5 +187,31 @@ app.get('/predmeti/:idstudenta/prviParcijalni', (req, res) => {
   ]);
 });
 
+//API vraća podatke o predmetu u sljedećem formatu
+/*
+[{"predmet":"Administracija računarskih mreža","bodovi":"30"},{"predmet":"Vještačka inteligencija","bodovi":"40"},
+{"predmet":"Softver inženjering","bodovi":"20"},{"predmet":"Projektovanje informacionih sistema","bodovi":"35"}]
+*/
+app.get('/predmeti/:idStudenta/zavrsni', (req, res) => {
+  res.json([
+    {
+      predmet: "Administracija računarskih mreža",
+      bodovi : 30
+    },
+    {
+      predmet: "Vještačka inteligencija",
+      bodovi : 40
+    },
+    {
+      predmet: "Softver inženjering",
+      bodovi : 20
+    },
+    {
+      predmet: "Projektovanje informacionih sistema",
+      bodovi: 35
+    }
+  ]);
+});
+
 app.listen(31914);
 
