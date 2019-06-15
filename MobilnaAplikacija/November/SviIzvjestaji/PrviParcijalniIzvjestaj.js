@@ -56,3 +56,33 @@ class PrviParcijalniIzvjestaj extends Component {
   
 }
 export default PrviParcijalniIzvjestaj;
+
+const styles = StyleSheet.create({
+  item: {
+    padding: 5,
+    margin: 5,
+    fontSize: 16,
+    height: 80,
+  },
+  Viewitem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  Viewitem1: {
+    borderWidth: 1,  
+    borderColor: "black",
+    backgroundColor: "#ededed",
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    width: '70%'
+  },
+  Viewitem2: {
+    borderWidth: 1,  
+    borderColor: "black",
+    backgroundColor: "#ededed",
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  }
+});

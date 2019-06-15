@@ -4,14 +4,14 @@ import {View,Text,StyleSheet, FlatList, ScrollView} from 'react-native';
 const API_BASE_URL= 'https://si2019november.herokuapp.com';
 class DrugiParcijalniIzvjestaj extends Component {
 
-  // default State object
-  state = {
-    subjects: []
-  };
+  state = { subjects: [] };
 
   componentDidMount() {
-    var upit = `/November/dohvatiDrugeParcijale?idStudenta=` + global.idStudenta;
-    fetch(API_BASE_URL+upit).then(res=>res.json()).then(response=>{
+    fetch(API_BASE_URL+`/November/dohvatiDrugeParcijale?idStudenta=${global.idStudenta}`,{
+      headers:{
+        Authorization: global.token
+      }
+    }).then(res=>res.json()).then(response=>{
       const newContacts = response.map(c => {
         return {
           predmet: c.predmet,
@@ -56,7 +56,7 @@ class DrugiParcijalniIzvjestaj extends Component {
   
 }
 
-//Hardkodirani podaci Za slučaj kad se ne može konektovati na bazu
+// Mock data
 export default DrugiParcijalniIzvjestaj;
 const getSubjects = [
   {
