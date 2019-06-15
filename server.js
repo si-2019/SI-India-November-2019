@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const moment = require('moment');
 const db = require('./modeli/db.js');
 const sequelize = require('sequelize');
+const cors= require ('cors');
 var app = express();
 const port=process.env.PORT || 31909;
 const StudentIspit = db.sequelize.import(__dirname+'/modeli/StudentIspit.js');
