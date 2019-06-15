@@ -40,19 +40,24 @@ export default class login2 extends Component {
       }
       if (this.state.username != '') {
           tacno = true;
+          this.forceUpdate();
       }
       if (this.state.password != '') {
           tacno = true;
+          this.forceUpdate();
       }
       if (this.state.username == '') {
           tacno = false;
+          this.forceUpdate();
           alert("Polje 'Korisničko ime' ne može biti prazno!");
       }
       if (this.state.password == '') {
           tacno = false;
+          this.forceUpdate();
           alert("Polje 'Lozinka' ne može biti prazno!");
       }
       if (tacno) {
+
           axios.get(ULOGA_BASE_URL + '/pretragaUsername/'+ this.state.username + '/dajUlogu').then((res3) => {
               this.state.uloga = res3.data;
               if (this.state.uloga != "STUDENT") {
@@ -96,8 +101,11 @@ export default class login2 extends Component {
   }
   logout()
   {
-      global.logovan = false
-      this.state.logovan = false
+      global.logovan = false;
+      tacno = false;
+      this.state.username = '';
+      this.state.password ='';
+      this.state.logovan = false;
       this.forceUpdate()
   }
     render() {
