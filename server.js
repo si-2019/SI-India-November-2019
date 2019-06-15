@@ -189,6 +189,12 @@ app.get('/November/predmeti', (req, res)=>{
 app.get('/November/dohvatiPrveParcijale',(req, res)=>{
   res.json(MOCK_DATA_PRVI_PARCIJALNI);
 });
+app.get('/predmeti/:idstudenta/zavrsni', (req, res) => {
+  res.json(MOCK_DATA_ZAVRSNI);
+});
+app.get('/November/dohvatiZavrsne',(req, res)=>{
+  res.json(MOCK_DATA_ZAVRSNI);
+});
 
 app.get('/November/dohvatiPodatke/:idStudenta',(req, res)=>{
   idstudenta=req.params.idstudenta;
@@ -346,5 +352,24 @@ const MOCK_DATA_PODACI_O_STUDENTU=[
     "website":"string",
     "idOdsjek":1,
     "idUloga":1
+  }
+];
+
+const MOCK_DATA_ZAVRSNI= [
+  {
+    predmet: "Administracija računarskih mreža",
+    bodovi : 30
+  },
+  {
+    predmet: "Vještačka inteligencija",
+    bodovi : 40
+  },
+  {
+    predmet: "Softver inženjering",
+    bodovi : 20
+  },
+  {
+    predmet: "Projektovanje informacionih sistema",
+    bodovi: 35
   }
 ];
