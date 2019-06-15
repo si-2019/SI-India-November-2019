@@ -1,16 +1,9 @@
-
 const express = require('express');
 const app = express();
 const https = require('https');
 const request = require('request');
 const axios = require('axios');
-const swagger_document=require('./swagger-document.js');
-var cors = require("cors");
 
-app.use(cors());
-
-
-var PORT = process.env.PORT || 31914;
 
 //Vraca sve o predmetima koje student trenutno slusa
 //Potrebno pokrenuti Sierra i Lima server
@@ -178,143 +171,21 @@ console.log(error);
 */
 });
 app.get('/predmeti/:idstudenta/prviParcijalni', (req, res) => {
-  res.json(MOCK_DATA_PRVI_PARCIJALNI);
-});
-app.get('/November/novosti', (req, res) => {
-  res.json(MOCK_DATA_NOVOSTI);
-});
-app.get('/November/predmeti', (req, res)=>{
-  res.json(MOCK_DATA_PREDMETI);
-});
-app.get('/November/dohvatiPrveParcijale',(req, res)=>{
-  res.json(MOCK_DATA_PRVI_PARCIJALNI);
-});
-
-app.get('/November/dohvatiPodatke/:idStudenta',(req, res)=>{
-  idstudenta=req.params.idstudenta;
-  /*axios.get('https://si2019siera.herokuapp.com/studenti/'+idstudenta) 
-  .then(response => {
-    console.log(response.data);
-  res.json(response.data);
-  })
-  .catch(error => {
-  console.log("error");
-  });*/
-  
+  res.json( [
+    {
+      predmet: "Administracija racunarskih mreza",
+      bodovi : 6
+    },
+    {
+      predmet: "Vještačka inteligencija",
+      bodovi : 13
+    },
+    {
+      predmet: "Softver inženjering",
+      bodovi : 17
+    }
+  ]);
 });
 
+app.listen(31914);
 
-
-
-
-
-swagger_document(app);
-
-
-app.listen(PORT,function(){ console.log('server successfully started on port '+PORT); });
-
-const MOCK_DATA_NOVOSTI= [
-  { naziv: "Obavijesti1", tekst: "Obavijest1 tekst" },
-  { naziv: "Obavijest2", tekst: "Lorem ipsum dui s apien eget mi proin sed libero enim sed faucibus Laoreet id donec ultrices tincidunt. Sagittis id consectetur purus ut faucibus pulvinar. Dui sapien eget mi proin sed libero enim sed faucibus Laoreet id donec ultrices tincidunt. Sagittis id consectetur purus ut faucibus pulvinar. Dui sapien eget mi proin sed libero enim sed faucibusLaoreet id donec ultrices tincidunt. Sagittis id consectetur purus ut faucibus pulvinar. Dui sapien eget mi proin sed libero enim sed faucibus. Eros donec ac odio tempor orci dapibus. Senectus et netus et malesuada fames. Auctor elit sed vulputate mi sit amet."},
-  { naziv: "Obavijest3", tekst: "Obavijest3 tekst" },
-  { naziv: "Obavijest4", tekst: "Obavijest3 tekst" },
-  { naziv: "Obavijest5", tekst: "Obavijest3 tekst" },
-  { naziv: "Obavijest6", tekst: "Obavijest3 tekst" },
-  { naziv: "Obavijest7", tekst: "Obavijest3 tekst" },
-  { naziv: "Obavijest8", tekst: "Obavijest3 tekst" },
-  { naziv: "Obavijest9", tekst: "Lorem ipsum dui s apien eget mi proin sed libero enim sed faucibus Laoreet id donec ultrices tincidunt. Sagittis id consectetur purus ut faucibus pulvinar. Dui sapien eget mi proin sed libero enim sed faucibus Laoreet id donec ultrices tincidunt. Sagittis id consectetur purus ut faucibus pulvinar. Dui sapien eget mi proin sed libero enim sed faucibusLaoreet id donec ultrices tincidunt. Sagittis id consectetur purus ut faucibus pulvinar. Dui sapien eget mi proin sed libero enim sed faucibus. Eros donec ac odio tempor orci dapibus. Senectus et netus et malesuada fames. Auctor elit sed vulputate mi sit amet."}];
-
- const MOCK_DATA_PRVI_PARCIJALNI= [
-  {
-    predmet: "Administracija racunarskih mreza",
-    bodovi : 6
-  },
-  {
-    predmet: "Vještačka inteligencija",
-    bodovi : 13
-  },
-  {
-    predmet: "Softver inženjering",
-    bodovi : 17
-  }
-];
-
-const MOCK_DATA_PREDMETI = [
-  {
-    id: 1,
-    title: "Organizacija softverskog projekta",
-    profesor: "Profesor OSP",
-    ECTS: "4",
-    asistenti: "Asistent",
-    ispiti: [
-      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 13 },
-      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 15 },
-      { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 13 }
-    ],
-    zadace: [
-      { naziv: "Zadaća 1", bodovi: 3 },
-      { naziv: "Zadaća 2", bodovi: 4 },
-      { naziv: "Zadaća 3",bodovi: 2 },
-      { naziv : "Zadaća 4", bodovi : 5}
-    ],
-    prisustvo:10
-  },
-  {
-    id: 2,
-    title: "Projektovanje informacionih sistema",
-    profesor: "Profesor PIS",
-    ECTS: "4",
-    asistenti: "Asistent",
-    ispiti: [
-      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 13 },
-      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 15 },
-      { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 13 }
-    ],
-    zadace: [
-      { naziv: "Zadaća 1", bodovi: 5 },
-      { naziv: "Zadaća 2", bodovi: 4 },
-      { naziv: "Zadaća 3",bodovi: 3 }
-    ],
-    prisustvo:10
-  },
-  {
-    id: 3,
-    title: "Softver inženjering",
-    profesor: "Profesor SI",
-    ECTS: "4",
-    asistenti: "Asistent",
-    ispiti: [
-      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 13 },
-      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 15 },
-      { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 13 }
-    ],
-    zadace: [
-      { naziv: "Zadaća 1", bodovi: 5 },
-      { naziv: "Zadaća 2", bodovi: 8 },
-      { naziv: "Zadaća 3",bodovi: 10 },
-      { naziv : "Zadaća 4", bodovi : 10}
-    ],
-    prisustvo:10
-  },
-  {
-    id: 4,
-    title: "Vještačka inteligencija",
-    profesor: "Profesor VI",
-    ECTS: "4",
-    asistenti: "Asistent",
-    ispiti: [
-      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 13 },
-      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 15 },
-      { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 13 }
-    ],
-    zadace: [
-      { naziv: "Zadaća 1", bodovi: 1 },
-      { naziv: "Zadaća 2", bodovi: 2 },
-      { naziv: "Zadaća 3",bodovi: 2 },
-      { naziv : "Zadaća 4", bodovi : 1},
-      { naziv: "Zadaća 5",bodovi: 2 },
-      { naziv : "Zadaća 6", bodovi : 2}
-    ],
-    prisustvo:10
-  }
-];
