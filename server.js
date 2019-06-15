@@ -202,11 +202,42 @@ app.get('/November/dohvatiPodatke/:idStudenta',(req, res)=>{
   axios.get('https://si2019siera.herokuapp.com/studenti/'+idstudenta) 
   .then(response => {
   if (response.data.userAutorizacija==false) res.json(MOCK_DATA_PODACI_O_STUDENTU); //PRIVREMENO
-  else 
-  res.json(response.data.user);
+  else if(response.data.user) res.json(response.data.user);
+  else res.json(response.data);
 })
   .catch(error => {
-  res.json(MOCK_DATA_PODACI_O_STUDENTU);
+  res.json(error);
+  console.log("error");
+  });
+  
+});
+app.get('/November/dohvatiUkupneBodove/:idStudenta',(req, resp)=>{
+  idstudenta=req.params.idStudenta;
+  res = [];
+  axios.get('https://si2019November.herokuapp.com/November/predmeti') 
+  .then(response => {
+    var i=0;
+    response.data.forEach(function(element) {
+      var res1={}
+    res1.predmet=element.title;
+    prviParc=0;
+    drugiParc=0;
+    element.ispiti.forEach(function(el){
+      if(el.naziv=='Prvi parcijalni') prviParc=el.bodovi;
+      if(el.naziv=='Drugi parcijalni') drugiParc=el.bodovi;
+    })
+    zadace=0;
+    element.zadace.forEach(function(el){
+      zadace=el.bodovi+zadace;
+    })
+    res1.bodovi=prviParc+drugiParc+zadace+element.prisustvo;
+    res.push(res1);
+    })
+    
+    resp.json(res)
+})
+  .catch(error => {
+  resp.json(error);
   console.log(error);
   });
   
