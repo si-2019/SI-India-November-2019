@@ -177,6 +177,7 @@ console.log(error);
 {"predmet":"IEK","bodovi":"10"},{"predmet":"SI","bodovi":"28"}]
 */
 });
+
 app.get('/predmeti/:idstudenta/prviParcijalni', (req, res) => {
   res.json(MOCK_DATA_PRVI_PARCIJALNI);
 });
@@ -194,12 +195,13 @@ app.get('/November/dohvatiPodatke/:idStudenta',(req, res)=>{
   idstudenta=req.params.idStudenta;
   axios.get('https://si2019siera.herokuapp.com/studenti/'+idstudenta) 
   .then(response => {
-    console.log(idstudenta);
+  if (response.data.userAutorizacija==false) res.json(MOCK_DATA_PODACI_O_STUDENTU); //PRIVREMENO
+  else 
   res.json(response.data.user);
-  //res.json(MOCK_DATA_PODACI_O_STUDENTU); //PRIVREMENO
-  })
+})
   .catch(error => {
-  console.log("error");
+  res.json(MOCK_DATA_PODACI_O_STUDENTU);
+  console.log(error);
   });
   
 });
@@ -317,5 +319,34 @@ const MOCK_DATA_PREDMETI = [
       { naziv : "Zadaća 6", bodovi : 2}
     ],
     prisustvo:10
+  }
+];
+
+const MOCK_DATA_PODACI_O_STUDENTU=[
+  {
+    "id":2,
+    "ime":"John",
+    "prezime":"Wick",
+    "adresa":"Marsovska 21",
+    "ciklus":null,
+    "datumRodjenja":"1993-04-05",
+    "drzavljanstvo":"marsovac",
+    "email":"string",
+    "fotografija":"",
+    "imePrezimeMajke":"string",
+    "imePrezimeOca":"string",
+    "indeks":null,
+    "kanton":"string",
+    "linkedin":"string",
+    "mjestoRodjenja":"string",
+    "password":"ea110dfdeb4b966c81f7d786df7b1192",
+    "semestar":"1",
+    "spol":true,
+    "telefon":"string",
+    "titula":null,
+    "username":"stest1",
+    "website":"string",
+    "idOdsjek":1,
+    "idUloga":1
   }
 ];
