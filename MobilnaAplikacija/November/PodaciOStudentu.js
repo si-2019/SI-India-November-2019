@@ -7,45 +7,98 @@ export default class PodaciOStudentu extends Component {
 
 
 state= { 
-    ime: res.ime, 
-    prezime: res.prezime, 
-    spol: res.spol,  
-    brIndeksa: res.brIndeksa,  
-    jmbg: res.jmbg, 
-    adresaUlica: res.adresaUlica, 
-    adresaMjesto: res.adresaMjesto,   
-    kontaktTelefon: res.kontaktTelefon, 
-    kontaktEmail: res.kontaktEmail, 
-    imeOca: res.imeOca, 
-    prezimeOca: res.prezimeOca,
-    imeMajke: res.imeMajke,
-    prezimeMajke: res.prezimeMajke,
-    datumRod: res.datumRod,
-    mjestoRod: res.mjestoRod,
-    opcinaRod: res.opcinaRod,
-    drzavaRod: res.drzavaRod, 
-    nacionalnost: res.nacionalnost, 
-    kanton: res.kanton,
-    drzavljanstvo: res.drzavljanstvo,
+    id: "",
+    ime:"",
+    prezime:"",
+    adresa:"",
+    ciklus:null,
+    datumRodjenja:"",
+    drzavljanstvo:"",
+    email:"",
+    fotografija:"",
+    imePrezimeMajke:"",
+    imePrezimeOca:"",
+    indeks:null,
+    kanton:"",
+    linkedin:"",
+    mjestoRodjenja:"",
+    password:"",
+    semestar:"",
+    spol:true,
+    telefon:"",
+    titula:null,
+    username:"",
+    website:"",
+    idOdsjek:1,
+    idUloga:1
 } 
 
 APIpoziv = () =>
 {
-axios.get("https://httpbin.org/get").then(res =>{
-   this.dodajPodatke(res);
+axios.get("https://si2019november.herokuapp.com/November/dohvatiPodatke/2").then(res =>{ //Staviti ovdje id ulogovanog studenta
+   this.dodajPodatke(res.data);
 })
 }
 //Privremeno dodavanje dummy podataka
 dodajPodatke = (res) => {
-this.setState({ime: res.ime, prezime: res.prezime, spol: res.spol, brIndeksa: res.brIndeksa,
-jmbg: res.jmbg, adresaUlica: res.adresaUlica, adresaMjesto: res.adresaMjesto, kontaktTelefon: res.kontaktTelefon,
-kontaktEmail: res.kontaktEmail, imeOca: res.imeOca, prezimeOca: res.prezimeOca, imeMajke: res.imeMajke, 
-prezimeMajke: res.prezimeMajke, datumRod: res.datumRod, mjestoRod: res.mjestoRod, opcinaRod: res.opcinaRod,
-drzavaRod: res.drzavaRod, nacionalnost: res.nacionalnost, kanton: res.kanton, drzavljanstvo: res.drzavljanstvo });
+this.setState({
+    id: res[0].id,
+    ime: res[0].ime,
+    prezime: res[0].prezime,
+    adresa: res[0].adresa,
+    ciklus:res[0].ciklus,
+    datumRodjenja: res[0].datumRodjenja,
+    drzavljanstvo:res[0].drzavljanstvo,
+    email: res[0].email,
+    fotografija: res[0].fotografija,
+    imePrezimeMajke: res[0].imePrezimeMajke,
+    imePrezimeOca: res[0].imePrezimeOca,
+    indeks: res[0].indeks,
+    kanton: res[0].kanton,
+    linkedin:res[0].linkedin,
+    mjestoRodjenja:res[0].mjestoRodjenja,
+    password: res[0].password,
+    semestar: res[0].semestar,
+    spol:res[0].spol,
+    telefon:res[0].telefon,
+    titula:res[0].titu,
+    username:"",
+    website:"",
+    idOdsjek:1,
+    idUloga:1
+   /* adresa: res.user[0].adresa,
+    ciklus:res.user[0].ciklus,
+    datumRodjenja: res.user[0].datumRodjenja,
+    drzavljanstvo:res.user[0].drzavljanstvo,
+    email: res.user[0].email,
+    fotografija: res.user[0].fotografija,
+    imePrezimeMajke: res.user[0].imePrezimeMajke,
+    imePrezimeOca: res.user[0].imePrezimeOca,
+    indeks: res.user[0].indeks,
+    kanton: res.user[0].kanton,
+    linkedin:res.user[0].linkedin,
+    mjestoRodjenja:res.user[0].mjestoRodjenja,
+    password: res.user[0].password,
+    semestar: res.user[0].semestar,
+    spol:res.user[0].spol,
+    telefon:res.user[0].telefon,
+    titula:res.user[0].titu,
+    username:"",
+    website:"",
+    idOdsjek:1,
+    idUloga:1  */
+
+ });
+}
+spolToString = (spol) => {
+    if (spol==true) return "muški"
+    else return "ženski"
 }
   render() { 
+      
   return (   
   <ScrollView> 
+      {this.APIpoziv()}
       <View>
           <Text style = {styles.podnaslov}>
           Osnovni podaci
@@ -66,110 +119,79 @@ drzavaRod: res.drzavaRod, nacionalnost: res.nacionalnost, kanton: res.kanton, dr
           Spol:
           </Text>
           <TextInput style = {styles.input}
-           value={this.state.spol}
-           onChangeText={(text) => this.setState({spol: text})}/>
-          <Text style = {styles.tekst1}>
+           value={this.spolToString(this.state.spol)}/>
+           <Text style = {styles.tekst1}>
           Broj indeksa:
           </Text>
           <TextInput style = {styles.input}
-           value={this.state.brIndeksa}
-           onChangeText={(text) => this.setState({brIndeksa: text})}/>
-          <Text style = {styles.tekst1}>
-          JMBG:
-          </Text>
-          <TextInput style = {styles.input}
-           value={this.state.jmbg}
-           onChangeText={(text) => this.setState({jmbg: text})}/>
+           value={this.state.indeks}
+           onChangeText={(text) => this.setState({indeks: text})}/>
       </View> 
       <View>
         <Text style = {styles.podnaslov}>
         Kontakt podaci
         </Text>
         <Text style = {styles.tekst1}>
-        Adresa (ulica i broj):
+        Adresa:
         </Text>
         <TextInput style = {styles.input}
-       value={this.state.adresaUlica}
-       onChangeText={(text) => this.setState({adresaUlica: text})}/>
-        <Text style = {styles.tekst1}>
-        Adresa (mjesto):
-        </Text>
-        <TextInput style = {styles.input}
-        value={this.state.adresaMjesto}
-        onChangeText={(text) => this.setState({adresaMjesto: text})}/>
+       value={this.state.adresa}
+       onChangeText={(text) => this.setState({adresa: text})}/>
         <Text style = {styles.tekst1}>
         Kontaks telefon:
         </Text>
         <TextInput style = {styles.input}
-        value={this.state.kontaktTelefon}
-        onChangeText={(text) => this.setState({kontaktTelefon: text})}/>
+        value={this.state.telefon}
+        onChangeText={(text) => this.setState({telefon: text})}/>
         <Text style = {styles.tekst1}>
         Kontakt e-mail:
         </Text>
         <TextInput style = {styles.input}
-        value={this.state.kontaktEmail}
-        onChangeText={(text) => this.setState({kontaktEmail: text})}/>
+        value={this.state.email}
+        onChangeText={(text) => this.setState({email: text})}/>
+        <Text style = {styles.tekst1}>
+        Linkedin:
+        </Text>
+        <TextInput style = {styles.input}
+        value={this.state.linkedin}
+        onChangeText={(text) => this.setState({linkedin: text})}/>
+        <Text style = {styles.tekst1}>
+        Web stranica:
+        </Text>
+        <TextInput style = {styles.input}
+        value={this.state.website}
+        onChangeText={(text) => this.setState({website: text})}/>
     </View>
     <View>
         <Text style = {styles.podnaslov}>
         Lični podaci
         </Text>
         <Text style = {styles.tekst1}>
-        Ime oca:
+        Ime i prezime oca:
         </Text>
         <TextInput style = {styles.input}
-       value={this.state.imeOca}
-       onChangeText={(text) => this.setState({imeOca: text})}/>
+       value={this.state.imePrezimeOca}
+       onChangeText={(text) => this.setState({imePrezimeOca: text})}/>
         <Text style = {styles.tekst1}>
-        Prezime oca:
+        Ime i prezime majke:
         </Text>
         <TextInput style = {styles.input}
-        value = {this.state.prezimeOca}
-        onChangeText={(text) => this.setState({prezimeOca: text})}/>
-        <Text style = {styles.tekst1}>
-        Ime majke:
-        </Text>
-        <TextInput style = {styles.input}
-        value={this.state.imeMajke}
-        onChangeText={(text) => this.setState({imeMajke: text})}/>
-        <Text style = {styles.tekst1}>
-        Prezime majke:
-        </Text>
-        <TextInput style = {styles.input}
-        value={this.state.prezimeMajke}
-        onChangeText={(text) => this.setState({prezimeMajke: text})}/>
+        value={this.state.imePrezimeMajke}
+        onChangeText={(text) => this.setState({imePrezimeMajke: text})}/>
         <Text style = {styles.tekst1}>
         Datum rođenja:
         </Text>
         <TextInput style = {styles.input}
-        value = {this.state.datumRod}
-        onChangeText={(text) => this.setState({datumRod: text})}/>
+        value = {this.state.datumRodjenja}
+        onChangeText={(text) => this.setState({datumRodjenja: text})}/>
         <Text style = {styles.tekst1}>
         Mjesto rođenja:
         </Text>
         <TextInput style = {styles.input}
-        value = {this.state.mjestoRod}
-        onChangeText={(text) => this.setState({mjestoRod: text})}/>
+        value = {this.state.mjestoRodjenja}
+        onChangeText={(text) => this.setState({mjestoRodjenja: text})}/>
         <Text style = {styles.tekst1}>
-        Općina rođenja:
-        </Text>
-        <TextInput style = {styles.input}
-        value={this.state.opcinaRod}
-        onChangeText={(text) => this.setState({opcinaRod: text})}/>
-        <Text style = {styles.tekst1}>
-        Država rođenja:
-        </Text>
-        <TextInput style = {styles.input}
-        value = {this.state.drzavaRod}
-        onChangeText={(text) => this.setState({drzavaRod: text})}/>
-        <Text style = {styles.tekst1}>
-        Nacionalnost:
-        </Text>
-        <TextInput style = {styles.input}
-        value={this.state.nacionalnost}
-        onChangeText={(text) => this.setState({nacionalnost: text})}/>
-        <Text style = {styles.tekst1}>
-        Kanton/regija:
+        Kanton:
         </Text>
         <TextInput style = {styles.input}
         value={this.state.kanton}
