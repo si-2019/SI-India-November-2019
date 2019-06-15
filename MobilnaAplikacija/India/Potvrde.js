@@ -3,13 +3,25 @@ import { Button, Alert, StyleSheet, Text, View, ScrollView, Picker } from 'react
 import RF from "react-native-responsive-fontsize"
 import Naslov from './naslov'
 import Zahtjev from './prikazPotvrda'
-var podaci = [
+var potvrde = [
   {key: 'Potvrda o regulisanju stipendije', value: '25.01.2019', status: 'Neobrađen'}, {key: 'Potvrda o regulisanju zdravstvenog osiguranja', value:'02.02.2019.', status: 'Obrađen'}
 ];
 
+let podaci=[];
 class Potvrde extends React.Component {
   
   constructor(props) {
+    ;(async () => {
+    try{
+      const response = await axios.get('https://si2019alpha.herokuapp.com/izdanepotvrde/'+global.idStudenta)
+      console.log(response);
+      podaci=response.data;
+    }
+    catch(error){
+      console.log(error);
+      podaci=potvrde;
+    }
+    })();
     super(props);
 
     this.state = {

@@ -51,9 +51,9 @@ app.get('/student/:id/prijavljeni',  function(req, res) {
     var id = req.params.id;
     var niz = [];
     res.contentType('application/json');
-    let greska = { 'poruka': 'Nije pronađen ni na jedan ispit'};
+    //let greska = { 'poruka': 'Nije pronađen ni na jedan ispit'};
     dajIspitStudent(id).then(function(rez) {
-        if(rez.length == 0) res.send(greska);
+        if(rez.length == 0) res.send(niz);
         else {
             let brojac = rez.length;
             rez.forEach(red => {
@@ -115,10 +115,10 @@ app.get('/student/:id/aktivni', function(req, res) {
     
     var niz = [];
     res.contentType('application/json');
-    let greska = { 'poruka': 'Nije pronađen ni na jedan ispit'};
+   // let greska = { 'poruka': 'Nije pronađen ni na jedan ispit'};
     dajPredmetStudent(id).then(function(odgovor) {
         
-        if (odgovor.length == 0) res.send(greska);
+        if (odgovor.length == 0) res.send(niz);
         else {
             let brojac = odgovor.length;
             odgovor.forEach(elementOdgovora => {
@@ -151,9 +151,8 @@ app.get('/izdanepotvrde/:id', function(req, res)
         ZahtjevZaPotvrdu.findAll({where: {idStudenta:id1}}).then(function(potvrde){
             potvrde.forEach(potvrda => {
                 SvrhaPotvrde.findOne({where: {id: potvrda.idSvrhe}}).then(function(svrhica){
-                podaci2.push(svrhica.nazivSvrhe);
-                podaci2.push(potvrda.datumZahtjeva);
-                podaci2.push(potvrda.obradjen);
+                podaci2.push({key: svrhica.nazivSvrhe, value:potvrda.datumZahtjeva, status: potvrda.obradjen});
+
             });
         });
     });

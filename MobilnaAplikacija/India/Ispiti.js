@@ -10,23 +10,65 @@ import AktivniIspiti from './aktivniIspiti'
 import PrijavljeniIspiti from './prijavljeniIspiti'
 import SviPrijavljeniIspiti from './sviPrijavljeniIspiti'
 import Notifikacija from './notifikacije'
+import axios from 'axios';
 
-let inicijalniAktivni ={ispiti_info:[], ispiti: [{ key: 0, predmet: "Vjestacka inteligencija", tip: "Prvi parcijalni", datum: "10.2.2019. 13:00", aktivan: 1, prijavljen: 1, popunjen: null },
-{ key: 1, predmet: "Organizacija softverskog projekta", tip: "Drugi parcijalni", datum: "13.6.2019. 18:00", aktivan: 0, prijavljen: 0, popunjen: null },
-{ key: 2, predmet: "Softverski inzenjering", tip: "Prvi parcijalni", datum: "15.4.2019. 10:30", aktivan: 0, prijavljen: 1, popunjen: 13 },
-{ key: 3, predmet: "Projektovanje informacionih sistema", tip: "Usmeni", datum: "16.7.2019. 13:00", aktivan: 1, prijavljen: 0, popunjen: 0 },
-{ key: 4, predmet: "Projektovanje informacionih sistema", tip: "Usmeni", datum: "16.7.2019. 11:00", aktivan: 1, prijavljen: 1, popunjen: 1 },
-{ key: 5, predmet: "Softverski inzenjering", tip: "Drugi parcijalni", datum: "24.6.2019. 09:00", aktivan: 1, prijavljen: 1, popunjen: null }], 
-kopijaIspiti: []
-} 
-let inicijalniPrijavljeni ={ispiti_info:[], ispiti: [{ key: 0, predmet: "Vjestacka inteligencija", tip: "Prvi parcijalni", datum: "10.2.2019. 13:00", aktivan: 1, prijavljen: 1, popunjen: null },
+
+let ispiti=[{ key: 0, predmet: "Vjestacka inteligencija", tip: "Prvi parcijalni", datum: "10.2.2019. 13:00", aktivan: 1, prijavljen: 1, popunjen: null },
 { key: 1, predmet: "Organizacija softverskog projekta", tip: "Drugi parcijalni", datum: "13.6.2019. 18:00", aktivan: 1, prijavljen: 1, popunjen: null },
 { key: 2, predmet: "Softverski inzenjering", tip: "Prvi parcijalni", datum: "15.6.2019. 10:30", aktivan: 0, prijavljen: 1, popunjen: 55 },
 { key: 3, predmet: "Projektovanje informacionih sistema", tip: "Usmeni", datum: "16.6.2019. 13:00", aktivan: 1, prijavljen: 0, popunjen: null },
-{ key: 4, predmet: "Projektovanje informativnih sistema", tip: "Usmeni", datum: "16.6.2019. 11:00", aktivan: 1, prijavljen: 1, popunjen: 1 }], 
-kopijaIspiti: []
+{ key: 4, predmet: "Projektovanje informativnih sistema", tip: "Usmeni", datum: "16.6.2019. 11:00", aktivan: 1, prijavljen: 1, popunjen: 1 }];
+let inicijalniAktivni ={ispiti_info:[], ispiti: ispiti, kopijaIspiti: []
+} 
+let inicijalniPrijavljeni ={ispiti_info:[], ispiti: ispiti, kopijaIspiti: []
 }
 let naRender = () => {
+  ;(async () => {
+    try{
+    const response = await axios.get('https://si2019alpha.herokuapp.com/student/'+global.idStudenta+'/aktivni')
+    console.log(response);
+    let i=0;
+    inicijalniAktivni.ispiti=[];
+    response.data.forEach(ispit => {
+        inicijalniAktivni.ispiti.push({
+            key: i++,
+            predmet: ispit.predmet,
+            tip: ispit.tip,
+            datum: ispit.datum,
+            aktivan: ispit.aktivan,
+            prijavljen: ispit.prijavljen,
+            popunjen: ispit.popunjen
+        });
+    });
+  }
+  catch(error){
+    console.log(error);
+    inicijalniAktivni.ispiti=ispiti;
+  }
+  })();
+  ;(async () => {
+    try{
+    const response = await axios.get('https://si2019alpha.herokuapp.com/student/'+global.idStudenta+'/aktivni')
+    console.log(response);
+    let i=0;
+    inicijalniPrijavljeni.ispiti=[];
+    response.data.forEach(ispit => {
+        inicijalniPrijavljeni.ispiti.push({
+            key: i++,
+            predmet: ispit.predmet,
+            tip: ispit.tip,
+            datum: ispit.datum,
+            aktivan: ispit.aktivan,
+            prijavljen: ispit.prijavljen,
+            popunjen: ispit.popunjen
+        });
+    });
+  }
+  catch(error){
+    console.log(error);
+    inicijalniPrijavljeni.ispiti=ispiti;
+  }
+  })();
   let k = 0;
   inicijalniAktivni.ispiti.map((ispit) => {
     let porukaa = '';
