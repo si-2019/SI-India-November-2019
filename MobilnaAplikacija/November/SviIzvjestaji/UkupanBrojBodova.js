@@ -36,10 +36,6 @@ class UkupanBrojBodova extends Component {
       //Kada se ne možemo konektovati na bazu koristimo hardkodirane podatke
       .catch(error => {
         console.log(error)
-        
-        this.setState({
-          subjects: getSubjects
-        });
       });
   }
 
@@ -72,20 +68,6 @@ class UkupanBrojBodova extends Component {
 
 //Hardkodirani podaci Za slučaj kad se ne može konektovati na bazu
 export default UkupanBrojBodova;
-const getSubjects = [
-  {
-    predmet: "Organizacija softverskog projekta",
-    bodovi : 41
-  },
-  {
-    predmet: "Vještačka inteligencija",
-    bodovi : 41
-  },
-  {
-    predmet: "Softver inženjering",
-    bodovi : 41
-  }
-]
 const styles = StyleSheet.create({
   item: {
     padding: 5,
