@@ -38,15 +38,16 @@ class AktivniIspiti extends React.Component {
       );
     }
 
-    
-
     filtrirajPopunjene() {
         if(this.state.kopijaIspiti.length === 0) {
             this.setState({kopijaIspiti: this.state.ispiti}, () => {
-                this.setState({ispiti: this.state.ispiti.filter(ispit=>  ispit.popunjen !== 1)});
+                this.setState({ispiti: this.state.ispiti.filter(ispit => ispit.popunjen === null)});
+                this.setState({ispiti: this.state.ispiti.filter(ispit => ispit.popunjen === 0)});
             });
-        } else 
-        this.setState({ispiti: this.state.ispiti.filter(ispit=>  ispit.popunjen !== 1)});
+        } else {
+            this.setState({ispiti: this.state.ispiti.filter(ispit => ispit.popunjen === null)});
+            this.setState({ispiti: this.state.ispiti.filter(ispit => ispit.popunjen === null)});
+        }
     }
 
     filtrirajPrijavljene() {
@@ -54,12 +55,14 @@ class AktivniIspiti extends React.Component {
         let k = 0;
         for(let i in this.state.ispiti) {
             for(let j in this.state.ispiti) {
-                if(this.state.ispiti[i].prijavljen && (this.state.ispiti[i] == this.state.ispiti[j] || (this.state.ispiti[i].predmet == this.state.ispiti[j].predmet && this.state.ispiti[i].tip == this.state.ispiti[j].tip)))
-                {
-                    prijavljeni[k] = this.state.ispiti[j];    
-                    k++;
-                } 
-                else continue;
+                if(this.state.ispiti[i].prijavljen) {
+                    if (this.state.ispiti[i] == this.state.ispiti[j] || (this.state.ispiti[i].predmet == this.state.ispiti[j].predmet && this.state.ispiti[i].tip == this.state.ispiti[j].tip))
+                    {
+                        prijavljeni[k] = this.state.ispiti[j];    
+                        k++;
+                    } 
+                    else continue;
+                }
             }
         }
         if(this.state.kopijaIspiti.length === 0) {
@@ -71,7 +74,7 @@ class AktivniIspiti extends React.Component {
     }
 
     prikaziSve() {
-        console.log(this.state.kopijaIspiti);
+        //console.log(this.state.kopijaIspiti);
         if (this.state.kopijaIspiti.length !== 0) 
             this.setState({ispiti: this.state.kopijaIspiti});
     }

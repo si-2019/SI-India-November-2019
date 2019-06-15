@@ -15,7 +15,8 @@ class Potvrde extends React.Component {
     this.state = {
       pickerSelection: 0,
       svrha: 0, 
-      data: podaci
+      data: podaci,
+      besplatne_potvrde: 5
     }
     this.handleClick = this.handleClick.bind(this);
   } 
@@ -39,10 +40,6 @@ class Potvrde extends React.Component {
             podaci.push({'key': svrha.label, 'value': today, 'status': 'Neobrađen'});
             this.setState({
               data: podaci
-            }, () => {
-              //this.forceUpdate();
-              console.log("Sad mi je data: " + JSON.stringify(this.state.data));
-              
             })
         }},
 			{text: 'Ne', onPress: () => Alert.alert('Uspješno ste otkazali slanje zahtjeva!')}
@@ -61,33 +58,12 @@ class Potvrde extends React.Component {
     const svrhe = [{ label: "Regulisanje zdravstvenog osiguranja", value: "zdravstveno" },
     { label: "Ostvarivanje prava na stipendiju", value: "stipendija" },
     { label: "Upis na drugi fakultet", value: "upis" }];
-    
-    let besplatne_potvrde = 0;
-    const jedna_bp = <Text>1 besplatna potvrda!</Text>
-    const pet_bp = <Text>5 besplatnih potvrda!</Text>
-    const izmedju_bp = ' besplatne potvrde!'
-    let kraj_rec = <Text></Text>
-    let pocetak_recenice = <Text>Preostalo vam je </Text>
-    if (besplatne_potvrde == 5) {
-      kraj_rec = pet_bp;
-    } else if (besplatne_potvrde == 1) {
-      kraj_rec = jedna_bp;
-      pocetak_recenice = <Text>Preostala vam je </Text>
-    }
-    else if (besplatne_potvrde >= 2 && besplatne_potvrde <= 4) {
-      kraj_rec = besplatne_potvrde.toString() + izmedju_bp;
-      pocetak_recenice = <Text>Preostale su vam </Text>
-    }
-    else {
-      pocetak_recenice = <Text></Text>
-      kraj_rec = <Text>Nemate više besplatnih potvrda! Cijena po potvrdi je 2KM, a plaćanje se vrši pri preuzimanju potvrde.</Text>
-    }
    
     return (
       <ScrollView> 
         <Text style={{ fontSize: RF(3.5), margin: 70, alignSelf: 'center' }}>Zahtjev za izdavanje ovjerenog uvjerenja</Text>
         <Naslov/>
-        <Zahtjev data={this.state.data}/> 
+        <Zahtjev data={this.state.data} besplatne_potvrde = {this.state.besplatne_potvrde}/> 
         <Text style={{ fontSize: RF(2.5), alignSelf: 'center' }}>Izaberite tip potvrde: </Text>
         <Picker
           selectedValue={lista[this.state.pickerSelection].value}
@@ -115,11 +91,6 @@ class Potvrde extends React.Component {
             );
           })}
         </Picker>
-        <Text style={{ fontSize: RF(2.5), alignSelf: 'center', color: 'red' }}>
-          <Text>{pocetak_recenice}</Text>
-          <Text>{kraj_rec}</Text>
-        </Text>
-        <Text></Text>
         <Button
        
           onPress= {() => this.handleClick(lista[this.state.pickerSelection],svrhe[this.state.svrha] )}
