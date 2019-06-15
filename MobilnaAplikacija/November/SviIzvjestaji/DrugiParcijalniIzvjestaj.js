@@ -22,11 +22,7 @@ class DrugiParcijalniIzvjestaj extends Component {
         subjects: newContacts
       });
       this.setState(newState);
-    }).catch(e=>{
-      this.setState({
-        subjects: getSubjects
-      });
-    });
+    }).catch(e=>{ });
   }
 
   render() {
@@ -56,26 +52,8 @@ class DrugiParcijalniIzvjestaj extends Component {
   
 }
 
-// Mock data
 export default DrugiParcijalniIzvjestaj;
-const getSubjects = [
-  {
-    predmet: "Administracija racunarskih mreza",
-    bodovi : 8
-  },
-  {
-    predmet: "Vještačka inteligencija",
-    bodovi : 18
-  },
-  {
-    predmet: "Softver inženjering",
-    bodovi : 16
-  },
-  {
-    predmet: "Projektovanje informacionih sistema",
-    bodovi : 16
-  }
-]
+
 const styles = StyleSheet.create({
   item: {
     padding: 5,
