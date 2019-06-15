@@ -5,6 +5,7 @@ import {
     StyleSheet,
     TextInput,
     TouchableOpacity,
+    Linking,
     Alert
 } from 'react-native';
 import moment, { isMoment, now } from 'moment'
@@ -24,6 +25,16 @@ let inicijalni={
     items: {},
     text: ''
 }
+
+var predmetiID=[{id:120 , ime:"Vjestacka inteligencija" },
+                {id:120 , ime:"Vještačka inteligencija" },
+                {id:40 , ime:"Administracija računarskih mreža" },
+                {id:40, ime:"Administracija Računarskih mreža" },
+                {id:42, ime:"Osnove računarskih mreža" },
+                {id:118 , ime:"Softverski inzenjering" },
+                {id:43, ime:"Projektovanje informacionih sistema" },
+                {id:43, ime:"Projektovanje informativnih sistema" },
+                {id:312 , ime:"Organizacija softverskog projekta" }];
 
 const boje = ['#7DFF00', '#BEFF00', '#D5FF00', '#E1FF00', '#F0FF00', '#FFF700', "#FFE700", "#FFD800",
     "#FFD000", '#FFB900', '#FFB100', '#FFA200', '#FF9200', '#FF6400', '#FF4D00', '#FF0000'] //27
@@ -199,7 +210,15 @@ export default class AgendaScreen extends Component {
             <View style={[styles.item]}>
                 <Text style={{ fontFamily:'System', fontWeight:"bold", fontSize:18 }}>{moment(item.datum, 'DD.MM.YYYY hh:mm').format('hh:mm')}</Text>
                 <Text> <Text style={{ fontWeight: "bold"  , fontFamily:'System', fontSize:18}}>{item.naziv}</Text></Text>
-                <Text style={{ fontFamily:'System', fontSize:14.5}}>{item.predmet}</Text>
+                <Text style={{ fontFamily:'System', fontSize:14.5}} onPress={() => {
+                            Linking.canOpenURL('https://c2.etf.unsa.ba/course/view.php?id='+predmetiID.find(pred => pred.ime==item.predmet).id).then(supported => {
+                                if (supported) {
+                                  Linking.openURL('https://c2.etf.unsa.ba/course/view.php?id='+predmetiID.find(pred => pred.ime==item.predmet).id);
+                                } else {
+                                  console.log("Don't know how to open URI: " + 'https://c2.etf.unsa.ba/course/view.php?id='+predmetiID.find(pred => pred.ime==item.predmet).id );
+                                }
+                              });                            
+                        }}>{item.predmet}</Text>
                 <Text style={{ fontFamily:'System', fontSize:14.5}}>{item.tip}</Text>
                 <Text style={{ fontFamily:'System',}}>Zabilješke:</Text>
                 <View style={{backgroundColor:'#f4f4f4', borderRadius:5, borderColor:'white', padding:2}}>
