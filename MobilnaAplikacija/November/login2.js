@@ -7,10 +7,13 @@ import Obavijesti from './NewsFeed/Obavijesti';
 import { NavigationActions } from 'react-navigation';
 
 const API_BASE_URL= 'https://si2019romeo.herokuapp.com';
+const ULOGA_BASE_URL = 'https://si2019oscar.herokuapp.com';
+
 const header = {
     "Content-Type": "application/json"
 };
 var tacno = true;
+
 export default class login2 extends Component {
   constructor(props)
   {
@@ -19,7 +22,8 @@ export default class login2 extends Component {
   state = {
       username: '',
       password: '',
-      logovan: false
+      logovan: false,
+      uloga: ''
   }
     handleUserName = (text) => {
         this.setState({username: text})
@@ -49,35 +53,47 @@ export default class login2 extends Component {
           alert("Polje 'Lozinka' ne može biti prazno!");
       }
       if (tacno) {
-          axios.post(API_BASE_URL + '/login', body, header).then((res) => {
-              var data = res.data;
-              const par = '?username=' + this.state.username;
-              axios.get(API_BASE_URL + '/users/id' + par).then((res2) => {
-                  var id = res2.data;
-                  global.token = data.token;
-                  global.idStudenta = id;
-              });
-              this.state.logovan = true;
-              global.logovan = true;
+          axios.get(ULOGA_BASE_URL + '/pretragaUsername/'+ this.state.username + '/dajUlogu').then((res3) => {
+              this.state.uloga = res3.data;
+              if (this.state.uloga != "STUDENT") {
+                  alert("Samo studenti imaju pristup aplikaciji!");
+              }
+              if (this.state.uloga == "STUDENT") {
+                  axios.post(API_BASE_URL + '/login', body, header).then((res) => {
+                      var data = res.data;
+                      const par = '?username=' + this.state.username;
+                      axios.get(API_BASE_URL + '/users/id' + par).then((res2) => {
+                          var id = res2.data;
+                          global.token = data.token;
+                          global.idStudenta = id;
+                      });
+                      this.state.logovan = true;
+                      global.logovan = true;
+                      this.forceUpdate();
+                      this.props.navigation.navigate("Screen1", 1);
+                  }).catch((error) => {
+                      var res = error.response;
+                      if (res) {
+                          if (res.status == 403) {
+                              alert("Korisnik ne postoji!");
+                          } else {
+                              alert("ERROR!");
+                          }
+                      } else {
+                          alert("Aplikacija nije dobila odgovor od servera");
+                      }
+                  });
+              }
               this.forceUpdate();
-              this.props.navigation.navigate("Screen1", 1);
-          }).catch((error) => {
-              var res = error.response;
-              if (res) {
-                  if (res.status == 403) {
-                      alert("Korisnik ne postoji!");
-                  }
-                  else {
-                      alert("ERROR!");
-                  }
-              }
-              else {
-                  alert("Aplikacija nije dobila odgovor od servera");
-              }
+          }).catch((greska) => {
+              var resposne = greska.response;
+              if (resposne.status == 401) alert ("Nemate privilegija pristupa!");
+              else if (resposne.status == 403) alert ("Zabranjen pristupi!");
+              else if (resposne.status == 404) alert ("Nije OK!");
+              this.forceUpdate();
           });
       }
   }
-
   logout()
   {
       global.logovan = false
