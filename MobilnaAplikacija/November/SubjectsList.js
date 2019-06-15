@@ -11,6 +11,7 @@ import { ListItem } from 'react-native-elements';
 
 import Zavrsni from './Zavrsni';
 
+
 const API_BASE_URL= 'https://si2019november.herokuapp.com';
 export class SubjectsList extends React.Component {
   constructor(props) {
@@ -22,16 +23,18 @@ export class SubjectsList extends React.Component {
   }
 
   componentWillMount() {
-    fetch(API_BASE_URL+`/November/predmeti?StudentId=3`).then( res => res.json()).
+    fetch(API_BASE_URL+`/November/predmeti?idStudenta=${global.idStudenta}`,
+    {
+      headers:{
+        Authorization: global.token
+      }
+    }).then( res => res.json()).
     then(response=>{
       this.setState({
         subjects: response
       })
     }).catch(e =>{
-      
-      this.setState({
-        subjects: getSubjects
-      })
+      console.log("Error", e);
     })
   }
   render() {
@@ -56,86 +59,6 @@ export class SubjectsList extends React.Component {
   }
 }
 
-const getSubjects = [
-  {
-    id: 1,
-    title: "ARM",
-    profesor: "Profesor ARM",
-    ECTS: "4",
-    asistenti: "Asistent",
-    ispiti: [
-      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 13 },
-      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 15 },
-      { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 13 }
-    ],
-    zadace: [
-      { naziv: "Zadaća 1", bodovi: 3 },
-      { naziv: "Zadaća 2", bodovi: 4 },
-      { naziv: "Zadaća 3",bodovi: 2 },
-      { naziv : "Zadaća 4", bodovi : 5}
-    ],
-    prisustvo:10
-  },
-  {
-    id: 2,
-    title: "Projektovanje informacionih sistema",
-    profesor: "Profesor PIS",
-    ECTS: "4",
-    asistenti: "Asistent",
-    ispiti: [
-      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 13 },
-      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 15 },
-      { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 13 }
-    ],
-    zadace: [
-      { naziv: "Zadaća 1", bodovi: 5 },
-      { naziv: "Zadaća 2", bodovi: 4 },
-      { naziv: "Zadaća 3",bodovi: 3 }
-    ],
-    prisustvo:10
-  },
-  {
-    id: 3,
-    title: "Softver inženjering",
-    profesor: "Profesor SI",
-    ECTS: "4",
-    asistenti: "Asistent",
-    ispiti: [
-      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 13 },
-      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 15 },
-      { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 13 }
-    ],
-    zadace: [
-      { naziv: "Zadaća 1", bodovi: 5 },
-      { naziv: "Zadaća 2", bodovi: 8 },
-      { naziv: "Zadaća 3",bodovi: 10 },
-      { naziv : "Zadaća 4", bodovi : 10}
-    ],
-    prisustvo:10
-  },
-  {
-    id: 4,
-    title: "Vještačka inteligencija",
-    profesor: "Profesor VI",
-    ECTS: "4",
-    asistenti: "Asistent",
-    ispiti: [
-      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 13 },
-      { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 15 },
-      { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 13 }
-    ],
-    zadace: [
-      { naziv: "Zadaća 1", bodovi: 1 },
-      { naziv: "Zadaća 2", bodovi: 2 },
-      { naziv: "Zadaća 3",bodovi: 2 },
-      { naziv : "Zadaća 4", bodovi : 1},
-      { naziv: "Zadaća 5",bodovi: 2 },
-      { naziv : "Zadaća 6", bodovi : 2}
-    ],
-    prisustvo:10
-  }
-
-];
 
 const styles = StyleSheet.create({
   item: {

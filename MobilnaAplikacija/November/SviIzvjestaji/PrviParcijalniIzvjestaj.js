@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 import {View,Text,StyleSheet, FlatList, TouchableOpacity, ScrollView} from 'react-native';
 const API_BASE_URL= 'https://si2019november.herokuapp.com';
 class PrviParcijalniIzvjestaj extends Component {
-
-  // default State object
   state = {
     subjects: []
   };
 
   componentDidMount() {
-    //ovdje ide localhost ako se testira preko emulatora na PC-ju, http://localhost:31914/predmeti/1/ukupnoBodova
-    //a ako se testira preko expo, staviti ip adresu svog racunara
-    fetch(API_BASE_URL+`/November/dohvatiPrveParcijale?idStudenta=3`)
+    fetch(API_BASE_URL+`/November/dohvatiPrveParcijale?idStudenta=${global.idStudenta}`,
+    {
+      headers:{
+        Authorization: global.token
+      }
+    })
     .then(res=>res.json()).then(response=>{
       const newContacts = response.map(c => {
         return {
@@ -54,50 +55,4 @@ class PrviParcijalniIzvjestaj extends Component {
   }
   
 }
-
-//Hardkodirani podaci Za slučaj kad se ne može konektovati na bazu
 export default PrviParcijalniIzvjestaj;
-const getSubjects = [
-  {
-    predmet: "Administracija racunarskih mreza",
-    bodovi : 6
-  },
-  {
-    predmet: "Vještačka inteligencija",
-    bodovi : 16
-  },
-  {
-    predmet: "Softver inženjering",
-    bodovi : 17
-  }
-]
-const styles = StyleSheet.create({
-  item: {
-    padding: 5,
-    margin: 5,
-    fontSize: 16,
-    height: 80,
-  },
-  Viewitem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  Viewitem1: {
-    borderWidth: 1,  
-    borderColor: "black",
-    backgroundColor: "#ededed",
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    width: '70%'
-  },
-  Viewitem2: {
-    borderWidth: 1,  
-    borderColor: "black",
-    backgroundColor: "#ededed",
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-  }
-});
-
