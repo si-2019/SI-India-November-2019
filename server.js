@@ -49,9 +49,7 @@ app.get('/November/dohvatiPodatke/:idStudenta',(req, res)=>{
 app.get('/November/dohvatiUkupneBodove/:idStudenta',(req, res)=>{
   idstudenta=req.params.idStudenta;
   resp = [];
-  axios.get('https://si2019November.herokuapp.com/November/predmeti') 
-  .then(response => {
-    response.data.forEach(function(element) {
+  MOCK_DATA_PREDMETI.forEach(function(element) {
       var res1={}
     res1.predmet=element.title;
     prviParc=0;
@@ -68,12 +66,6 @@ app.get('/November/dohvatiUkupneBodove/:idStudenta',(req, res)=>{
     resp.push(res1);
     })  
     res.json(resp)
-})
-  .catch(error => {
-  res.json(error);
-  console.log(error);
-  });
-  
 });
 
 
