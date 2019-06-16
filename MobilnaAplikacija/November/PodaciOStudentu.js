@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { ScrollView, View, Text, Button, TouchableOpacity, StyleSheet, TextInput } from 'react-native'
 import axios from 'axios'
 import * as res from './pomocniPodaciOStudentu'
-
 export default class PodaciOStudentu extends Component {
 
 
@@ -37,7 +36,9 @@ APIpoziv = () =>
 {
 axios.get(`https://si2019november.herokuapp.com/November/dohvatiPodatke/${global.idStudenta}`).then(res =>{ //Staviti ovdje id ulogovanog studenta
    this.dodajPodatke(res.data);
-})
+}).catch(error => {
+    alert("Problem sa konekcijom na bazu");
+});
 }
 //Privremeno dodavanje dummy podataka
 dodajPodatke = (res) => {
