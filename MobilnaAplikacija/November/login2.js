@@ -99,6 +99,14 @@ export default class login2 extends Component {
           });
       }
   }
+  alternativniLogin()
+  {
+    global.logovan = true;
+    global.token = "token";
+    global.idStudenta = 2;
+    this.props.navigation.navigate("Screen1", 1);
+    this.forceUpdate()
+  }
   logout()
   {
       global.logovan = false;
@@ -128,8 +136,12 @@ export default class login2 extends Component {
                 <View style={styles.container}>
                     <View style={styles.container} contentContainerStyle={styles.contentContainer}>
                         <View style={styles.welcomeContainer}>
-                            <Image source={require('../assets/logo.jpg')}
-                                style={styles.welcomeImage}/>
+                            <TouchableOpacity  onPress={() => this.alternativniLogin()}>
+                                <Image source={require('../assets/logo.jpg')}
+                                    style={styles.welcomeImage}
+                                   
+                                    />
+                            </TouchableOpacity>
                         </View>
                         <Text style={styles.developmentModeText}>
                             Dobrodošli na oficijelnu stranicu Elektrotehničkog fakulteta, Sarajevo

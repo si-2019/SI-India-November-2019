@@ -3,51 +3,59 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import { ListItem } from 'react-native-elements';
+import PropTypes from 'prop-types';
 
-
+const API_BASE_URL= 'https://si2019november.herokuapp.com';
+//const API_BASE_URL= 'localhost:31914';
 export default class odslusaniPredmeti extends React.Component {
-  
+   
   constructor(props)
   {
        super(props);
        this.state = 
        {
-           lista: []
+           lista: [],
+           predmet: {}
        }
   }
 
 
   dohvatiPredmete()
     {
-        //Ubaciti api poziv
+        
+      fetch(API_BASE_URL+`/November/odslusaniPredmeti/${global.idStudenta}`,
+      {
+        headers:{
+          Authorization: global.token
+        }
+      }).then(res=>res.json())
+      .then(response => {
+        this.setState({
+          lista: response
+        })
+      }).catch(e=>{
+         console.log('Error', e);
+      })
 
-         this.state.lista = 
-         [
-             {
-                Naziv:"Zimski semestar 2016/2017",
-                Predmeti:
-                [
-                    {predmet: "Inženjerska matematika 1"},
-                    {predmet: "Inženjerska fizika 1"},
-                    {predmet: "Linearna algebra i geometrija"},
-                    {predmet: "Osnove elektrotehnike"},
-                    {predmet: "Osnove računarstva"}
-                ]
-             },
-             {
-              Naziv:"Ljetni semestar 2016/2017",
-              Predmeti:
-              [
-                  {predmet: "Inženjerska matematika 2"},
-                  {predmet: "Tehnike programiranja"},
-                  {predmet: "Vjerovatnoća i statistika"},
-                  {predmet: "Matematička logika i teorija izračunljivosti"},
-                  {predmet: "Operativni sistemi"}
-              ]
-           }
-         ]
-    }
 
+
+      fetch(API_BASE_URL+`/November/dajOdslusani/1/1`,
+      {
+        headers:{
+          Authorization: global.token
+        }
+      }).then(res=>res.json())
+      .then(response => {
+        this.setState({
+          predmet: response
+        })
+      }).catch(e=>{
+         console.log('Error', e);
+      })
+    
+
+    }   
+    
     
     componentWillMount()
     {
@@ -64,6 +72,7 @@ export default class odslusaniPredmeti extends React.Component {
                         renderItem = {({item}) => (
                             <ListItem
                                 title={item.predmet}
+                                onPress={() => this.props.navigation.navigate("Predmet", this.state.predmet)}
                                 chevron
                             />
                         )}

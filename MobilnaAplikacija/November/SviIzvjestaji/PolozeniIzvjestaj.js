@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {View,Text,StyleSheet, FlatList, TouchableOpacity, ScrollView} from 'react-native';
 import { ListItem } from 'react-native-elements';
 import axios from 'axios';
-
+const API_BASE_URL= 'https://si2019november.herokuapp.com';
 let http=axios.create();
 http.defaults.timeout = 200;
 class PolozeniIzvjestaj extends Component {
@@ -14,17 +14,19 @@ class PolozeniIzvjestaj extends Component {
 
   dohvatiPolozene()
   {
-      this.state.polozeni = 
-      [
-           {
-              key:"1",
-              naziv:"Projektovanje informacionih sistema"
-           },
-           {
-              key:"2",
-              naziv:"Projektovanje i sinteza digitalnih sistema"
-           }
-      ]
+    fetch(API_BASE_URL+`/November/dohvatiPolozene/${global.idStudenta}`,
+    {
+      headers:{
+        Authorization: global.token
+      }
+    }).then(res=>res.json())
+    .then(response => {
+      this.setState({
+        polozeni: response
+      })
+    }).catch(e=>{
+       console.log('Error', e);
+    })
   }
 
   

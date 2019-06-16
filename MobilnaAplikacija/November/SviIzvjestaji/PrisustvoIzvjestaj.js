@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {View,Text,StyleSheet, FlatList, TouchableOpacity, ScrollView} from 'react-native';
 import axios from 'axios';
-
+const API_BASE_URL= 'https://si2019november.herokuapp.com';
 let http=axios.create();
 http.defaults.timeout = 200;
 class PrisustvoIzvjestaj extends Component {
@@ -12,9 +12,19 @@ class PrisustvoIzvjestaj extends Component {
   };
 
   componentDidMount() {
-    this.setState({
-      subjects: getSubjects
-    })
+      fetch(API_BASE_URL+`/November/dohvatiPrisustvo/${global.idStudenta}`,
+      {
+        headers:{
+          Authorization: global.token
+        }
+      }).then(res=>res.json())
+      .then(response => { 
+        this.setState({
+          subjects: response
+        })
+      }).catch(e=>{
+        console.log('Error', e);
+      })
   }
 
   render() {
@@ -46,20 +56,7 @@ class PrisustvoIzvjestaj extends Component {
 
 //Hardkodirani podaci Za slučaj kad se ne može konektovati na bazu
 export default PrisustvoIzvjestaj;
-const getSubjects = [
-  {
-    predmet: "Administracija racunarskih mreza",
-    bodovi : 10
-  },
-  {
-    predmet: "Vještačka inteligencija",
-    bodovi : 10
-  },
-  {
-    predmet: "Softver inženjering",
-    bodovi : 10
-  }
-]
+
 const styles = StyleSheet.create({
   item: {
     padding: 5,

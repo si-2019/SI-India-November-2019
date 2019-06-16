@@ -2,7 +2,7 @@
   "expo": {
     "name": "navigationdrawer-example",
     "description": "Example of React Native NavigationDrawer",
-    "slug": "snack-rJ_zewQ4V",
+    "slug": "app-slug",
     "privacy": "unlisted",
     "sdkVersion": "32.0.0",
     "version": "1.0.0",
@@ -23,6 +23,9 @@
     },
     "ios": {
       "supportsTablet": true
-    }
+    },
+	"android": {
+	  "package": "com.etf.mobilnaSI"
+	}
   }
 }
