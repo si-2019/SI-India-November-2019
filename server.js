@@ -78,9 +78,7 @@ app.get('/November/dohvatiUkupneBodove/:idStudenta',(req, res)=>{
 
 
 app.get('/November/odslusaniPredmeti/:idStudenta', function(req, res){
-
-  res.json(MOCK_DATA_ODSLUSANIPREDMETI);
-  
+  res.json(MOCK_DATA_ODSLUSANIPREDMETI); 
 });
 
 app.get('/November/dajOdslusani/:s/:p', function(req,res){
@@ -96,12 +94,84 @@ app.get('/November/dajOdslusani/:s/:p', function(req,res){
   res.json(MOCK_DATA_ODSLUSANIPREDMET);
 });
 
+app.get('/November/dohvatiPrisustvo/:idStudenta', function(req, res){
+  res.json(MOCK_DATA_IZVJESTAJPRISUSTVO); 
+});
+
+app.get('/November/dohvatiZadace/:idStudenta', function(req, res){
+  res.json(MOCK_DATA_IZVJESTAJZADACE); 
+});
+
+app.get('/November/dohvatiPolozene/:idStudenta', function(req, res){
+  res.json(MOCK_DATA_IZVJESTAJPOLOZENI); 
+});
+
+app.get('/November/dohvatiNepolozene/:idStudenta', function(req, res){
+  res.json(MOCK_DATA_IZVJESTAJNEPOLOZENI); 
+});
 
 
 swagger_document(app);
 
 
 app.listen(PORT,function(){ console.log('server successfully started on port '+PORT); });
+
+const MOCK_DATA_IZVJESTAJPRISUSTVO =
+[
+  {
+    predmet: "Administracija racunarskih mreza",
+    bodovi : 10
+  },
+  {
+    predmet: "Vještačka inteligencija",
+    bodovi : 10
+  },
+  {
+    predmet: "Softver inženjering",
+    bodovi : 10
+  }
+];
+
+const MOCK_DATA_IZVJESTAJZADACE =
+[
+  {
+    predmet: "Administracija racunarskih mreza",
+    bodovi : 15
+  },
+  {
+    predmet: "Vještačka inteligencija",
+    bodovi : 12
+  },
+  {
+    predmet: "Softver inženjering",
+    bodovi : 0
+  }
+];
+
+const MOCK_DATA_IZVJESTAJPOLOZENI =
+[
+  {
+     key:"1",
+     naziv:"Projektovanje informacionih sistema"
+  },
+  {
+     key:"2",
+     naziv:"Projektovanje i sinteza digitalnih sistema"
+  }
+];
+
+const MOCK_DATA_IZVJESTAJNEPOLOZENI =
+[
+  {
+     key:"1",
+     naziv:"Softver inženjering"
+  },
+  {
+     key:"2",
+     naziv:"Vještačka inteligencija"
+  }
+];
+
 
 const MOCK_DATA_ODSLUSANIPREDMET =
 {
