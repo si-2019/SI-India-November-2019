@@ -3,8 +3,9 @@ const bodyParser = require('body-parser');
 const moment = require('moment');
 const db = require('./modeli/db.js');
 const sequelize = require('sequelize');
+const cors= require ('cors');
 var app = express();
-const port=31909;
+const port= process.env.PORT || 31909;
 const StudentIspit = db.sequelize.import(__dirname+'/modeli/StudentIspit.js');
 const Ispit = db.sequelize.import(__dirname+'/modeli/Ispit.js');
 const Predmet = db.sequelize.import(__dirname+'/modeli/Predmet.js');
@@ -29,7 +30,7 @@ db.sequelize.sync()
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
-//app.use(cors());
+app.use(cors());
 
 var dajIspitStudent = function(id) {
     return new Promise(function(resolve, reject)  {
