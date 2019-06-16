@@ -77,7 +77,24 @@ app.get('/November/dohvatiUkupneBodove/:idStudenta',(req, res)=>{
 });
 
 
+app.get('/November/odslusaniPredmeti/:idStudenta', function(req, res){
 
+  res.json(MOCK_DATA_ODSLUSANIPREDMETI);
+  
+});
+
+app.get('/November/dajOdslusani/:s/:p', function(req,res){
+/*
+  var idStudenta = req.params.idStudenta;
+  var nazivPredmeta = req.params.nazivPredmeta;
+  axios.get('https://si2019delta.herokuapp.com/dohvatiIDPredmeta/'+nazivPredmeta).then(function(response){
+      var idPredmeta = response.data;
+
+
+  });
+*/
+  res.json(MOCK_DATA_ODSLUSANIPREDMET);
+});
 
 
 
@@ -85,6 +102,54 @@ swagger_document(app);
 
 
 app.listen(PORT,function(){ console.log('server successfully started on port '+PORT); });
+
+const MOCK_DATA_ODSLUSANIPREDMET =
+{
+    id: 1,
+      title: "Neki predmet",
+      profesor: "Profesor",
+      ECTS: "5",
+      asistenti: "Asistent",
+      ispiti: [
+        { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 13 },
+        { naziv: "Prvi parcijalni", datum: "11/11/2019", bodovi: 15 },
+        { naziv: "Drugi parcijalni", datum: "24/11/2019", bodovi: 13 }
+      ],
+      zadace: [
+        { naziv: "Zadaća 1", bodovi: 3 },
+        { naziv: "Zadaća 2", bodovi: 4 },
+        { naziv: "Zadaća 3",bodovi: 2 },
+        { naziv : "Zadaća 4", bodovi : 5}
+      ],
+      prisustvo:10
+};
+
+const MOCK_DATA_ODSLUSANIPREDMETI =
+[
+  {
+     Naziv:"Zimski semestar 2016/2017",
+     Predmeti:
+     [
+         {predmet: "Inženjerska matematika 1"},
+         {predmet: "Inženjerska fizika 1"},
+         {predmet: "Linearna algebra geometrija"},
+         {predmet: "Osnove elektrotehnike"},
+         {predmet: "Osnove računarstva"}
+     ]
+  },
+  {
+   Naziv:"Ljetni semestar 2016/2017",
+   Predmeti:
+   [
+       {predmet: "Inženjerska matematika 2"},
+       {predmet: "Tehnike programiranja"},
+       {predmet: "Vjerovatnoća i statistika"},
+       {predmet: "Matematička logika i teorija izračunljivosti"},
+       {predmet: "Operativni sistemi"}
+   ]
+}
+];
+
 
 const MOCK_DATA_NOVOSTI= [
   { naziv: "Obavijesti1", tekst: "Obavijest1 tekst" },
