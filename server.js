@@ -3,9 +3,8 @@ const bodyParser = require('body-parser');
 const moment = require('moment');
 const db = require('./modeli/db.js');
 const sequelize = require('sequelize');
-const cors= require ('cors');
 var app = express();
-const port=process.env.PORT || 31909;
+const port=31909;
 const StudentIspit = db.sequelize.import(__dirname+'/modeli/StudentIspit.js');
 const Ispit = db.sequelize.import(__dirname+'/modeli/Ispit.js');
 const Predmet = db.sequelize.import(__dirname+'/modeli/Predmet.js');
@@ -15,13 +14,22 @@ const Odsjek = db.sequelize.import(__dirname+'/modeli/Odsjek.js');
 const AkademskaGodina = db.sequelize.import(__dirname+'/modeli/AkademskaGodina.js');
 const PredmetStudent = db.sequelize.import(__dirname+'/modeli/PredmetStudent.js');
 
+
+app.use('/*', (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
+
+
 db.sequelize.sync()
 .then(() => console.log('Konektovano na bazu'))
 .catch(e => console.log(e));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
-app.use(cors());
+//app.use(cors());
 
 var dajIspitStudent = function(id) {
     return new Promise(function(resolve, reject)  {
@@ -52,9 +60,9 @@ app.get('/student/:id/prijavljeni',  function(req, res) {
     var id = req.params.id;
     var niz = [];
     res.contentType('application/json');
-    let greska = { 'poruka': 'Nije pronađen ni na jedan ispit'};
+    //let greska = { 'poruka': 'Nije pronađen ni na jedan ispit'};
     dajIspitStudent(id).then(function(rez) {
-        if(rez.length == 0) res.send(greska);
+        if(rez.length == 0) res.send(niz);
         else {
             let brojac = rez.length;
             rez.forEach(red => {
@@ -116,10 +124,10 @@ app.get('/student/:id/aktivni', function(req, res) {
     
     var niz = [];
     res.contentType('application/json');
-    let greska = { 'poruka': 'Nije pronađen ni na jedan ispit'};
+   // let greska = { 'poruka': 'Nije pronađen ni na jedan ispit'};
     dajPredmetStudent(id).then(function(odgovor) {
         
-        if (odgovor.length == 0) res.send(greska);
+        if (odgovor.length == 0) res.send(niz);
         else {
             let brojac = odgovor.length;
             odgovor.forEach(elementOdgovora => {
@@ -152,9 +160,8 @@ app.get('/izdanepotvrde/:id', function(req, res)
         ZahtjevZaPotvrdu.findAll({where: {idStudenta:id1}}).then(function(potvrde){
             potvrde.forEach(potvrda => {
                 SvrhaPotvrde.findOne({where: {id: potvrda.idSvrhe}}).then(function(svrhica){
-                podaci2.push(svrhica.nazivSvrhe);
-                podaci2.push(potvrda.datumZahtjeva);
-                podaci2.push(potvrda.obradjen);
+                podaci2.push({key: svrhica.nazivSvrhe, value:potvrda.datumZahtjeva, status: potvrda.obradjen});
+
             });
         });
     });
