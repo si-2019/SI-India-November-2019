@@ -13,7 +13,7 @@ class Potvrde extends React.Component {
   constructor(props) {
     ;(async () => {
     try{
-      const response = await axios.get('https://si2019alpha.herokuapp.com/izdanepotvrde/'+global.idStudenta)
+      const response = await axios.get('https://si2019india.herokuapp.com/izdanepotvrde/'+global.idStudenta)
       console.log(response);
       podaci=response.data;
     }

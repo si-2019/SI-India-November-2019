@@ -3,17 +3,39 @@ import React from 'react';
 import {Alert,Text, View, Image, TouchableOpacity, StyleSheet, Button } from 'react-native';
 import moment from 'moment';
 
-
-let inicijalni ={ispiti_info:[], ispiti: [{ key: 0, predmet: "Vjestacka inteligencija", tip: "Prvi parcijalni", datum: "10.2.2019. 13:00", aktivan: 1, prijavljen: 1, popunjen: 0 },
+let ispiti=[{ key: 0, predmet: "Vjestacka inteligencija", tip: "Prvi parcijalni", datum: "10.2.2019. 13:00", aktivan: 1, prijavljen: 1, popunjen: 0 },
 { key: 1, predmet: "Organizacija softverskog projekta", tip: "Drugi parcijalni", datum: "13.6.2019. 18:00", aktivan: 1, prijavljen: 0, popunjen: 0 },
 { key: 2, predmet: "Softverski inzenjering", tip: "Prvi parcijalni", datum: "15.6.2019. 10:30", aktivan: 0, prijavljen: 1, popunjen: 1 },
 { key: 3, predmet: "Projektovanje informacionih sistema", tip: "Usmeni", datum: "16.6.2019. 13:00", aktivan: 1, prijavljen: 0, popunjen: 0 },
-{ key: 4, predmet: "Projektovanje informativnih sistema", tip: "Usmeni", datum: "16.6.2019. 11:00", aktivan: 1, prijavljen: 1, popunjen: 1 }], 
-kopijaIspiti: []
+{ key: 4, predmet: "Projektovanje informativnih sistema", tip: "Usmeni", datum: "16.6.2019. 11:00", aktivan: 1, prijavljen: 1, popunjen: 1 }];
+let inicijalni ={ispiti_info:[], ispiti: ispiti, kopijaIspiti: []
 }
 
 class SviPrijavljeniIspiti extends React.Component {
     constructor(props) {
+      ;(async () => {
+        try{
+        const response = await axios.get('https://si2019india.herokuapp.com/student/'+global.idStudenta+'/aktivni')
+        console.log(response);
+        let i=0;
+        inicijalni.ispiti=[];
+        response.data.forEach(ispit => {
+            inicijalni.ispiti.push({
+                key: i++,
+                predmet: ispit.predmet,
+                tip: ispit.tip,
+                datum: ispit.datum,
+                aktivan: ispit.aktivan,
+                prijavljen: ispit.prijavljen,
+                popunjen: ispit.popunjen
+            });
+        });
+      }
+      catch(error){
+        console.log(error);
+        inicijalni.ispiti=ispiti;
+      }
+      })();
         super(props);
         this.state = inicijalni
         inicijalizovanjeIspita = () => {

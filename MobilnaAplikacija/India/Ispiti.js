@@ -25,7 +25,7 @@ let inicijalniPrijavljeni ={ispiti_info:[], ispiti: ispiti, kopijaIspiti: []
 let naRender = () => {
   ;(async () => {
     try{
-    const response = await axios.get('https://si2019alpha.herokuapp.com/student/'+global.idStudenta+'/aktivni')
+    const response = await axios.get('https://si2019india.herokuapp.com/student/'+global.idStudenta+'/aktivni')
     console.log(response);
     let i=0;
     inicijalniAktivni.ispiti=[];
@@ -48,7 +48,7 @@ let naRender = () => {
   })();
   ;(async () => {
     try{
-    const response = await axios.get('https://si2019alpha.herokuapp.com/student/'+global.idStudenta+'/aktivni')
+    const response = await axios.get('https://si2019india.herokuapp.com/student/'+global.idStudenta+'/aktivni')
     console.log(response);
     let i=0;
     inicijalniPrijavljeni.ispiti=[];
