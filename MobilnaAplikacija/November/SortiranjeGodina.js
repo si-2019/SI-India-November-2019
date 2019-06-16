@@ -7,7 +7,9 @@ import {
     ScrollView,
     TouchableOpacity
 } from 'react-native';
-// import axios from 'axios';
+import axios from 'axios';
+
+const API_BASE_URL= 'https://si2019november.herokuapp.com';
 
 export default class SortiranjeGodina extends Component {
 
@@ -22,9 +24,11 @@ export default class SortiranjeGodina extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            prva: [6, 6, 6, 7, 6, 9, 8, 8, 8, 6],
-            druga: [6, 7, 8, 8, 7, 9, 7, 8, 8, 7, 7, 9],
-            treca: [10, 9, 9, 8, 7, 7, 9, 8, 7, 6],
+            prva: [0],//[6, 6, 6, 7, 6, 9, 8, 8, 8, 6],
+            druga: [0],//[6, 7, 8, 8, 7, 9, 7, 8, 8, 7, 7, 9],
+            treca: [0],
+            cetvrta: [0],
+            peta: [0],
             godine:[],
             semestri: [],
             nesortiraniSemestri: 1,
@@ -37,20 +41,30 @@ export default class SortiranjeGodina extends Component {
         this.props.navigation.addListener('willFocus', this.load)//ovo ne brisati ni slucajno
 
 
-
-        /* axios.get("http://localhost:3000/subjects")
-            .then(res => {
-                const newSubjects = res.data;
-                this.setState({ subjects: newSubjects });
+            fetch(API_BASE_URL+`/November/dohvatiProsjeke/${global.idStudenta}`,
+            {
+              headers:{
+                Authorization: global.token
+              }
+            }).then(res=>res.json()).then(response=>{
+                console.log(response)
+            console.log(response[0].prva)
+              this.setState({
+                prva: response[0].prva,      
+                druga: response[1].druga,
+                treca: response[2].treca,
+                godine: response[3].godine,
+                semestri: response[4].godine,
+              })
+              //console.log(this.state)
+            }).catch(e =>{
+              console.log("Error", e);
             })
-            .then(error => {
-                console.error(error);
-            }
-        ) */
-        this.setState({
-            godine: getMarks,
-            semestri: getSemester
-        });
+          
+        //this.setState({
+        //    godine: getMarks,
+        //    semestri: getSemester
+        //});
     }
        
     load = () => {
@@ -92,7 +106,7 @@ export default class SortiranjeGodina extends Component {
             {
                 godina : 'Treća godina',
                 prosjek : prosjekTrece
-            },
+            }
         ];
         var godineProsjekNesortirano=Object.assign({}, godineProsjek); //Dodajemo vrijednost objekta, ne referencu
 
@@ -101,6 +115,7 @@ export default class SortiranjeGodina extends Component {
         var treciSemestar = this.racunanjeProsjeka(this.state.druga.slice(0, this.state.druga.length/2));
         var cetvrtiSemestar = this.racunanjeProsjeka(this.state.druga.slice(this.state.druga.length/2, this.state.druga.length));
         var petiSemestar = this.racunanjeProsjeka(this.state.treca.slice(0, this.state.treca.length/2));
+        var sestiSemestar = this.racunanjeProsjeka(this.state.treca.slice(0, this.state.treca.length/2, this.state.treca.length));
         var sveOcjene = this.state.prva.concat(this.state.druga, this.state.treca);
         var ukupniProsjek = this.racunanjeProsjeka(sveOcjene);
        
@@ -129,6 +144,12 @@ export default class SortiranjeGodina extends Component {
                 id: 5,
                 title: ' 5. semestar: ',
                 prosjek: petiSemestar
+            },
+            
+            {
+                id: 6,
+                title: ' 6. semestar: ',
+                prosjek: sestiSemestar
             }
             
         ];
@@ -157,6 +178,12 @@ export default class SortiranjeGodina extends Component {
                 id: 5,
                 title: ' 5. semestar: ',
                 prosjek: petiSemestar
+            },
+            
+            {
+                id: 6,
+                title: ' 6. semestar: ',
+                prosjek: sestiSemestar
             }
             
         ];
@@ -271,43 +298,6 @@ export default class SortiranjeGodina extends Component {
         );
     }
 }
-const getMarks = [
-    {
-        id: 1,
-        title: 'Prva'
-    },
-    {
-        id: 2,
-        title: 'Druga'
-    },
-    {
-        id: 3,
-        title: 'Treća'
-    }
-]
-
-const getSemester = [
-    {
-        id: 1,
-        title: '1.'
-    },
-    {
-        id: 2,
-        title: '2.'
-    },
-    {
-        id: 3,
-        title: '3.'
-    },
-    {
-        id: 4,
-        title: '4.'
-    },
-    {
-        id: 5,
-        title: '5.'
-    }
-] 
 
 const styles = StyleSheet.create({
     MainContainer: {
