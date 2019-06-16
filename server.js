@@ -110,6 +110,24 @@ app.get('/November/dohvatiNepolozene/:idStudenta', function(req, res){
   res.json(MOCK_DATA_IZVJESTAJNEPOLOZENI); 
 });
 
+app.get('/November/dohvatiProsjeke/:idStudenta', function(req, res){
+
+  /*
+  var idStudenta = req.params.idStudenta;
+  axios.get('https://si2019siera.herokuapp.com/ocjene/'+idStudenta).then(function(response){
+      res.json(response.data);
+  }).catch(error => {
+  res.json(error);
+  console.log("error");
+  });
+*/
+  res.json(MOCK_DATA_PROSJECI); 
+});
+
+//November/predmetStudent
+//dohvatiIspite
+//dohvatiUpisane
+
 
 swagger_document(app);
 
@@ -391,5 +409,59 @@ const MOCK_DATA_ZAVRSNI= [
   {
     predmet: "Projektovanje informacionih sistema",
     bodovi: 35
+  }
+];
+
+const MOCK_DATA_PROSJECI= [
+  {
+  prva: [6, 6, 6, 7, 6, 9, 8, 8, 8, 6] 
+  },
+  {
+  druga: [6, 7, 8, 8, 7, 9, 7, 8, 8, 7, 7, 9] 
+  },
+  {
+  treca: [10, 9, 9, 8, 7, 7, 9, 8, 7, 6] 
+  },
+  {
+  godine: 
+  [
+  {
+      id: 1,
+      title: 'Prva'
+  },
+  {
+      id: 2,
+      title: 'Druga'
+  },
+  {
+      id: 3,
+      title: 'Treća'
+  }
+  ]
+  },
+  {
+    semstri: 
+    [
+      {
+        id: 1,
+        title: '1.'
+    },
+    {
+        id: 2,
+        title: '2.'
+    },
+    {
+        id: 3,
+        title: '3.'
+    },
+    {
+        id: 4,
+        title: '4.'
+    },
+    {
+        id: 5,
+        title: '5.'
+    }
+    ]
   }
 ];
