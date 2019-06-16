@@ -156,13 +156,19 @@ app.get('/November/dohvatiProsjeke/:idStudenta', function(req, res){
   res.json(MOCK_DATA_PROSJECI);
   console.log("error");
   });
-  
-  //res.json(MOCK_DATA_PROSJECI); 
 });
 
-//November/predmetStudent
-//dohvatiIspite
-//dohvatiUpisane
+app.get('/November/predmetStudent/:idPredmeta/:idStudenta', function(req, res){
+  res.json(MOCK_DATA_ODSLUSANIPREDMET); 
+});
+
+app.get('/November/dohvatiIspite/:idStudenta', function(req, res){
+  res.json(MOCK_DATA_ISPITI); 
+});
+
+app.get('/November/dohvatiUpisane/:idStudenta', function(req, res){
+  res.json(MOCK_DATA_UPISANI); 
+});
 
 
 swagger_document(app);
@@ -203,6 +209,18 @@ const MOCK_DATA_IZVJESTAJZADACE =
 ];
 
 const MOCK_DATA_IZVJESTAJPOLOZENI =
+[
+  {
+     key:"1",
+     naziv:"Projektovanje informacionih sistema"
+  },
+  {
+     key:"2",
+     naziv:"Projektovanje i sinteza digitalnih sistema"
+  }
+];
+
+const MOCK_DATA_UPISANI =
 [
   {
      key:"1",
@@ -499,5 +517,23 @@ const MOCK_DATA_PROSJECI= [
         title: '5.'
     }
     ]
+  }
+];
+const MOCK_DATA_ISPITI = [
+  {
+    predmet: "Administracija racunarskih mreza",
+    datum : "2019-06-05"
+  },
+  {
+    predmet: "Vještačka inteligencija",
+    bodovi : "2019-06-09"
+  },
+  {
+    predmet: "Softver inženjering",
+    bodovi : "2019-06-09"
+  },
+  {
+    predmet: "Projektovanje informacionih sistema",
+    bodovi : "2019-06-11"
   }
 ];
