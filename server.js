@@ -112,16 +112,52 @@ app.get('/November/dohvatiNepolozene/:idStudenta', function(req, res){
 
 app.get('/November/dohvatiProsjeke/:idStudenta', function(req, res){
 
-  /*
+  var a=
+  {"userAutorizacija":true,"success":true,
+  "ocjene":[[{"AkademskaGodina":"2017/18","Ocjene":
+  [{"Predmet":"Novi predmet neki","Ocjena":null},
+  {"Predmet":"Predmettt","Ocjena":null},
+  {"Predmet":"zlatin Predmet","Ocjena":null}]}],
+  [{"AkademskaGodina":"2018/19","Ocjene":
+  [{"Predmet":"Softver inzenjering","Ocjena":10},
+  {"Predmet":"Tehnike programiranja","Ocjena":null},
+  {"Predmet":"Organizacija softverskog projekta","Ocjena":null}]}]]};
+
   var idStudenta = req.params.idStudenta;
-  axios.get('https://si2019siera.herokuapp.com/ocjene/'+idStudenta).then(function(response){
-      res.json(response.data);
+  axios.get('https://si2019siera.herokuapp.com/studenti/'+idStudenta).then(function(response){
+  var pom={}
+  resp1=response.ocjene;
+  i=0;
+  resp1.forEach(function(element){
+    //var pom={};
+    niz=[];
+
+    element[0].Ocjene.forEach(function(el) {
+      if(el.Ocjena==null) niz.push(0)
+      else niz.push(el.Ocjena)
+    })
+    if(i==0) {
+      pom.prva=niz;
+      pom.druga=[0];
+      pom.treca=[0];
+    }
+    else if (i==1) {
+    pom.druga=niz;
+    pom.treca=[0];
+    }
+    else pom.treca=niz;
+    i++;
+  })
+  pom.godine=MOCK_DATA_PROSJECI[3].godine;
+  pom.semestri=MOCK_DATA_PROSJECI[4].semestri;
+  console.log(pom);
+  res.json(pom);
   }).catch(error => {
-  res.json(error);
+  res.json(MOCK_DATA_PROSJECI);
   console.log("error");
   });
-*/
-  res.json(MOCK_DATA_PROSJECI); 
+  
+  //res.json(MOCK_DATA_PROSJECI); 
 });
 
 //November/predmetStudent
@@ -440,7 +476,7 @@ const MOCK_DATA_PROSJECI= [
   ]
   },
   {
-    semstri: 
+    semestri: 
     [
       {
         id: 1,
